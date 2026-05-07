@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI hud;
-    public float throttleIncrement = 0.1f;
+    public float throttleIncrement = 0.7f;
     public float maxThrust = 200f;
     public float responsiveness = 10f;
     public float lift = 135f;
+    public float turnSpeed = 90f;
+    public float pitchSpeed = 30f;
+    public float maxPitchAngle = 40f;
+
+    [SerializeField] TextMeshProUGUI hud;
+    [SerializeField] private Transform visualModel;
 
     private float throttle;
     private float roll;
     private float pitch;
-    private float yaw;
 
     Rigidbody rb;
-
-    private float responseModifier
-    {
-        get
-        {
-            return (rb.mass / 10f) * responsiveness;
-        }
-    }
 
     private void Awake()
     {
@@ -34,7 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         roll = Input.GetAxis("Roll");
         pitch = Input.GetAxis("Pitch");
-        yaw = Input.GetAxis("Yaw");
 
         if (Input.GetKey(KeyCode.Space)) throttle += throttleIncrement;
         else if (Input.GetKey(KeyCode.LeftControl)) throttle -= throttleIncrement;
@@ -50,13 +45,33 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // throttle = percentage
         rb.AddForce(maxThrust * throttle * transform.forward);
-        // rotation
-        rb.AddTorque(responseModifier * yaw * transform.up);
-        rb.AddTorque(pitch * responseModifier * transform.right);
-        rb.AddTorque(responseModifier * roll * -transform.forward);
-        rb.AddForce(lift * rb.linearVelocity.magnitude * Vector3.up);
+        rb.AddForce(lift * rb.linearVelocity.magnitude * transform.up);
+
+        float turnAmount = roll * turnSpeed * Time.fixedDeltaTime;
+        Quaternion yawRotation = Quaternion.Euler(0f, turnAmount, 0f);
+
+        float currentPitch = transform.eulerAngles.x;
+        if (currentPitch > 180f)
+            currentPitch -= 360f;
+        float pitchAmount = -pitch * pitchSpeed * Time.fixedDeltaTime;
+        float targetPitch = Mathf.Clamp(
+            currentPitch + pitchAmount,
+            -maxPitchAngle,
+            maxPitchAngle
+        );
+        Quaternion pitchRotation = Quaternion.Euler(targetPitch, transform.eulerAngles.y, 0f);
+        rb.MoveRotation(yawRotation * pitchRotation);
+
+        float visualRoll = -roll * 30f;
+        Quaternion targetVisualRotation = Quaternion.Euler(0f, 0f, visualRoll);
+        visualModel.localRotation = Quaternion.Lerp(
+            visualModel.localRotation,
+            targetVisualRotation,
+            Time.fixedDeltaTime * 5f
+        );
+
+        rb.angularVelocity = Vector3.zero;
     }
 
     private void UpdateHud()

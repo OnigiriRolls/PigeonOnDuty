@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 131638282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43, y: 12.3, z: -18.4}
+  m_LocalPosition: {x: 35.6, y: 12.3, z: 178.4}
   m_LocalScale: {x: 10.145375, y: 20.872871, z: 12.961893}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -620,7 +620,7 @@ Transform:
   m_GameObject: {fileID: 542666599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -97.1, y: 8.5, z: 18.48}
+  m_LocalPosition: {x: -41, y: 8.5, z: 452}
   m_LocalScale: {x: 12.160409, y: 12.997971, z: 19.265219}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2742,7 +2742,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!114 &1517355608
 MonoBehaviour:
@@ -2756,11 +2756,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041cc4f88e46a8b4d87c5584652f8f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  hud: {fileID: 2003236859}
-  throttleIncrement: 0.1
+  throttleIncrement: 0.7
   maxThrust: 200
   responsiveness: 10
   lift: 135
+  turnSpeed: 90
+  pitchSpeed: 30
+  maxPitchAngle: 40
+  hud: {fileID: 2003236859}
+  visualModel: {fileID: 1376222140}
 --- !u!1 &1518977375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2867,7 +2871,7 @@ Transform:
   m_GameObject: {fileID: 1518977375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.61, y: 11.04, z: 22.6}
+  m_LocalPosition: {x: -23.8, y: 11.04, z: 89.3}
   m_LocalScale: {x: 11.991275, y: 20, z: 9.955404}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2977,7 +2981,7 @@ Transform:
   m_GameObject: {fileID: 1906727640}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13225642, y: 0, z: 0, w: 0.9912156}
-  m_LocalPosition: {x: 0, y: 4.08, z: -8.41}
+  m_LocalPosition: {x: 0, y: 5.89, z: -15.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
