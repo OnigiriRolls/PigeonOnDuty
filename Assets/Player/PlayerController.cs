@@ -72,6 +72,13 @@ public class PlayerController : MonoBehaviour
         );
 
         rb.angularVelocity = Vector3.zero;
+        
+        Vector3 desiredVelocity = transform.forward * rb.linearVelocity.magnitude;
+        rb.linearVelocity = Vector3.Lerp(
+            rb.linearVelocity,
+            desiredVelocity,
+            Time.fixedDeltaTime * 3f
+        );
     }
 
     private void UpdateHud()
