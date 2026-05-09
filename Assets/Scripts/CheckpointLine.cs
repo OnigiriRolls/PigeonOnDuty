@@ -1,0 +1,23 @@
+using UnityEngine;
+
+public class CheckpointLine : MonoBehaviour
+{
+    [SerializeField] private Transform player;
+    [SerializeField] private EndlessRunManager endlessRunManager;
+
+    private LineRenderer lineRenderer;
+
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    private void Update()
+    {
+        if (endlessRunManager.CurrentCheckpoint == null)
+            return;
+
+        lineRenderer.SetPosition(0, player.position);
+        lineRenderer.SetPosition(1, endlessRunManager.CurrentCheckpoint.transform.position);
+    }
+}

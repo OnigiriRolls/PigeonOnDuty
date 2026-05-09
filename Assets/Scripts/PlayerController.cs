@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateHud()
     {
         hud.text = $"Throttle: {throttle:F0} %{Environment.NewLine}" +
-            $"Airspeed: {(rb.linearVelocity.magnitude * 3.6f).ToString("F0")} km/h{Environment.NewLine}" +
+            $"Airspeed: {rb.linearVelocity.magnitude * 3.6f:F0} km/h{Environment.NewLine}" +
             $"Altitude: {transform.position.y:F0} m";
     }
 }
