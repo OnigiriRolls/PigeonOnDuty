@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+
+    [SerializeField] private GameObject destroyEffectPrefab;
+    [SerializeField] private AudioClip checkpointSound;
+
     private EndlessRunManager endlessRunManager;
 
     public void Initialize(EndlessRunManager manager)
@@ -11,10 +15,15 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
+            return;
+
+        AudioSource.PlayClipAtPoint(checkpointSound, transform.position);
+        if (destroyEffectPrefab != null)
         {
-            endlessRunManager.SpawnNextCheckpoint();
-            Destroy(gameObject);
+            Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
+        endlessRunManager.SpawnNextCheckpoint();
+        Destroy(gameObject);
     }
 }

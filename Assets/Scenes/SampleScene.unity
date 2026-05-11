@@ -4788,7 +4788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1d0d9a2341221478fbe032412e7aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndlessRunManager
-  checkpointPrefab: {fileID: 2723654849395896634, guid: 5592314be9c5f4d4e9d0baf9ae23feba, type: 3}
+  checkpointPrefab: {fileID: 5426681651754292410, guid: b429e5cb593562d4e91e6f3033d85424, type: 3}
 --- !u!4 &1507542252
 Transform:
   m_ObjectHideFlags: 0
