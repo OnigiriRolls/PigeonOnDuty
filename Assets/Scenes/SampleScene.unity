@@ -245,8 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &131638282
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &139088013
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &239716396
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,8 +742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,8 +831,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08898122, y: -0, z: -0, w: 0.9960333}
-  m_LocalPosition: {x: 14.516951, y: 12.03, z: -7.7657304}
+  m_LocalRotation: {x: 0.13225642, y: 0, z: 0, w: 0.9912155}
+  m_LocalPosition: {x: 41, y: 18.79, z: -98.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1184,8 +1184,120 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
+--- !u!1 &459454740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 459454741}
+  - component: {fileID: 459454744}
+  - component: {fileID: 459454743}
+  - component: {fileID: 459454742}
+  m_Layer: 9
+  m_Name: LandingArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &459454741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459454740}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.51, z: 0}
+  m_LocalScale: {x: 0.96, y: 0.005, z: 0.96}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1425147894}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &459454742
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459454740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &459454743
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459454740}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &459454744
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459454740}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &494315134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,8 +1476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &542666599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,8 +1604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &552401943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,7 +1751,8 @@ Transform:
   m_LocalPosition: {x: 6.1000004, y: 24.75, z: -8.3}
   m_LocalScale: {x: 21.841433, y: 50.222385, z: 16.404867}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1668055404}
   m_Father: {fileID: 494315135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &638263213
@@ -1733,8 +1846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &690438078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1961,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &712922209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
+  m_PrefabInstance: {fileID: 1376222139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &746780120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,8 +2360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &1223097807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3942,13 +4060,118 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1376222142}
   m_SourcePrefab: {fileID: 100100000, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
 --- !u!4 &1376222140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
   m_PrefabInstance: {fileID: 1376222139}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1376222141 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
+  m_PrefabInstance: {fileID: 1376222139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1376222142
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712922209}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5.716572
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1382528340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4075,8 +4298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &1425147890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4410,8 @@ Transform:
   m_LocalPosition: {x: 88.5, y: 3.95, z: -34.92}
   m_LocalScale: {x: 4.5589, y: 7.2492867, z: 5.6930313}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 459454741}
   m_Father: {fileID: 494315135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1425147895
@@ -4203,8 +4427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &1439197283
 GameObject:
   m_ObjectHideFlags: 0
@@ -4614,6 +4838,8 @@ GameObject:
   - component: {fileID: 1517355603}
   - component: {fileID: 1517355607}
   - component: {fileID: 1517355608}
+  - component: {fileID: 1517355609}
+  - component: {fileID: 1517355610}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4640,8 +4866,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.43348312, z: 2.7374048}
-  m_Center: {x: 0, y: 0.065971375, z: -0.45976663}
+  m_Size: {x: 1, y: 0.6274748, z: 2.7374048}
+  m_Center: {x: 0, y: -0.031024456, z: -0.45976663}
 --- !u!4 &1517355606
 Transform:
   m_ObjectHideFlags: 0
@@ -4651,7 +4877,7 @@ Transform:
   m_GameObject: {fileID: 1517355602}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41, y: 12.9, z: -83.34}
+  m_LocalPosition: {x: 43.49, y: 9.11, z: -83.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4710,6 +4936,52 @@ MonoBehaviour:
   maxPitchAngle: 40
   hud: {fileID: 2003236859}
   visualModel: {fileID: 1376222140}
+  landingAreaLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  groundCheckDistance: 2
+--- !u!114 &1517355609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517355602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac3ca8f93308e34a8fb38a668335617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationController
+  animator: {fileID: 1376222141}
+  player: {fileID: 1517355608}
+--- !u!114 &1517355610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517355602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c693021ac2054b48a4b9d611a8ed0b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAudioController
+  player: {fileID: 1517355608}
+  audioSource: {fileID: 1376222142}
+  takeoffLandingClips:
+  - {fileID: 8300000, guid: d584d3011f4c53e438553e776048579c, type: 3}
+  - {fileID: 8300000, guid: e06755e406e5abf45aeac755bcef4f06, type: 3}
+  - {fileID: 8300000, guid: 02b0c4295a1cdf8459e3b61347c95335, type: 3}
+  - {fileID: 8300000, guid: 7afd963bc2776d845a78c7d0eb9139de, type: 3}
+  - {fileID: 8300000, guid: c4a6dc81b763a3d4bb3ff2d7b1c2f387, type: 3}
+  - {fileID: 8300000, guid: 0e55bc967e4576b4693c956ae79c1049, type: 3}
+  flyingClips:
+  - {fileID: 8300000, guid: 841bb246cfb1b484d9e0113700f597c7, type: 3}
+  - {fileID: 8300000, guid: 99ec3461de85b15478366a2bfb9ac065, type: 3}
+  - {fileID: 8300000, guid: 1f298c92312af384ca525d852aca1631, type: 3}
+  - {fileID: 8300000, guid: 47d66838076abe94094450bda01c0400, type: 3}
+  minFlyingSoundDelay: 3.5
+  maxFlyingSoundDelay: 7
 --- !u!1 &1518977375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4836,8 +5108,120 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
+--- !u!1 &1668055403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668055404}
+  - component: {fileID: 1668055407}
+  - component: {fileID: 1668055406}
+  - component: {fileID: 1668055405}
+  m_Layer: 9
+  m_Name: LandingArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1668055404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668055403}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5021, z: 0}
+  m_LocalScale: {x: 0.99, y: 0.005, z: 0.99}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 638263212}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1668055405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668055403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1668055406
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668055403}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1668055407
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668055403}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1687370142
 GameObject:
   m_ObjectHideFlags: 0
@@ -4964,8 +5348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &1840032022
 GameObject:
   m_ObjectHideFlags: 0
@@ -5171,8 +5555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &1906727640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5443,8 +5827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   waypointPrefab: {fileID: 1022524965282909172, guid: 13b28886f6f0d5c45b2fba04401f4e4d, type: 3}
-  validator: {fileID: 1507542253}
   offset: 15
+  validator: {fileID: 1507542253}
 --- !u!1 &2003236857
 GameObject:
   m_ObjectHideFlags: 0

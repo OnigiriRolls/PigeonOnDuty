@@ -11,15 +11,26 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed = 90f;
     public float pitchSpeed = 30f;
     public float maxPitchAngle = 40f;
+    public float Throttle => throttle;
+    public float Roll => roll;
+    public float Pitch => pitch;
+    public bool IsFlying => isFlying;
+    public bool IsGliding => isGliding;
+    public bool IsGrounded => isGrounded;
 
-    [SerializeField] TextMeshProUGUI hud;
+    [SerializeField] private TextMeshProUGUI hud;
     [SerializeField] private Transform visualModel;
+    [SerializeField] private LayerMask landingAreaLayer;
+    [SerializeField] private float groundCheckDistance = 2f;
 
     private float throttle;
     private float roll;
     private float pitch;
+    private bool isGrounded;
+    private bool isFlying;
+    private bool isGliding;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -41,6 +52,9 @@ public class PlayerController : MonoBehaviour
     {
         HandleInputs();
         UpdateHud();
+        CheckGrounded();
+        UpdateFlightState();
+        UpdateGlidingState();
     }
 
     private void FixedUpdate()
@@ -72,7 +86,7 @@ public class PlayerController : MonoBehaviour
         );
 
         rb.angularVelocity = Vector3.zero;
-        
+
         Vector3 desiredVelocity = transform.forward * rb.linearVelocity.magnitude;
         rb.linearVelocity = Vector3.Lerp(
             rb.linearVelocity,
@@ -86,5 +100,41 @@ public class PlayerController : MonoBehaviour
         hud.text = $"Throttle: {throttle:F0} %{Environment.NewLine}" +
             $"Airspeed: {rb.linearVelocity.magnitude * 3.6f:F0} km/h{Environment.NewLine}" +
             $"Altitude: {transform.position.y:F0} m";
+    }
+
+    private void UpdateFlightState()
+    {
+        if (!isFlying && throttle >= 2f)
+        {
+            isFlying = true;
+        }
+
+        if (isFlying && isGrounded && throttle < 2f)
+        {
+            isFlying = false;
+        }
+    }
+
+    private void UpdateGlidingState()
+    {
+        bool hasMovementInput = Mathf.Abs(roll) > 0.1f || Mathf.Abs(pitch) > 0.1f;
+        bool changingThrottle = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl);
+        isGliding = isFlying && !hasMovementInput && !changingThrottle;
+    }
+
+    private void CheckGrounded()
+    {
+        isGrounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            groundCheckDistance,
+            landingAreaLayer
+        );
+
+        Debug.DrawRay(
+             transform.position,
+             Vector3.down * groundCheckDistance,
+             Color.red
+        );
     }
 }
