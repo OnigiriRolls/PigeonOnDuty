@@ -11,6 +11,9 @@ public class PlayerAudioController : MonoBehaviour
     [Header("Flying / Gliding")]
     [SerializeField] private AudioClip[] flyingClips;
 
+    [Header("Hit")]
+    [SerializeField] private AudioClip hitClip;
+
     [Header("Flying Timing")]
     [SerializeField] private float minFlyingSoundDelay = 2f;
     [SerializeField] private float maxFlyingSoundDelay = 5f;
@@ -70,9 +73,13 @@ public class PlayerAudioController : MonoBehaviour
         if (clips.Length == 0)
             return;
 
-        AudioClip randomClip =
-            clips[Random.Range(0, clips.Length)];
+        AudioClip randomClip = clips[Random.Range(0, clips.Length)];
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(randomClip);
+    }
+
+    public void PlayHitClip()
+    {
+        audioSource.PlayOneShot(hitClip);
     }
 }

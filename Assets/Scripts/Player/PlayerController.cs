@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool IsFlying => isFlying;
     public bool IsGliding => isGliding;
     public bool IsGrounded => isGrounded;
+    public Vector3 Velocity => rb.linearVelocity;
 
     [SerializeField] private TextMeshProUGUI hud;
     [SerializeField] private Transform visualModel;

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndlessRunManager : MonoBehaviour
@@ -6,6 +5,8 @@ public class EndlessRunManager : MonoBehaviour
     public GameObject CurrentCheckpoint => currentCheckpoint;
 
     [SerializeField] private GameObject checkpointPrefab;
+    [SerializeField] private CrowManager crowManager;
+    [SerializeField] private Transform checkpointParent;
 
     private Waypoint[] waypoints;
     private GameObject currentCheckpoint;
@@ -15,6 +16,7 @@ public class EndlessRunManager : MonoBehaviour
     {
         waypoints = FindObjectsOfType<Waypoint>();
         SpawnNextCheckpoint();
+        //crowManager.TrySpawnCrow();
     }
 
     public void SpawnNextCheckpoint()
@@ -33,13 +35,11 @@ public class EndlessRunManager : MonoBehaviour
         Waypoint nextWaypoint = GetRandomWaypoint();
         currentWaypoint = nextWaypoint;
         currentCheckpoint = Instantiate(
-            checkpointPrefab,
+            checkpointPrefab, 
             currentWaypoint.transform.position,
-            Quaternion.Euler(0f, 0f, 90f)
-        );
-        currentCheckpoint
-            .GetComponent<Checkpoint>()
-            .Initialize(this);
+            GetRandomWaypointRotation(),
+            checkpointParent);
+        currentCheckpoint.GetComponent<Checkpoint>().Initialize(this);
     }
 
     private Waypoint GetRandomWaypoint()
@@ -47,10 +47,16 @@ public class EndlessRunManager : MonoBehaviour
         Waypoint randomWaypoint;
         do
         {
-            randomWaypoint =
-                waypoints[Random.Range(0, waypoints.Length)];
+            randomWaypoint = waypoints[Random.Range(0, waypoints.Length)];
         }
         while (randomWaypoint == currentWaypoint);
         return randomWaypoint;
+    }
+
+    private Quaternion GetRandomWaypointRotation()
+    {
+        float randomY = Random.Range(0f, 360f);
+        float randomZ = Random.Range(45f, 135f);
+        return Quaternion.Euler(0f, randomY, randomZ);
     }
 }
