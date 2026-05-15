@@ -10,16 +10,5 @@ public class CrowLeaveState : CrowState
 
     public override void UpdateState()
     {
-        crow.MoveTowards(
-                    crow.patrolCenter,
-                    crow.chaseSpeed
-                );
-
-        destroyTimer -= Time.deltaTime;
-
-        if (destroyTimer <= 0)
-        {
-            GameObject.Destroy(crow.gameObject);
-        }
     }
 }

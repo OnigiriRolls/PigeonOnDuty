@@ -12,6 +12,7 @@ public class CrowPatrolState : CrowState
 
     public override void Enter()
     {
+        crow.SetMoveSpeed(crow.patrolSpeed);
         PickNewPoint();
     }
 
@@ -19,7 +20,7 @@ public class CrowPatrolState : CrowState
     {
         if (crow.PlayerInRange())
         {
-            //crow.ChangeState(new CrowChaseState(crow));
+            crow.ChangeState(new CrowChaseState(crow));
             return;
         }
 
@@ -34,13 +35,14 @@ public class CrowPatrolState : CrowState
             return;
         }
 
-        crow.MoveTowards(targetPoint, crow.patrolSpeed);
+        crow.UpdateDelayedTarget(targetPoint);
 
         float dist = Vector3.Distance(crow.transform.position, targetPoint);
-        if (dist < 0.2f)
+        if (dist < crow.deadZone)
         {
             waiting = true;
             waitTimer = Random.Range(1f, 3f);
+            crow.StopMovement();
         }
     }
 
