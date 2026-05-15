@@ -2847,10 +2847,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crow
       objectReference: {fileID: 0}
-    - target: {fileID: 7748875152351308941, guid: db6e49a961a101a4fae060afa788aeaa, type: 3}
-      propertyPath: followDistance
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

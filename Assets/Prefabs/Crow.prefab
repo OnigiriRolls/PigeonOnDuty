@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 7748875152351308941}
   - component: {fileID: 5607273793890709806}
   - component: {fileID: 8928354834175003068}
-  - component: {fileID: 6144600399600484315}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Untagged
@@ -202,22 +201,19 @@ MonoBehaviour:
   player: {fileID: 0}
   patrolCenter: {x: 0, y: 0, z: 0}
   patrolBoxSize: {x: 30, y: 0, z: 30}
-  detectRange: 30
+  patrolSpeed: 5
+  detectRange: 50
+  chaseSpeed: 30
+  followDistance: 10
   tolerance: 0.5
+  followPauseDuration: 1.5
+  dashSpeed: 28
   dashDistance: 10
   maxAttacks: 2
   recoverTime: 3
-  moveSpeed: 10
-  rotationSpeed: 5
-  followDistance: 2
-  deadZone: 1
-  targetUpdateDelay: 0.1
-  patrolSpeed: 5
-  chaseSpeed: 30
-  dashSpeed: 28
   currentAttacks: 0
   currentTarget: {x: 0, y: 0, z: 0}
-  movementTarget: {x: 0, y: 0, z: 0}
+  rotationSpeed: 7
 --- !u!114 &5607273793890709806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,33 +247,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0946454, z: 5.5619345}
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!54 &6144600399600484315
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4292170788808701894}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 3
-  m_AngularDamping: 6
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!1 &4294736249837187914
 GameObject:
   m_ObjectHideFlags: 0
