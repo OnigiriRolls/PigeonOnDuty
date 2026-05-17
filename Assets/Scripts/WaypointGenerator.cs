@@ -14,9 +14,9 @@ public class WaypointGenerator : MonoBehaviour
     [SerializeField] private int highPostCount = 5;
 
     [Header("Altitude Layers")]
-    [SerializeField] private float lowHeight = 20f;
-    [SerializeField] private float midHeight = 60f;
-    [SerializeField] private float highHeight = 80f;
+    [SerializeField] private string midHeight1 = "Sky_small";
+    [SerializeField] private string midHeight2 = "Residential";
+    [SerializeField] private string highHeight = "Sky_big";
 
     private Renderer buildingRenderer;
     private Vector3 areaSize;
@@ -43,7 +43,7 @@ public class WaypointGenerator : MonoBehaviour
         foreach (Vector3 dir in directions)
         {
             Vector3 spawnPos = transform.position + dir * offset;
-            TrySpawnWaypoint(spawnPos);
+            TrySpawnBuildingWaypoint(spawnPos);
         }
     }
 
@@ -51,7 +51,7 @@ public class WaypointGenerator : MonoBehaviour
     {
         Bounds bounds = buildingRenderer.bounds;
         Vector3 rooftopPos = bounds.center + Vector3.up * (bounds.extents.y + offset);
-        TrySpawnWaypoint(rooftopPos);
+        TrySpawnBuildingWaypoint(rooftopPos);
     }
 
     private void GeneratePostWaypoints(int count, float height, AltitudeLayer layer)
@@ -64,7 +64,7 @@ public class WaypointGenerator : MonoBehaviour
                 Random.Range(-areaSize.z, areaSize.z)
             );
 
-            if (!validator.IsValidPositionForPost(randomPos))
+            if (!validator.IsValidPosition(randomPos))
                 continue;
 
             GameObject obj = Instantiate(postWaypointPrefab, randomPos, Quaternion.identity, postWaypointParent);
@@ -73,23 +73,23 @@ public class WaypointGenerator : MonoBehaviour
         }
     }
 
-    private void TrySpawnWaypoint(Vector3 spawnPos)
+    private void TrySpawnBuildingWaypoint(Vector3 spawnPos)
     {
-        if (!validator.IsValidPositionForBuilding(spawnPos))
+        if (!validator.IsValidPosition(spawnPos))
             return;
 
         GameObject waypointObject = Instantiate(buildingWaypointPrefab, spawnPos, Quaternion.identity, buildingWaypointParent);
         Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
-        waypoint.AltitudeLayer = GetAltitudeLayer(spawnPos.y);
+        waypoint.AltitudeLayer = GetAltitudeLayer(waypointObject.name);
     }
 
 
-    private AltitudeLayer GetAltitudeLayer(float height)
+    private AltitudeLayer GetAltitudeLayer(string name)
     {
-        if (height < lowHeight)
-            return AltitudeLayer.Low;
-        if (height < midHeight)
+        if (name.Contains(highHeight))
+            return AltitudeLayer.High;
+        if (name.Contains(midHeight1) || name.Contains(midHeight2))
             return AltitudeLayer.Mid;
-        return AltitudeLayer.High;
+        return AltitudeLayer.Low;
     }
 }
