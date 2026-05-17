@@ -9,7 +9,7 @@ public class WaypointValidator : MonoBehaviour
     public Vector3 mapMinBounds;
     public Vector3 mapMaxBounds;
 
-    public bool IsValidPosition(Vector3 position)
+    public bool IsValidPositionForBuilding(Vector3 position)
     {
         bool insideBounds =
             position.x >= mapMinBounds.x &&
@@ -21,19 +21,16 @@ public class WaypointValidator : MonoBehaviour
         if (!insideBounds)
             return false;
 
-        bool nearBuilding = Physics.CheckSphere(
-            position,
-            buildingCheckRadius,
-            buildingLayer
-        );
+        return IsValidPositionForPost(position);
+    }
+
+    public bool IsValidPositionForPost(Vector3 position)
+    {
+        bool nearBuilding = Physics.CheckSphere(position, buildingCheckRadius, buildingLayer);
         if (nearBuilding)
             return false;
 
-        bool nearWaypoint = Physics.CheckSphere(
-            position,
-            minDistanceBetweenWaypoints,
-            waypointLayer
-        );
+        bool nearWaypoint = Physics.CheckSphere(position, minDistanceBetweenWaypoints, waypointLayer);
         if (nearWaypoint)
             return false;
 
