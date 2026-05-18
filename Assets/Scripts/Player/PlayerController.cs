@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform visualModel;
     [SerializeField] private LayerMask landingAreaLayer;
     [SerializeField] private float groundCheckDistance = 2f;
+    [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private float wallCheckDistance = 2f;
 
     private float throttle;
     private float roll;
@@ -70,31 +72,19 @@ public class PlayerController : MonoBehaviour
         if (currentPitch > 180f)
             currentPitch -= 360f;
         float pitchAmount = -pitch * pitchSpeed * Time.fixedDeltaTime;
-        float targetPitch = Mathf.Clamp(
-            currentPitch + pitchAmount,
-            -maxPitchAngle,
-            maxPitchAngle
-        );
+        float targetPitch = Mathf.Clamp(currentPitch + pitchAmount, -maxPitchAngle, maxPitchAngle);
         Quaternion pitchRotation = Quaternion.Euler(targetPitch, transform.eulerAngles.y, 0f);
         rb.MoveRotation(yawRotation * pitchRotation);
 
         float visualRoll = -roll * 30f;
         Quaternion targetVisualRotation = Quaternion.Euler(0f, 0f, visualRoll);
-        visualModel.localRotation = Quaternion.Lerp(
-            visualModel.localRotation,
-            targetVisualRotation,
-            Time.fixedDeltaTime * 5f
-        );
+        visualModel.localRotation = Quaternion.Lerp(visualModel.localRotation, targetVisualRotation, Time.fixedDeltaTime * 5f);
 
         rb.angularVelocity = Vector3.zero;
-
         Vector3 desiredVelocity = transform.forward * rb.linearVelocity.magnitude;
-        rb.linearVelocity = Vector3.Lerp(
-            rb.linearVelocity,
-            desiredVelocity,
-            Time.fixedDeltaTime * 3f
-        );
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, desiredVelocity, Time.fixedDeltaTime * 3f);
     }
+
 
     private void UpdateHud()
     {
