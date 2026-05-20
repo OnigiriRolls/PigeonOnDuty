@@ -5,25 +5,27 @@ public class WaypointGenerator : MonoBehaviour
     public float offset = 15f;
 
     [Header("References")]
+    [SerializeField] private GameObject buildingsParent;
     [SerializeField] private GameObject buildingWaypointPrefab;
     [SerializeField] private GameObject postWaypointPrefab;
     [SerializeField] private Transform buildingWaypointParent;
     [SerializeField] private Transform postWaypointParent;
     [SerializeField] private WaypointValidator validator;
-    [SerializeField] private int midPostCount = 3;
-    [SerializeField] private int highPostCount = 5;
+    [SerializeField] private int midPostCount = 100;
+    [SerializeField] private int highPostCount = 200;
 
     [Header("Altitude Layers")]
     [SerializeField] private string midHeight1 = "Sky_small";
     [SerializeField] private string midHeight2 = "Residential";
+    [SerializeField] private Vector2 midHeightRange = new(0f, 0f);
     [SerializeField] private string highHeight = "Sky_big";
-
-    private Renderer buildingRenderer;
-    private Vector3 areaSize;
+    [SerializeField] private Vector2 highHeightRange = new (0f, 0f);
+    [SerializeField] private Vector2 xRange;
+    [SerializeField] private Vector2 zRange;
 
     private void Awake()
     {
-        buildingRenderer = GetComponent<Renderer>();
+
     }
 
     void Start()
@@ -33,35 +35,43 @@ public class WaypointGenerator : MonoBehaviour
 
     private void GenerateWaypoints()
     {
-        GenerateSideWaypoints();
-        GenerateRooftopWaypoint();
+        foreach (Transform building in buildingsParent.transform)
+        {
+            GenerateSideWaypoints(building);
+            GenerateRooftopWaypoint(building);
+        }
+        GeneratePostWaypoints(midPostCount, midHeightRange, AltitudeLayer.Mid);
+        GeneratePostWaypoints(highPostCount, highHeightRange, AltitudeLayer.High);
     }
 
-    private void GenerateSideWaypoints()
+    private void GenerateSideWaypoints(Transform building)
     {
-        Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
+        Vector3[] directions = { building.forward, -building.forward, building.right, -building.right };
         foreach (Vector3 dir in directions)
         {
-            Vector3 spawnPos = transform.position + dir * offset;
-            TrySpawnBuildingWaypoint(spawnPos);
+            Vector3 spawnPos = building.position + dir * offset;
+            TrySpawnBuildingWaypoint(spawnPos, building.name);
         }
     }
 
-    private void GenerateRooftopWaypoint()
+    private void GenerateRooftopWaypoint(Transform building)
     {
-        Bounds bounds = buildingRenderer.bounds;
+        Renderer renderer = building.GetComponent<Renderer>();
+        if (renderer == null)
+            return;
+        Bounds bounds = renderer.bounds;
         Vector3 rooftopPos = bounds.center + Vector3.up * (bounds.extents.y + offset);
-        TrySpawnBuildingWaypoint(rooftopPos);
+        TrySpawnBuildingWaypoint(rooftopPos, building.name);
     }
 
-    private void GeneratePostWaypoints(int count, float height, AltitudeLayer layer)
+    private void GeneratePostWaypoints(int count, Vector2 height, AltitudeLayer layer)
     {
         for (int i = 0; i < count; i++)
         {
             Vector3 randomPos = new Vector3(
-                Random.Range(-areaSize.x, areaSize.x),
-                height,
-                Random.Range(-areaSize.z, areaSize.z)
+                Random.Range(xRange.x, xRange.y),
+                Random.Range(height.x, height.y),
+                Random.Range(zRange.x, zRange.y)
             );
 
             if (!validator.IsValidPosition(randomPos))
@@ -73,14 +83,14 @@ public class WaypointGenerator : MonoBehaviour
         }
     }
 
-    private void TrySpawnBuildingWaypoint(Vector3 spawnPos)
+    private void TrySpawnBuildingWaypoint(Vector3 spawnPos, string buildingName)
     {
         if (!validator.IsValidPosition(spawnPos))
             return;
 
         GameObject waypointObject = Instantiate(buildingWaypointPrefab, spawnPos, Quaternion.identity, buildingWaypointParent);
         Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
-        waypoint.AltitudeLayer = GetAltitudeLayer(waypointObject.name);
+        waypoint.AltitudeLayer = GetAltitudeLayer(buildingName);
     }
 
 

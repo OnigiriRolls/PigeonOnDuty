@@ -4,7 +4,8 @@ public class EndlessRunManager : MonoBehaviour
 {
     public GameObject CurrentCheckpoint => currentCheckpoint;
 
-    [SerializeField] private GameObject checkpointPrefab;
+    [SerializeField] private GameObject buildingCheckpointPrefab;
+    [SerializeField] private GameObject postCheckpointPrefab;
     [SerializeField] private CrowManager crowManager;
     [SerializeField] private Transform checkpointParent;
 
@@ -34,11 +35,10 @@ public class EndlessRunManager : MonoBehaviour
 
         Waypoint nextWaypoint = GetRandomWaypoint();
         currentWaypoint = nextWaypoint;
-        currentCheckpoint = Instantiate(
-            checkpointPrefab, 
-            currentWaypoint.transform.position,
-            GetRandomWaypointRotation(),
-            checkpointParent);
+        if (currentWaypoint.name.Contains("Post"))
+            currentCheckpoint = Instantiate(postCheckpointPrefab, currentWaypoint.transform.position, GetRandomWaypointRotation(), checkpointParent);
+        else currentCheckpoint = Instantiate(buildingCheckpointPrefab, currentWaypoint.transform.position, GetRandomWaypointRotation(), checkpointParent);
+        Debug.Log(currentCheckpoint.name);
         currentCheckpoint.GetComponent<Checkpoint>().Initialize(this);
     }
 
@@ -56,7 +56,6 @@ public class EndlessRunManager : MonoBehaviour
     private Quaternion GetRandomWaypointRotation()
     {
         float randomY = Random.Range(0f, 360f);
-        float randomZ = Random.Range(45f, 135f);
-        return Quaternion.Euler(0f, randomY, randomZ);
+        return Quaternion.Euler(0f, randomY, 0f);
     }
 }

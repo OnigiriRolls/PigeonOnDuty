@@ -12,7 +12,7 @@ public class PlayerAudioController : MonoBehaviour
     [SerializeField] private AudioClip[] flyingClips;
 
     [Header("Hit")]
-    [SerializeField] private AudioClip hitClip;
+    [SerializeField] private AudioClip[] hitClips;
 
     [Header("Flying Timing")]
     [SerializeField] private float minFlyingSoundDelay = 2f;
@@ -62,10 +62,7 @@ public class PlayerAudioController : MonoBehaviour
 
     private void ResetFlyingSoundTimer()
     {
-        flyingSoundTimer = Random.Range(
-            minFlyingSoundDelay,
-            maxFlyingSoundDelay
-        );
+        flyingSoundTimer = Random.Range(minFlyingSoundDelay, maxFlyingSoundDelay);
     }
 
     private void PlayRandomClip(AudioClip[] clips)
@@ -80,6 +77,6 @@ public class PlayerAudioController : MonoBehaviour
 
     public void PlayHitClip()
     {
-        audioSource.PlayOneShot(hitClip);
+        PlayRandomClip(hitClips);
     }
 }
