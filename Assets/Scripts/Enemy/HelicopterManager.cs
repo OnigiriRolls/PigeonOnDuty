@@ -46,7 +46,7 @@ public class HelicopterManager : MonoBehaviour
     {
         Vector3 spawnPosition = player.transform.GetChild(0).position;
         GameObject helicopter = Instantiate(helicopterPrefab, spawnPosition, Quaternion.identity);
-        HelicopterController controller = helicopter.GetComponent<HelicopterController>();
+        HelicopterControllerSimple controller = helicopter.GetComponent<HelicopterControllerSimple>();
         controller.Initialize(player.transform, spawnPosition, this);
         helicopterActive = true;
     }
