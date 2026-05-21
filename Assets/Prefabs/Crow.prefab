@@ -199,15 +199,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrowController
   player: {fileID: 0}
-  patrolCenter: {x: 0, y: 0, z: 0}
-  patrolBoxSize: {x: 30, y: 0, z: 30}
-  patrolSpeed: 5
-  detectRange: 50
   chaseSpeed: 30
-  followDistance: 10
-  tolerance: 0.5
-  followPauseDuration: 1.5
-  dashSpeed: 28
+  followTolerance: 20
+  leftOffset: 5
+  minWaitTime: 6
+  maxWaitTime: 8
+  dashSpeed: 40
   dashDistance: 10
   maxAttacks: 2
   recoverTime: 3

@@ -2,51 +2,49 @@ using UnityEngine;
 
 public class CrowManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private PlayerController player;
     [SerializeField] private GameObject crowPrefab;
-    [SerializeField] private GameObject[] crowPrefabsToInit;
-    [SerializeField] private Transform player;
-    [SerializeField] private EndlessRunManager endlessRunManager;
-    [SerializeField] private float spawnChance = 0.5f;
 
-    private CrowController activeCrow;
+    [Header("Spawn")]
+    [SerializeField] private float lowAltitude = 60f;
+    [SerializeField] private float spawnCheckInterval = 5f;
+    [SerializeField] private float spawnChance = 0.4f;
+    [SerializeField] private Transform spawnPosition;
 
-    private void Start()
+    private bool crowActive;
+    private float timer;
+
+    private void Update()
     {
-        //foreach (var crow in crowPrefabsToInit)
-        //{
-        //    crow.GetComponent<CrowController>().Initialize(player, this);
-        //}
+        timer -= Time.deltaTime;
+        if (timer > 0f)
+            return;
+        timer = spawnCheckInterval;
+        TrySpawnCrow();
     }
 
-    public void TrySpawnCrow()
+    private void TrySpawnCrow()
     {
-        //// already active crow
-        //if (activeCrow != null)
-        //    return;
-
-        //// random chance
-        //if (Random.value > spawnChance)
-        //    return;
-
-        //Vector3 spawnPos = GetSpawnPosition();
-        //GameObject crowObj = Instantiate(crowPrefab, spawnPos, Quaternion.identity);
-        //activeCrow = crowObj.GetComponent<CrowController>();
-        //activeCrow.Initialize(player, this);
+        if (crowActive)
+            return;
+        if (player.transform.position.y > lowAltitude)
+            return;
+        if (Random.value > spawnChance)
+            return;
+        SpawnCrow();
     }
 
-    private Vector3 GetSpawnPosition()
+    private void SpawnCrow()
     {
-        Transform checkpoint = endlessRunManager.CurrentCheckpoint.transform;
-        Vector3 direction = (checkpoint.position - player.position).normalized;
-        Vector3 midpoint = Vector3.Lerp(player.position, checkpoint.position, 0.5f);
-        Vector3 sideOffset = Vector3.Cross(direction, Vector3.up) * Random.Range(-20f, 20f);
-        Vector3 heightOffset = Vector3.up * Random.Range(5f, 15f);
-
-        return midpoint + sideOffset + heightOffset;
+        GameObject crow = Instantiate(crowPrefab, spawnPosition.position, Quaternion.identity);
+        CrowController crowController = crow.GetComponent<CrowController>();
+        crowController.Initialize(player.transform, this);
+        crowActive = true;
     }
 
     public void CrowFinished()
     {
-        activeCrow = null;
+        crowActive = false;
     }
 }

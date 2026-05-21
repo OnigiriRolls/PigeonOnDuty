@@ -634,11 +634,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0a702b0be6daf479b97901e0d6655d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrowManager
+  player: {fileID: 1517355608}
   crowPrefab: {fileID: 4292170788808701894, guid: db6e49a961a101a4fae060afa788aeaa, type: 3}
-  crowPrefabsToInit: []
-  player: {fileID: 1517355606}
-  endlessRunManager: {fileID: 1507542251}
+  lowAltitude: 200
+  spawnCheckInterval: 5
   spawnChance: 1
+  spawnPosition: {fileID: 255600296}
 --- !u!4 &746780121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5934471109587660113, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
@@ -4910,6 +4911,10 @@ PrefabInstance:
     - target: {fileID: 4034760541224785577, guid: 49b1fbe8d13294047bbd9463cdb78e7f, type: 3}
       propertyPath: m_Name
       value: BalloonManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034760541224785577, guid: 49b1fbe8d13294047bbd9463cdb78e7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5636161130385797086, guid: 49b1fbe8d13294047bbd9463cdb78e7f, type: 3}
       propertyPath: player
