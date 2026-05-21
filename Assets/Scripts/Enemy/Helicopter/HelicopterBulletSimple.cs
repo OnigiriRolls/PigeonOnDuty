@@ -5,11 +5,13 @@ public class HelicopterBulletSimple : MonoBehaviour
     [SerializeField] private float speed = 80f;
     [SerializeField] private float lifetime = 5f;
     [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private AudioClip[] shootClips;
 
     private HelicopterManager helicopterManager;
 
     private void Start()
     {
+        AudioManager.Instance.PlayRandomSFX(shootClips);
         Destroy(gameObject, lifetime);
     }
 

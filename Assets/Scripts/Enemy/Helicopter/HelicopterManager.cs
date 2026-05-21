@@ -22,7 +22,6 @@ public class HelicopterManager : MonoBehaviour
     [SerializeField] private float homingStrength = 2f;
     [SerializeField] private float homingDuration = 0.4f;
 
-
     private bool helicopterActive;
     private float timer;
 

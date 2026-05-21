@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(HelicopterAudioController))]
 public class HelicopterControllerSimple : MonoBehaviour
 {
     [Header("Movement")]
@@ -19,12 +20,18 @@ public class HelicopterControllerSimple : MonoBehaviour
     private float fireTimer;
     private float sideOffset;
     private HelicopterState currentState;
+    private HelicopterAudioController audioController;
 
     private enum HelicopterState
     {
         Entering,
         Shooting,
         Leaving
+    }
+
+    private void Start()
+    {
+        audioController = GetComponent<HelicopterAudioController>();
     }
 
     public void Initialize(Transform targetPlayer, Vector3 originalSpawn, HelicopterManager helicopterManager)
@@ -58,6 +65,7 @@ public class HelicopterControllerSimple : MonoBehaviour
 
     private void HandleEntering()
     {
+        audioController.PlayFlying();
         Vector3 attackPosition = GetAttackPosition();
         MoveTowards(attackPosition);
         float distance = Vector3.Distance(transform.position, attackPosition);
@@ -69,6 +77,7 @@ public class HelicopterControllerSimple : MonoBehaviour
 
     private void HandleShooting()
     {
+        audioController.PlayShooting();
         fireTimer -= Time.deltaTime;
         if (fireTimer > 0f)
             return;
@@ -84,6 +93,7 @@ public class HelicopterControllerSimple : MonoBehaviour
 
     private void HandleLeaving()
     {
+        audioController.PlayFlying();
         MoveTowards(spawnPosition);
         float distance = Vector3.Distance(transform.position, spawnPosition);
         if (distance < 10f)

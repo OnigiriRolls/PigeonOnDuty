@@ -70,6 +70,9 @@ MonoBehaviour:
   speed: 150
   lifetime: 5
   hitEffectPrefab: {fileID: 3305302595995919768, guid: 9512e030a1b9dd947a94f8d222d0b8e6, type: 3}
+  shootClips:
+  - {fileID: 8300000, guid: 9ca68cfd0f32d0740a42a476864f5d38, type: 3}
+  - {fileID: 8300000, guid: 1e51ae5baf1812b43b6bec8757f76eb7, type: 3}
 --- !u!1 &5983040445211850404
 GameObject:
   m_ObjectHideFlags: 0
