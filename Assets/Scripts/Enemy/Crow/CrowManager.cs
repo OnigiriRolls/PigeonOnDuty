@@ -39,7 +39,7 @@ public class CrowManager : MonoBehaviour
     {
         GameObject crow = Instantiate(crowPrefab, spawnPosition.position, Quaternion.identity);
         CrowController crowController = crow.GetComponent<CrowController>();
-        crowController.Initialize(player.transform, this);
+        crowController.Initialize(player.transform, this, spawnPosition.position);
         crowActive = true;
     }
 

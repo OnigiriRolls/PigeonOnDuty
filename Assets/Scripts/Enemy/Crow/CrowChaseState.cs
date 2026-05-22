@@ -11,6 +11,7 @@ public class CrowChaseState : CrowState
 
     public override void Enter()
     {
+        crow.CanHitPlayer = false;
         waitTimer = Random.Range(crow.minWaitTime, crow.maxWaitTime);
         reachedPigeon = false;
     }
@@ -30,7 +31,7 @@ public class CrowChaseState : CrowState
             waitTimer -= Time.deltaTime;
             if (waitTimer <= 0)
             {
-                crow.ChangeState(new CrowDashState(crow));
+                crow.ChangeState(new CrowAttackState(crow));
             }
         }
     }

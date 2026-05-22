@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAudioController))]
 public class PlayerHealth : MonoBehaviour
 {
     public event Action<int> OnHealthChanged;
@@ -11,14 +12,22 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private GameObject hitParticlesPrefab;
 
+    private PlayerAudioController audioController;
+
     private void Awake()
     {
         CurrentHealth = maxHealth;
         OnHealthChanged?.Invoke(CurrentHealth);
     }
 
+    private void Start()
+    {
+        audioController = GetComponent<PlayerAudioController>();
+    }
+
     public void TakeDamage(int amount)
     {
+        audioController.PlayHitClip();
         CurrentHealth -= amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
         OnHealthChanged?.Invoke(CurrentHealth);

@@ -14,7 +14,6 @@ public class CrowController : MonoBehaviour
 
     [Header("Dash")]
     public float dashSpeed = 18f;
-    public float dashDistance = 10f;
     public int maxAttacks = 3;
 
     [Header("Recover")]
@@ -25,15 +24,21 @@ public class CrowController : MonoBehaviour
     public Vector3 currentTarget;
     public float rotationSpeed = 7f;
 
+    public bool CanHitPlayer { get; set; }
+
+    [SerializeField] private GameObject hitEffectPrefab;
+
     private CrowState currentState;
     private PlayerController playerController;
     private CrowManager manager;
+    private Vector3 spawnPosition;
 
-    public void Initialize(Transform playerTransform, CrowManager crowManager)
+    public void Initialize(Transform playerTransform, CrowManager crowManager, Vector3 spawnPosition)
     {
         manager = crowManager;
         player = playerTransform;
         playerController = player.GetComponent<PlayerController>();
+        this.spawnPosition = spawnPosition;
         ChangeState(new CrowChaseState(this));
     }
 
@@ -66,6 +71,17 @@ public class CrowController : MonoBehaviour
         );
     }
 
+    public void MoveTowardsSpawnPositionAndDestroyCrow(float speed)
+    {
+        MoveTowards(spawnPosition, speed);
+        float distance = Vector3.Distance(transform.position, spawnPosition);
+        if (distance < 10f)
+        {
+            manager.CrowFinished();
+            Destroy(gameObject);
+        }
+    }
+
     public Vector3 GetPredictedPlayerPositionWithOffset(float predictionTime)
     {
         Quaternion yawOnly = Quaternion.Euler(0f, player.eulerAngles.y, 0f);
@@ -73,9 +89,27 @@ public class CrowController : MonoBehaviour
         return player.position - flatRight * leftOffset + playerController.Velocity * predictionTime;
     }
 
+    public Vector3 GetPredictedPlayerPositionWithOffset1(float predictionTime)
+    {
+        Quaternion yawOnly = Quaternion.Euler(0f, player.eulerAngles.y, 0f);
+        Vector3 flatRight = yawOnly * Vector3.right;
+        return player.position + flatRight * 5f + playerController.Velocity * predictionTime;
+    }
+
+
     public Vector3 GetPredictedPlayerPosition(float predictionTime)
     {
         return player.position + playerController.Velocity * predictionTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!CanHitPlayer) return;
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerHealth>().TakeDamage(1);
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     public void DestroyCrow()
