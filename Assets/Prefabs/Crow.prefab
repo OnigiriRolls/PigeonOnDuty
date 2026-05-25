@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 8863368757260808999}
   - component: {fileID: 7748875152351308941}
   - component: {fileID: 8928354834175003068}
+  - component: {fileID: -4389467378234946194}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Untagged
@@ -197,19 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7b8c7eac8a2fd4da2d4fb89b9fce5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrowController
-  player: {fileID: 0}
-  chaseSpeed: 30
-  followTolerance: 20
-  leftOffset: 5
-  minWaitTime: 6
-  maxWaitTime: 8
-  dashSpeed: 80
-  maxAttacks: 2
-  recoverTime: 3
-  currentAttacks: 0
-  currentTarget: {x: 0, y: 0, z: 0}
-  rotationSpeed: 7
   hitEffectPrefab: {fileID: 5149711938787232430, guid: 24486c5f1e34c8a43944bae4a4012f6d, type: 3}
+  config: {fileID: 11400000, guid: 53cc5cad015cf1346b4f382e40ea280c, type: 2}
 --- !u!65 &8928354834175003068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,6 +221,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0946454, z: 5.5619345}
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!54 &-4389467378234946194
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292170788808701894}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4294736249837187914
 GameObject:
   m_ObjectHideFlags: 0

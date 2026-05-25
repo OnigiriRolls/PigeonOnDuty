@@ -12,16 +12,16 @@ public class CrowChaseState : CrowState
     public override void Enter()
     {
         crow.CanHitPlayer = false;
-        waitTimer = Random.Range(crow.minWaitTime, crow.maxWaitTime);
+        waitTimer = Random.Range(crow.Config.minWaitTime, crow.Config.maxWaitTime);
         reachedPigeon = false;
     }
 
     public override void UpdateState()
     {
-        float distance = Vector3.Distance(crow.transform.position, crow.player.position);
+        float distance = Vector3.Distance(crow.transform.position, crow.Player.position);
         Vector3 predictedPosition = crow.GetPredictedPlayerPositionWithOffset(0.7f);
-        crow.MoveTowards(predictedPosition, crow.chaseSpeed);
-        if (distance < crow.followTolerance)
+        crow.MoveTowards(predictedPosition, crow.Config.chaseSpeed);
+        if (distance < crow.Config.followTolerance)
         {
             reachedPigeon = true;
         }

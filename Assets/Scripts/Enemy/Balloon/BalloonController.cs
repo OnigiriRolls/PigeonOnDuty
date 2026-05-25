@@ -3,34 +3,23 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BalloonController : MonoBehaviour
 {
-    [Header("Target")]
-    [SerializeField] private Transform player;
-
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed = 20f;
-    [SerializeField] private float steeringStrengthToPlayer = 2f;
+    [SerializeField] private BalloonConfig config;
     [SerializeField] private AudioClip movementClip;
-
-    [Header("Drift")]
-    [SerializeField] private float driftStrength = 5f;
-    [SerializeField] private float driftFrequency = 1f;
-
-    [Header("Explosion")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private AudioClip[] explosionClips;
 
+    private Transform player;
     private Vector3 moveDirection;
-    private BalloonManager manager;
+    private BalloonSpawner spawner;
     private bool directChase;
     private float driftTimer;
     private AudioSource audioSource;
-    private Collider balloonCollider;
 
-    public void Initialize(Transform targetPlayer, BalloonManager balloonManager)
+    public void Initialize(Transform targetPlayer, BalloonSpawner balloonManager)
     {
         player = targetPlayer;
-        manager = balloonManager;
-        driftTimer = Random.Range(manager.minDriftDuration, manager.maxDriftDuration);
+        spawner = balloonManager;
+        driftTimer = Random.Range(config.minDriftDuration, config.maxDriftDuration);
     }
 
     private void Start()
@@ -61,31 +50,31 @@ public class BalloonController : MonoBehaviour
         if (directChase)
         {
             Vector3 chaseDirection = (player.position - transform.position).normalized;
-            moveDirection = Vector3.Lerp(moveDirection, chaseDirection, manager.steeringStrengthToPlayer * Time.deltaTime);
+            moveDirection = Vector3.Lerp(moveDirection, chaseDirection, config.steeringStrengthToPlayer * Time.deltaTime);
         }
         else
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer < manager.minSafeDistance)
+            if (distanceToPlayer < config.minSafeDistance)
             {
                 Vector3 pushAway = (transform.position - player.position).normalized;
-                moveDirection = Vector3.Lerp(moveDirection, pushAway, manager.steeringStrengthToPlayer * Time.deltaTime);
+                moveDirection = Vector3.Lerp(moveDirection, pushAway, config.steeringStrengthToPlayer * Time.deltaTime);
             }
             else
             {
-                float angle = Time.time * manager.orbitSpeed;
-                Vector3 localOrbitOffset = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * manager.orbitRadius;
+                float angle = Time.time * config.orbitSpeed;
+                Vector3 localOrbitOffset = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * config.orbitRadius;
                 Vector3 worldOrbitOffset = Quaternion.Euler(0f, player.eulerAngles.y, 0f) * localOrbitOffset;
-                Vector3 forwardBias = player.forward * manager.forwardOffset;
-                Vector3 orbitPoint = player.position + worldOrbitOffset + forwardBias + Vector3.up * manager.driftOffset;
+                Vector3 forwardBias = player.forward * config.forwardOffset;
+                Vector3 orbitPoint = player.position + worldOrbitOffset + forwardBias + Vector3.up * config.driftOffset;
                 Vector3 toOrbit = (orbitPoint - transform.position).normalized;
                 Vector3 targetDirection = toOrbit.normalized;
-                moveDirection = Vector3.Lerp(moveDirection, targetDirection, manager.steeringStrengthToPlayerDrift * Time.deltaTime);
+                moveDirection = Vector3.Lerp(moveDirection, targetDirection, config.steeringStrengthToPlayerDrift * Time.deltaTime);
             }
         }
 
         moveDirection.Normalize();
-        transform.position += manager.moveSpeed * Time.deltaTime * moveDirection;
+        transform.position += config.moveSpeed * Time.deltaTime * moveDirection;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 3f * Time.deltaTime);
     }
 
@@ -97,6 +86,7 @@ public class BalloonController : MonoBehaviour
         }
         if (other.CompareTag("Player") && directChase)
         {
+            other.GetComponent<PlayerHealth>().TakeDamage(1);
             Explode();
         }
         else if (other.CompareTag("Building"))
@@ -112,7 +102,7 @@ public class BalloonController : MonoBehaviour
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
         }
         AudioManager.Instance.PlayRandomSFX(explosionClips);
-        manager.BalloonFinished();
+        spawner.FinishEnemy();
         Destroy(gameObject);
     }
 }

@@ -6,7 +6,6 @@ public class EndlessRunManager : MonoBehaviour
 
     [SerializeField] private GameObject buildingCheckpointPrefab;
     [SerializeField] private GameObject postCheckpointPrefab;
-    [SerializeField] private CrowManager crowManager;
     [SerializeField] private Transform checkpointParent;
 
     private Waypoint[] waypoints;
@@ -15,9 +14,8 @@ public class EndlessRunManager : MonoBehaviour
 
     private void Start()
     {
-        waypoints = FindObjectsOfType<Waypoint>();
+        waypoints = FindObjectsByType<Waypoint>();
         SpawnNextCheckpoint();
-        //crowManager.TrySpawnCrow();
     }
 
     public void SpawnNextCheckpoint()

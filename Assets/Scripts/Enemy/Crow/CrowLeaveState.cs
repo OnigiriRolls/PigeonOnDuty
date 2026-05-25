@@ -6,6 +6,6 @@ public class CrowLeaveState : CrowState
 
     public override void UpdateState()
     {
-        crow.MoveTowardsSpawnPositionAndDestroyCrow(crow.chaseSpeed);
+        crow.MoveTowardsSpawnPositionAndDestroyCrow(crow.Config.chaseSpeed);
     }
 }

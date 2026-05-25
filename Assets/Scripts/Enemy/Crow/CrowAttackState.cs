@@ -13,7 +13,7 @@ public class CrowAttackState : CrowState
     {
         crow.CanHitPlayer = true;
         dashStarted = false;
-        dashTarget = crow.player.position;
+        dashTarget = crow.Player.position;
     }
 
     public override void UpdateState()
@@ -21,12 +21,12 @@ public class CrowAttackState : CrowState
         if (!dashStarted)
             dashStarted = true;
 
-        crow.MoveTowards(dashTarget, crow.dashSpeed);
+        crow.MoveTowards(dashTarget, crow.Config.dashSpeed);
         float distanceToTarget = Vector3.Distance(crow.transform.position, dashTarget);
         if (distanceToTarget < 1f)
         {
-            crow.currentAttacks++;
-            if (crow.currentAttacks >= crow.maxAttacks)
+            crow.CurrentAttacks++;
+            if (crow.CurrentAttacks >= crow.Config.maxAttacks)
             {
                 crow.ChangeState(new CrowLeaveState(crow));
             }

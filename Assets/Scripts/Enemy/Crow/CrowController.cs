@@ -2,49 +2,27 @@ using UnityEngine;
 
 public class CrowController : MonoBehaviour
 {
-    [Header("References")]
-    public Transform player;
-
-    [Header("Chase")]
-    public float chaseSpeed = 30f;
-    public float followTolerance = 1f;
-    public float leftOffset = 1.5f;
-    public float minWaitTime = 2f;
-    public float maxWaitTime = 4f;
-
-    [Header("Dash")]
-    public float dashSpeed = 18f;
-    public int maxAttacks = 3;
-
-    [Header("Recover")]
-    public float recoverTime = 3f;
-
-    [Header("Debug")]
-    public int currentAttacks = 0;
-    public Vector3 currentTarget;
-    public float rotationSpeed = 7f;
-
     public bool CanHitPlayer { get; set; }
+    public int CurrentAttacks { get; set; }
+    public CrowConfig Config => config;
+    public Transform Player => player;
 
     [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private CrowConfig config;
 
+    private Transform player;
     private CrowState currentState;
     private PlayerController playerController;
-    private CrowManager manager;
-    private Vector3 spawnPosition;
+    private CrowSpawner spawner;
+    private Transform spawnPosition;
 
-    public void Initialize(Transform playerTransform, CrowManager crowManager, Vector3 spawnPosition)
+    public void Initialize(Transform playerTransform, CrowSpawner crowManager, Transform spawnPosition)
     {
-        manager = crowManager;
+        spawner = crowManager;
         player = playerTransform;
         playerController = player.GetComponent<PlayerController>();
         this.spawnPosition = spawnPosition;
         ChangeState(new CrowChaseState(this));
-    }
-
-    private void Start()
-    {
-
     }
 
     private void Update()
@@ -67,17 +45,17 @@ public class CrowController : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(dir);
         transform.SetPositionAndRotation(
             Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime),
-            Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime)
+            Quaternion.Slerp(transform.rotation, targetRotation, config.rotationSpeed * Time.deltaTime)
         );
     }
 
     public void MoveTowardsSpawnPositionAndDestroyCrow(float speed)
     {
-        MoveTowards(spawnPosition, speed);
-        float distance = Vector3.Distance(transform.position, spawnPosition);
-        if (distance < 10f)
+        MoveTowards(spawnPosition.position, speed);
+        float distance = Vector3.Distance(transform.position, spawnPosition.position);
+        if (distance < 5f)
         {
-            manager.CrowFinished();
+            spawner.FinishEnemy();
             Destroy(gameObject);
         }
     }
@@ -86,7 +64,7 @@ public class CrowController : MonoBehaviour
     {
         Quaternion yawOnly = Quaternion.Euler(0f, player.eulerAngles.y, 0f);
         Vector3 flatRight = yawOnly * Vector3.right;
-        return player.position - flatRight * leftOffset + playerController.Velocity * predictionTime;
+        return player.position - flatRight * config.leftOffset + playerController.Velocity * predictionTime;
     }
 
     public Vector3 GetPredictedPlayerPositionWithOffset1(float predictionTime)
@@ -104,6 +82,10 @@ public class CrowController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Building"))
+        {
+            DestroyCrow();
+        }
         if (!CanHitPlayer) return;
         if (other.CompareTag("Player"))
         {
@@ -114,7 +96,8 @@ public class CrowController : MonoBehaviour
 
     public void DestroyCrow()
     {
-        manager.CrowFinished();
+        spawner.FinishEnemy();
+        Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

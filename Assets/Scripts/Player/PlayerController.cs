@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask landingAreaLayer;
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private LayerMask obstacleLayer;
-    [SerializeField] private float wallCheckDistance = 2f;
 
     private float throttle;
     private float roll;

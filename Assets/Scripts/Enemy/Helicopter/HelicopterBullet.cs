@@ -2,44 +2,25 @@ using UnityEngine;
 
 public class HelicopterBullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 80f;
-    [SerializeField] private float lifetime = 5f;
     [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private AudioClip[] shootClips;
 
-    private Transform player;
-    private Vector3 moveDirection;
-    private HelicopterManager helicopterManager;
-    private float homingTimer;
+    private HelicopterConfig config;
 
     private void Start()
     {
-        Destroy(gameObject, lifetime);
+        AudioManager.Instance.PlayRandomSFX(shootClips);
+        Destroy(gameObject, config.lifetime);
     }
 
-    public void Initialize(Vector3 direction, HelicopterManager _helicopterManager, Transform targetPlayer)
+    public void Initialize(HelicopterConfig helicopterConfig)
     {
-        helicopterManager = _helicopterManager;
-        homingTimer = helicopterManager.HomingDuration;
-        moveDirection = direction;
-        player = targetPlayer;
+        config = helicopterConfig;
     }
 
     private void Update()
     {
-        if (player != null && homingTimer > 0f)
-        {
-            homingTimer -= Time.deltaTime;
-            Vector3 targetDirection = (player.position - transform.position).normalized;
-            moveDirection = Vector3.Lerp(moveDirection, targetDirection, helicopterManager.HomingStrength * Time.deltaTime);
-            moveDirection.Normalize();
-        }
-        transform.rotation = Quaternion.LookRotation(moveDirection);
-        transform.position += helicopterManager.BulletSpeed * Time.deltaTime * moveDirection;
-        Debug.DrawRay(
-            transform.position,
-            moveDirection * 10f,
-            Color.red
-        );
+        transform.position += config.bulletSpeed * Time.deltaTime * transform.forward;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,8 +38,7 @@ public class HelicopterBullet : MonoBehaviour
         {
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         }
-        PlayerAudioController audioController = playerCollider.gameObject.GetComponent<PlayerAudioController>();
-        if (audioController != null)
+        if (playerCollider.gameObject.TryGetComponent<PlayerAudioController>(out var audioController))
         {
             audioController.PlayHitClip();
         }

@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndlessRunManager
   buildingCheckpointPrefab: {fileID: 5426681651754292410, guid: b429e5cb593562d4e91e6f3033d85424, type: 3}
   postCheckpointPrefab: {fileID: 4790226968144365861, guid: 17941dbe32eef6e43a3e6a27e6801493, type: 3}
-  crowManager: {fileID: 0}
   checkpointParent: {fileID: 0}
 --- !u!114 &5017480667057680537
 MonoBehaviour:
@@ -108,14 +107,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6789753198260421151}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fad77cb367202b74ba034fabcc68db94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterManager
   player: {fileID: 0}
-  helicopterPrefab: {fileID: 4657259812211793084, guid: 4d5657f7eb703924b91852fc93dcdb19, type: 3}
-  highAltitude: 80
+  spawnPosition: {fileID: 0}
+  enemyPrefab: {fileID: 0}
+  minAltitude: 151
   spawnChance: 1
   spawnCheckInterval: 5
   forwardDistance: 80

@@ -1,25 +1,20 @@
 using UnityEngine;
 
+[RequireComponent(typeof(HelicopterAudioController))]
 public class HelicopterController : MonoBehaviour
 {
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed = 20f;
-    [SerializeField] private float rotationSpeed = 3f;
-
-    [Header("Combat")]
+    [SerializeField] private HelicopterConfig config;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private HelicopterGun[] guns;
-    [SerializeField] private float fireRate = 0.3f;
-    [SerializeField] private int bulletsToShoot = 20;
 
-    [SerializeField] private Transform player;
-    private Vector3 spawnPosition;
-    [SerializeField] private HelicopterManager manager;
-    private int bulletsShot;
+    private HelicopterSpawner spawner;
+    private Transform player;
+    private Transform spawnPosition;
     private float fireTimer;
+    private int bulletsShot;
     private float sideOffset;
     private HelicopterState currentState;
-    private Transform visualModel;
+    private HelicopterAudioController audioController;
 
     private enum HelicopterState
     {
@@ -28,14 +23,22 @@ public class HelicopterController : MonoBehaviour
         Leaving
     }
 
-    public void Initialize(Transform targetPlayer, Vector3 originalSpawn, HelicopterManager helicopterManager)
+    private void Start()
     {
-        visualModel = transform.GetChild(0);
+        audioController = GetComponent<HelicopterAudioController>();
+    }
+
+    public void Initialize(Transform targetPlayer, Transform originalSpawn, HelicopterSpawner helicopterManager)
+    {
         player = targetPlayer;
         spawnPosition = originalSpawn;
-        manager = helicopterManager;
-        sideOffset = Random.Range(-15f, 15f);
+        spawner = helicopterManager;
+        sideOffset = Random.Range(-config.sideOffset, config.sideOffset);
         currentState = HelicopterState.Entering;
+        foreach (HelicopterGun gun in guns)
+        {
+            gun.Initialize(player, config);
+        }
     }
 
     private void Update()
@@ -44,13 +47,10 @@ public class HelicopterController : MonoBehaviour
         {
             case HelicopterState.Entering:
                 HandleEntering();
-                //HandleShooting();
                 break;
-
             case HelicopterState.Shooting:
                 HandleShooting();
                 break;
-
             case HelicopterState.Leaving:
                 HandleLeaving();
                 break;
@@ -59,10 +59,11 @@ public class HelicopterController : MonoBehaviour
 
     private void HandleEntering()
     {
+        audioController.PlayFlying();
         Vector3 attackPosition = GetAttackPosition();
         MoveTowards(attackPosition);
         float distance = Vector3.Distance(transform.position, attackPosition);
-        if (distance < 5f)
+        if (distance < config.shootingDistance)
         {
             currentState = HelicopterState.Shooting;
         }
@@ -70,15 +71,15 @@ public class HelicopterController : MonoBehaviour
 
     private void HandleShooting()
     {
-        transform.LookAt(player);
+        audioController.PlayShooting();
         fireTimer -= Time.deltaTime;
         if (fireTimer > 0f)
             return;
+        fireTimer = config.fireRate;
 
-        fireTimer = fireRate;
         Shoot();
         bulletsShot++;
-        if (bulletsShot >= bulletsToShoot)
+        if (bulletsShot >= config.bulletsToShoot)
         {
             currentState = HelicopterState.Leaving;
         }
@@ -86,37 +87,32 @@ public class HelicopterController : MonoBehaviour
 
     private void HandleLeaving()
     {
-        MoveTowards(spawnPosition);
-        float distance = Vector3.Distance(transform.position, spawnPosition);
-        if (distance < 10f)
+        audioController.PlayFlying();
+        MoveTowards(spawnPosition.position);
+        float distance = Vector3.Distance(transform.position, spawnPosition.position);
+        if (distance < 5f)
         {
-            manager.HelicopterFinished();
+            spawner.FinishEnemy();
             Destroy(gameObject);
         }
     }
 
     private void MoveTowards(Vector3 target)
     {
-        //return;
         Vector3 dir = (target - transform.position).normalized;
-        transform.position += moveSpeed * Time.deltaTime * dir;
-
-        //float tiltZ = Vector3.Dot(dir, transform.right) * -10f;
-        //float tiltX = Vector3.Dot(dir, transform.forward) * 5f;
-        //Quaternion visualRotation = Quaternion.Euler(tiltX, 0f, tiltZ);
-        //visualModel.localRotation = Quaternion.Lerp(visualModel.localRotation, visualRotation, Time.deltaTime * 3f);
+        transform.position += config.moveSpeed * Time.deltaTime * dir;
     }
 
     private Vector3 GetAttackPosition()
     {
-        return player.position + player.forward * manager.ForwardDistance + player.right * sideOffset + Vector3.up * manager.UpDistance;
+        return player.position + player.forward * config.forwardDistance + player.right * sideOffset + Vector3.up * config.upDistance;
     }
 
     private void Shoot()
     {
         foreach (HelicopterGun gun in guns)
         {
-            gun.Shoot(player, manager);
+            gun.Shoot();
         }
     }
 }
