@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private Image[] hearts;
 
     private void OnEnable()
     {
@@ -16,8 +17,16 @@ public class PlayerHealthUI : MonoBehaviour
         playerHealth.OnHealthChanged -= UpdateUI;
     }
 
+    private void Start()
+    {
+        UpdateUI(playerHealth.CurrentHealth);
+    }
+
     private void UpdateUI(int currentHealth)
     {
-        healthText.text = $"Lives: {currentHealth}";
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].gameObject.SetActive(i < currentHealth);
+        }
     }
 }

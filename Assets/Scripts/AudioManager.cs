@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -5,18 +6,19 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [Header("Volumes")]
-    [Range(0f, 1f)]
-    public float masterVolume = 1f;
-
-    [Range(0f, 1f)]
-    public float sfxVolume = 1f;
-
-    [Range(0f, 1f)]
-    public float musicVolume = 1f;
+    [Range(0f, 1f)] public float masterVolume = 1f;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
+    [Range(0f, 1f)] public float musicVolume = 1f;
 
     [Header("Sources")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource ambianceSource1;
+    [SerializeField] private AudioSource ambianceSource2;
+    [SerializeField] private AudioSource uiLoopSource;
+
+    private AudioSource activeAmbianceSource;
+    private AudioSource inactiveAmbianceSource;
 
     private void Awake()
     {
@@ -29,6 +31,9 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        activeAmbianceSource = ambianceSource1;
+        inactiveAmbianceSource = ambianceSource2;
     }
 
     public void PlaySFX(AudioClip clip)
@@ -58,5 +63,48 @@ public class AudioManager : MonoBehaviour
         source.volume = sfxVolume * masterVolume;
         source.Play();
         Destroy(tempAudio, clip.length);
+    }
+
+    public void PlayUILoop(AudioClip clip)
+    {
+        if (clip == null)
+            return;
+        if (uiLoopSource.clip == clip && uiLoopSource.isPlaying)
+            return;
+
+        uiLoopSource.Stop();
+        uiLoopSource.clip = clip;
+        uiLoopSource.volume = sfxVolume * masterVolume;
+        uiLoopSource.Play();
+    }
+
+    public void StopUILoop()
+    {
+        uiLoopSource.Stop();
+    }
+
+    public void CrossfadeMusic(AudioClip newClip, float fadeDuration = 2f)
+    {
+        StartCoroutine(CrossfadeCoroutine(newClip, fadeDuration));
+    }
+
+    private IEnumerator CrossfadeCoroutine(AudioClip newClip, float duration)
+    {
+        inactiveAmbianceSource.clip = newClip;
+        inactiveAmbianceSource.volume = 0f;
+        inactiveAmbianceSource.Play();
+
+        float timer = 0f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / duration;
+            activeAmbianceSource.volume = Mathf.Lerp(musicVolume * masterVolume, 0f, t);
+            inactiveAmbianceSource.volume = Mathf.Lerp(0f, musicVolume * masterVolume, t);
+            yield return null;
+        }
+
+        activeAmbianceSource.Stop();
+        (inactiveAmbianceSource, activeAmbianceSource) = (activeAmbianceSource, inactiveAmbianceSource);
     }
 }

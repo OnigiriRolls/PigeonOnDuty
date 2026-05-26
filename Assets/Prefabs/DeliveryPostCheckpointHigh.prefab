@@ -1013,7 +1013,7 @@ GameObject:
   - component: {fileID: 2035741770807475734}
   - component: {fileID: 302263302847343231}
   m_Layer: 7
-  m_Name: DeliveryPostCheckpoint
+  m_Name: DeliveryPostCheckpointHigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

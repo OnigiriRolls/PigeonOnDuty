@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3830473093162732603}
   - component: {fileID: 5017480667057680537}
   - component: {fileID: 5337330996471400174}
-  - component: {fileID: 384435806834604639}
   m_Layer: 0
   m_Name: EndlessRunManager
   m_TagString: Untagged
@@ -47,9 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1d0d9a2341221478fbe032412e7aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndlessRunManager
-  buildingCheckpointPrefab: {fileID: 5426681651754292410, guid: b429e5cb593562d4e91e6f3033d85424, type: 3}
-  postCheckpointPrefab: {fileID: 4790226968144365861, guid: 17941dbe32eef6e43a3e6a27e6801493, type: 3}
+  postCheckpointHigh: {fileID: 4790226968144365861, guid: 17941dbe32eef6e43a3e6a27e6801493, type: 3}
+  postCheckpointMid: {fileID: 5768456031763822653, guid: 93097110303e1cd40b3b9559ebada71f, type: 3}
+  postCheckpointLow: {fileID: 5852687535155311535, guid: 12eeca775d62eb244b65b97190239beb, type: 3}
   checkpointParent: {fileID: 0}
+  playerTransform: {fileID: 0}
+  expectedSpeedKmh: 80
+  extraTimeBuffer: 10
+  minimumStartSpeed: 2
 --- !u!114 &5017480667057680537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,9 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   offset: 15
   buildingsParent: {fileID: 0}
-  buildingWaypointPrefab: {fileID: 6567451429917030425, guid: 2dfb00df147942e4186a199f676e4dc5, type: 3}
   postWaypointPrefab: {fileID: 6567451429917030425, guid: 7673e02d545c47242a7d6cb4ac72b95e, type: 3}
-  buildingWaypointParent: {fileID: 0}
   postWaypointParent: {fileID: 0}
   validator: {fileID: 5017480667057680537}
   midPostCount: 100
@@ -100,27 +102,3 @@ MonoBehaviour:
   highHeightRange: {x: 151, y: 240}
   xRange: {x: 5, y: 855}
   zRange: {x: 5, y: 775}
---- !u!114 &384435806834604639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789753198260421151}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad77cb367202b74ba034fabcc68db94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HelicopterManager
-  player: {fileID: 0}
-  spawnPosition: {fileID: 0}
-  enemyPrefab: {fileID: 0}
-  minAltitude: 151
-  spawnChance: 1
-  spawnCheckInterval: 5
-  forwardDistance: 80
-  upDistance: 10
-  predictionPrecision: 0.1
-  bulletSpeed: 300
-  homingStrength: 10
-  homingDuration: 0.4

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6206697560603183726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2360848372496353623}
+  - component: {fileID: 7034733957122885923}
+  m_Layer: 0
+  m_Name: GameplayUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2360848372496353623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7034733957122885923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113d1d1d67c65df4f8d4841ea4fff189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
+  player: {fileID: 0}
+  runManager: {fileID: 0}
+  throttleText: {fileID: 0}
+  speedText: {fileID: 0}
+  altitudeText: {fileID: 0}
+  timerText: {fileID: 0}
+  altitudeAnimator: {fileID: 0}
+  clockAnimator: {fileID: 0}
+  clockWarningClip: {fileID: 8300000, guid: b172071a7b5cb83489b713e2b18f30c5, type: 3}
+  clockCriticalClip: {fileID: 8300000, guid: 4a9dcd768cd98334cba888e6c9963082, type: 3}
+  altitudeTransitionClip: {fileID: 8300000, guid: a9cdb339d2489614185d6fc37b69688d, type: 3}
+  lowMusic: {fileID: 8300000, guid: 11ac0d70d0751de4890ad5a8688afd67, type: 3}
+  midMusic: {fileID: 8300000, guid: 2c1357ec6a514414e979752e73b021ad, type: 3}
+  highMusic: {fileID: 8300000, guid: a4861b09ceeab9a41b3c18eb04188b81, type: 3}
+  midAltitude: 51
+  highAltitude: 151

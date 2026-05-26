@@ -1,7 +1,6 @@
-using System;
-using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float throttleIncrement = 0.7f;
@@ -19,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded => isGrounded;
     public Vector3 Velocity => rb.linearVelocity;
 
-    [SerializeField] private TextMeshProUGUI hud;
     [SerializeField] private Transform visualModel;
     [SerializeField] private LayerMask landingAreaLayer;
     [SerializeField] private float groundCheckDistance = 2f;
@@ -53,7 +51,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleInputs();
-        UpdateHud();
         CheckGrounded();
         UpdateFlightState();
         UpdateGlidingState();
@@ -82,14 +79,6 @@ public class PlayerController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         Vector3 desiredVelocity = transform.forward * rb.linearVelocity.magnitude;
         rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, desiredVelocity, Time.fixedDeltaTime * 3f);
-    }
-
-
-    private void UpdateHud()
-    {
-        hud.text = $"Throttle: {throttle:F0} %{Environment.NewLine}" +
-            $"Airspeed: {rb.linearVelocity.magnitude * 3.6f:F0} km/h{Environment.NewLine}" +
-            $"Altitude: {transform.position.y:F0} m";
     }
 
     private void UpdateFlightState()

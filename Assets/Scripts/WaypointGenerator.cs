@@ -6,9 +6,7 @@ public class WaypointGenerator : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject buildingsParent;
-    [SerializeField] private GameObject buildingWaypointPrefab;
     [SerializeField] private GameObject postWaypointPrefab;
-    [SerializeField] private Transform buildingWaypointParent;
     [SerializeField] private Transform postWaypointParent;
     [SerializeField] private WaypointValidator validator;
     [SerializeField] private int midPostCount = 100;
@@ -22,11 +20,6 @@ public class WaypointGenerator : MonoBehaviour
     [SerializeField] private Vector2 highHeightRange = new (0f, 0f);
     [SerializeField] private Vector2 xRange;
     [SerializeField] private Vector2 zRange;
-
-    private void Awake()
-    {
-
-    }
 
     void Start()
     {
@@ -88,7 +81,7 @@ public class WaypointGenerator : MonoBehaviour
         if (!validator.IsValidPosition(spawnPos))
             return;
 
-        GameObject waypointObject = Instantiate(buildingWaypointPrefab, spawnPos, Quaternion.identity, buildingWaypointParent);
+        GameObject waypointObject = Instantiate(postWaypointPrefab, spawnPos, Quaternion.identity, postWaypointParent);
         Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
         waypoint.AltitudeLayer = GetAltitudeLayer(buildingName);
     }
