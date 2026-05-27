@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2360848372496353623}
   - component: {fileID: 7034733957122885923}
+  - component: {fileID: 334364185767018330}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -60,3 +61,16 @@ MonoBehaviour:
   highMusic: {fileID: 8300000, guid: a4861b09ceeab9a41b3c18eb04188b81, type: 3}
   midAltitude: 51
   highAltitude: 151
+--- !u!114 &334364185767018330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8177dc83a4c1b4aa88cd052ab42971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayScoreUI
+  scoreText: {fileID: 0}

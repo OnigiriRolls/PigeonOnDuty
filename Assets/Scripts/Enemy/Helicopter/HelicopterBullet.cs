@@ -27,6 +27,7 @@ public class HelicopterBullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerHealth>().TakeDamage(1);
             SpawnHitEffect(other);
             Destroy(gameObject);
         }
@@ -37,10 +38,6 @@ public class HelicopterBullet : MonoBehaviour
         if (hitEffectPrefab != null)
         {
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
-        }
-        if (playerCollider.gameObject.TryGetComponent<PlayerAudioController>(out var audioController))
-        {
-            audioController.PlayHitClip();
         }
     }
 }

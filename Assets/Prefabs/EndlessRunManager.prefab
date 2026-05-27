@@ -52,7 +52,7 @@ MonoBehaviour:
   checkpointParent: {fileID: 0}
   playerTransform: {fileID: 0}
   expectedSpeedKmh: 80
-  extraTimeBuffer: 10
+  extraTimeBuffer: 20
   minimumStartSpeed: 2
 --- !u!114 &5017480667057680537
 MonoBehaviour:
@@ -89,15 +89,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
   offset: 15
+  lowWaypoints: 0
+  midWaypoints: 0
+  highWaypoints: 0
   buildingsParent: {fileID: 0}
   postWaypointPrefab: {fileID: 6567451429917030425, guid: 7673e02d545c47242a7d6cb4ac72b95e, type: 3}
   postWaypointParent: {fileID: 0}
   validator: {fileID: 5017480667057680537}
-  midPostCount: 100
+  lowPostCount: 200
+  midPostCount: 200
   highPostCount: 200
+  lowHeightRange: {x: 0, y: 50}
   midHeight1: Sky_small
   midHeight2: Residential
-  midHeightRange: {x: 50, y: 150}
+  midHeightRange: {x: 51, y: 150}
   highHeight: Sky_big
   highHeightRange: {x: 151, y: 240}
   xRange: {x: 5, y: 855}

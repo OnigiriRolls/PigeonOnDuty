@@ -3,30 +3,39 @@ using UnityEngine;
 public class CrowController : MonoBehaviour
 {
     public bool CanHitPlayer { get; set; }
+    public bool CanTakeDamage { get; set; }
     public int CurrentAttacks { get; set; }
     public CrowConfig Config => config;
     public Transform Player => player;
 
     [SerializeField] private GameObject hitEffectPrefab;
     [SerializeField] private CrowConfig config;
+    [SerializeField] private AudioClip[] crowSounds;
+    [SerializeField] private AudioClip hitClip;
+    [SerializeField] private float minSoundInterval = 2f;
+    [SerializeField] private float maxSoundInterval = 5f;
 
     private Transform player;
     private CrowState currentState;
     private PlayerController playerController;
     private CrowSpawner spawner;
     private Transform spawnPosition;
+    private float soundTimer;
 
     public void Initialize(Transform playerTransform, CrowSpawner crowManager, Transform spawnPosition)
     {
+        CanTakeDamage = false;
         spawner = crowManager;
         player = playerTransform;
         playerController = player.GetComponent<PlayerController>();
         this.spawnPosition = spawnPosition;
+        ResetSoundTimer();
         ChangeState(new CrowChaseState(this));
     }
 
     private void Update()
     {
+        UpdateCrowSounds();
         currentState?.UpdateState();
     }
 
@@ -82,7 +91,7 @@ public class CrowController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Building"))
+        if (other.CompareTag("Building") && CanTakeDamage)
         {
             DestroyCrow();
         }
@@ -94,9 +103,29 @@ public class CrowController : MonoBehaviour
         }
     }
 
+    private void UpdateCrowSounds()
+    {
+        soundTimer -= Time.deltaTime;
+        if (soundTimer > 0f)
+            return;
+        PlayCrowSound();
+        ResetSoundTimer();
+    }
+
+    private void PlayCrowSound()
+    {
+        AudioManager.Instance.PlayRandomSFX(crowSounds);
+    }
+
+    private void ResetSoundTimer()
+    {
+        soundTimer = Random.Range(minSoundInterval, maxSoundInterval);
+    }
+
     public void DestroyCrow()
     {
         spawner.FinishEnemy();
+        AudioManager.Instance.PlaySFX(hitClip);
         Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

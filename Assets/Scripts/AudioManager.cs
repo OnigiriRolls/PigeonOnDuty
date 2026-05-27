@@ -4,6 +4,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioClip CurrentMusicClip { get; private set; }
 
     [Header("Volumes")]
     [Range(0f, 1f)] public float masterVolume = 1f;
@@ -85,12 +86,15 @@ public class AudioManager : MonoBehaviour
 
     public void CrossfadeMusic(AudioClip newClip, float fadeDuration = 2f)
     {
+        if (CurrentMusicClip == newClip)
+            return;
         StartCoroutine(CrossfadeCoroutine(newClip, fadeDuration));
     }
 
     private IEnumerator CrossfadeCoroutine(AudioClip newClip, float duration)
     {
         inactiveAmbianceSource.clip = newClip;
+        CurrentMusicClip = newClip;
         inactiveAmbianceSource.volume = 0f;
         inactiveAmbianceSource.Play();
 
@@ -106,5 +110,14 @@ public class AudioManager : MonoBehaviour
 
         activeAmbianceSource.Stop();
         (inactiveAmbianceSource, activeAmbianceSource) = (activeAmbianceSource, inactiveAmbianceSource);
+    }
+
+    public void StopAllAudio()
+    {
+        sfxSource.Stop();
+        musicSource.Stop();
+        ambianceSource1.Stop();
+        ambianceSource2.Stop();
+        uiLoopSource.Stop();
     }
 }

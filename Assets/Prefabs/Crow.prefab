@@ -200,6 +200,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CrowController
   hitEffectPrefab: {fileID: 5149711938787232430, guid: 24486c5f1e34c8a43944bae4a4012f6d, type: 3}
   config: {fileID: 11400000, guid: 53cc5cad015cf1346b4f382e40ea280c, type: 2}
+  crowSounds:
+  - {fileID: 8300000, guid: 68f8174562b09df47a82291dceae5886, type: 3}
+  - {fileID: 8300000, guid: fb38274f8a933024aa80835ce9567088, type: 3}
+  hitClip: {fileID: 8300000, guid: b5be1e7fa251909458c0872738d9a95f, type: 3}
+  minSoundInterval: 2
+  maxSoundInterval: 5
 --- !u!65 &8928354834175003068
 BoxCollider:
   m_ObjectHideFlags: 0

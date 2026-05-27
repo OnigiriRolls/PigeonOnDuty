@@ -18,11 +18,12 @@ public class Checkpoint : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        AudioSource.PlayClipAtPoint(checkpointSound, transform.position);
+        AudioManager.Instance.PlaySFX(checkpointSound);
         if (destroyEffectPrefab != null)
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
+        ScoreManager.Instance.AddCheckpointScore();
         endlessRunManager.SpawnNextCheckpoint();
         Destroy(gameObject);
     }

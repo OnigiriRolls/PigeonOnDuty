@@ -3,21 +3,26 @@ using UnityEngine;
 public class WaypointGenerator : MonoBehaviour
 {
     public float offset = 15f;
+    public int lowWaypoints = 0;
+    public int midWaypoints = 0;
+    public int highWaypoints = 0;
 
     [Header("References")]
     [SerializeField] private GameObject buildingsParent;
     [SerializeField] private GameObject postWaypointPrefab;
     [SerializeField] private Transform postWaypointParent;
     [SerializeField] private WaypointValidator validator;
-    [SerializeField] private int midPostCount = 100;
+    [SerializeField] private int lowPostCount = 200;
+    [SerializeField] private int midPostCount = 200;
     [SerializeField] private int highPostCount = 200;
 
     [Header("Altitude Layers")]
+    [SerializeField] private Vector2 lowHeightRange = new(0f, 0f);
     [SerializeField] private string midHeight1 = "Sky_small";
     [SerializeField] private string midHeight2 = "Residential";
     [SerializeField] private Vector2 midHeightRange = new(0f, 0f);
     [SerializeField] private string highHeight = "Sky_big";
-    [SerializeField] private Vector2 highHeightRange = new (0f, 0f);
+    [SerializeField] private Vector2 highHeightRange = new(0f, 0f);
     [SerializeField] private Vector2 xRange;
     [SerializeField] private Vector2 zRange;
 
@@ -33,6 +38,8 @@ public class WaypointGenerator : MonoBehaviour
             GenerateSideWaypoints(building);
             GenerateRooftopWaypoint(building);
         }
+
+        GeneratePostWaypoints(lowPostCount, lowHeightRange, AltitudeLayer.Low);
         GeneratePostWaypoints(midPostCount, midHeightRange, AltitudeLayer.Mid);
         GeneratePostWaypoints(highPostCount, highHeightRange, AltitudeLayer.High);
     }
@@ -59,20 +66,27 @@ public class WaypointGenerator : MonoBehaviour
 
     private void GeneratePostWaypoints(int count, Vector2 height, AltitudeLayer layer)
     {
-        for (int i = 0; i < count; i++)
+        int spawned = 0;
+        int attempts = 0;
+        while (spawned < count && attempts < count * 2)
         {
+            attempts++;
             Vector3 randomPos = new Vector3(
-                Random.Range(xRange.x, xRange.y),
-                Random.Range(height.x, height.y),
-                Random.Range(zRange.x, zRange.y)
-            );
-
+                    Random.Range(xRange.x, xRange.y),
+                    Random.Range(height.x, height.y),
+                    Random.Range(zRange.x, zRange.y)
+                );
             if (!validator.IsValidPosition(randomPos))
                 continue;
 
             GameObject obj = Instantiate(postWaypointPrefab, randomPos, Quaternion.identity, postWaypointParent);
             Waypoint waypoint = obj.GetComponent<Waypoint>();
             waypoint.AltitudeLayer = layer;
+            spawned++;
+            if (layer == AltitudeLayer.High)
+                highWaypoints++;
+            else if (layer == AltitudeLayer.Mid) midWaypoints++;
+            else lowWaypoints++;
         }
     }
 
@@ -90,9 +104,19 @@ public class WaypointGenerator : MonoBehaviour
     private AltitudeLayer GetAltitudeLayer(string name)
     {
         if (name.Contains(highHeight))
+        {
+            highWaypoints++;
+            highPostCount--;
             return AltitudeLayer.High;
+        }
         if (name.Contains(midHeight1) || name.Contains(midHeight2))
+        {
+            midWaypoints++;
+            midPostCount--;
             return AltitudeLayer.Mid;
+        }
+        lowPostCount--;
+        lowWaypoints++;
         return AltitudeLayer.Low;
     }
 }

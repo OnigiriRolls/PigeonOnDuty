@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameplayUI : MonoBehaviour
 {
+    public AltitudeLayer CurrentLayer => currentLayer;
+
     [SerializeField] private PlayerController player;
     [SerializeField] private EndlessRunManager runManager;
     [SerializeField] private TextMeshProUGUI throttleText;
@@ -97,8 +99,9 @@ public class GameplayUI : MonoBehaviour
     private void UpdateTimer()
     {
         float timer = runManager.CheckpointTimer;
-        UpdateTimerAudio(timer);
+        timer = Mathf.Max(timer, 0f);
         timerText.text = Mathf.CeilToInt(timer).ToString();
+        UpdateTimerAudio(timer);
         if (timer <= 10f)
         {
             timerText.color = Color.red;
@@ -119,11 +122,11 @@ public class GameplayUI : MonoBehaviour
 
     private void UpdateTimerAudio(float timer)
     {
-        if (timer <= 5f)
+        if (timer > 0 && timer <= 5f)
         {
             AudioManager.Instance.PlayUILoop(clockCriticalClip);
         }
-        else if (timer <= 10f)
+        else if (timer > 5 && timer <= 10f)
         {
             AudioManager.Instance.PlayUILoop(clockWarningClip);
         }

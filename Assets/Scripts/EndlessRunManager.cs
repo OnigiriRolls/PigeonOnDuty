@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EndlessRunManager : MonoBehaviour
 {
-    public float CheckpointTimer {  get; private set; }
+    public float CheckpointTimer { get; private set; }
     public GameObject CurrentCheckpoint => currentCheckpoint;
 
     [SerializeField] private GameObject postCheckpointHigh;
@@ -38,6 +38,7 @@ public class EndlessRunManager : MonoBehaviour
         if (CheckpointTimer <= 0f)
         {
             Debug.Log("Game Over - Time's up!");
+            GameManager.Instance.GameOver();
         }
     }
 
@@ -64,7 +65,7 @@ public class EndlessRunManager : MonoBehaviour
 
         currentWaypoint = GetRandomWaypoint();
         GameObject checkpointPrefab = GetPostCheckpointPrefab(currentWaypoint.AltitudeLayer);
-        currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetRandomWaypointRotation(), checkpointParent);
+        currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetCheckpointRotation(currentWaypoint.transform.position), checkpointParent);
         Debug.Log(currentCheckpoint.name);
         currentCheckpoint.GetComponent<Checkpoint>().Initialize(this);
         SetupCheckpointTimer(currentCheckpoint.transform);
@@ -90,10 +91,14 @@ public class EndlessRunManager : MonoBehaviour
         return randomWaypoint;
     }
 
-    private Quaternion GetRandomWaypointRotation()
+    private Quaternion GetCheckpointRotation(Vector3 checkpointPosition)
     {
-        float randomY = Random.Range(0f, 360f);
-        return Quaternion.Euler(0f, randomY, 0f);
+        Vector3 direction = playerTransform.position - checkpointPosition;
+        direction.y = 0f;
+        Debug.Log(direction);
+        if (direction == Vector3.zero)
+            return Quaternion.identity;
+        return Quaternion.LookRotation(direction) * Quaternion.Euler(0f, 180f, 0f); ;
     }
 
     private void SetupCheckpointTimer(Transform checkpoint)

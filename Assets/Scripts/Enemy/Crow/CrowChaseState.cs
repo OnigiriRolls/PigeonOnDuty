@@ -24,6 +24,7 @@ public class CrowChaseState : CrowState
         if (distance < crow.Config.followTolerance)
         {
             reachedPigeon = true;
+            crow.CanTakeDamage = true;
         }
 
         if (reachedPigeon)

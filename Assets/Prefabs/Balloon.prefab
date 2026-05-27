@@ -139,9 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57961146d8afac46a57c79252ec3bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BalloonController
-  player: {fileID: 0}
   config: {fileID: 11400000, guid: 3dcad5696d7ebde45b8a8b2a29a0743d, type: 2}
-  movementClip: {fileID: 8300000, guid: eff197a2f51155e44b2fc4e112ba2425, type: 3}
+  movementClip: {fileID: 8300000, guid: 50214324fd200da46b40e44f3d86f4ca, type: 3}
   explosionEffect: {fileID: 7769189311215101425, guid: aae3911e137fe3f47abea562d0a2a4e8, type: 3}
   explosionClips:
   - {fileID: 8300000, guid: 8c5c17e1ea6312f49a9a756923aa8b7e, type: 3}
@@ -185,7 +184,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 130
   DopplerLevel: 1
   MinDistance: 20.644156
   MaxDistance: 36.306545

@@ -49,5 +49,6 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("GAME OVER");
         OnDeath?.Invoke();
+        GameManager.Instance.GameOver();
     }
 }

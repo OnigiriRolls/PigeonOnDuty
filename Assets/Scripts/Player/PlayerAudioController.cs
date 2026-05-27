@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerAudioController : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource movementAudioSource;
+    [SerializeField] private AudioSource hitAudioSource;
 
     [Header("Takeoff / Landing")]
     [SerializeField] private AudioClip[] takeoffLandingClips;
@@ -36,11 +37,11 @@ public class PlayerAudioController : MonoBehaviour
     {
         if (!previousFlyingState && player.IsFlying)
         {
-            PlayRandomClip(takeoffLandingClips);
+            PlayRandomClip(takeoffLandingClips, movementAudioSource);
         }
         if (previousFlyingState && !player.IsFlying)
         {
-            PlayRandomClip(takeoffLandingClips);
+            PlayRandomClip(takeoffLandingClips, movementAudioSource);
         }
 
         previousFlyingState = player.IsFlying;
@@ -55,7 +56,7 @@ public class PlayerAudioController : MonoBehaviour
 
         if (flyingSoundTimer <= 0f)
         {
-            PlayRandomClip(flyingClips);
+            PlayRandomClip(flyingClips, movementAudioSource);
             ResetFlyingSoundTimer();
         }
     }
@@ -65,18 +66,19 @@ public class PlayerAudioController : MonoBehaviour
         flyingSoundTimer = Random.Range(minFlyingSoundDelay, maxFlyingSoundDelay);
     }
 
-    private void PlayRandomClip(AudioClip[] clips)
+    private void PlayRandomClip(AudioClip[] clips, AudioSource audioSource)
     {
         if (clips.Length == 0)
             return;
-
+        Debug.Log("PlayRandomClip");
         AudioClip randomClip = clips[Random.Range(0, clips.Length)];
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
-        audioSource.PlayOneShot(randomClip);
+        movementAudioSource.pitch = Random.Range(0.9f, 1.1f);
+        movementAudioSource.PlayOneShot(randomClip);
     }
 
     public void PlayHitClip()
     {
-        PlayRandomClip(hitClips);
+        Debug.Log("PlayHitClip");
+        PlayRandomClip(hitClips, hitAudioSource);
     }
 }
