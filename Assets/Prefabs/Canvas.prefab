@@ -1640,7 +1640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8006108050540931686, guid: 90370cde400596d44aa63002c2dce87d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8008121098911631647, guid: 90370cde400596d44aa63002c2dce87d, type: 3}
       propertyPath: m_Pivot.x
@@ -1735,6 +1735,9 @@ PrefabInstance:
       insertIndex: 7
       addedObject: {fileID: 1602001112065408262}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8006108050540931686, guid: 90370cde400596d44aa63002c2dce87d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8824489117339103508}
     - targetCorrespondingSourceObject: {fileID: 7605068734632335306, guid: 90370cde400596d44aa63002c2dce87d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9098520885050491654}
@@ -1825,6 +1828,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &6240440958875739561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8006108050540931686, guid: 90370cde400596d44aa63002c2dce87d, type: 3}
+  m_PrefabInstance: {fileID: 4143618591422746575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8824489117339103508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6240440958875739561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0396d74a988bfcf43adfad774a28af50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
+  finalScoreText: {fileID: 2243578305501436574}
+  coinsEarnedText: {fileID: 7437223140900441992}
 --- !u!224 &6243001262783416016 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8008121098911631647, guid: 90370cde400596d44aa63002c2dce87d, type: 3}

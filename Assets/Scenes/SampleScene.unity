@@ -753,17 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0a8d8a60ee01045bf97e9e98372a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
---- !u!114 &1626478941 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7437223140900441992, guid: 17fc699b33291994f8102147efa62455, type: 3}
-  m_PrefabInstance: {fileID: 1143496869105204261}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1694601788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -832,17 +821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f8f5750eeed5b43a174ab1b14f8c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
---- !u!114 &1720922904 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2243578305501436574, guid: 17fc699b33291994f8102147efa62455, type: 3}
-  m_PrefabInstance: {fileID: 1143496869105204261}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1721991957 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6354038625444795758, guid: 17fc699b33291994f8102147efa62455, type: 3}
@@ -4876,10 +4854,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6240440958875739561, guid: 17fc699b33291994f8102147efa62455, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9098520885050491654, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4887,25 +4861,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6240440958875739561, guid: 17fc699b33291994f8102147efa62455, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1143496869105204263}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17fc699b33291994f8102147efa62455, type: 3}
---- !u!114 &1143496869105204263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695287683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0396d74a988bfcf43adfad774a28af50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
-  finalScoreText: {fileID: 1720922904}
-  coinsEarnedText: {fileID: 1626478941}
 --- !u!1001 &1889079388895480459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5061,14 +5018,6 @@ PrefabInstance:
     - target: {fileID: 4231757608728839868, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5099340121471497895, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
-      propertyPath: Priority
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 7817791935933464451, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
-      propertyPath: Priority
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
