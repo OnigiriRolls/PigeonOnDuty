@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager Instance;
     public event Action<int> OnScoreChanged;
     public int CurrentScore { get; private set; }
 
@@ -11,31 +10,23 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int lowAltitudeScorePerSecond = 1;
     [SerializeField] private int midAltitudeScorePerSecond = 2;
     [SerializeField] private int highAltitudeScorePerSecond = 3;
-    [SerializeField] private GameplayUI gameplayUI;
 
+    private GameplayUI gameplayUI;
     private float scoreTimer;
 
-    private void Awake()
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        gameplayUI = FindAnyObjectByType<GameplayUI>();
+        ResetScore();
     }
 
     private void Update()
     {
-        if (GameManager.Instance.IsGameOver)
-            return;
-
+        Debug.Log("ok1");
         scoreTimer += Time.deltaTime;
         if (scoreTimer < 1f)
             return;
-
+        Debug.Log("ok2");
         scoreTimer = 0f;
         AddScore(GetAltitudeScore());
     }
@@ -62,11 +53,13 @@ public class ScoreManager : MonoBehaviour
                 return midAltitudeScorePerSecond;
             case AltitudeLayer.High:
                 return highAltitudeScorePerSecond;
+            default:
+                break;
         }
         return 1;
     }
 
-    public void ResetScore()
+    private void ResetScore()
     {
         CurrentScore = 0;
         OnScoreChanged?.Invoke(CurrentScore);

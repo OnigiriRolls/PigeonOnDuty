@@ -7,6 +7,12 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private AudioClip checkpointSound;
 
     private EndlessRunManager endlessRunManager;
+    private ScoreManager scoreManager;
+
+    private void Start()
+    {
+        scoreManager = FindAnyObjectByType<ScoreManager>();
+    }
 
     public void Initialize(EndlessRunManager manager)
     {
@@ -23,7 +29,7 @@ public class Checkpoint : MonoBehaviour
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
-        ScoreManager.Instance.AddCheckpointScore();
+        scoreManager.AddCheckpointScore();
         endlessRunManager.SpawnNextCheckpoint();
         Destroy(gameObject);
     }

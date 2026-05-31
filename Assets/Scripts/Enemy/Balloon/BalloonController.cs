@@ -39,7 +39,6 @@ public class BalloonController : MonoBehaviour
         if (driftTimer <= 0f && !directChase)
         {
             directChase = true;
-            Debug.Log(directChase);
             moveDirection = (player.position - transform.position).normalized;
         }
         MoveTowardsPlayer();

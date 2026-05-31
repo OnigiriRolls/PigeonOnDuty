@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private PlayerController player;
     [SerializeField] private EndlessRunManager runManager;
     [SerializeField] private TextMeshProUGUI throttleText;
+    [SerializeField] private Image throttleBar;
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private TextMeshProUGUI altitudeText;
     [SerializeField] private TextMeshProUGUI timerText;
@@ -40,7 +42,8 @@ public class GameplayUI : MonoBehaviour
 
     private void UpdateThrottle()
     {
-        throttleText.text = $"Throttle: {player.Throttle:F0}";
+        //throttleText.text = $"Throttle: {player.Throttle:F0}";
+        throttleBar.fillAmount = player.Throttle / 100f;
     }
 
     private void UpdateSpeed()

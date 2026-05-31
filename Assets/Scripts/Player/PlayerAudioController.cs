@@ -70,15 +70,13 @@ public class PlayerAudioController : MonoBehaviour
     {
         if (clips.Length == 0)
             return;
-        Debug.Log("PlayRandomClip");
         AudioClip randomClip = clips[Random.Range(0, clips.Length)];
-        movementAudioSource.pitch = Random.Range(0.9f, 1.1f);
-        movementAudioSource.PlayOneShot(randomClip);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(randomClip);
     }
 
     public void PlayHitClip()
     {
-        Debug.Log("PlayHitClip");
         PlayRandomClip(hitClips, hitAudioSource);
     }
 }

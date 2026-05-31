@@ -19,11 +19,13 @@ public class EndlessRunManager : MonoBehaviour
     private Waypoint currentWaypoint;
     private bool timerStarted;
     private PlayerController playerController;
+    private GameManager gameManager;
 
     private void Start()
     {
         playerController = playerTransform.GetComponent<PlayerController>();
         waypoints = FindObjectsByType<Waypoint>();
+        gameManager = FindAnyObjectByType<GameManager>();
         SpawnNextCheckpoint();
     }
 
@@ -37,8 +39,8 @@ public class EndlessRunManager : MonoBehaviour
         CheckpointTimer -= Time.deltaTime;
         if (CheckpointTimer <= 0f)
         {
-            Debug.Log("Game Over - Time's up!");
-            GameManager.Instance.GameOver();
+            //Debug.Log("Game Over - Time's up!");
+            gameManager.GameOver();
         }
     }
 
@@ -66,7 +68,6 @@ public class EndlessRunManager : MonoBehaviour
         currentWaypoint = GetRandomWaypoint();
         GameObject checkpointPrefab = GetPostCheckpointPrefab(currentWaypoint.AltitudeLayer);
         currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetCheckpointRotation(currentWaypoint.transform.position), checkpointParent);
-        Debug.Log(currentCheckpoint.name);
         currentCheckpoint.GetComponent<Checkpoint>().Initialize(this);
         SetupCheckpointTimer(currentCheckpoint.transform);
     }
@@ -95,7 +96,6 @@ public class EndlessRunManager : MonoBehaviour
     {
         Vector3 direction = playerTransform.position - checkpointPosition;
         direction.y = 0f;
-        Debug.Log(direction);
         if (direction == Vector3.zero)
             return Quaternion.identity;
         return Quaternion.LookRotation(direction) * Quaternion.Euler(0f, 180f, 0f); ;

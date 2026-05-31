@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject hitParticlesPrefab;
 
     private PlayerAudioController audioController;
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         audioController = GetComponent<PlayerAudioController>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     public void TakeDamage(int amount)
@@ -47,8 +49,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("GAME OVER");
+        //Debug.Log("GAME OVER");
         OnDeath?.Invoke();
-        GameManager.Instance.GameOver();
+        gameManager.GameOver();
     }
 }

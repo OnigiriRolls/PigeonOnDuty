@@ -4,26 +4,27 @@ using UnityEngine;
 public class GameplayScoreUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-
-    private void OnEnable()
-    {
-        ScoreManager.Instance.OnScoreChanged += UpdateUI;
-    }
-
-    private void OnDisable()
-    {
-        if (ScoreManager.Instance == null)
-            return;
-        ScoreManager.Instance.OnScoreChanged -= UpdateUI;
-    }
+    private ScoreManager scoreManager;
 
     private void Start()
     {
-        UpdateUI(ScoreManager.Instance.CurrentScore);
+        scoreManager = FindAnyObjectByType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.OnScoreChanged += UpdateUI;
+            UpdateUI(scoreManager.CurrentScore);
+        }
     }
 
     private void UpdateUI(int score)
     {
         scoreText.text = $"Score: {score}";
+    }
+
+    private void OnDestroy()
+    {
+        if (scoreManager == null)
+            return;
+        scoreManager.OnScoreChanged -= UpdateUI;
     }
 }

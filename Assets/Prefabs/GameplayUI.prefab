@@ -56,7 +56,7 @@ MonoBehaviour:
   clockWarningClip: {fileID: 8300000, guid: b172071a7b5cb83489b713e2b18f30c5, type: 3}
   clockCriticalClip: {fileID: 8300000, guid: 4a9dcd768cd98334cba888e6c9963082, type: 3}
   altitudeTransitionClip: {fileID: 8300000, guid: a9cdb339d2489614185d6fc37b69688d, type: 3}
-  lowMusic: {fileID: 8300000, guid: 11ac0d70d0751de4890ad5a8688afd67, type: 3}
+  lowMusic: {fileID: 8300000, guid: a449d11b625d5a7438acae72a9d837a3, type: 3}
   midMusic: {fileID: 8300000, guid: 2c1357ec6a514414e979752e73b021ad, type: 3}
   highMusic: {fileID: 8300000, guid: a4861b09ceeab9a41b3c18eb04188b81, type: 3}
   midAltitude: 51
