@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         scoreManager.enabled = false;
         scoreManager.FinishRun();
         CurrencyManager.Instance.AddCoins(scoreManager.CoinsEarned);
+        CurrencyManager.Instance.AddCoins(scoreManager.CoinsCollected);
         AudioManager.Instance.StopAllAudio();
         IsGameOver = true;
         AudioManager.Instance.CrossfadeMusic(gameOverMusic);

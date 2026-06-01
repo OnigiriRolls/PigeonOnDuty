@@ -6,6 +6,7 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager Instance;
     public event Action<int> OnCoinsChanged;
     public int Coins { get; private set; }
+    public int PreviousCoins { get; private set; }
 
     private const string CoinsKey = "Coins";
 
@@ -29,6 +30,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void AddCoins(int amount)
     {
+        PreviousCoins = Coins;
         Coins += amount;
         SaveCoins();
         OnCoinsChanged?.Invoke(Coins);

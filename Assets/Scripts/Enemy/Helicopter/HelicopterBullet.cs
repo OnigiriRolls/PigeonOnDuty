@@ -25,7 +25,6 @@ public class HelicopterBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Bullet {other.gameObject.layer}");
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealth>().TakeDamage(1);

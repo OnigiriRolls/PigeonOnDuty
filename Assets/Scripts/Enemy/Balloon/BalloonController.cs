@@ -80,7 +80,6 @@ public class BalloonController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
-        Debug.Log($"Balloon {other.gameObject.layer}");
         if (other.CompareTag("Player"))
         {
             Debug.Log($"La final: {directChase}");

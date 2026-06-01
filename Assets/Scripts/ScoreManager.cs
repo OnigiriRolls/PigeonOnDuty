@@ -4,9 +4,11 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public event Action<int> OnScoreChanged;
+    public event Action<int> OnRunCoinsChanged;
     public int CurrentScore { get; private set; }
     public int FinalScore { get; private set; }
     public int CoinsEarned { get; private set; }
+    public int CoinsCollected { get; private set; }
 
     [SerializeField] private int checkpointScore = 100;
     [SerializeField] private int lowAltitudeScorePerSecond = 1;
@@ -70,5 +72,11 @@ public class ScoreManager : MonoBehaviour
     {
         FinalScore = CurrentScore;
         CoinsEarned = FinalScore / CoinConversionRate;
+    }
+
+    public void AddRunCoins(int amount)
+    {
+        CoinsCollected += amount;
+        OnRunCoinsChanged?.Invoke(CoinsCollected);
     }
 }
