@@ -53,7 +53,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   expectedSpeedKmh: 80
   extraTimeBuffer: 20
-  minimumStartSpeed: 2
+  minimumStartSpeed: 5
 --- !u!114 &5017480667057680537
 MonoBehaviour:
   m_ObjectHideFlags: 0

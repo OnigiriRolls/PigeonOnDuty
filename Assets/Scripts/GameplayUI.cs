@@ -25,10 +25,12 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private float highAltitude = 151f;
 
     private AltitudeLayer currentLayer;
+    private Color timerInitialColor;
 
     private void Start()
     {
         AudioManager.Instance.CrossfadeMusic(lowMusic);
+        timerInitialColor = timerText.color;
     }
 
     private void Update()
@@ -42,7 +44,6 @@ public class GameplayUI : MonoBehaviour
 
     private void UpdateThrottle()
     {
-        //throttleText.text = $"Throttle: {player.Throttle:F0}";
         throttleBar.fillAmount = player.Throttle / 100f;
     }
 
@@ -119,7 +120,7 @@ public class GameplayUI : MonoBehaviour
             {
                 clockAnimator.enabled = false;
             }
-            timerText.color = Color.black;
+            timerText.color = timerInitialColor;
         }
     }
 

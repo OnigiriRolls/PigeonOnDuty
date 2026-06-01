@@ -79,6 +79,8 @@ public class BalloonController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
+        Debug.Log($"Balloon {other.gameObject.layer}");
         if (other.CompareTag("Player"))
         {
             Debug.Log($"La final: {directChase}");
@@ -88,7 +90,7 @@ public class BalloonController : MonoBehaviour
             other.GetComponent<PlayerHealth>().TakeDamage(1);
             Explode();
         }
-        else if (other.CompareTag("Building"))
+        else if (other.CompareTag("Building") || isOtherCloud)
         {
             Explode();
         }

@@ -25,9 +25,18 @@ public class HelicopterBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"Bullet {other.gameObject.layer}");
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealth>().TakeDamage(1);
+            SpawnHitEffect(other);
+            Destroy(gameObject);
+            return;
+        }
+
+        bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
+        if (isOtherCloud)
+        {
             SpawnHitEffect(other);
             Destroy(gameObject);
         }

@@ -5,11 +5,14 @@ public class ScoreManager : MonoBehaviour
 {
     public event Action<int> OnScoreChanged;
     public int CurrentScore { get; private set; }
+    public int FinalScore { get; private set; }
+    public int CoinsEarned { get; private set; }
 
     [SerializeField] private int checkpointScore = 100;
     [SerializeField] private int lowAltitudeScorePerSecond = 1;
     [SerializeField] private int midAltitudeScorePerSecond = 2;
     [SerializeField] private int highAltitudeScorePerSecond = 3;
+    [SerializeField] private int CoinConversionRate = 100;
 
     private GameplayUI gameplayUI;
     private float scoreTimer;
@@ -22,11 +25,9 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("ok1");
         scoreTimer += Time.deltaTime;
         if (scoreTimer < 1f)
             return;
-        Debug.Log("ok2");
         scoreTimer = 0f;
         AddScore(GetAltitudeScore());
     }
@@ -63,5 +64,11 @@ public class ScoreManager : MonoBehaviour
     {
         CurrentScore = 0;
         OnScoreChanged?.Invoke(CurrentScore);
+    }
+
+    public void FinishRun()
+    {
+        FinalScore = CurrentScore;
+        CoinsEarned = FinalScore / CoinConversionRate;
     }
 }

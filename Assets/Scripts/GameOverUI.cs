@@ -8,8 +8,8 @@ public class GameOverUI : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager gameManager = FindAnyObjectByType<GameManager>();
-        finalScoreText.text = $"Score: {gameManager.FinalScore}";
-        coinsEarnedText.text = $"Coins: {gameManager.CoinsEarned}";
+        ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
+        finalScoreText.text = $"Score: {scoreManager.FinalScore}";
+        coinsEarnedText.text = $"Coins: {scoreManager.CoinsEarned}";
     }
 }

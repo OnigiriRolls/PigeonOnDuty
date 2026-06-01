@@ -3,8 +3,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool IsGameOver { get; private set; }
-    public int FinalScore { get; private set; }
-    public int CoinsEarned { get; private set; }
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private AudioClip gameOverMusic;
@@ -28,9 +26,8 @@ public class GameManager : MonoBehaviour
             return;
 
         scoreManager.enabled = false;
-        FinalScore = scoreManager.CurrentScore;
-        CoinsEarned = FinalScore / 100;
-        CurrencyManager.Instance.AddCoins(CoinsEarned);
+        scoreManager.FinishRun();
+        CurrencyManager.Instance.AddCoins(scoreManager.CoinsEarned);
         AudioManager.Instance.StopAllAudio();
         IsGameOver = true;
         AudioManager.Instance.CrossfadeMusic(gameOverMusic);

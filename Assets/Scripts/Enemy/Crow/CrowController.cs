@@ -91,7 +91,9 @@ public class CrowController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Building") && CanTakeDamage)
+        bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
+        Debug.Log($"Crow {other.gameObject.layer} {CanTakeDamage}");
+        if ((other.CompareTag("Building") || isOtherCloud) && CanTakeDamage)
         {
             DestroyCrow();
         }
