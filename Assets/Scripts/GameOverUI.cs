@@ -7,7 +7,7 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinsEarnedText;
     [SerializeField] private TextMeshProUGUI previousCoinsText;
     [SerializeField] private TextMeshProUGUI totalCoinsText;
-
+    [SerializeField] private AudioClip gameOverMusic;
 
     private void OnEnable()
     {
@@ -16,5 +16,6 @@ public class GameOverUI : MonoBehaviour
         coinsEarnedText.text = $"Coins: {scoreManager.CoinsEarned}";
         previousCoinsText.text = $"Previous Coins: {CurrencyManager.Instance.PreviousCoins}";
         totalCoinsText.text = $"Total Coins: {CurrencyManager.Instance.Coins}";
+        AudioManager.Instance.PlayMusic(gameOverMusic);
     }
 }

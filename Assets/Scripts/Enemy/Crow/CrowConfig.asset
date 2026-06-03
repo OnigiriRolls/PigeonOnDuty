@@ -18,5 +18,5 @@ MonoBehaviour:
   leftOffset: 5
   minWaitTime: 6
   maxWaitTime: 8
-  dashSpeed: 80
+  dashSpeed: 100
   maxAttacks: 2

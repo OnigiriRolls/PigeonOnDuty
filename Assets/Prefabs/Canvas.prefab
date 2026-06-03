@@ -2820,6 +2820,7 @@ MonoBehaviour:
   coinsEarnedText: {fileID: 4049035389296370915}
   previousCoinsText: {fileID: 7742949976032639410}
   totalCoinsText: {fileID: 7437223140900441992}
+  gameOverMusic: {fileID: 8300000, guid: 4a49da4cfa46a104fb767dbc9601ee16, type: 3}
 --- !u!224 &6243001262783416016 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8008121098911631647, guid: 90370cde400596d44aa63002c2dce87d, type: 3}

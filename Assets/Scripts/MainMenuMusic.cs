@@ -6,6 +6,7 @@ public class MainMenuMusic : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         AudioManager.Instance.CrossfadeMusic(menuMusic);
     }
 }

@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public event Action OnGameOver;
     public bool IsGameOver { get; private set; }
 
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private AudioClip gameOverMusic;
 
     private ScoreManager scoreManager;
 
@@ -29,9 +30,9 @@ public class GameManager : MonoBehaviour
         scoreManager.FinishRun();
         CurrencyManager.Instance.AddCoins(scoreManager.CoinsEarned);
         CurrencyManager.Instance.AddCoins(scoreManager.CoinsCollected);
-        AudioManager.Instance.StopAllAudio();
         IsGameOver = true;
-        AudioManager.Instance.CrossfadeMusic(gameOverMusic);
+        OnGameOver?.Invoke();
+        AudioManager.Instance.StopAllAudio();
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
     }

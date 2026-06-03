@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class BalloonController : MonoBehaviour
+public class BalloonController : StopAudio
 {
     [SerializeField] private BalloonConfig config;
     [SerializeField] private AudioClip movementClip;
@@ -22,8 +22,9 @@ public class BalloonController : MonoBehaviour
         driftTimer = Random.Range(config.minDriftDuration, config.maxDriftDuration);
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         moveDirection = transform.forward;
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = movementClip;
@@ -104,5 +105,11 @@ public class BalloonController : MonoBehaviour
         AudioManager.Instance.PlayRandomSFX(explosionClips);
         spawner.FinishEnemy();
         Destroy(gameObject);
+    }
+
+    protected override void HandleGameOver()
+    {
+        Debug.Log("Balloon Game Over");
+        gameObject.SetActive(false);
     }
 }

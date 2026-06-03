@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HelicopterAudioController))]
-public class HelicopterController : MonoBehaviour
+public class HelicopterController : StopAudio
 {
     [SerializeField] private HelicopterConfig config;
     [SerializeField] private GameObject bulletPrefab;
@@ -23,8 +23,9 @@ public class HelicopterController : MonoBehaviour
         Leaving
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         audioController = GetComponent<HelicopterAudioController>();
     }
 
@@ -114,5 +115,11 @@ public class HelicopterController : MonoBehaviour
         {
             gun.Shoot();
         }
+    }
+
+    protected override void HandleGameOver()
+    {
+        Debug.Log("Helicopter Game Over");
+        gameObject.SetActive(false);
     }
 }

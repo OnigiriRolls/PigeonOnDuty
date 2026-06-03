@@ -3,13 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    public float throttleIncrement = 0.7f;
-    public float maxThrust = 200f;
-    public float responsiveness = 10f;
-    public float lift = 135f;
-    public float turnSpeed = 90f;
-    public float pitchSpeed = 30f;
-    public float maxPitchAngle = 40f;
     public float Throttle => throttle;
     public float Roll => roll;
     public float Pitch => pitch;
@@ -22,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask landingAreaLayer;
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private PlayerConfig config;
 
     private float throttle;
     private float roll;
@@ -42,8 +36,8 @@ public class PlayerController : MonoBehaviour
         roll = Input.GetAxis("Roll");
         pitch = Input.GetAxis("Pitch");
 
-        if (Input.GetKey(KeyCode.Space)) throttle += throttleIncrement;
-        else if (Input.GetKey(KeyCode.LeftControl)) throttle -= throttleIncrement;
+        if (Input.GetKey(KeyCode.Space)) throttle += config.throttleIncrement;
+        else if (Input.GetKey(KeyCode.LeftControl)) throttle -= config.throttleIncrement;
 
         throttle = Mathf.Clamp(throttle, 0f, 100f);
     }
@@ -58,17 +52,17 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(maxThrust * throttle * transform.forward);
-        rb.AddForce(lift * rb.linearVelocity.magnitude * transform.up);
+        rb.AddForce(config.maxThrust * throttle * transform.forward);
+        rb.AddForce(config.lift * rb.linearVelocity.magnitude * transform.up);
 
-        float turnAmount = roll * turnSpeed * Time.fixedDeltaTime;
+        float turnAmount = roll * config.turnSpeed * Time.fixedDeltaTime;
         Quaternion yawRotation = Quaternion.Euler(0f, turnAmount, 0f);
 
         float currentPitch = transform.eulerAngles.x;
         if (currentPitch > 180f)
             currentPitch -= 360f;
-        float pitchAmount = -pitch * pitchSpeed * Time.fixedDeltaTime;
-        float targetPitch = Mathf.Clamp(currentPitch + pitchAmount, -maxPitchAngle, maxPitchAngle);
+        float pitchAmount = -pitch * config.pitchSpeed * Time.fixedDeltaTime;
+        float targetPitch = Mathf.Clamp(currentPitch + pitchAmount, -config.maxPitchAngle, config.maxPitchAngle);
         Quaternion pitchRotation = Quaternion.Euler(targetPitch, transform.eulerAngles.y, 0f);
         rb.MoveRotation(yawRotation * pitchRotation);
 
@@ -103,17 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        isGrounded = Physics.Raycast(
-            transform.position,
-            Vector3.down,
-            groundCheckDistance,
-            landingAreaLayer
-        );
-
-        Debug.DrawRay(
-             transform.position,
-             Vector3.down * groundCheckDistance,
-             Color.red
-        );
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, landingAreaLayer);
+        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
     }
 }

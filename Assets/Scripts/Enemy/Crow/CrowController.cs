@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CrowController : MonoBehaviour
+public class CrowController : StopAudio
 {
     public bool CanHitPlayer { get; set; }
     public bool CanTakeDamage { get; set; }
@@ -129,5 +129,10 @@ public class CrowController : MonoBehaviour
         AudioManager.Instance.PlaySFX(hitClip);
         Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    protected override void HandleGameOver()
+    {
+        gameObject.SetActive(false);
     }
 }

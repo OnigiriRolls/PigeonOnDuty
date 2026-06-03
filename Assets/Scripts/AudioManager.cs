@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : StopAudio
 {
     public static AudioManager Instance;
     public AudioClip CurrentMusicClip { get; private set; }
@@ -97,7 +97,7 @@ public class AudioManager : MonoBehaviour
         CurrentMusicClip = newClip;
         inactiveAmbianceSource.volume = 0f;
         inactiveAmbianceSource.Play();
-
+        Debug.Log("CrossfadeCoroutine");
         float timer = 0f;
         while (timer < duration)
         {
@@ -112,6 +112,19 @@ public class AudioManager : MonoBehaviour
         (inactiveAmbianceSource, activeAmbianceSource) = (activeAmbianceSource, inactiveAmbianceSource);
     }
 
+    public void PlayMusic(AudioClip clip, bool loop = true)
+    {
+        if (clip == null)
+            return;
+        activeAmbianceSource.Stop(); 
+        inactiveAmbianceSource.Stop();
+        activeAmbianceSource.clip = clip;
+        activeAmbianceSource.loop = loop;
+        activeAmbianceSource.volume = musicVolume * masterVolume;
+        activeAmbianceSource.Play();
+        CurrentMusicClip = clip;
+    }
+
     public void StopAllAudio()
     {
         sfxSource.Stop();
@@ -119,5 +132,11 @@ public class AudioManager : MonoBehaviour
         ambianceSource1.Stop();
         ambianceSource2.Stop();
         uiLoopSource.Stop();
+    }
+
+    protected override void HandleGameOver()
+    {
+        Debug.Log("Game Over - Stopping all audio");
+        StopAllAudio();
     }
 }

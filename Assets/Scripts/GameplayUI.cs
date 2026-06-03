@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameplayUI : MonoBehaviour
+public class GameplayUI : StopAudio
 {
     public AltitudeLayer CurrentLayer => currentLayer;
 
@@ -27,8 +27,9 @@ public class GameplayUI : MonoBehaviour
     private AltitudeLayer currentLayer;
     private Color timerInitialColor;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         AudioManager.Instance.CrossfadeMusic(lowMusic);
         timerInitialColor = timerText.color;
     }
@@ -132,11 +133,15 @@ public class GameplayUI : MonoBehaviour
         }
         else if (timer > 5 && timer <= 10f)
         {
+            Debug.Log("Play Loop");
             AudioManager.Instance.PlayUILoop(clockWarningClip);
         }
-        else
-        {
-            AudioManager.Instance.StopUILoop();
-        }
+    }
+
+    protected override void HandleGameOver()
+    {
+        Debug.Log("GameplayUI: Game Over");
+        AudioManager.Instance.StopUILoop();
+        gameObject.SetActive(false);
     }
 }

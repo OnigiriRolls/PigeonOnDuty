@@ -85,13 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041cc4f88e46a8b4d87c5584652f8f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  throttleIncrement: 0.7
-  maxThrust: 200
-  responsiveness: 10
-  lift: 135
-  turnSpeed: 90
-  pitchSpeed: 30
-  maxPitchAngle: 40
   visualModel: {fileID: 8885274105561256665}
   landingAreaLayer:
     serializedVersion: 2
@@ -100,6 +93,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  config: {fileID: 11400000, guid: e870177bd8479524ba53ee2a8b01c4c3, type: 2}
 --- !u!114 &4942146251994068572
 MonoBehaviour:
   m_ObjectHideFlags: 0
