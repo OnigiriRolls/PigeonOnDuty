@@ -101,6 +101,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194180192622615368, guid: a73eca55382651c449497eca9a2be0be, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2916928879251313580}
+    - target: {fileID: 8194180192622615368, guid: a73eca55382651c449497eca9a2be0be, type: 3}
       propertyPath: collectClip
       value: 
       objectReference: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
@@ -115,6 +119,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3664100224609117633, guid: a73eca55382651c449497eca9a2be0be, type: 3}
       insertIndex: -1
       addedObject: {fileID: 654790536397794731}
+    - targetCorrespondingSourceObject: {fileID: 3664100224609117633, guid: a73eca55382651c449497eca9a2be0be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2916928879251313580}
   m_SourcePrefab: {fileID: 100100000, guid: a73eca55382651c449497eca9a2be0be, type: 3}
 --- !u!1 &5182327538108848086 stripped
 GameObject:
@@ -142,6 +149,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5726743, y: 2.5759141, z: 0.70219976}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2916928879251313580
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182327538108848086}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84e285eac53203c419b9a46786d54fa3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5521558127427947884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4148570695115292539, guid: a73eca55382651c449497eca9a2be0be, type: 3}

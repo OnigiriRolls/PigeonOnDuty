@@ -18,15 +18,19 @@ public class ScoreManager : MonoBehaviour
 
     private GameplayUI gameplayUI;
     private float scoreTimer;
+    private EndlessRunManager runManager;
 
     private void Start()
     {
         gameplayUI = FindAnyObjectByType<GameplayUI>();
+        runManager = FindAnyObjectByType<EndlessRunManager>();
         ResetScore();
     }
 
     private void Update()
     {
+        if (!runManager.TimerStarted)
+            return;
         scoreTimer += Time.deltaTime;
         if (scoreTimer < 1f)
             return;

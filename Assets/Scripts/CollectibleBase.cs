@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class CollectibleBase : MonoBehaviour
@@ -6,16 +7,19 @@ public abstract class CollectibleBase : MonoBehaviour
     [SerializeField] private float rotationSpeed = 90f;
     [SerializeField] private float floatAmplitude = 0.25f;
     [SerializeField] private float floatFrequency = 2f;
+    [SerializeField] private float lifetime = 20f;
 
     [Header("Effects")]
     [SerializeField] private GameObject collectEffect;
     [SerializeField] private AudioClip collectClip;
+    [SerializeField] private Animator animator;
 
     private Vector3 startPosition;
 
     protected virtual void Start()
     {
         startPosition = transform.position;
+        StartCoroutine(DespawnRoutine());
     }
 
     protected virtual void Update()
@@ -58,5 +62,13 @@ public abstract class CollectibleBase : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(collectClip);
         }
+    }
+
+    private IEnumerator DespawnRoutine()
+    {
+        yield return new WaitForSeconds(lifetime - 2f);
+        animator.SetBool("Pulse", true);
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }

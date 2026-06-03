@@ -7,31 +7,40 @@ public class CollectibleManager : MonoBehaviour
     [SerializeField] private CollectibleSpawnData coinCollectible;
 
     [Header("Spawn")]
-    [SerializeField] private float spawnRadiusCoins = 25f;
     [SerializeField] private float spawnRadiusSpecials = 15f;
     [SerializeField] private int maxSpecialCollectibles = 2;
-    [SerializeField] private int minCoinCount = 3;
-    [SerializeField] private int maxCoinCount = 8;
+    [SerializeField] private int minCoinCount = 2;
+    [SerializeField] private int maxCoinCount = 6;
     [SerializeField] private Transform collectibleParent;
     [SerializeField] private LayerMask cloudLayer;
     [SerializeField] private LayerMask buildingLayer;
 
     public void SpawnCollectibles(Transform checkpoint, Vector3 playerPosition)
     {
-        SpawnCoins(checkpoint.position, playerPosition);
+        Vector3 direction = (checkpoint.position - playerPosition).normalized;
+        Vector3 startPos = Vector3.Lerp(playerPosition, checkpoint.position, 0.4f);
+        int count = Random.Range(minCoinCount, maxCoinCount + 1);
+        SpawnCoinLine(startPos, direction, count);
         SpawnSpecials(checkpoint.position, playerPosition);
     }
 
-    private void SpawnCoins(Vector3 checkpointPos, Vector3 playerPos)
+    private void SpawnCoinLine(Vector3 startPos, Vector3 direction, int count)
     {
-        int count = Random.Range(minCoinCount, maxCoinCount + 1);
         if (coinCollectible == null)
             return;
-
+        float spacing = 10f;
         for (int i = 0; i < count; i++)
         {
-            Vector3 pos = GetSpawnPosition(checkpointPos, playerPos, spawnRadiusCoins);
-            Instantiate(coinCollectible.prefab, pos, Quaternion.identity, collectibleParent);
+            Vector3 spawnPos = startPos + i * spacing * direction;
+            Vector3 offset = Random.insideUnitSphere * 1.5f;
+            offset.y *= 0.3f;
+            spawnPos += offset;
+
+            bool insideBuilding = Physics.CheckSphere(spawnPos, 3f, buildingLayer);
+            bool insideCloud = Physics.CheckSphere(spawnPos, 3f, cloudLayer);
+            if (insideBuilding || insideCloud)
+                continue;
+            Instantiate(coinCollectible.prefab, spawnPos, Quaternion.identity, collectibleParent);
         }
     }
 
@@ -45,27 +54,29 @@ public class CollectibleManager : MonoBehaviour
             if (Random.value > collectible.spawnChance)
                 continue;
 
-            Vector3 pos = GetSpawnPosition(checkpointPos, playerPos, spawnRadiusSpecials);
-            Instantiate(collectible.prefab, pos, Quaternion.identity, collectibleParent);
-            spawnedCount++;
+            if (TryGetSpawnPosition(checkpointPos, playerPos, spawnRadiusSpecials, out Vector3 pos))
+            {
+                Instantiate(collectible.prefab, pos, Quaternion.identity, collectibleParent);
+                spawnedCount++;
+            }
         }
     }
 
-    private Vector3 GetSpawnPosition(Vector3 checkpointPos, Vector3 playerPos, float spawnRadius)
+    private bool TryGetSpawnPosition(Vector3 checkpointPos, Vector3 playerPos, float spawnRadius, out Vector3 spawnPos)
     {
-        const int maxAttempts = 2;
+        const int maxAttempts = 5;
         for (int i = 0; i < maxAttempts; i++)
         {
             Vector3 center = Vector3.Lerp(playerPos, checkpointPos, Random.Range(0.3f, 0.65f));
             Vector3 randomOffset = Random.insideUnitSphere * spawnRadius;
             randomOffset.y *= 0.3f;
-            Vector3 spawnPos = center + randomOffset;
+            spawnPos = center + randomOffset;
             bool insideCloud = Physics.CheckSphere(spawnPos, 5f, cloudLayer);
             bool insideBuilding = Physics.CheckSphere(spawnPos, 5f, buildingLayer);
             if (!insideCloud && !insideBuilding)
-                return spawnPos;
+                return true;
         }
-
-        return checkpointPos;
+        spawnPos = Vector3.zero;
+        return false;
     }
 }

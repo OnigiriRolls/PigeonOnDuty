@@ -4,6 +4,7 @@ public class EndlessRunManager : MonoBehaviour
 {
     public float CheckpointTimer { get; private set; }
     public GameObject CurrentCheckpoint => currentCheckpoint;
+    public bool TimerStarted => timerStarted;
 
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private GameObject postCheckpointHigh;
