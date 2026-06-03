@@ -30,7 +30,7 @@ public class Checkpoint : MonoBehaviour
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
         scoreManager.AddCheckpointScore();
-        endlessRunManager.SpawnNextCheckpoint();
+        endlessRunManager.SpawnNextCheckpointAndCollectibles();
         Destroy(gameObject);
     }
 }

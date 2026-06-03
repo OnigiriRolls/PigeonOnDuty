@@ -5,6 +5,7 @@ public class EndlessRunManager : MonoBehaviour
     public float CheckpointTimer { get; private set; }
     public GameObject CurrentCheckpoint => currentCheckpoint;
 
+    [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private GameObject postCheckpointHigh;
     [SerializeField] private GameObject postCheckpointMid;
     [SerializeField] private GameObject postCheckpointLow;
@@ -26,7 +27,7 @@ public class EndlessRunManager : MonoBehaviour
         playerController = playerTransform.GetComponent<PlayerController>();
         waypoints = FindObjectsByType<Waypoint>();
         gameManager = FindAnyObjectByType<GameManager>();
-        SpawnNextCheckpoint();
+        SpawnNextCheckpointAndCollectibles();
     }
 
     private void Update()
@@ -52,7 +53,13 @@ public class EndlessRunManager : MonoBehaviour
         timerStarted = true;
     }
 
-    public void SpawnNextCheckpoint()
+    public void SpawnNextCheckpointAndCollectibles()
+    {
+        SpawnNextCheckpoint();
+        collectibleManager.SpawnCollectibles(currentCheckpoint.transform, playerTransform.position);
+    }
+
+    private void SpawnNextCheckpoint()
     {
         if (waypoints.Length == 0)
         {

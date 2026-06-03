@@ -158,12 +158,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 3
+  invulnerabilityDuration: 4
   hitParticlesPrefab: {fileID: 5149711938787232430, guid: 24486c5f1e34c8a43944bae4a4012f6d, type: 3}
   shield: {fileID: 7444230667344343742}
   shieldBreakEffect: {fileID: 7220251727273629314, guid: 74860fbbc6a34824a96e6b71cb0672c6, type: 3}
   shieldBreakClip: {fileID: 8300000, guid: defc12db9d114c44cae25c9c52757410, type: 3}
   shieldDuration: 10
   pulseStartTime: 3
+  birdRenderer: {fileID: 1898313465799474587}
+  playerAnimator: {fileID: 3291842626558970019}
 --- !u!136 &2842962105295605811
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2219,6 +2222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.556527
       objectReference: {fileID: 0}
+    - target: {fileID: 7393862540659820713, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d8fce1b9b9f587c4199ead2100ee0754, type: 2}
     - target: {fileID: 7404423503579529274, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -0.00000013707319
@@ -2404,6 +2411,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
+--- !u!137 &1898313465799474587 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7393862540659820713, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
+  m_PrefabInstance: {fileID: 8990430347209078066}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &3291842626558970019 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 157cd725cd42ae34cb32d36cfde4c199, type: 3}
