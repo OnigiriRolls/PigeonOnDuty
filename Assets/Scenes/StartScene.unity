@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuStart
       objectReference: {fileID: 0}
+    - target: {fileID: 8241919166109974903, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144481482}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

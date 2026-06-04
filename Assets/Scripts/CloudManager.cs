@@ -5,6 +5,8 @@ public class CloudManager : MonoBehaviour
     [Header("Clouds")]
     [SerializeField] private GameObject[] cloudPrefabs;
     [SerializeField] private Transform cloudParent;
+    [SerializeField] private LayerMask buildingLayer;
+    [SerializeField] private float buildingCheckRadius = 15f;
 
     [Header("Spawn Counts")]
     [SerializeField] private int midCloudCount = 50;
@@ -30,14 +32,21 @@ public class CloudManager : MonoBehaviour
 
     private void SpawnRandomCloud(Vector2 heightRange)
     {
-        Vector3 pos = new Vector3(
+        const int maxAttempts = 2;
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3 pos = new Vector3(
                 Random.Range(xRange.x, xRange.y),
                 Random.Range(heightRange.x, heightRange.y),
                 Random.Range(zRange.x, zRange.y));
-        GameObject prefab = cloudPrefabs[Random.Range(0, cloudPrefabs.Length)];
-        Quaternion rot = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-        float scale = Random.Range(0.8f, 1.5f);
-        GameObject cloud = Instantiate(prefab, pos, rot, cloudParent);
-        cloud.transform.localScale *= scale;
+            bool insideBuilding = Physics.CheckSphere(pos, buildingCheckRadius, buildingLayer);
+            if (insideBuilding) continue;
+            GameObject prefab = cloudPrefabs[Random.Range(0, cloudPrefabs.Length)];
+            Quaternion rot = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+            float scale = Random.Range(0.8f, 1.5f);
+            GameObject cloud = Instantiate(prefab, pos, rot, cloudParent);
+            cloud.transform.localScale *= scale;
+            return;
+        }
     }
 }

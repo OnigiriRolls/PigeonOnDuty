@@ -451,7 +451,7 @@ Transform:
   m_GameObject: {fileID: 195073058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.41405, y: 24.09359, z: 203.18954}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1658,15 +1658,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5498640993907252521, guid: e87c2e6f488a64447ac8d0e329a80340, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 92.61871
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498640993907252521, guid: e87c2e6f488a64447ac8d0e329a80340, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.60001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498640993907252521, guid: e87c2e6f488a64447ac8d0e329a80340, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 281.7175
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498640993907252521, guid: e87c2e6f488a64447ac8d0e329a80340, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1798,11 +1798,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2569822961760229349, guid: 4d4875310b43eb04c9b9c3f01d5f90fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 831.2893
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2569822961760229349, guid: 4d4875310b43eb04c9b9c3f01d5f90fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 573.1937
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2569822961760229349, guid: 4d4875310b43eb04c9b9c3f01d5f90fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1973,6 +1973,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1751921350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8467061841833109891, guid: 17fc699b33291994f8102147efa62455, type: 3}
+  m_PrefabInstance: {fileID: 1143496869105204261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1838814440 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5946308570238200468, guid: 17fc699b33291994f8102147efa62455, type: 3}
@@ -2241,6 +2246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6404860604126797597, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1694601789}
     - target: {fileID: 6743949410133324576, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2248,6 +2257,26 @@ PrefabInstance:
     - target: {fileID: 6743949410133324576, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006135838322014520, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1694601789}
+    - target: {fileID: 8467061841833109891, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495520506242948264, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 438445163}
+    - target: {fileID: 8495520506242948264, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495520506242948264, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9098520885050491654, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2353,8 +2382,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6206697560603183726, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889079388895480461}
+    - targetCorrespondingSourceObject: {fileID: 6206697560603183726, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889079388895480462}
   m_SourcePrefab: {fileID: 100100000, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+--- !u!1 &1889079388895480460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6206697560603183726, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+  m_PrefabInstance: {fileID: 1889079388895480459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1889079388895480461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889079388895480460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498cf7d38bd226047927b3c6e26e0f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuUI
+  panel: {fileID: 1751921350}
+--- !u!114 &1889079388895480462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889079388895480460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8509d8d362ebe742ad959b1b6f65732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseInput
 --- !u!1001 &3899682279177457523
 PrefabInstance:
   m_ObjectHideFlags: 0

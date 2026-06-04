@@ -135,6 +135,9 @@ public class GameplayUI : StopAudio
         {
             Debug.Log("Play Loop");
             AudioManager.Instance.PlayUILoop(clockWarningClip);
+        } else
+        {
+            AudioManager.Instance.StopUILoop();
         }
     }
 

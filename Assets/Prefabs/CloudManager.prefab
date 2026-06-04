@@ -52,9 +52,13 @@ MonoBehaviour:
   - {fileID: 431648688582492024, guid: a801467cb21343749ad49bf1ead0ed17, type: 3}
   - {fileID: 6097712329338076959, guid: 9c9d9ca378943b34d9bf0a0edc6eddeb, type: 3}
   cloudParent: {fileID: 0}
-  midCloudCount: 45
-  highCloudCount: 65
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  buildingCheckRadius: 15
+  midCloudCount: 30
+  highCloudCount: 60
   xRange: {x: 0, y: 900}
   zRange: {x: 0, y: 780}
-  midHeightRange: {x: 51, y: 150}
-  highHeightRange: {x: 151, y: 250}
+  midHeightRange: {x: 100, y: 150}
+  highHeightRange: {x: 151, y: 270}
