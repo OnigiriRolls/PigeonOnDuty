@@ -66,9 +66,9 @@ public abstract class CollectibleBase : MonoBehaviour
 
     private IEnumerator DespawnRoutine()
     {
-        yield return new WaitForSeconds(lifetime - 2f);
+        yield return new WaitForSeconds(lifetime - 3f);
         animator.SetBool("Pulse", true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }

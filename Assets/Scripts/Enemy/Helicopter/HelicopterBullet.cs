@@ -28,20 +28,21 @@ public class HelicopterBullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealth>().TakeDamage(1);
-            SpawnHitEffect(other);
+            SpawnHitEffect();
             Destroy(gameObject);
             return;
         }
 
         bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
-        if (isOtherCloud)
+        bool isOtherBuilding = other.gameObject.layer == LayerMask.NameToLayer("Buildings");
+        if (isOtherCloud || isOtherBuilding)
         {
-            SpawnHitEffect(other);
+            SpawnHitEffect();
             Destroy(gameObject);
         }
     }
 
-    private void SpawnHitEffect(Collider playerCollider)
+    private void SpawnHitEffect()
     {
         if (hitEffectPrefab != null)
         {

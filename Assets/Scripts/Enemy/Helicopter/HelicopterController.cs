@@ -119,7 +119,6 @@ public class HelicopterController : StopAudio
 
     protected override void HandleGameOver()
     {
-        Debug.Log("Helicopter Game Over");
         gameObject.SetActive(false);
     }
 }

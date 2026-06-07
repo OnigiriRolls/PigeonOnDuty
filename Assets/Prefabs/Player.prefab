@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 3
-  invulnerabilityDuration: 4
+  shieldInvulnerabilityDuration: 4
   hitParticlesPrefab: {fileID: 5149711938787232430, guid: 24486c5f1e34c8a43944bae4a4012f6d, type: 3}
   shield: {fileID: 7444230667344343742}
   shieldBreakEffect: {fileID: 7220251727273629314, guid: 74860fbbc6a34824a96e6b71cb0672c6, type: 3}

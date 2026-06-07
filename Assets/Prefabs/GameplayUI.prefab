@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 2360848372496353623}
   - component: {fileID: 7034733957122885923}
   - component: {fileID: 334364185767018330}
+  - component: {fileID: 443502973139152938}
+  - component: {fileID: 814609929723420393}
+  - component: {fileID: 8695288101894765034}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -48,6 +51,7 @@ MonoBehaviour:
   player: {fileID: 0}
   runManager: {fileID: 0}
   throttleText: {fileID: 0}
+  throttleBar: {fileID: 0}
   speedText: {fileID: 0}
   altitudeText: {fileID: 0}
   timerText: {fileID: 0}
@@ -74,3 +78,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayScoreUI
   scoreText: {fileID: 0}
+--- !u!114 &443502973139152938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498cf7d38bd226047927b3c6e26e0f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuUI
+  panel: {fileID: 0}
+--- !u!114 &814609929723420393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8509d8d362ebe742ad959b1b6f65732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseInput
+--- !u!114 &8695288101894765034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2ec5f35bde8d84b921e435a0dd758b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeliveryMissionSelectionUI
+  panel: {fileID: 0}
+  missionCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

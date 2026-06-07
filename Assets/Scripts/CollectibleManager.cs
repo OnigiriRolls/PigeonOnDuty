@@ -14,6 +14,7 @@ public class CollectibleManager : MonoBehaviour
     [SerializeField] private Transform collectibleParent;
     [SerializeField] private LayerMask cloudLayer;
     [SerializeField] private LayerMask buildingLayer;
+    [SerializeField] private LayerMask roadLayer;
 
     public void SpawnCollectibles(Transform checkpoint, Vector3 playerPosition)
     {
@@ -35,10 +36,7 @@ public class CollectibleManager : MonoBehaviour
             Vector3 offset = Random.insideUnitSphere * 1.5f;
             offset.y *= 0.3f;
             spawnPos += offset;
-
-            bool insideBuilding = Physics.CheckSphere(spawnPos, 3f, buildingLayer);
-            bool insideCloud = Physics.CheckSphere(spawnPos, 3f, cloudLayer);
-            if (insideBuilding || insideCloud)
+            if (IsObstructed(spawnPos, 3f))
                 continue;
             Instantiate(coinCollectible.prefab, spawnPos, Quaternion.identity, collectibleParent);
         }
@@ -71,12 +69,23 @@ public class CollectibleManager : MonoBehaviour
             Vector3 randomOffset = Random.insideUnitSphere * spawnRadius;
             randomOffset.y *= 0.3f;
             spawnPos = center + randomOffset;
-            bool insideCloud = Physics.CheckSphere(spawnPos, 5f, cloudLayer);
-            bool insideBuilding = Physics.CheckSphere(spawnPos, 5f, buildingLayer);
-            if (!insideCloud && !insideBuilding)
+            if (!IsObstructed(spawnPos, 5f))
                 return true;
         }
         spawnPos = Vector3.zero;
         return false;
+    }
+
+    private bool IsAboveRoad(Vector3 position)
+    {
+        return Physics.Raycast(position + Vector3.up * 5f, Vector3.down, 8f, roadLayer);
+    }
+
+    private bool IsObstructed(Vector3 position, float sphereRadius)
+    {
+        bool insideCloud = Physics.CheckSphere(position, sphereRadius, cloudLayer);
+        bool insideBuilding = Physics.CheckSphere(position, sphereRadius, buildingLayer);
+        bool onRoad = IsAboveRoad(position);
+        return insideCloud || insideBuilding || onRoad;
     }
 }

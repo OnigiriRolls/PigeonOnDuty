@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
     public event Action<int> OnRunCoinsChanged;
     public int CurrentScore { get; private set; }
     public int FinalScore { get; private set; }
+    public int PreviousCoins { get; set; }
     public int CoinsEarned { get; private set; }
     public int CoinsCollected { get; private set; }
 
@@ -15,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int midAltitudeScorePerSecond = 2;
     [SerializeField] private int highAltitudeScorePerSecond = 3;
     [SerializeField] private int CoinConversionRate = 100;
+    [SerializeField] private DeliveryMissionManager deliveryMissionManager;
 
     private GameplayUI gameplayUI;
     private float scoreTimer;
@@ -75,12 +77,21 @@ public class ScoreManager : MonoBehaviour
     public void FinishRun()
     {
         FinalScore = CurrentScore;
-        CoinsEarned = FinalScore / CoinConversionRate;
+        CoinsEarned = Mathf.RoundToInt(FinalScore / CoinConversionRate);
+        if (deliveryMissionManager.HasActiveMission)
+        {
+            CoinsEarned = Mathf.RoundToInt(CoinsEarned * deliveryMissionManager.ActiveMission.coinMultiplier);
+        }
     }
 
     public void AddRunCoins(int amount)
     {
         CoinsCollected += amount;
         OnRunCoinsChanged?.Invoke(CoinsCollected);
+    }
+
+    public void AddMissionReward(int amount)
+    {
+        AddScore(amount);
     }
 }

@@ -6,6 +6,7 @@ public class EndlessRunManager : MonoBehaviour
     public GameObject CurrentCheckpoint => currentCheckpoint;
     public bool TimerStarted => timerStarted;
 
+    [SerializeField] private DeliveryMissionManager deliveryMissionManager;
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private GameObject postCheckpointHigh;
     [SerializeField] private GameObject postCheckpointMid;
@@ -15,6 +16,7 @@ public class EndlessRunManager : MonoBehaviour
     [SerializeField] private float expectedSpeedKmh = 50f;
     [SerializeField] private float extraTimeBuffer = 10f;
     [SerializeField] private float minimumStartSpeed = 5f;
+    [SerializeField] private AudioClip lowMusic;
 
     private Waypoint[] waypoints;
     private GameObject currentCheckpoint;
@@ -28,7 +30,10 @@ public class EndlessRunManager : MonoBehaviour
         playerController = playerTransform.GetComponent<PlayerController>();
         waypoints = FindObjectsByType<Waypoint>();
         gameManager = FindAnyObjectByType<GameManager>();
+        AudioManager.Instance.PlayMusic(lowMusic);
+        SaveManager.Instance.AddRun();
         SpawnNextCheckpointAndCollectibles();
+        deliveryMissionManager.RequestMissionSelection();
     }
 
     private void Update()
@@ -114,5 +119,9 @@ public class EndlessRunManager : MonoBehaviour
         float distance = Vector3.Distance(playerTransform.position, checkpoint.position);
         float expectedSpeedMs = expectedSpeedKmh / 3.6f;
         CheckpointTimer = distance / expectedSpeedMs + extraTimeBuffer;
+        if (deliveryMissionManager.HasActiveMission)
+        {
+            CheckpointTimer *= deliveryMissionManager.ActiveMission.timerMultiplier;
+        }
     }
 }

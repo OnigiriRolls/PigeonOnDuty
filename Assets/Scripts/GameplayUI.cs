@@ -30,7 +30,6 @@ public class GameplayUI : StopAudio
     protected override void Start()
     {
         base.Start();
-        AudioManager.Instance.CrossfadeMusic(lowMusic);
         timerInitialColor = timerText.color;
     }
 
@@ -133,9 +132,9 @@ public class GameplayUI : StopAudio
         }
         else if (timer > 5 && timer <= 10f)
         {
-            Debug.Log("Play Loop");
             AudioManager.Instance.PlayUILoop(clockWarningClip);
-        } else
+        }
+        else
         {
             AudioManager.Instance.StopUILoop();
         }
@@ -143,7 +142,6 @@ public class GameplayUI : StopAudio
 
     protected override void HandleGameOver()
     {
-        Debug.Log("GameplayUI: Game Over");
         AudioManager.Instance.StopUILoop();
         gameObject.SetActive(false);
     }

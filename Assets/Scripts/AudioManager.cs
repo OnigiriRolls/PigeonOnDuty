@@ -52,20 +52,6 @@ public class AudioManager : StopAudio
         PlaySFX(clip);
     }
 
-    public void Play3DSFX(AudioClip clip, Vector3 position, float spatialBlend = 1f)
-    {
-        if (clip == null)
-            return;
-        GameObject tempAudio = new("TempAudio");
-        tempAudio.transform.position = position;
-        AudioSource source = tempAudio.AddComponent<AudioSource>();
-        source.clip = clip;
-        source.spatialBlend = spatialBlend;
-        source.volume = sfxVolume * masterVolume;
-        source.Play();
-        Destroy(tempAudio, clip.length);
-    }
-
     public void PlayUILoop(AudioClip clip)
     {
         if (clip == null)
@@ -97,7 +83,6 @@ public class AudioManager : StopAudio
         CurrentMusicClip = newClip;
         inactiveAmbianceSource.volume = 0f;
         inactiveAmbianceSource.Play();
-        Debug.Log("CrossfadeCoroutine");
         float timer = 0f;
         while (timer < duration)
         {
@@ -116,7 +101,7 @@ public class AudioManager : StopAudio
     {
         if (clip == null)
             return;
-        activeAmbianceSource.Stop(); 
+        activeAmbianceSource.Stop();
         inactiveAmbianceSource.Stop();
         activeAmbianceSource.clip = clip;
         activeAmbianceSource.loop = loop;
@@ -136,7 +121,6 @@ public class AudioManager : StopAudio
 
     protected override void HandleGameOver()
     {
-        Debug.Log("Game Over - Stopping all audio");
         StopAllAudio();
     }
 }
