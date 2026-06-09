@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private PlayerConfig config;
+    [SerializeField] private DeliveryMissionManager missionManager;
 
     private float throttle;
     private float roll;
@@ -23,12 +24,23 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isFlying;
     private bool isGliding;
+    private float throttleMultiplier = 1f;
 
     private Rigidbody rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        missionManager.OnMissionSelected += HandleMissionSelected;
+    }
+
+    private void HandleMissionSelected(DeliveryMission mission)
+    {
+        throttleMultiplier = mission.throttleMultiplier;
     }
 
     private void HandleInputs()
@@ -39,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) throttle += config.throttleIncrement;
         else if (Input.GetKey(KeyCode.LeftControl)) throttle -= config.throttleIncrement;
 
-        throttle = Mathf.Clamp(throttle, 0f, 100f);
+        throttle = Mathf.Clamp(throttle, 0f, config.maxThrottle * throttleMultiplier);
     }
 
     private void Update()

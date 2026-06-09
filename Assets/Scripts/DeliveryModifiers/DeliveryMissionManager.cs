@@ -8,6 +8,7 @@ public class DeliveryMissionManager : MonoBehaviour
     public DeliveryMission ActiveMission { get; private set; }
     public bool HasActiveMission => ActiveMission != null;
     public event Action<List<DeliveryMission>> OnMissionSelectionRequested;
+    public event Action<DeliveryMission> OnMissionSelected;
 
     [SerializeField] private float selectionInvulnerabilityDuration = 2f;
 
@@ -32,6 +33,7 @@ public class DeliveryMissionManager : MonoBehaviour
     public void SelectMission(DeliveryMission mission)
     {
         ActiveMission = mission;
+        OnMissionSelected?.Invoke(mission);
         Debug.Log($"Selected Mission: {mission.missionName}");
         if (playerHealth != null)
             playerHealth.StartInvulnerability(selectionInvulnerabilityDuration);

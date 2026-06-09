@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerConfig : ScriptableObject
 {
     public float throttleIncrement = 0.7f;
+    public float maxThrottle = 100f;
     public float maxThrust = 200f;
     public float lift = 135f;
     public float turnSpeed = 90f;

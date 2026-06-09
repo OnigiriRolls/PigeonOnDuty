@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
   throttleIncrement: 0.7
+  maxThrottle: 100
   maxThrust: 200
   lift: 135
   turnSpeed: 90

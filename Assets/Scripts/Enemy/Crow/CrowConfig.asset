@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrowConfig
   m_EditorClassIdentifier: Assembly-CSharp::CrowConfig
   rotationSpeed: 7
-  chaseSpeed: 30
+  chaseSpeed: 70
   followTolerance: 20
   leftOffset: 5
   minWaitTime: 6

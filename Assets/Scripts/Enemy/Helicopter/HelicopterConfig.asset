@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376f7d10a4e878d4985edea705dc1830, type: 3}
   m_Name: HelicopterConfig
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterConfig
-  moveSpeed: 80
+  moveSpeed: 90
   forwardDistance: 80
   upDistance: 10
   sideOffset: 15
   homingStrength: 10
   homingDuration: 0.4
-  shootingDistance: 5
+  shootingDistance: 8
   predictionPrecision: 0.1
   fireRate: 0.1
   bulletsToShoot: 40

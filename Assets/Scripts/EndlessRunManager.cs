@@ -27,6 +27,7 @@ public class EndlessRunManager : MonoBehaviour
 
     private void Start()
     {
+        deliveryMissionManager.OnMissionSelected += HandleMissionSelected;
         playerController = playerTransform.GetComponent<PlayerController>();
         waypoints = FindObjectsByType<Waypoint>();
         gameManager = FindAnyObjectByType<GameManager>();
@@ -119,9 +120,17 @@ public class EndlessRunManager : MonoBehaviour
         float distance = Vector3.Distance(playerTransform.position, checkpoint.position);
         float expectedSpeedMs = expectedSpeedKmh / 3.6f;
         CheckpointTimer = distance / expectedSpeedMs + extraTimeBuffer;
-        if (deliveryMissionManager.HasActiveMission)
-        {
-            CheckpointTimer *= deliveryMissionManager.ActiveMission.timerMultiplier;
-        }
+    }
+
+    private void HandleMissionSelected(DeliveryMission mission)
+    {
+        Debug.Log("normal timer = " + CheckpointTimer);
+        CheckpointTimer *= mission.timerMultiplier;
+        Debug.Log("cu multiplier = " + CheckpointTimer);
+    }
+
+    private void OnDestroy()
+    {
+        deliveryMissionManager.OnMissionSelected -= HandleMissionSelected;
     }
 }

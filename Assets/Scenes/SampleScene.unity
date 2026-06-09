@@ -883,43 +883,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMissionDatabase
   missions:
   - missionName: Standard Delivery
-    description: Normal delivery
+    description: 'Normal delivery
+
+      +50 Score'
+    flavorTexts:
+    - The customer is already waiting...
+    - Just another day in the city:)
+    - A hungry pigeon can't pay rent:(
+    - Someone ordered absolutely nothing urgent.
+    - A package. A destination. No pressure.
+    - Business as usual. Probably.
+    - Another satisfied customer awaits:)
     modifier: 0
     coinMultiplier: 1
     timerMultiplier: 1
     throttleMultiplier: 1
     checkpointReward: 50
     oneHitFail: 0
+    showThrottleLimitUI: 0
   - missionName: Express Delivery
-    description: '+50% coins
+    description: '+100 Score
 
-      -20% checkpoint time'
+      -30% checkpoint time'
+    flavorTexts:
+    - Fast! Ana needs her mail.
+    - 'Last seen: "Where is my package?"'
+    - Express delivery means EXPRESS.
+    - The customer keeps refreshing the tracking page.
+    - Your reputation is on the line.
+    - Someone paid extra for speed.
+    - A very impatient customer is waiting.
     modifier: 1
-    coinMultiplier: 1.5
-    timerMultiplier: 0.8
-    throttleMultiplier: 1
+    coinMultiplier: 1
+    timerMultiplier: 0.75
+    throttleMultiplier: 1.3
     checkpointReward: 100
     oneHitFail: 0
+    showThrottleLimitUI: 0
   - missionName: Fragile Package
-    description: 'Package breaks on first hit.
+    description: 'Package breaks on first hit
 
-      Double rewards.'
+      +150 Score'
+    flavorTexts:
+    - Definitely not a vase.
+    - Please don't drop grandma's cookies.
+    - Handle with care. Seriously.
+    - One bump and it's over.
+    - The customer bought insurance. You didn't.
+    - Glass. Lots of glass.
+    - This package contains 12 eggs.
     modifier: 2
-    coinMultiplier: 2
+    coinMultiplier: 1
     timerMultiplier: 1
     throttleMultiplier: 1
     checkpointReward: 150
     oneHitFail: 1
+    showThrottleLimitUI: 0
   - missionName: Heavy Package
-    description: 'Reduced throttle.
+    description: 'Reduced speed
 
-      More rewards.'
+      +100 Score'
+    flavorTexts:
+    - Who ships bricks by pigeon?
+    - This package feels suspiciously dense.
+    - Leg day for pigeons.
+    - A sofa would weigh less.
+    - You may regret accepting this one.
+    - Nobody knows what's inside.
+    - Try not to stall mid-air.
     modifier: 3
     coinMultiplier: 1
-    timerMultiplier: 1
-    throttleMultiplier: 1
+    timerMultiplier: 1.2
+    throttleMultiplier: 0.75
     checkpointReward: 125
     oneHitFail: 0
+    showThrottleLimitUI: 1
 --- !u!1 &1278411231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1438,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1890472862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4848165591356579218, guid: 17fc699b33291994f8102147efa62455, type: 3}
+  m_PrefabInstance: {fileID: 1143496869105204261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1906727641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4297747183022644844, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
@@ -1509,6 +1552,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1694601789}
+    - target: {fileID: 1128688585579989739, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 326
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902717284260752567, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 320.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3969462934240311058, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1587,6 +1638,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3969462934240311058, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848165591356579218, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5289049617668897807, guid: 17fc699b33291994f8102147efa62455, type: 3}
@@ -1715,9 +1770,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 322704565}
     - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+      propertyPath: throttleLimit
+      value: 
+      objectReference: {fileID: 1890472862}
+    - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
       propertyPath: altitudeAnimator
       value: 
       objectReference: {fileID: 366241726}
+    - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+      propertyPath: deliveryMissionManager
+      value: 
+      objectReference: {fileID: 652098071}
     - target: {fileID: 8695288101894765034, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
       propertyPath: panel
       value: 
@@ -1817,6 +1880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148704063869327446, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
+      propertyPath: missionManager
+      value: 
+      objectReference: {fileID: 652098071}
     - target: {fileID: 1638596545641568588, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
       propertyPath: m_Name
       value: Player

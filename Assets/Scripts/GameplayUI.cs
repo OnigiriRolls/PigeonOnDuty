@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +9,10 @@ public class GameplayUI : StopAudio
 
     [SerializeField] private PlayerController player;
     [SerializeField] private EndlessRunManager runManager;
+    [SerializeField] private DeliveryMissionManager deliveryMissionManager;
     [SerializeField] private TextMeshProUGUI throttleText;
     [SerializeField] private Image throttleBar;
+    [SerializeField] private GameObject throttleLimit;
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private TextMeshProUGUI altitudeText;
     [SerializeField] private TextMeshProUGUI timerText;
@@ -30,6 +33,7 @@ public class GameplayUI : StopAudio
     protected override void Start()
     {
         base.Start();
+        deliveryMissionManager.OnMissionSelected += HandleMissionSelected;
         timerInitialColor = timerText.color;
     }
 
@@ -45,6 +49,11 @@ public class GameplayUI : StopAudio
     private void UpdateThrottle()
     {
         throttleBar.fillAmount = player.Throttle / 100f;
+    }
+
+    private void HandleMissionSelected(DeliveryMission mission)
+    {
+        throttleLimit.SetActive(mission.showThrottleLimitUI);
     }
 
     private void UpdateSpeed()
@@ -144,5 +153,11 @@ public class GameplayUI : StopAudio
     {
         AudioManager.Instance.StopUILoop();
         gameObject.SetActive(false);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        deliveryMissionManager.OnMissionSelected -= HandleMissionSelected;
     }
 }

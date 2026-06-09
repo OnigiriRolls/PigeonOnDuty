@@ -20,5 +20,5 @@ MonoBehaviour:
   orbitSpeed: 1
   minSafeDistance: 1.5
   moveSpeed: 50
-  minDriftDuration: 10
-  maxDriftDuration: 15
+  minDriftDuration: 5
+  maxDriftDuration: 10
