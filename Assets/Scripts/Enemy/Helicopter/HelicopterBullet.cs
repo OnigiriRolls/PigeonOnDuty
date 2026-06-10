@@ -27,7 +27,7 @@ public class HelicopterBullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(1);
+            other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Bullet);
             SpawnHitEffect();
             Destroy(gameObject);
             return;

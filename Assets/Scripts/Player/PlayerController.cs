@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerHealth))]
 public class PlayerController : MonoBehaviour
 {
     public float Throttle => throttle;
@@ -27,15 +28,21 @@ public class PlayerController : MonoBehaviour
     private float throttleMultiplier = 1f;
 
     private Rigidbody rb;
+    private PlayerHealth health;
+    private Animator animator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        health = GetComponent<PlayerHealth>();
     }
 
     private void Start()
     {
+        animator = visualModel.GetComponent<Animator>();
+        animator.SetBool("IsFlying", true);
         missionManager.OnMissionSelected += HandleMissionSelected;
+        health.OnDeath += HandleDeath;
     }
 
     private void HandleMissionSelected(DeliveryMission mission)
@@ -111,5 +118,20 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, landingAreaLayer);
         Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
+    }
+
+    private void HandleDeath()
+    {
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 180f);
+        animator.SetBool("IsFlying", false);
+        animator.SetBool("IsGliding", true);
+        throttleMultiplier = 0;
+        enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        missionManager.OnMissionSelected -= HandleMissionSelected;
+        health.OnDeath -= HandleDeath;
     }
 }

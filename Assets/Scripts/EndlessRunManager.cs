@@ -48,7 +48,7 @@ public class EndlessRunManager : MonoBehaviour
         if (CheckpointTimer <= 0f)
         {
             //Debug.Log("Game Over - Time's up!");
-            gameManager.GameOver();
+            gameManager.GameOver(DeathReason.TimeUp);
         }
     }
 
@@ -88,9 +88,9 @@ public class EndlessRunManager : MonoBehaviour
 
     private GameObject GetPostCheckpointPrefab(AltitudeLayer layer)
     {
-        if (currentWaypoint.AltitudeLayer == AltitudeLayer.High)
+        if (layer == AltitudeLayer.High)
             return postCheckpointHigh;
-        if (currentWaypoint.AltitudeLayer == AltitudeLayer.Mid)
+        if (layer == AltitudeLayer.Mid)
             return postCheckpointMid;
         return postCheckpointLow;
     }
@@ -124,9 +124,7 @@ public class EndlessRunManager : MonoBehaviour
 
     private void HandleMissionSelected(DeliveryMission mission)
     {
-        Debug.Log("normal timer = " + CheckpointTimer);
         CheckpointTimer *= mission.timerMultiplier;
-        Debug.Log("cu multiplier = " + CheckpointTimer);
     }
 
     private void OnDestroy()

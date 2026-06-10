@@ -11,6 +11,7 @@ public class DeliveryMissionManager : MonoBehaviour
     public event Action<DeliveryMission> OnMissionSelected;
 
     [SerializeField] private float selectionInvulnerabilityDuration = 2f;
+    [SerializeField] private MissionRewardUI missionRewardUI;
 
     private ScoreManager scoreManager;
     private PlayerHealth playerHealth;
@@ -34,11 +35,11 @@ public class DeliveryMissionManager : MonoBehaviour
     {
         ActiveMission = mission;
         OnMissionSelected?.Invoke(mission);
-        Debug.Log($"Selected Mission: {mission.missionName}");
         if (playerHealth != null)
             playerHealth.StartInvulnerability(selectionInvulnerabilityDuration);
         if (playerHealthUI != null)
             playerHealthUI.Refresh();
+        missionRewardUI.HideReward();
         Time.timeScale = 1f;
     }
 
@@ -60,8 +61,8 @@ public class DeliveryMissionManager : MonoBehaviour
     {
         if (ActiveMission == null)
             return;
-        Debug.Log($"+{ActiveMission.checkpointReward} mission reward");
         scoreManager.AddMissionReward(ActiveMission.checkpointReward);
+        missionRewardUI.ShowReward(ActiveMission.missionName, ActiveMission.checkpointReward);
         ActiveMission = null;
     }
 }

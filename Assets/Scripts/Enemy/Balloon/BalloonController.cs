@@ -87,7 +87,7 @@ public class BalloonController : StopAudio
         }
         if (other.CompareTag("Player") && directChase)
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(1);
+            other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Balloon);
             Explode();
         }
         else if (other.CompareTag("Building") || isOtherCloud)

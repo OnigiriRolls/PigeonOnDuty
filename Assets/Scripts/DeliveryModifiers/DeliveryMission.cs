@@ -14,7 +14,6 @@ public class DeliveryMission
     public float throttleMultiplier = 1f;
     public int checkpointReward;
     public bool oneHitFail;
-    public bool showThrottleLimitUI;
 
     public string GetRandomFlavorText()
     {

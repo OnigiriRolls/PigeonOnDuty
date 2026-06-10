@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAudioController))]
@@ -21,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float pulseStartTime = 3f;
     [SerializeField] private Renderer birdRenderer;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private GameObject deathReasonText;
+    [SerializeField] private GameObject GameOverUI;
 
     private static readonly WaitForSeconds WAIT_FOR_SECONDS_0_1 = new(0.1f);
 
@@ -33,6 +36,9 @@ public class PlayerHealth : MonoBehaviour
     private bool isInvulnerable;
     private Coroutine pulseCoroutine;
     private Coroutine invulnerabilityCoroutine;
+    private DeathReason lastDamageReason;
+    private bool dead;
+    private GameOverUI gameOverUI;
 
     private void Awake()
     {
@@ -48,9 +54,11 @@ public class PlayerHealth : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         shieldAnimator = shield.GetComponent<Animator>();
         deliveryMissionManager = FindAnyObjectByType<DeliveryMissionManager>();
+        gameOverUI = GameOverUI.GetComponent<GameOverUI>();
+        dead = false;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, DeathReason damageReason)
     {
         if (isInvulnerable)
             return;
@@ -61,10 +69,13 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
+        lastDamageReason = damageReason;
         audioController.PlayHitClip();
         DeliveryMission mission = deliveryMissionManager.ActiveMission;
         if (mission != null && mission.oneHitFail)
         {
+            CurrentHealth = 0;
+            OnHealthChanged?.Invoke(0);
             Die();
             return;
         }
@@ -84,9 +95,21 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        if (dead)
+            return;
+        dead = true;
         //Debug.Log("GAME OVER");
         OnDeath?.Invoke();
-        gameManager.GameOver();
+        deathReasonText.GetComponent<TextMeshProUGUI>().text = gameOverUI.GetDeathReasonText(lastDamageReason);
+        deathReasonText.SetActive(true);
+        StartCoroutine(DeathSequence());
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        enabled = false;
+        yield return new WaitForSeconds(3f);
+        gameManager.GameOver(lastDamageReason);
     }
 
     public void ActivateShield()

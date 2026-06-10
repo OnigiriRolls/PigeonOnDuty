@@ -16,6 +16,7 @@ public class GameplayUI : StopAudio
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private TextMeshProUGUI altitudeText;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject deathReasonText;
     [SerializeField] private Animator altitudeAnimator;
     [SerializeField] private Animator clockAnimator;
     [SerializeField] private AudioClip clockWarningClip;
@@ -26,6 +27,7 @@ public class GameplayUI : StopAudio
     [SerializeField] private AudioClip highMusic;
     [SerializeField] private float midAltitude = 51f;
     [SerializeField] private float highAltitude = 151f;
+    [SerializeField] private float maxThrottle = 130f;
 
     private AltitudeLayer currentLayer;
     private Color timerInitialColor;
@@ -33,7 +35,6 @@ public class GameplayUI : StopAudio
     protected override void Start()
     {
         base.Start();
-        deliveryMissionManager.OnMissionSelected += HandleMissionSelected;
         timerInitialColor = timerText.color;
     }
 
@@ -48,12 +49,7 @@ public class GameplayUI : StopAudio
 
     private void UpdateThrottle()
     {
-        throttleBar.fillAmount = player.Throttle / 100f;
-    }
-
-    private void HandleMissionSelected(DeliveryMission mission)
-    {
-        throttleLimit.SetActive(mission.showThrottleLimitUI);
+        throttleBar.fillAmount = player.Throttle / maxThrottle;
     }
 
     private void UpdateSpeed()
@@ -158,6 +154,5 @@ public class GameplayUI : StopAudio
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        deliveryMissionManager.OnMissionSelected -= HandleMissionSelected;
     }
 }

@@ -99,7 +99,7 @@ public class CrowController : StopAudio
         if (!CanHitPlayer) return;
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(1);
+            other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Crow);
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         }
     }

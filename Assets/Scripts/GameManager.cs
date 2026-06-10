@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public event Action OnResumed;
     public bool IsGameOver { get; private set; }
     public bool IsPaused { get; private set; }
+    public DeathReason LastDeathReason { get; private set; }
 
     [SerializeField] private GameObject gameOverPanel;
 
@@ -24,11 +25,11 @@ public class GameManager : MonoBehaviour
         scoreManager = FindAnyObjectByType<ScoreManager>();
     }
 
-    public void GameOver()
+    public void GameOver(DeathReason reason)
     {
         if (IsGameOver)
             return;
-
+        LastDeathReason = reason;
         scoreManager.enabled = false;
         scoreManager.FinishRun();
         scoreManager.PreviousCoins = SaveManager.Instance.TotalCoins;

@@ -31,9 +31,13 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void UpdateUI(int currentHealth)
     {
-        Debug.Log($"one hit fail = {deliveryMissionManager.ActiveMission?.oneHitFail}");
         if (deliveryMissionManager.ActiveMission?.oneHitFail == true)
         {
+            if (currentHealth == 0)
+            {
+                hearts[0].gameObject.SetActive(false);
+                return;
+            }
             hearts[0].sprite = fragileHeartSprite;
             hearts[0].transform.localScale = Vector3.one;
             hearts[0].gameObject.SetActive(true);

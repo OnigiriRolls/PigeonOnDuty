@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 443502973139152938}
   - component: {fileID: 814609929723420393}
   - component: {fileID: 8695288101894765034}
+  - component: {fileID: 5855582637689201315}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -50,8 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
   player: {fileID: 0}
   runManager: {fileID: 0}
+  deliveryMissionManager: {fileID: 0}
   throttleText: {fileID: 0}
   throttleBar: {fileID: 0}
+  throttleLimit: {fileID: 0}
   speedText: {fileID: 0}
   altitudeText: {fileID: 0}
   timerText: {fileID: 0}
@@ -120,3 +123,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  manager: {fileID: 0}
+--- !u!114 &5855582637689201315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670d8d93537b1554c98fbfcefb836d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MissionRewardUI
+  reward: {fileID: 0}
+  missionText: {fileID: 0}
+  scoreText: {fileID: 0}
+  rewardClip: {fileID: 8300000, guid: e8ebe5bd46b73d24680b128ea372f5b9, type: 3}
