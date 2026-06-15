@@ -12,7 +12,8 @@ public class DeliveryMission
     public float coinMultiplier = 1f;
     public float timerMultiplier = 1f;
     public float throttleMultiplier = 1f;
-    public int checkpointReward;
+    public int reputationReward;
+    public int coinReward;
     public bool oneHitFail;
 
     public string GetRandomFlavorText()

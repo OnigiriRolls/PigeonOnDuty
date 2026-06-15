@@ -81,10 +81,6 @@ public class BalloonController : StopAudio
     private void OnTriggerEnter(Collider other)
     {
         bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log($"La final: {directChase}");
-        }
         if (other.CompareTag("Player") && directChase)
         {
             other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Balloon);
@@ -109,7 +105,6 @@ public class BalloonController : StopAudio
 
     protected override void HandleGameOver()
     {
-        Debug.Log("Balloon Game Over");
         gameObject.SetActive(false);
     }
 }

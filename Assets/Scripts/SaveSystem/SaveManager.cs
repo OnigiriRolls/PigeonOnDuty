@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour
 
     public int TotalCoins => Data.totalCoins;
 
-    public int BestScore => Data.bestScore;
+    public int Reputation => Data.reputation;
 
     public int TotalRuns => Data.totalRuns;
 
@@ -65,18 +65,18 @@ public class SaveManager : MonoBehaviour
         return true;
     }
 
-    public void TrySetBestScore(int score)
+    public void AddReputation(int amount)
     {
-        if (score <= Data.bestScore)
+        if (amount <= 0)
             return;
 
-        Data.bestScore = score;
+        Data.reputation += amount;
     }
 
-    public void SaveRunResults(int score, int coins)
+    public void SaveRunResults(int reputation, int coins)
     {
         AddCoins(coins);
-        TrySetBestScore(score);
+        AddReputation(reputation);
         Save();
     }
 

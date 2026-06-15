@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private PlayerConfig config;
     [SerializeField] private DeliveryMissionManager missionManager;
+    [SerializeField] private float windInfluence = 1f;
 
     private float throttle;
     private float roll;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isFlying;
     private bool isGliding;
     private float throttleMultiplier = 1f;
+    private float currentFlySpeed = 1f;
 
     private Rigidbody rb;
     private PlayerHealth health;
@@ -65,8 +67,10 @@ public class PlayerController : MonoBehaviour
     {
         HandleInputs();
         CheckGrounded();
-        UpdateFlightState();
-        UpdateGlidingState();
+        UpdateFlyAnimationSpeed();
+        Vector3 wind =
+        WindManager.Instance.GetWindAtPosition(transform.position);
+        Debug.DrawRay(transform.position, wind, Color.cyan);
     }
 
     private void FixedUpdate()
@@ -92,26 +96,42 @@ public class PlayerController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         Vector3 desiredVelocity = transform.forward * rb.linearVelocity.magnitude;
         rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, desiredVelocity, Time.fixedDeltaTime * 3f);
+
+        ApplyWind();
     }
 
-    private void UpdateFlightState()
+    private void ApplyWind()
     {
-        if (!isFlying && throttle >= 2f)
-        {
-            isFlying = true;
-        }
-
-        if (isFlying && isGrounded && throttle < 2f)
-        {
-            isFlying = false;
-        }
+        Vector3 wind = WindManager.Instance.GetWindAtPosition(transform.position);
+        rb.linearVelocity += Time.fixedDeltaTime * windInfluence * wind;
     }
 
-    private void UpdateGlidingState()
+    private void UpdateFlyAnimationSpeed()
     {
-        bool hasMovementInput = Mathf.Abs(roll) > 0.1f || Mathf.Abs(pitch) > 0.1f;
-        bool changingThrottle = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl);
-        isGliding = isFlying && !hasMovementInput && !changingThrottle;
+        if (Throttle <= 0.05f)
+        {
+            animator.SetBool("IsFlying", false);
+            animator.SetBool("IsGliding", true);
+            return;
+        }
+        else if (animator.GetBool("IsGliding") == true)
+        {
+            animator.SetBool("IsGliding", false);
+            animator.SetBool("IsFlying", true);
+        }
+
+        float targetFlySpeed;
+        if (Throttle > 100f)
+            targetFlySpeed = 1f;
+        else if (Throttle > 75f)
+            targetFlySpeed = 0.8f;
+        else
+            targetFlySpeed = 0.6f;
+        if (Mathf.Approximately(currentFlySpeed, targetFlySpeed))
+            return;
+
+        currentFlySpeed = targetFlySpeed;
+        animator.SetFloat("FlySpeed", currentFlySpeed);
     }
 
     private void CheckGrounded()

@@ -193,6 +193,8 @@ GameObject:
   - component: {fileID: 935868155162538351}
   - component: {fileID: 7688977863616078265}
   - component: {fileID: 8755472482289326964}
+  - component: {fileID: 7011545761427048695}
+  - component: {fileID: 2501257689413173065}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -366,6 +368,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HelicopterAudioController
   flyingClip: {fileID: 8300000, guid: 4eff5b085ddc4f74182138bf438ebed3, type: 3}
   shootingClip: {fileID: 8300000, guid: a79ae2c73e06bda4f85395a367bda798, type: 3}
+--- !u!114 &7011545761427048695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657259812211793084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dfccfe3291ab1408cad7015167c1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindSource
+  config: {fileID: 11400000, guid: 7a2c5b396d3a9684288cdb372339ccb9, type: 2}
+--- !u!114 &2501257689413173065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657259812211793084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f4c94c43582094e91f82d38cf08442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindPulseVisual
+  windRingPrefab: {fileID: 7460344912352228447, guid: 51b2d19c6998c0941b9099ec669b6876, type: 3}
+  ringsPerPulse: 4
+  ringInterval: 0.15
 --- !u!1 &5165688314600254788
 GameObject:
   m_ObjectHideFlags: 0

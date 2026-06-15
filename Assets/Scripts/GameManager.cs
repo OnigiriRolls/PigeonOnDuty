@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
 
-    private ScoreManager scoreManager;
+    private RewardManager rewardManager;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        scoreManager = FindAnyObjectByType<ScoreManager>();
+        rewardManager = FindAnyObjectByType<RewardManager>();
     }
 
     public void GameOver(DeathReason reason)
@@ -30,10 +30,8 @@ public class GameManager : MonoBehaviour
         if (IsGameOver)
             return;
         LastDeathReason = reason;
-        scoreManager.enabled = false;
-        scoreManager.FinishRun();
-        scoreManager.PreviousCoins = SaveManager.Instance.TotalCoins;
-        SaveManager.Instance.SaveRunResults(scoreManager.FinalScore, scoreManager.CoinsEarned + scoreManager.CoinsCollected);
+        rewardManager.enabled = false;
+        rewardManager.PreviousCoins = SaveManager.Instance.TotalCoins;
         IsGameOver = true;
         OnGameOver?.Invoke();
         AudioManager.Instance.StopAllAudio();

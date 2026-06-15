@@ -16,7 +16,6 @@ public class GameplayUI : StopAudio
     [SerializeField] private TextMeshProUGUI speedText;
     [SerializeField] private TextMeshProUGUI altitudeText;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private GameObject deathReasonText;
     [SerializeField] private Animator altitudeAnimator;
     [SerializeField] private Animator clockAnimator;
     [SerializeField] private AudioClip clockWarningClip;

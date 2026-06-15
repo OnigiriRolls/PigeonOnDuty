@@ -13,13 +13,13 @@ public class DeliveryMissionManager : MonoBehaviour
     [SerializeField] private float selectionInvulnerabilityDuration = 2f;
     [SerializeField] private MissionRewardUI missionRewardUI;
 
-    private ScoreManager scoreManager;
+    private RewardManager rewardManager;
     private PlayerHealth playerHealth;
     private PlayerHealthUI playerHealthUI;
 
     private void Start()
     {
-        scoreManager = FindAnyObjectByType<ScoreManager>();
+        rewardManager = FindAnyObjectByType<RewardManager>();
         playerHealth = FindAnyObjectByType<PlayerHealth>();
         playerHealthUI = FindAnyObjectByType<PlayerHealthUI>();
     }
@@ -61,8 +61,10 @@ public class DeliveryMissionManager : MonoBehaviour
     {
         if (ActiveMission == null)
             return;
-        scoreManager.AddMissionReward(ActiveMission.checkpointReward);
-        missionRewardUI.ShowReward(ActiveMission.missionName, ActiveMission.checkpointReward);
+        rewardManager.AddReputation(ActiveMission.reputationReward);
+        rewardManager.AddCoins(ActiveMission.coinReward);
+        SaveManager.Instance.SaveRunResults(rewardManager.Reputation, rewardManager.TotalCoins);
+        missionRewardUI.ShowReward(ActiveMission.missionName, ActiveMission.reputationReward, ActiveMission.coinReward);
         ActiveMission = null;
     }
 }

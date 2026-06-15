@@ -6,7 +6,7 @@ public class CoinCollectible : CollectibleBase
 
     protected override void Collect(GameObject player)
     {
-        ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
-        scoreManager.AddRunCoins(coinAmount);
+        RewardManager scoreManager = FindAnyObjectByType<RewardManager>();
+        scoreManager.AddCoins(coinAmount);
     }
 }

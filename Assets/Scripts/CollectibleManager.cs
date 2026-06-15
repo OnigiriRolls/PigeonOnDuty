@@ -11,6 +11,7 @@ public class CollectibleManager : MonoBehaviour
     [SerializeField] private int maxSpecialCollectibles = 2;
     [SerializeField] private int minCoinCount = 2;
     [SerializeField] private int maxCoinCount = 6;
+    [SerializeField] private float coinsSpacing = 5f;
     [SerializeField] private Transform collectibleParent;
     [SerializeField] private LayerMask cloudLayer;
     [SerializeField] private LayerMask buildingLayer;
@@ -29,10 +30,9 @@ public class CollectibleManager : MonoBehaviour
     {
         if (coinCollectible == null)
             return;
-        float spacing = 10f;
         for (int i = 0; i < count; i++)
         {
-            Vector3 spawnPos = startPos + i * spacing * direction;
+            Vector3 spawnPos = startPos + i * coinsSpacing * direction;
             Vector3 offset = Random.insideUnitSphere * 1.5f;
             offset.y *= 0.3f;
             spawnPos += offset;

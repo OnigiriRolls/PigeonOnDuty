@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class GameData
 {
     public int totalCoins;
-    public int bestScore;
+    public int reputation;
     public string selectedSkin;
     public List<string> unlockedSkins = new();
     public int totalRuns;

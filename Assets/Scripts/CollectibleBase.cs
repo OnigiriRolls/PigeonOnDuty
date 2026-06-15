@@ -7,7 +7,8 @@ public abstract class CollectibleBase : MonoBehaviour
     [SerializeField] private float rotationSpeed = 90f;
     [SerializeField] private float floatAmplitude = 0.25f;
     [SerializeField] private float floatFrequency = 2f;
-    [SerializeField] private float lifetime = 20f;
+    [SerializeField] private float lifetime = 30f;
+    [SerializeField] private float pulseTime = 3f;
 
     [Header("Effects")]
     [SerializeField] private GameObject collectEffect;
@@ -66,9 +67,9 @@ public abstract class CollectibleBase : MonoBehaviour
 
     private IEnumerator DespawnRoutine()
     {
-        yield return new WaitForSeconds(lifetime - 3f);
+        yield return new WaitForSeconds(lifetime - pulseTime);
         animator.SetBool("Pulse", true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(pulseTime);
         Destroy(gameObject);
     }
 }

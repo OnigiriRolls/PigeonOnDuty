@@ -5,18 +5,18 @@ public class MissionRewardUI : MonoBehaviour
 {
     [SerializeField] private GameObject reward;
     [SerializeField] private TMP_Text missionText;
-    [SerializeField] private TMP_Text scoreText;
-    //[SerializeField] private Animator animator;
+    [SerializeField] private TMP_Text reputationText;
+    [SerializeField] private TMP_Text coinsText;
     [SerializeField] private AudioClip rewardClip;
 
-    public void ShowReward(string missionName, int score)
+    public void ShowReward(string missionName, int reputation, int coins)
     {
         missionText.text = $"{missionName.ToUpperInvariant()} delivered";
-        scoreText.text = $"+{score} score";
+        reputationText.text = $"+{reputation}";
+        coinsText.text = $"+{coins}";
         reward.SetActive(true);
         if (rewardClip != null)
             AudioManager.Instance.PlaySFX(rewardClip);
-        //animator.SetTrigger("Show");
     }
 
     public void HideReward()

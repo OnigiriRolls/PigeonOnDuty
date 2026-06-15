@@ -8,11 +8,9 @@ public class Checkpoint : MonoBehaviour
 
     private EndlessRunManager endlessRunManager;
     private DeliveryMissionManager deliveryMissionManager;
-    private ScoreManager scoreManager;
 
     private void Start()
     {
-        scoreManager = FindAnyObjectByType<ScoreManager>();
         deliveryMissionManager = FindAnyObjectByType<DeliveryMissionManager>();
     }
 
@@ -31,7 +29,6 @@ public class Checkpoint : MonoBehaviour
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
-        scoreManager.AddCheckpointScore();
         deliveryMissionManager.CompleteMission();
         endlessRunManager.SpawnNextCheckpointAndCollectibles();
         deliveryMissionManager.RequestMissionSelection();
