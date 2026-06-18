@@ -17,6 +17,7 @@ public class AudioManager : StopAudio
     [SerializeField] private AudioSource ambianceSource1;
     [SerializeField] private AudioSource ambianceSource2;
     [SerializeField] private AudioSource uiLoopSource;
+    [SerializeField] private AudioSource environmentalSource;
 
     private AudioSource activeAmbianceSource;
     private AudioSource inactiveAmbianceSource;
@@ -70,6 +71,25 @@ public class AudioManager : StopAudio
         uiLoopSource.Stop();
     }
 
+    public void PlayEnvironmentalLoop(AudioClip clip)
+    {
+        if (clip == null)
+            return;
+        if (environmentalSource.clip == clip && environmentalSource.isPlaying)
+            return;
+
+        environmentalSource.Stop();
+        environmentalSource.clip = clip;
+        environmentalSource.loop = true;
+        environmentalSource.volume = sfxVolume * masterVolume;
+        environmentalSource.Play();
+    }
+
+    public void StopEnvironmentalLoop()
+    {
+        environmentalSource.Stop();
+    }
+
     public void CrossfadeMusic(AudioClip newClip, float fadeDuration = 2f)
     {
         if (CurrentMusicClip == newClip)
@@ -117,6 +137,7 @@ public class AudioManager : StopAudio
         ambianceSource1.Stop();
         ambianceSource2.Stop();
         uiLoopSource.Stop();
+        environmentalSource.Stop();
     }
 
     protected override void HandleGameOver()

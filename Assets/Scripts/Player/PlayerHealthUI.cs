@@ -7,7 +7,7 @@ public class PlayerHealthUI : MonoBehaviour
     [SerializeField] private Image[] hearts;
     [SerializeField] private Sprite normalHeartSprite;
     [SerializeField] private Sprite fragileHeartSprite;
-    [SerializeField] private DeliveryMissionManager deliveryMissionManager;
+    [SerializeField] private MissionManager missionManager;
 
     private void OnEnable()
     {
@@ -31,7 +31,7 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void UpdateUI(int currentHealth)
     {
-        if (deliveryMissionManager.ActiveMission?.oneHitFail == true)
+        if (missionManager.ActiveMission is DeliveryMission deliveryMission && deliveryMission.oneHitFail)
         {
             if (currentHealth == 0)
             {

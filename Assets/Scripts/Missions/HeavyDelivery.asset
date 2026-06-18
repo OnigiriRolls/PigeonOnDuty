@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ed4df39c931bb45a22cbe2f8333fbd, type: 3}
+  m_Name: HeavyDelivery
+  m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
+  missionName: Heavy Delivery
+  description: A bulky parcel weighs down your flight
+  flavorTexts:
+  - Who packed bricks in here?
+  - Your wings already regret this.
+  - Heavy package, heavy reward.
+  - Flying was easier yesterday.
+  - This thing weighs more than it looks.
+  - Strong pigeons build strong reputations.
+  - A true test of wing strength.
+  - Gravity is winning today.
+  reputationReward: 15
+  coinReward: 15
+  unlockId: standard_delivery
+  modifier: 3
+  coinMultiplier: 1
+  timerMultiplier: 1.25
+  throttleMultiplier: 0.75
+  oneHitFail: 0

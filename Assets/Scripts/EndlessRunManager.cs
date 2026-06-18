@@ -3,14 +3,14 @@ using UnityEngine;
 public class EndlessRunManager : MonoBehaviour
 {
     public float CheckpointTimer { get; private set; }
-    public GameObject CurrentCheckpoint => currentCheckpoint;
     public bool TimerStarted => timerStarted;
+    public Transform CurrentObjective => currentObjective;
 
-    [SerializeField] private DeliveryMissionManager deliveryMissionManager;
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private GameObject postCheckpointHigh;
     [SerializeField] private GameObject postCheckpointMid;
     [SerializeField] private GameObject postCheckpointLow;
+    [SerializeField] private GameObject gpsCheckpoint;
     [SerializeField] private Transform checkpointParent;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float expectedSpeedKmh = 50f;
@@ -19,22 +19,19 @@ public class EndlessRunManager : MonoBehaviour
     [SerializeField] private AudioClip lowMusic;
 
     private Waypoint[] waypoints;
-    private GameObject currentCheckpoint;
     private Waypoint currentWaypoint;
     private bool timerStarted;
     private PlayerController playerController;
     private GameManager gameManager;
+    private Transform currentObjective;
 
     private void Start()
     {
-        deliveryMissionManager.OnMissionSelected += HandleMissionSelected;
         playerController = playerTransform.GetComponent<PlayerController>();
         waypoints = FindObjectsByType<Waypoint>();
         gameManager = FindAnyObjectByType<GameManager>();
         AudioManager.Instance.PlayMusic(lowMusic);
         SaveManager.Instance.AddRun();
-        SpawnNextCheckpointAndCollectibles();
-        deliveryMissionManager.RequestMissionSelection();
     }
 
     private void Update()
@@ -63,7 +60,13 @@ public class EndlessRunManager : MonoBehaviour
     public void SpawnNextCheckpointAndCollectibles()
     {
         SpawnNextCheckpoint();
-        collectibleManager.SpawnCollectibles(currentCheckpoint.transform, playerTransform.position);
+        collectibleManager.SpawnCollectibles(currentObjective, playerTransform.position);
+    }
+
+    public void SpawnNextObjectiveAndCollectibles(Transform objectiveTransform)
+    {
+        SpawnNextObjective(objectiveTransform);
+        collectibleManager.SpawnCollectibles(currentObjective, playerTransform.position);
     }
 
     private void SpawnNextCheckpoint()
@@ -74,16 +77,33 @@ public class EndlessRunManager : MonoBehaviour
             return;
         }
 
-        if (currentCheckpoint != null)
+        if (currentObjective != null)
         {
-            Destroy(currentCheckpoint);
+            Destroy(currentObjective.gameObject);
         }
 
         currentWaypoint = GetRandomWaypoint();
         GameObject checkpointPrefab = GetPostCheckpointPrefab(currentWaypoint.AltitudeLayer);
-        currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetCheckpointRotation(currentWaypoint.transform.position), checkpointParent);
-        currentCheckpoint.GetComponent<Checkpoint>().Initialize(this);
-        SetupCheckpointTimer(currentCheckpoint.transform);
+        GameObject currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetObjectiveRotation(currentWaypoint.transform.position), checkpointParent);
+        currentObjective = currentCheckpoint.transform;
+        SetupCheckpointTimer(currentObjective);
+    }
+
+    private void SpawnNextObjective(Transform objectiveTransform)
+    {
+        if (objectiveTransform == null)
+        {
+            Debug.LogWarning("No objective found!");
+            return;
+        }
+        if (currentObjective != null)
+        {
+            Destroy(currentObjective.gameObject);
+        }
+
+        GameObject currentCheckpoint = Instantiate(gpsCheckpoint, objectiveTransform.position, objectiveTransform.rotation, checkpointParent);
+        currentObjective = currentCheckpoint.transform;
+        SetupCheckpointTimer(currentObjective);
     }
 
     private GameObject GetPostCheckpointPrefab(AltitudeLayer layer)
@@ -106,7 +126,7 @@ public class EndlessRunManager : MonoBehaviour
         return randomWaypoint;
     }
 
-    private Quaternion GetCheckpointRotation(Vector3 checkpointPosition)
+    private Quaternion GetObjectiveRotation(Vector3 checkpointPosition)
     {
         Vector3 direction = playerTransform.position - checkpointPosition;
         direction.y = 0f;
@@ -122,13 +142,22 @@ public class EndlessRunManager : MonoBehaviour
         CheckpointTimer = distance / expectedSpeedMs + extraTimeBuffer;
     }
 
-    private void HandleMissionSelected(DeliveryMission mission)
+    private void HandleMissionSelected(MissionData mission)
     {
-        CheckpointTimer *= mission.timerMultiplier;
+        if (mission is DeliveryMission deliveryMission)
+        {
+            CheckpointTimer *= deliveryMission.timerMultiplier;
+        }
     }
 
-    private void OnDestroy()
+    public void SetCurrentObjectiveAndTimer(Transform target)
     {
-        deliveryMissionManager.OnMissionSelected -= HandleMissionSelected;
+        currentObjective = target;
+        SetupCheckpointTimer(target);
+    }
+
+    public void CleanCurrentObjective()
+    {
+        currentObjective = null;
     }
 }

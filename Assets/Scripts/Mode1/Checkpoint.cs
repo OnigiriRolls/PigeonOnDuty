@@ -2,21 +2,14 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-
     [SerializeField] private GameObject destroyEffectPrefab;
     [SerializeField] private AudioClip checkpointSound;
 
-    private EndlessRunManager endlessRunManager;
-    private DeliveryMissionManager deliveryMissionManager;
+    private MissionManager missionManager;
 
     private void Start()
     {
-        deliveryMissionManager = FindAnyObjectByType<DeliveryMissionManager>();
-    }
-
-    public void Initialize(EndlessRunManager manager)
-    {
-        endlessRunManager = manager;
+        missionManager = FindAnyObjectByType<MissionManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,9 +22,7 @@ public class Checkpoint : MonoBehaviour
         {
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
-        deliveryMissionManager.CompleteMission();
-        endlessRunManager.SpawnNextCheckpointAndCollectibles();
-        deliveryMissionManager.RequestMissionSelection();
+        missionManager.CompleteActiveMission();
         Destroy(gameObject);
     }
 }

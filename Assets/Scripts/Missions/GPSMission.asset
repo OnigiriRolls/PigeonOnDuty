@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6544f7c4dadb54899308f12a7962ba, type: 3}
+  m_Name: GPSMission
+  m_EditorClassIdentifier: Assembly-CSharp::GPSMission
+  missionName: Guide the Traveler
+  description: A lost traveler relies on your guidance
+  flavorTexts:
+  - The human is lost. Again.
+  - 'Lead the way, feathered navigator. '
+  - Try not to lose your follower.
+  - You fly. They walk. Somehow this works.
+  - A living GPS with feathers.
+  - The traveler trusts you completely.
+  - No pressure. You're the map.
+  - Please wait while your human catches up.
+  - Recalculating route...
+  - The destination is somewhere that way.
+  reputationReward: 30
+  coinReward: 20
+  unlockId: guide_traveler
+  maxDistance: 300
+  lostTime: 300

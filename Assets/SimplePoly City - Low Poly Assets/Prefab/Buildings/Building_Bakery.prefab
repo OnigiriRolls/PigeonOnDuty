@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: -8035603093558333666}
+  - component: {fileID: -10504395688839782}
   m_Layer: 6
   m_Name: Building_Bakery
   m_TagString: Building
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.589754, y: 8.480352, z: 11.275148}
   m_Center: {x: 0.00055766106, y: 4.240176, z: 0.27842164}
+--- !u!114 &-10504395688839782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination

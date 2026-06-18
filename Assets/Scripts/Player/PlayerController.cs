@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private PlayerConfig config;
-    [SerializeField] private DeliveryMissionManager missionManager;
+    [SerializeField] private MissionManager missionManager;
     [SerializeField] private float windInfluence = 1f;
 
     private float throttle;
@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private bool isGliding;
     private float throttleMultiplier = 1f;
     private float currentFlySpeed = 1f;
+    private bool isWindCarried;
+    private Vector3 windCarryDirection;
+    private float windCarryTimer;
 
     private Rigidbody rb;
     private PlayerHealth health;
@@ -47,13 +50,17 @@ public class PlayerController : MonoBehaviour
         health.OnDeath += HandleDeath;
     }
 
-    private void HandleMissionSelected(DeliveryMission mission)
+    private void HandleMissionSelected(MissionData mission)
     {
-        throttleMultiplier = mission.throttleMultiplier;
+        if (mission is DeliveryMission deliveryMission)
+            throttleMultiplier = deliveryMission.throttleMultiplier;
     }
 
     private void HandleInputs()
     {
+        if (isWindCarried)
+            return;
+
         roll = Input.GetAxis("Roll");
         pitch = Input.GetAxis("Pitch");
 
@@ -75,6 +82,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isWindCarried)
+        {
+            HandleWindCarry();
+            return;
+        }
+
         rb.AddForce(config.maxThrust * throttle * transform.forward);
         rb.AddForce(config.lift * rb.linearVelocity.magnitude * transform.up);
 
@@ -100,10 +113,26 @@ public class PlayerController : MonoBehaviour
         ApplyWind();
     }
 
+    private void HandleWindCarry()
+    {
+        windCarryTimer -= Time.fixedDeltaTime;
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, windCarryDirection * 35f, Time.fixedDeltaTime * 4f);
+        if (windCarryTimer <= 0f)
+            isWindCarried = false;
+    }
+
     private void ApplyWind()
     {
         Vector3 wind = WindManager.Instance.GetWindAtPosition(transform.position);
         rb.linearVelocity += Time.fixedDeltaTime * windInfluence * wind;
+    }
+
+    public void StartWindCarry(Vector3 direction, float duration)
+    {
+        throttle = 0f;
+        isWindCarried = true;
+        windCarryDirection = direction.normalized;
+        windCarryTimer = duration;
     }
 
     private void UpdateFlyAnimationSpeed()

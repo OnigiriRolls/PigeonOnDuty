@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2300000}
   - component: {fileID: 9500000}
   - component: {fileID: -1242252809546624229}
+  - component: {fileID: -6745301597017968766}
   m_Layer: 6
   m_Name: Building_Bar
   m_TagString: Building
@@ -135,3 +136,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.205495, z: 0.28388584}
+--- !u!114 &-6745301597017968766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination

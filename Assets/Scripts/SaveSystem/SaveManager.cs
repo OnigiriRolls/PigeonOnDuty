@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 
@@ -5,14 +6,11 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
 
+    public event Action<int> OnReputationChanged;
     public GameData Data { get; private set; }
-
     public int TotalCoins => Data.totalCoins;
-
     public int Reputation => Data.reputation;
-
     public int TotalRuns => Data.totalRuns;
-
     public string SelectedSkin => Data.selectedSkin;
 
     private static string SAVE_PATH => Path.Combine(Application.persistentDataPath, "gamedata.json");
@@ -71,6 +69,7 @@ public class SaveManager : MonoBehaviour
             return;
 
         Data.reputation += amount;
+        OnReputationChanged?.Invoke(Data.reputation);
     }
 
     public void SaveRunResults(int reputation, int coins)

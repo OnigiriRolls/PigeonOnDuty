@@ -61,11 +61,6 @@ public class WindSource : MonoBehaviour
         }
     }
 
-    public void SetDirection(Vector3 newDirection)
-    {
-        config.direction = newDirection.normalized;
-    }
-
     private void OnDisable()
     {
         WindManager.Unregister(this);

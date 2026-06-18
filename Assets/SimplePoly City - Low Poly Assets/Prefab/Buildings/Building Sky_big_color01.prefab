@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: -6750641647085406080}
+  - component: {fileID: -361649281535808714}
   m_Layer: 6
   m_Name: Building Sky_big_color01
   m_TagString: Building
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &-361649281535808714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination

@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
     private Coroutine shieldCoroutine;
     private PlayerAudioController audioController;
     private GameManager gameManager;
-    private DeliveryMissionManager deliveryMissionManager;
+    private MissionManager missionManager;
     private Animator shieldAnimator;
     private Material birdMaterial;
     private bool isInvulnerable;
@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         audioController = GetComponent<PlayerAudioController>();
         gameManager = FindAnyObjectByType<GameManager>();
         shieldAnimator = shield.GetComponent<Animator>();
-        deliveryMissionManager = FindAnyObjectByType<DeliveryMissionManager>();
+        missionManager = FindAnyObjectByType<MissionManager>();
         gameOverUI = GameOverUI.GetComponent<GameOverUI>();
         dead = false;
     }
@@ -71,8 +71,8 @@ public class PlayerHealth : MonoBehaviour
 
         lastDamageReason = damageReason;
         audioController.PlayHitClip();
-        DeliveryMission mission = deliveryMissionManager.ActiveMission;
-        if (mission != null && mission.oneHitFail)
+        MissionData mission = missionManager.ActiveMission;
+        if (mission is DeliveryMission deliveryMission && deliveryMission.oneHitFail)
         {
             CurrentHealth = 0;
             OnHealthChanged?.Invoke(0);

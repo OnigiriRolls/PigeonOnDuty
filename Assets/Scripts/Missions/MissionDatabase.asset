@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c113c97380884d499e373b05e1ea07b, type: 3}
+  m_Name: MissionDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::MissionDatabase
+  missions:
+  - {fileID: 11400000, guid: 6fd0b3a3781bb62459d4a0144483c431, type: 2}
+  - {fileID: 11400000, guid: eda75a1adbb35e24b80c5484be63bf5c, type: 2}
+  - {fileID: 11400000, guid: 858e8e17c656e0647916278f1b5c425c, type: 2}
+  - {fileID: 11400000, guid: ed666d661877a3146a05af89a2085f88, type: 2}
+  - {fileID: 11400000, guid: 94cb6a83f9ad4bd4fa5fd626cd67a0c5, type: 2}

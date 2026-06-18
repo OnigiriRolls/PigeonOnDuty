@@ -14,10 +14,10 @@ public class CheckpointLine : MonoBehaviour
 
     private void Update()
     {
-        if (endlessRunManager.CurrentCheckpoint == null)
+        if (endlessRunManager.CurrentObjective == null)
             return;
 
         lineRenderer.SetPosition(0, player.position);
-        lineRenderer.SetPosition(1, endlessRunManager.CurrentCheckpoint.transform.position);
+        lineRenderer.SetPosition(1, endlessRunManager.CurrentObjective.position);
     }
 }

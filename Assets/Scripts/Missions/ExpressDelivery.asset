@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ed4df39c931bb45a22cbe2f8333fbd, type: 3}
+  m_Name: ExpressDelivery
+  m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
+  missionName: Express Delivery
+  description: An urgent message cannot wait
+  flavorTexts:
+  - This one can't wait!
+  - Move those wings, messenger!
+  - Every second counts.
+  - The customer keeps checking their watch.
+  - Speed first, questions later.
+  - A very impatient human awaits.
+  - Fast delivery earns fast reputation.
+  - Deadline approaching rapidly.
+  reputationReward: 15
+  coinReward: 10
+  unlockId: express_delivery
+  modifier: 1
+  coinMultiplier: 1
+  timerMultiplier: 0.7
+  throttleMultiplier: 1.3
+  oneHitFail: 0

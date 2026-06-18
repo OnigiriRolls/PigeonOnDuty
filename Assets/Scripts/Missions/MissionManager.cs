@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class MissionManager : MonoBehaviour
+{
+    public MissionData ActiveMission { get; private set; }
+    public bool HasActiveMission => ActiveMission != null;
+    public EndlessRunManager EndlessRunManager => endlessRunManager;
+    public GPSMissionController GPSMissionController => gpsMissionController;
+    public event Action<List<MissionData>> OnMissionSelectionRequested;
+    public event Action<MissionData> OnMissionSelected;
+
+    [SerializeField] private float selectionInvulnerabilityDuration = 2f;
+    [SerializeField] private MissionRewardUI missionRewardUI;
+    [SerializeField] private UnlockMessageUI unlockMessageUI;
+    [SerializeField] private MissionDatabase missionDatabase;
+    [SerializeField] private EndlessRunManager endlessRunManager;
+    [SerializeField] private GPSMissionController gpsMissionController;
+
+    private RewardManager rewardManager;
+    private PlayerHealth playerHealth;
+    private PlayerHealthUI playerHealthUI;
+    private UnlockManager unlockManager;
+
+    private void Start()
+    {
+        rewardManager = FindAnyObjectByType<RewardManager>();
+        playerHealth = FindAnyObjectByType<PlayerHealth>();
+        playerHealthUI = FindAnyObjectByType<PlayerHealthUI>();
+        unlockManager = FindAnyObjectByType<UnlockManager>();
+        RequestMissionSelection();
+    }
+
+    public void RequestMissionSelection()
+    {
+        List<MissionData> missions = GenerateMissionChoices();
+        Time.timeScale = 0f;
+        OnMissionSelectionRequested?.Invoke(missions);
+    }
+
+    public void SelectMission(MissionData mission)
+    {
+        ActiveMission = mission;
+        mission.StartMission(this);
+        OnMissionSelected?.Invoke(mission);
+        if (playerHealth != null)
+            playerHealth.StartInvulnerability(selectionInvulnerabilityDuration);
+        if (playerHealthUI != null)
+            playerHealthUI.Refresh();
+        missionRewardUI.HideReward();
+        unlockMessageUI.Hide();
+        Time.timeScale = 1f;
+    }
+
+    private List<MissionData> GenerateMissionChoices()
+    {
+        List<MissionData> result = new();
+        List<MissionData> available = new(missionDatabase.Missions);
+        available = available.Where(m => unlockManager.IsUnlocked(m.unlockId)).ToList();
+
+#if UNITY_EDITOR
+        available = available
+            .Where(m => m is GPSMission)
+            .ToList();
+#endif
+        int count = Mathf.Min(3, available.Count);
+        for (int i = 0; i < count; i++)
+        {
+            int index = Random.Range(0, available.Count);
+            result.Add(available[index]);
+            available.RemoveAt(index);
+        }
+        return result;
+    }
+
+    public void CompleteActiveMission()
+    {
+        if (ActiveMission == null)
+            return;
+        ActiveMission.CompleteMission(this);
+        rewardManager.AddReputation(ActiveMission.reputationReward);
+        rewardManager.AddCoins(ActiveMission.coinReward);
+        SaveManager.Instance.SaveRunResults(rewardManager.Reputation, rewardManager.TotalCoins);
+        missionRewardUI.ShowReward(ActiveMission.reputationReward, ActiveMission.coinReward);
+        ActiveMission = null;
+        RequestMissionSelection();
+    }
+}
