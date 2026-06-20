@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(NPCDialogueUI))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class HumanFollower : MonoBehaviour
 {
     public float DistractionPercent => distractionMeter / maxDistraction;
@@ -33,21 +35,23 @@ public class HumanFollower : MonoBehaviour
     [SerializeField] private TMP_Text hintText;
 
     private Transform target;
-    private Rigidbody rb;
+    //private Rigidbody rb;
     private CapsuleCollider capsule;
     private bool isMoving = true;
     private float distractionMeter;
     private NPCDialogueUI dialogueUI;
     private SpriteRenderer recallCircleRenderer;
     private IGPSHumanState currentState;
+    private NavMeshAgent agent;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        //  rb = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
         dialogueUI = GetComponent<NPCDialogueUI>();
         recallCircleRenderer = recallCircle.GetComponent<SpriteRenderer>();
         distractionMeter = maxDistraction;
+        agent = GetComponent<NavMeshAgent>();
         ChangeState(new FollowingState(this));
     }
 
@@ -74,51 +78,51 @@ public class HumanFollower : MonoBehaviour
         currentState.Enter();
     }
 
-    public bool FollowTarget()
-    {
-        if (target == null)
-        {
-            CurrentSpeed = 0f;
-            return false;
-        }
-        Vector3 targetPosition = target.position;
-        targetPosition.y = transform.position.y;
-        Vector3 direction = targetPosition - transform.position;
-        float distance = direction.magnitude;
+    //public bool FollowTarget()
+    //{
+    //    if (target == null)
+    //    {
+    //        CurrentSpeed = 0f;
+    //        return false;
+    //    }
+    //    Vector3 targetPosition = target.position;
+    //    targetPosition.y = transform.position.y;
+    //    Vector3 direction = targetPosition - transform.position;
+    //    float distance = direction.magnitude;
 
-        if (isMoving)
-        {
-            if (distance <= stopDistance)
-                isMoving = false;
-        }
-        else
-        {
-            if (distance >= resumeDistance)
-                isMoving = true;
-        }
+    //    if (isMoving)
+    //    {
+    //        if (distance <= stopDistance)
+    //            isMoving = false;
+    //    }
+    //    else
+    //    {
+    //        if (distance >= resumeDistance)
+    //            isMoving = true;
+    //    }
 
-        if (!isMoving)
-        {
-            CurrentSpeed = 0f;
-            return true;
-        }
+    //    if (!isMoving)
+    //    {
+    //        CurrentSpeed = 0f;
+    //        return true;
+    //    }
 
-        Vector3 moveDirection = direction.normalized;
-        Vector3 nextPosition = rb.position + moveSpeed * Time.fixedDeltaTime * moveDirection;
+    //    Vector3 moveDirection = direction.normalized;
+    //    Vector3 nextPosition = rb.position + moveSpeed * Time.fixedDeltaTime * moveDirection;
 
-        if (IsBlocked(nextPosition))
-        {
-            CurrentSpeed = 0f;
-            return false;
-        }
+    //    if (IsBlocked(nextPosition))
+    //    {
+    //        CurrentSpeed = 0f;
+    //        return false;
+    //    }
 
-        rb.MovePosition(nextPosition);
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
-        CurrentSpeed = moveSpeed;
+    //    rb.MovePosition(nextPosition);
+    //    Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+    //    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+    //    CurrentSpeed = moveSpeed;
 
-        return false;
-    }
+    //    return false;
+    //}
 
     private void UpdateDistraction()
     {
@@ -204,5 +208,39 @@ public class HumanFollower : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, recallDistance);
+    }
+
+    public void MoveTo(Vector3 destination)
+    {
+        agent.isStopped = false;
+        agent.SetDestination(destination);
+    }
+
+    public void StopAgent()
+    {
+        agent.isStopped = true;
+        CurrentSpeed = 0f;
+    }
+
+    public bool ReachedDestination()
+    {
+        if (agent.pathPending)
+            return false;
+
+        return agent.remainingDistance <= agent.stoppingDistance;
+    }
+
+    public void FollowTarget()
+    {
+        if (target == null)
+        {
+            StopAgent();
+            return;
+        }
+        agent.isStopped = false;
+        Vector3 targetPosition = target.position;
+        targetPosition.y = transform.position.y;
+        agent.SetDestination(targetPosition);
+        CurrentSpeed = agent.velocity.magnitude;
     }
 }

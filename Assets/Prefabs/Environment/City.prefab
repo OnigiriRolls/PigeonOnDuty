@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6266696355458438847}
   - component: {fileID: 4132431650164992825}
   - component: {fileID: 2201253175573651801}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3791322635786200406}
   - component: {fileID: 2008721605685603038}
   - component: {fileID: 42240238579106196}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 94335218193210549}
   - component: {fileID: 1662674813715100536}
   - component: {fileID: 7558861222643106598}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,6 +945,7 @@ GameObject:
   - component: {fileID: 1935076295953784445}
   - component: {fileID: 2990557612499517438}
   - component: {fileID: 100359209435566860}
+  - component: {fileID: 8734358050577210221}
   m_Layer: 6
   m_Name: Building_Books Shop
   m_TagString: Building
@@ -1045,6 +1046,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.039232, y: 8.357073, z: 12.035599}
   m_Center: {x: 0.50256443, y: 4.1785803, z: 0.50646067}
+--- !u!114 &8734358050577210221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97991420572578566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &150122220794063298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,6 +2013,7 @@ GameObject:
   - component: {fileID: 6319617196435608896}
   - component: {fileID: 5210362079290577625}
   - component: {fileID: 6804714156088031584}
+  - component: {fileID: 724360869307207843}
   m_Layer: 6
   m_Name: Building_House_03_color02 (2)
   m_TagString: Building
@@ -2100,6 +2114,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &724360869307207843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278015469207800543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &280646254035082405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,6 +2138,7 @@ GameObject:
   - component: {fileID: 855643827308025197}
   - component: {fileID: 1820323083264471007}
   - component: {fileID: 6276553291368539205}
+  - component: {fileID: 6935232675232953996}
   m_Layer: 6
   m_Name: Building_House_04_color01 (1)
   m_TagString: Building
@@ -2212,6 +2239,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 24.771994, y: 7.870478, z: 15.32235}
   m_Center: {x: 0.7986021, y: 3.7148387, z: 0.11547756}
+--- !u!114 &6935232675232953996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280646254035082405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &314070993975665918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2374,7 @@ GameObject:
   - component: {fileID: 2845486141516663037}
   - component: {fileID: 6336005743370900583}
   - component: {fileID: 2509150143140875333}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2425,7 +2464,7 @@ GameObject:
   - component: {fileID: 1216709193611285748}
   - component: {fileID: 3979743204127874161}
   - component: {fileID: 5711423687233314877}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2717,7 +2756,7 @@ GameObject:
   - component: {fileID: 2891318780088920710}
   - component: {fileID: 3960482351951536364}
   - component: {fileID: 573816426725497117}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3212,7 +3251,7 @@ GameObject:
   - component: {fileID: 794726427132865863}
   - component: {fileID: 7732490440527964493}
   - component: {fileID: 6956153269559629128}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3302,7 +3341,7 @@ GameObject:
   - component: {fileID: 692223939429158403}
   - component: {fileID: 5269777451109154381}
   - component: {fileID: 702984122725766456}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4401,7 +4440,7 @@ GameObject:
   - component: {fileID: 5023212960032779427}
   - component: {fileID: 98901740231513038}
   - component: {fileID: 2532617285415623603}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4491,7 +4530,7 @@ GameObject:
   - component: {fileID: 7451612422756846564}
   - component: {fileID: 1057624815360287490}
   - component: {fileID: 3271188323802670673}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (89)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4581,7 +4620,7 @@ GameObject:
   - component: {fileID: 1170145455900715114}
   - component: {fileID: 5881373061906938399}
   - component: {fileID: 7732562713777671530}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof_prop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4671,7 +4710,7 @@ GameObject:
   - component: {fileID: 806189885043567113}
   - component: {fileID: 6698222465239087274}
   - component: {fileID: 7020232095702497635}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Dustbin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4761,7 +4800,7 @@ GameObject:
   - component: {fileID: 7168139347802253231}
   - component: {fileID: 2588195788068209812}
   - component: {fileID: 971149693287846943}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4941,7 +4980,7 @@ GameObject:
   - component: {fileID: 6235219968108544589}
   - component: {fileID: 1549708111413283103}
   - component: {fileID: 7432716815945559059}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5122,6 +5161,7 @@ GameObject:
   - component: {fileID: 5860641773926773723}
   - component: {fileID: 3024014227217129788}
   - component: {fileID: 709617892761443837}
+  - component: {fileID: 4555694183593811103}
   m_Layer: 6
   m_Name: Building Sky_big_color03
   m_TagString: Building
@@ -5222,6 +5262,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &4555694183593811103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638087589370329548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &649321064250735734
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,7 +5487,7 @@ GameObject:
   - component: {fileID: 2612156802944716792}
   - component: {fileID: 2101271077588531062}
   - component: {fileID: 6477539845515739360}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (116)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5525,7 +5577,7 @@ GameObject:
   - component: {fileID: 1787037129143640922}
   - component: {fileID: 6314151507837399195}
   - component: {fileID: 5490434120052988625}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5727,7 +5779,7 @@ GameObject:
   - component: {fileID: 5343350520479081293}
   - component: {fileID: 634567585819851339}
   - component: {fileID: 231214561267449035}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6221,7 +6273,7 @@ GameObject:
   - component: {fileID: 1231171546812576786}
   - component: {fileID: 1557182463686368944}
   - component: {fileID: 8082477574125008116}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6311,7 +6363,7 @@ GameObject:
   - component: {fileID: 6567311099849802682}
   - component: {fileID: 602854330133172608}
   - component: {fileID: 8338176170812108819}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6401,7 +6453,7 @@ GameObject:
   - component: {fileID: 6634943597736344723}
   - component: {fileID: 8957288258130206355}
   - component: {fileID: 8374661097099483349}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6491,7 +6543,7 @@ GameObject:
   - component: {fileID: 3249591791158280575}
   - component: {fileID: 3580541004816516452}
   - component: {fileID: 3190817824746973992}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6694,7 +6746,7 @@ GameObject:
   - component: {fileID: 6668980343366166569}
   - component: {fileID: 7368175723282950219}
   - component: {fileID: 1119709853582443925}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6784,7 +6836,7 @@ GameObject:
   - component: {fileID: 1901737676229212083}
   - component: {fileID: 5739663331955344304}
   - component: {fileID: 6302423714714706504}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7570,7 +7622,7 @@ GameObject:
   - component: {fileID: 2061704485400893139}
   - component: {fileID: 5455821649208226958}
   - component: {fileID: 5133629458757977649}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7751,6 +7803,7 @@ GameObject:
   - component: {fileID: 1457812715675282339}
   - component: {fileID: 9177442904264210811}
   - component: {fileID: 3668739177685060949}
+  - component: {fileID: 5549872671564110156}
   m_Layer: 6
   m_Name: Building_Gift Shop
   m_TagString: Building
@@ -7851,6 +7904,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218784, y: 6.499003, z: 10.571994}
   m_Center: {x: -0.00001859665, y: 3.2495005, z: 0.3619852}
+--- !u!114 &5549872671564110156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835855230905281287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &848023586845796751
 GameObject:
   m_ObjectHideFlags: 0
@@ -7862,7 +7927,7 @@ GameObject:
   - component: {fileID: 580080887303476157}
   - component: {fileID: 8185709856842834131}
   - component: {fileID: 6126642553678495639}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Coffee shop chair (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8312,7 +8377,7 @@ GameObject:
   - component: {fileID: 1694674123209654665}
   - component: {fileID: 5448863323252946237}
   - component: {fileID: 1052380212641808233}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8514,7 +8579,7 @@ GameObject:
   - component: {fileID: 1746624430455123108}
   - component: {fileID: 5531247677712301129}
   - component: {fileID: 8105597134164730306}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8604,7 +8669,7 @@ GameObject:
   - component: {fileID: 5402618298176938235}
   - component: {fileID: 5337002007901450826}
   - component: {fileID: 3159898980605985177}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Control Barrier Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8694,7 +8759,7 @@ GameObject:
   - component: {fileID: 6491440840874887399}
   - component: {fileID: 5958054953643536902}
   - component: {fileID: 2524397734686116459}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (115)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8785,6 +8850,7 @@ GameObject:
   - component: {fileID: 6961596499366678673}
   - component: {fileID: 1372701097808935628}
   - component: {fileID: 2400942914815729279}
+  - component: {fileID: 2223599736717504866}
   m_Layer: 6
   m_Name: Building_Pizza (2)
   m_TagString: Building
@@ -8885,6 +8951,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.971008, y: 7.7953634, z: 13.567871}
   m_Center: {x: -0.69062805, y: 3.8976827, z: 0.07848716}
+--- !u!114 &2223599736717504866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956141568135441224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &994292518570379975
 GameObject:
   m_ObjectHideFlags: 0
@@ -9211,7 +9289,7 @@ GameObject:
   - component: {fileID: 225206741427360552}
   - component: {fileID: 6653074547023946633}
   - component: {fileID: 896049779562016368}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9436,7 +9514,7 @@ GameObject:
   - component: {fileID: 3882075273428099908}
   - component: {fileID: 3225678727723913636}
   - component: {fileID: 3433628810896866757}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9730,6 +9808,7 @@ GameObject:
   - component: {fileID: 3827727745191326975}
   - component: {fileID: 5120316500238898063}
   - component: {fileID: 3819634530885592525}
+  - component: {fileID: 7202625045025340556}
   m_Layer: 0
   m_Name: Natures_House Floor (34)
   m_TagString: Untagged
@@ -9831,6 +9910,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &7202625045025340556
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031739111402008353}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1043769844445950586
 GameObject:
   m_ObjectHideFlags: 0
@@ -9954,7 +10049,7 @@ GameObject:
   - component: {fileID: 4839955444195681665}
   - component: {fileID: 667987503606511489}
   - component: {fileID: 9091940119825760631}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11032,7 +11127,7 @@ GameObject:
   - component: {fileID: 8066582988178372819}
   - component: {fileID: 2525626126122384589}
   - component: {fileID: 8062610215262640714}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Coffee shop chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11303,6 +11398,7 @@ GameObject:
   - component: {fileID: 8401424529073941156}
   - component: {fileID: 3773685723390715986}
   - component: {fileID: 2787694929338277439}
+  - component: {fileID: 894097203850355109}
   m_Layer: 6
   m_Name: Building_Coffee Shop
   m_TagString: Building
@@ -11403,6 +11499,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19.375298, y: 7.0017276, z: 12.457808}
   m_Center: {x: -0.32732582, y: 3.5000346, z: 0.15602803}
+--- !u!114 &894097203850355109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140854019855486496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1153676649016161781
 GameObject:
   m_ObjectHideFlags: 0
@@ -11415,6 +11523,7 @@ GameObject:
   - component: {fileID: 7200216956986684537}
   - component: {fileID: 2844657682451895956}
   - component: {fileID: 3437699330751388768}
+  - component: {fileID: 6348872319083224828}
   m_Layer: 6
   m_Name: Building_Pizza (1)
   m_TagString: Building
@@ -11515,6 +11624,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.971008, y: 7.7953634, z: 13.567871}
   m_Center: {x: -0.69062805, y: 3.8976827, z: 0.07848716}
+--- !u!114 &6348872319083224828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153676649016161781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1171411511002945770
 GameObject:
   m_ObjectHideFlags: 0
@@ -11750,7 +11871,7 @@ GameObject:
   - component: {fileID: 5332034429862783080}
   - component: {fileID: 2343137726833307156}
   - component: {fileID: 3166289763411647037}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Antenna (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11931,6 +12052,7 @@ GameObject:
   - component: {fileID: 6567076874268977098}
   - component: {fileID: 6853527203034755507}
   - component: {fileID: 3980699721492757012}
+  - component: {fileID: 2499025504586756399}
   m_Layer: 0
   m_Name: Natures_House Floor (33)
   m_TagString: Untagged
@@ -12032,6 +12154,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &2499025504586756399
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188531860137146358}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1199203374645791751
 GameObject:
   m_ObjectHideFlags: 0
@@ -12358,7 +12496,7 @@ GameObject:
   - component: {fileID: 8666393227531611849}
   - component: {fileID: 6112421419396589180}
   - component: {fileID: 954309747010366944}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12470,7 +12608,7 @@ GameObject:
   - component: {fileID: 4142331048650468954}
   - component: {fileID: 6427496529608864923}
   - component: {fileID: 5756883829796125647}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12560,7 +12698,7 @@ GameObject:
   - component: {fileID: 7341983067903175027}
   - component: {fileID: 2424541486181282333}
   - component: {fileID: 3577075956028727895}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12965,6 +13103,7 @@ GameObject:
   - component: {fileID: 4222130296842033396}
   - component: {fileID: 8843620749770832100}
   - component: {fileID: 2059992316585460678}
+  - component: {fileID: 8907625016896947289}
   m_Layer: 6
   m_Name: Building_House_04_color03
   m_TagString: Building
@@ -13065,6 +13204,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 24.771994, y: 7.870478, z: 15.32235}
   m_Center: {x: 0.7986021, y: 3.7148387, z: 0.11547756}
+--- !u!114 &8907625016896947289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296327078169009560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1296752804240811908
 GameObject:
   m_ObjectHideFlags: 0
@@ -13077,6 +13228,7 @@ GameObject:
   - component: {fileID: 4266937569390205497}
   - component: {fileID: 2247282909585192319}
   - component: {fileID: 5565594006461757838}
+  - component: {fileID: 6832888468135207272}
   m_Layer: 6
   m_Name: Building_Restaurant
   m_TagString: Building
@@ -13177,6 +13329,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.2054796, z: 0.28388584}
+--- !u!114 &6832888468135207272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296752804240811908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1334248361083731460
 GameObject:
   m_ObjectHideFlags: 0
@@ -13188,7 +13352,7 @@ GameObject:
   - component: {fileID: 1679494174537009438}
   - component: {fileID: 1744147662911689426}
   - component: {fileID: 1916897375994695541}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13278,7 +13442,7 @@ GameObject:
   - component: {fileID: 18264727464168005}
   - component: {fileID: 4090831108312869086}
   - component: {fileID: 18566431166049725}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13368,7 +13532,7 @@ GameObject:
   - component: {fileID: 830318548878166082}
   - component: {fileID: 8114683129828327988}
   - component: {fileID: 1042058145708188872}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13570,7 +13734,7 @@ GameObject:
   - component: {fileID: 175208745839635687}
   - component: {fileID: 8218162361780083779}
   - component: {fileID: 2974589333935287270}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13660,7 +13824,7 @@ GameObject:
   - component: {fileID: 1276393241431726314}
   - component: {fileID: 6375281094597550826}
   - component: {fileID: 2167767307812771777}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14155,6 +14319,7 @@ GameObject:
   - component: {fileID: 2748109618784876784}
   - component: {fileID: 4279335778665818063}
   - component: {fileID: 9086859923032073215}
+  - component: {fileID: 908867944598502436}
   m_Layer: 6
   m_Name: Building_House_02_color01
   m_TagString: Building
@@ -14255,6 +14420,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.582718, y: 9.043972, z: 13.00732}
   m_Center: {x: -0.42346716, y: 4.5219393, z: -0.10574341}
+--- !u!114 &908867944598502436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413184190565392463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1413259988791722128
 GameObject:
   m_ObjectHideFlags: 0
@@ -14357,6 +14534,7 @@ GameObject:
   - component: {fileID: 6457923673375138841}
   - component: {fileID: 4327315316439939259}
   - component: {fileID: 5442353144544794268}
+  - component: {fileID: 4600499525251126289}
   m_Layer: 6
   m_Name: Building_House_01_color01 (1)
   m_TagString: Building
@@ -14457,6 +14635,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.891638, y: 9.053619, z: 12.602821}
   m_Center: {x: -0.56064415, y: 4.5260267, z: -0.13327432}
+--- !u!114 &4600499525251126289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419796922324181103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1419887112466788539
 GameObject:
   m_ObjectHideFlags: 0
@@ -14692,7 +14882,7 @@ GameObject:
   - component: {fileID: 2127795756640248025}
   - component: {fileID: 4505000596520982786}
   - component: {fileID: 3042342827507472856}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15006,7 +15196,7 @@ GameObject:
   - component: {fileID: 1580553602807281314}
   - component: {fileID: 4042794518572933268}
   - component: {fileID: 352998862986138368}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15096,7 +15286,7 @@ GameObject:
   - component: {fileID: 3190602188917662120}
   - component: {fileID: 3246499049937812781}
   - component: {fileID: 9016393929792785583}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (96)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15186,7 +15376,7 @@ GameObject:
   - component: {fileID: 4285734235060622214}
   - component: {fileID: 6413962849670141482}
   - component: {fileID: 6723243974410711562}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15389,6 +15579,7 @@ GameObject:
   - component: {fileID: 8550154907373474580}
   - component: {fileID: 212272962159056623}
   - component: {fileID: 6697212825228736685}
+  - component: {fileID: 7684813789541760552}
   m_Layer: 6
   m_Name: Building_Residential_color03 (1)
   m_TagString: Building
@@ -15489,6 +15680,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &7684813789541760552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497127392223217831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1527717605950808611
 GameObject:
   m_ObjectHideFlags: 0
@@ -15500,7 +15703,7 @@ GameObject:
   - component: {fileID: 3983462562736058402}
   - component: {fileID: 8795906440477437141}
   - component: {fileID: 8778975621499679464}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15680,7 +15883,7 @@ GameObject:
   - component: {fileID: 8376240427573093271}
   - component: {fileID: 7512186105638263838}
   - component: {fileID: 4475035689904719631}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bus Stop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15770,7 +15973,7 @@ GameObject:
   - component: {fileID: 1834648462759364147}
   - component: {fileID: 3836105267416447572}
   - component: {fileID: 4559769255328176319}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16287,7 +16490,7 @@ GameObject:
   - component: {fileID: 5707031415392577462}
   - component: {fileID: 1182178338895867547}
   - component: {fileID: 6628665838905133355}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (95)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16872,7 +17075,7 @@ GameObject:
   - component: {fileID: 4156119667444158137}
   - component: {fileID: 7996202364925262718}
   - component: {fileID: 4394551815584692087}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16985,7 +17188,7 @@ GameObject:
   - component: {fileID: 3146911298306921975}
   - component: {fileID: 1420100988785326001}
   - component: {fileID: 1028194049879018968}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17076,7 +17279,7 @@ GameObject:
   - component: {fileID: 4376225570379989682}
   - component: {fileID: 34161134570276685}
   - component: {fileID: 1494161989001915102}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17291,118 +17494,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1767166698614926155
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7748565733621979879}
-  - component: {fileID: 1047079722822309405}
-  - component: {fileID: 8794906216306982751}
-  - component: {fileID: 443363224262781991}
-  m_Layer: 0
-  m_Name: Natures_Grass Bar (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &7748565733621979879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767166698614926155}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 179.997, y: 0, z: 149.5}
-  m_LocalScale: {x: 1, y: 1, z: 14.25}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2610668319374817495}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1047079722822309405
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767166698614926155}
-  m_Mesh: {fileID: 4300000, guid: 60550932e430af1479cebb05e97130ae, type: 3}
---- !u!23 &8794906216306982751
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767166698614926155}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 39f651e340882304fa6f21b321d3bea5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &443363224262781991
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767166698614926155}
-  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.80000144, z: 7}
-  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &1771204216158270581
 GameObject:
   m_ObjectHideFlags: 0
@@ -17616,7 +17707,7 @@ GameObject:
   - component: {fileID: 5414179888392260190}
   - component: {fileID: 3210552027502150206}
   - component: {fileID: 6909216929653728296}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18335,7 +18426,7 @@ GameObject:
   - component: {fileID: 128740033563923804}
   - component: {fileID: 7057102822359629522}
   - component: {fileID: 4370279540095185195}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Helipad (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18447,7 +18538,7 @@ GameObject:
   - component: {fileID: 8701661843780631551}
   - component: {fileID: 1336782856894919615}
   - component: {fileID: 1385225436742683689}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18537,7 +18628,7 @@ GameObject:
   - component: {fileID: 3066666822224271355}
   - component: {fileID: 3180595945736842549}
   - component: {fileID: 7064846907595451361}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18627,7 +18718,7 @@ GameObject:
   - component: {fileID: 2339853822463264846}
   - component: {fileID: 1326396798730462810}
   - component: {fileID: 373899239457120944}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19211,7 +19302,7 @@ GameObject:
   - component: {fileID: 5267139345876646016}
   - component: {fileID: 7899069168060785429}
   - component: {fileID: 2742400882280610475}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19302,6 +19393,7 @@ GameObject:
   - component: {fileID: 3726492014155651028}
   - component: {fileID: 3163515241071380848}
   - component: {fileID: 4854944330628593898}
+  - component: {fileID: 8484917271960276819}
   m_Layer: 6
   m_Name: Building_House_04_color01
   m_TagString: Building
@@ -19402,6 +19494,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 24.771994, y: 7.870478, z: 15.32235}
   m_Center: {x: 0.7986021, y: 3.7148387, z: 0.11547756}
+--- !u!114 &8484917271960276819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918070284083725528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &1931338874380414488
 GameObject:
   m_ObjectHideFlags: 0
@@ -19503,7 +19607,7 @@ GameObject:
   - component: {fileID: 4287357101116830567}
   - component: {fileID: 3067802507027261623}
   - component: {fileID: 1573886451089228469}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_small (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19795,7 +19899,7 @@ GameObject:
   - component: {fileID: 6531099559414933832}
   - component: {fileID: 6763646240008961192}
   - component: {fileID: 4702035287480431655}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (87)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20221,7 +20325,7 @@ GameObject:
   - component: {fileID: 1498838661858054499}
   - component: {fileID: 1804792810949412494}
   - component: {fileID: 2765420758405567201}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20401,7 +20505,7 @@ GameObject:
   - component: {fileID: 8586564878571470708}
   - component: {fileID: 4479427045076688787}
   - component: {fileID: 2367393883065291777}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20492,6 +20596,7 @@ GameObject:
   - component: {fileID: 1907059781525415500}
   - component: {fileID: 5394406885098746282}
   - component: {fileID: 1407931740921286030}
+  - component: {fileID: 3487658993661569597}
   m_Layer: 6
   m_Name: Building_House_04_color02
   m_TagString: Building
@@ -20592,6 +20697,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 24.771994, y: 7.870478, z: 15.32235}
   m_Center: {x: 0.7986021, y: 3.7148387, z: 0.11547756}
+--- !u!114 &3487658993661569597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020868305945038472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &2025417416488142163
 GameObject:
   m_ObjectHideFlags: 0
@@ -21414,6 +21531,7 @@ GameObject:
   - component: {fileID: 2021551293212833147}
   - component: {fileID: 6825200119363335004}
   - component: {fileID: 2888331701310887797}
+  - component: {fileID: 6761530209360227904}
   m_Layer: 6
   m_Name: Building_Bar (1)
   m_TagString: Building
@@ -21536,6 +21654,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.205495, z: 0.28388584}
+--- !u!114 &6761530209360227904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062927987761925131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &2063036140847050431
 GameObject:
   m_ObjectHideFlags: 0
@@ -21547,7 +21677,7 @@ GameObject:
   - component: {fileID: 593864360123070103}
   - component: {fileID: 2509405200243588744}
   - component: {fileID: 1220970316137057359}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (122)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22490,7 +22620,7 @@ GameObject:
   - component: {fileID: 9138828932558931241}
   - component: {fileID: 4303130068838260017}
   - component: {fileID: 4934729089829584349}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22581,6 +22711,7 @@ GameObject:
   - component: {fileID: 4022079602493754226}
   - component: {fileID: 671599901971683305}
   - component: {fileID: 5276482108382179659}
+  - component: {fileID: 3482932147478042625}
   m_Layer: 6
   m_Name: Building_Restaurant (4)
   m_TagString: Building
@@ -22681,6 +22812,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.2054796, z: 0.28388584}
+--- !u!114 &3482932147478042625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181458196358348649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &2183217067063315643
 GameObject:
   m_ObjectHideFlags: 0
@@ -22782,7 +22925,7 @@ GameObject:
   - component: {fileID: 1968899220833173036}
   - component: {fileID: 5059041452086864438}
   - component: {fileID: 232143199446736855}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (86)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23164,7 +23307,7 @@ GameObject:
   - component: {fileID: 4137125807666731927}
   - component: {fileID: 2111753089991765064}
   - component: {fileID: 5186376041446719948}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23525,7 +23668,7 @@ GameObject:
   - component: {fileID: 8989770590444565356}
   - component: {fileID: 4767654066317650914}
   - component: {fileID: 1640655894069784240}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23818,6 +23961,7 @@ GameObject:
   - component: {fileID: 826302424364141354}
   - component: {fileID: 4034237024145293391}
   - component: {fileID: 5495992892729012051}
+  - component: {fileID: 6878329939972668160}
   m_Layer: 11
   m_Name: Road Lane_01 (73)
   m_TagString: Untagged
@@ -23918,6 +24062,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 40, y: 0.40000173, z: 40}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!208 &6878329939972668160
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310211265938298439}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 0.2, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2317809584723373653
 GameObject:
   m_ObjectHideFlags: 0
@@ -24042,7 +24202,7 @@ GameObject:
   - component: {fileID: 6676461841736111959}
   - component: {fileID: 3277043557472309448}
   - component: {fileID: 2606612380675353819}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Helipad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25031,7 +25191,7 @@ GameObject:
   - component: {fileID: 1681845179724769356}
   - component: {fileID: 2195218018233609924}
   - component: {fileID: 777840761467456464}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25435,7 +25595,7 @@ GameObject:
   - component: {fileID: 7703039691525290240}
   - component: {fileID: 79835212871238964}
   - component: {fileID: 2374958293284501403}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25525,7 +25685,7 @@ GameObject:
   - component: {fileID: 3464572933420218589}
   - component: {fileID: 8061983381048941033}
   - component: {fileID: 2995524533449396046}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25615,7 +25775,7 @@ GameObject:
   - component: {fileID: 3394434121062290249}
   - component: {fileID: 5397925386145602121}
   - component: {fileID: 8769816357905828263}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25706,6 +25866,7 @@ GameObject:
   - component: {fileID: 6026147183715693615}
   - component: {fileID: 8452662616972133521}
   - component: {fileID: 7513552778845022234}
+  - component: {fileID: 761588429347926302}
   m_Layer: 6
   m_Name: Building Sky_big_color01 (1)
   m_TagString: Building
@@ -25806,6 +25967,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &761588429347926302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2581584177005189445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &2591665913771768886
 GameObject:
   m_ObjectHideFlags: 0
@@ -26019,7 +26192,7 @@ GameObject:
   - component: {fileID: 3653247123376343985}
   - component: {fileID: 7469969167529923330}
   - component: {fileID: 8947848829618484269}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26222,7 +26395,7 @@ GameObject:
   - component: {fileID: 898130333923144208}
   - component: {fileID: 3277359031527301075}
   - component: {fileID: 8192226477199664071}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26760,7 +26933,7 @@ GameObject:
   - component: {fileID: 7296685745737544864}
   - component: {fileID: 5949731400568265263}
   - component: {fileID: 8263535683157270954}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26850,7 +27023,7 @@ GameObject:
   - component: {fileID: 9021511058450171025}
   - component: {fileID: 2824775290070400044}
   - component: {fileID: 2121015897399200072}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bus Stop (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26942,6 +27115,7 @@ GameObject:
   - component: {fileID: 7465757981439408077}
   - component: {fileID: 8064971680517315804}
   - component: {fileID: 6227003844486497246}
+  - component: {fileID: 8750510644477925621}
   m_Layer: 6
   m_Name: Building_Music Store
   m_TagString: Building
@@ -27064,6 +27238,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218785, y: 9.757901, z: 10.353149}
   m_Center: {x: 0.03484392, y: 4.878179, z: -0.19550061}
+--- !u!114 &8750510644477925621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738082557688156972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &2748106280666942830
 GameObject:
   m_ObjectHideFlags: 0
@@ -27480,7 +27666,7 @@ GameObject:
   - component: {fileID: 6278024363217359685}
   - component: {fileID: 3979613081592970393}
   - component: {fileID: 1189115961737438276}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (88)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27570,7 +27756,7 @@ GameObject:
   - component: {fileID: 3675666408195621770}
   - component: {fileID: 6034281473245048657}
   - component: {fileID: 4638767878294157083}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27774,7 +27960,7 @@ GameObject:
   - component: {fileID: 5209869263175610626}
   - component: {fileID: 4348512903713912045}
   - component: {fileID: 7970834463029112198}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28001,7 +28187,7 @@ GameObject:
   - component: {fileID: 8652694727152946273}
   - component: {fileID: 6317981982290909954}
   - component: {fileID: 6623778436126607292}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29415,6 +29601,7 @@ GameObject:
   - component: {fileID: 3715800808564070180}
   - component: {fileID: 7388925018153545712}
   - component: {fileID: 6470281446165711259}
+  - component: {fileID: 581453071118286147}
   m_Layer: 6
   m_Name: Building Sky_big_color02
   m_TagString: Building
@@ -29515,6 +29702,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &581453071118286147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2918180988426290717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &2923535460792133619
 GameObject:
   m_ObjectHideFlags: 0
@@ -29638,7 +29837,7 @@ GameObject:
   - component: {fileID: 7221820295589180823}
   - component: {fileID: 389301536388794161}
   - component: {fileID: 7392898979104242490}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29818,7 +30017,7 @@ GameObject:
   - component: {fileID: 6956034557306645900}
   - component: {fileID: 6966335279150306486}
   - component: {fileID: 5930170823333512185}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30334,7 +30533,7 @@ GameObject:
   - component: {fileID: 5396636980455522834}
   - component: {fileID: 4705738792885339915}
   - component: {fileID: 7789778869496859743}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30424,7 +30623,7 @@ GameObject:
   - component: {fileID: 1649764861008006226}
   - component: {fileID: 4506679098062708806}
   - component: {fileID: 1967359050429171397}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30627,7 +30826,7 @@ GameObject:
   - component: {fileID: 9192977869369763377}
   - component: {fileID: 5872503712287898299}
   - component: {fileID: 7961195806916170999}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30741,6 +30940,7 @@ GameObject:
   - component: {fileID: 1347776816255810461}
   - component: {fileID: 8950206975805199549}
   - component: {fileID: 3714772309813683076}
+  - component: {fileID: 2859897311353773566}
   m_Layer: 6
   m_Name: Building_Restaurant (2)
   m_TagString: Building
@@ -30841,6 +31041,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.2054796, z: 0.28388584}
+--- !u!114 &2859897311353773566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066104974925378198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3074263095444996014
 GameObject:
   m_ObjectHideFlags: 0
@@ -31032,7 +31244,7 @@ GameObject:
   - component: {fileID: 5613587544850255306}
   - component: {fileID: 5214613882232945701}
   - component: {fileID: 7890580458443496569}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31347,7 +31559,7 @@ GameObject:
   - component: {fileID: 5523462377439785262}
   - component: {fileID: 6737512738872614448}
   - component: {fileID: 7513186525548330609}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (99)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31437,7 +31649,7 @@ GameObject:
   - component: {fileID: 2847656199284408726}
   - component: {fileID: 8394675857282108815}
   - component: {fileID: 2097810107627461865}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31527,7 +31739,7 @@ GameObject:
   - component: {fileID: 2304191606814797301}
   - component: {fileID: 7144197924287781231}
   - component: {fileID: 6081304784337285959}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31731,6 +31943,7 @@ GameObject:
   - component: {fileID: 5084098407131002583}
   - component: {fileID: 776063784823087448}
   - component: {fileID: 4400687801442591174}
+  - component: {fileID: 2682593633839731409}
   m_Layer: 6
   m_Name: Building_Bakery
   m_TagString: Building
@@ -31831,6 +32044,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.589754, y: 8.480352, z: 11.275148}
   m_Center: {x: 0.00055766106, y: 4.240176, z: 0.27842164}
+--- !u!114 &2682593633839731409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138811367641377436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3145901399712519248
 GameObject:
   m_ObjectHideFlags: 0
@@ -32044,7 +32269,7 @@ GameObject:
   - component: {fileID: 3761616240928101991}
   - component: {fileID: 6261424774236298663}
   - component: {fileID: 5415385083603650599}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32135,6 +32360,7 @@ GameObject:
   - component: {fileID: 9024714036048044788}
   - component: {fileID: 1905382415845573594}
   - component: {fileID: 5025535091418784843}
+  - component: {fileID: 3089952698864152845}
   m_Layer: 6
   m_Name: Building_Drug Store
   m_TagString: Building
@@ -32235,6 +32461,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218784, y: 6.499003, z: 10.571994}
   m_Center: {x: -0.00001859665, y: 3.2494767, z: 0.3619852}
+--- !u!114 &3089952698864152845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195445529998139763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3207517866371579030
 GameObject:
   m_ObjectHideFlags: 0
@@ -32246,7 +32484,7 @@ GameObject:
   - component: {fileID: 9156589381174276147}
   - component: {fileID: 8976081694720925430}
   - component: {fileID: 1310102066226053309}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32336,7 +32574,7 @@ GameObject:
   - component: {fileID: 3354498830195456953}
   - component: {fileID: 6771109662897328391}
   - component: {fileID: 5939424591392617589}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bus Stop (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32628,7 +32866,7 @@ GameObject:
   - component: {fileID: 7866652938843509908}
   - component: {fileID: 8414811231025923099}
   - component: {fileID: 1685680208063853371}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32943,6 +33181,7 @@ GameObject:
   - component: {fileID: 986003223793136893}
   - component: {fileID: 9176821903907421884}
   - component: {fileID: 8024838325073363322}
+  - component: {fileID: 1889019511640904815}
   m_Layer: 6
   m_Name: Building_House_01_color02
   m_TagString: Building
@@ -33043,6 +33282,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.891638, y: 9.053619, z: 12.602821}
   m_Center: {x: -0.56064415, y: 4.5260267, z: -0.13327432}
+--- !u!114 &1889019511640904815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3287036885361324926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3295626346861322040
 GameObject:
   m_ObjectHideFlags: 0
@@ -33144,7 +33395,7 @@ GameObject:
   - component: {fileID: 8807079800959693584}
   - component: {fileID: 7038472336864102709}
   - component: {fileID: 4213955286737436333}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33234,7 +33485,7 @@ GameObject:
   - component: {fileID: 1037874512149657577}
   - component: {fileID: 6356916369809208350}
   - component: {fileID: 4408476338463856236}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33975,6 +34226,7 @@ GameObject:
   - component: {fileID: 4521643984413358154}
   - component: {fileID: 3145170975981692774}
   - component: {fileID: 244894302896999708}
+  - component: {fileID: 6675644013345196419}
   m_Layer: 6
   m_Name: Building_Fruits  Shop
   m_TagString: Building
@@ -34075,6 +34327,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.126186, y: 11.605602, z: 12.155823}
   m_Center: {x: 0.13457394, y: 5.802828, z: 0.08932376}
+--- !u!114 &6675644013345196419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365089418655706313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3368021938782011330
 GameObject:
   m_ObjectHideFlags: 0
@@ -34288,7 +34552,7 @@ GameObject:
   - component: {fileID: 8750761638814559547}
   - component: {fileID: 69912532924203224}
   - component: {fileID: 8421547662839145135}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34490,7 +34754,7 @@ GameObject:
   - component: {fileID: 4737767953105799507}
   - component: {fileID: 3615612101344796816}
   - component: {fileID: 8986175751462671016}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34670,7 +34934,7 @@ GameObject:
   - component: {fileID: 8421068993578507561}
   - component: {fileID: 2962965145769118245}
   - component: {fileID: 1875695780808404451}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34761,6 +35025,7 @@ GameObject:
   - component: {fileID: 3771164515509104731}
   - component: {fileID: 3078118605257906429}
   - component: {fileID: 60034929039640986}
+  - component: {fileID: 1663741248384229374}
   m_Layer: 6
   m_Name: Building_House_03_color01
   m_TagString: Building
@@ -34861,6 +35126,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &1663741248384229374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3400951542247469887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3435313843767395730
 GameObject:
   m_ObjectHideFlags: 0
@@ -35523,7 +35800,7 @@ GameObject:
   - component: {fileID: 4686873722613689961}
   - component: {fileID: 6176348110172834907}
   - component: {fileID: 8459372658442264959}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (108)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35613,7 +35890,7 @@ GameObject:
   - component: {fileID: 7411877327899493295}
   - component: {fileID: 3050526772090880173}
   - component: {fileID: 5776491093633526874}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36017,7 +36294,7 @@ GameObject:
   - component: {fileID: 4806575468436821057}
   - component: {fileID: 1640021734838546058}
   - component: {fileID: 4736110583508788625}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36107,7 +36384,7 @@ GameObject:
   - component: {fileID: 3035443313161727189}
   - component: {fileID: 169284428326723860}
   - component: {fileID: 4764209629695189944}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36287,7 +36564,7 @@ GameObject:
   - component: {fileID: 6074014080852062528}
   - component: {fileID: 6190729396888758165}
   - component: {fileID: 2847628795729729676}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36691,7 +36968,7 @@ GameObject:
   - component: {fileID: 7383171064447726724}
   - component: {fileID: 2682720904535327830}
   - component: {fileID: 2747768726856184845}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (93)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36782,6 +37059,7 @@ GameObject:
   - component: {fileID: 1812382693527289522}
   - component: {fileID: 4585728506571109964}
   - component: {fileID: 6919431871683500028}
+  - component: {fileID: 9114254182541681653}
   m_Layer: 6
   m_Name: Building_Gift Shop (2)
   m_TagString: Building
@@ -36882,6 +37160,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218784, y: 6.499003, z: 10.571994}
   m_Center: {x: -0.00001859665, y: 3.2495005, z: 0.3619852}
+--- !u!114 &9114254182541681653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592220627140467719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3598430275941990835
 GameObject:
   m_ObjectHideFlags: 0
@@ -37208,6 +37498,7 @@ GameObject:
   - component: {fileID: 3840229749421236937}
   - component: {fileID: 736384482027328158}
   - component: {fileID: 115471217030771493}
+  - component: {fileID: 7561069349314363548}
   m_Layer: 6
   m_Name: Building_Bakery (2)
   m_TagString: Building
@@ -37308,6 +37599,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.589754, y: 8.480352, z: 11.275148}
   m_Center: {x: 0.00055766106, y: 4.240176, z: 0.27842164}
+--- !u!114 &7561069349314363548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3610058572065581871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3633416412006367498
 GameObject:
   m_ObjectHideFlags: 0
@@ -37543,7 +37846,7 @@ GameObject:
   - component: {fileID: 918597315859732531}
   - component: {fileID: 6837393648450884066}
   - component: {fileID: 7329982814715587532}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38262,7 +38565,7 @@ GameObject:
   - component: {fileID: 4525356601820778341}
   - component: {fileID: 3595698334255216039}
   - component: {fileID: 6375386719706469436}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (91)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38666,7 +38969,7 @@ GameObject:
   - component: {fileID: 3934282150702107496}
   - component: {fileID: 2773161178307905290}
   - component: {fileID: 7246454225371995464}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (125)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38846,7 +39149,7 @@ GameObject:
   - component: {fileID: 8726369830168020491}
   - component: {fileID: 3861230093139386826}
   - component: {fileID: 5401845180670237529}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38936,7 +39239,7 @@ GameObject:
   - component: {fileID: 6379230578269554245}
   - component: {fileID: 1163742132157265950}
   - component: {fileID: 5270149480980037960}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39340,7 +39643,7 @@ GameObject:
   - component: {fileID: 4375626973493385555}
   - component: {fileID: 1139680244066834218}
   - component: {fileID: 4584948898258042461}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39430,7 +39733,7 @@ GameObject:
   - component: {fileID: 7631089709622495786}
   - component: {fileID: 8831322368191859950}
   - component: {fileID: 2027372672490181696}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39632,7 +39935,7 @@ GameObject:
   - component: {fileID: 1935831318419797092}
   - component: {fileID: 3434959333903544550}
   - component: {fileID: 5959730423105992408}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40060,6 +40363,7 @@ GameObject:
   - component: {fileID: 5063163411983799241}
   - component: {fileID: 1539894050923846905}
   - component: {fileID: 5824706880534005508}
+  - component: {fileID: 656187148002875406}
   m_Layer: 6
   m_Name: Building_Bar (2)
   m_TagString: Building
@@ -40182,6 +40486,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.205495, z: 0.28388584}
+--- !u!114 &656187148002875406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3916163961548072909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &3918909646208811737
 GameObject:
   m_ObjectHideFlags: 0
@@ -40193,7 +40509,7 @@ GameObject:
   - component: {fileID: 9018589222243322221}
   - component: {fileID: 6207088963275793553}
   - component: {fileID: 4027126512983620618}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40395,7 +40711,7 @@ GameObject:
   - component: {fileID: 3004011385952244486}
   - component: {fileID: 4855764631709227485}
   - component: {fileID: 853003821547497899}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bus Stop (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41024,7 +41340,7 @@ GameObject:
   - component: {fileID: 4533116350242908794}
   - component: {fileID: 2492267524233366025}
   - component: {fileID: 3122867649178887486}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof_prop (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41204,7 +41520,7 @@ GameObject:
   - component: {fileID: 801608831160216136}
   - component: {fileID: 4359934865953971975}
   - component: {fileID: 6159466173489429908}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41406,7 +41722,7 @@ GameObject:
   - component: {fileID: 9097526808370547292}
   - component: {fileID: 4105197827958418256}
   - component: {fileID: 7300373632400491071}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41496,7 +41812,7 @@ GameObject:
   - component: {fileID: 8593406003090674225}
   - component: {fileID: 8339442983964403831}
   - component: {fileID: 6026462875953950737}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42013,6 +42329,7 @@ GameObject:
   - component: {fileID: 4392013452582861043}
   - component: {fileID: 3886306005095180362}
   - component: {fileID: 4214850076156209100}
+  - component: {fileID: 7604244859283151822}
   m_Layer: 6
   m_Name: Building_House_02_color03 (1)
   m_TagString: Building
@@ -42113,6 +42430,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.582718, y: 9.043972, z: 13.00732}
   m_Center: {x: -0.42346716, y: 4.5219393, z: -0.10574341}
+--- !u!114 &7604244859283151822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026869312586908035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4031841193843684333
 GameObject:
   m_ObjectHideFlags: 0
@@ -42214,7 +42543,7 @@ GameObject:
   - component: {fileID: 4111946472054675452}
   - component: {fileID: 7097235944750349907}
   - component: {fileID: 1214651122731542930}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42529,7 +42858,7 @@ GameObject:
   - component: {fileID: 3236204948113827433}
   - component: {fileID: 983565585186645662}
   - component: {fileID: 2318432777287883985}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42934,6 +43263,7 @@ GameObject:
   - component: {fileID: 6710790730916575099}
   - component: {fileID: 52866492761730132}
   - component: {fileID: 6359386788532915979}
+  - component: {fileID: 4698580824711781963}
   m_Layer: 11
   m_Name: Road Lane_01 (65)
   m_TagString: Untagged
@@ -43034,6 +43364,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 40, y: 0.40000173, z: 40}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!208 &4698580824711781963
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092099255907827228}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 0.2, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4096056126672223751
 GameObject:
   m_ObjectHideFlags: 0
@@ -43449,7 +43795,7 @@ GameObject:
   - component: {fileID: 8908499814033187423}
   - component: {fileID: 535626672975194246}
   - component: {fileID: 8642991986802033104}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (83)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43651,7 +43997,7 @@ GameObject:
   - component: {fileID: 3449008124028245890}
   - component: {fileID: 1003945312726823127}
   - component: {fileID: 2210401641764595460}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43741,7 +44087,7 @@ GameObject:
   - component: {fileID: 2457079727750569494}
   - component: {fileID: 7220073171797574225}
   - component: {fileID: 4162551159321895289}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44145,7 +44491,7 @@ GameObject:
   - component: {fileID: 8388629634019526956}
   - component: {fileID: 1511667858204764591}
   - component: {fileID: 5609005742249383038}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (94)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44571,7 +44917,7 @@ GameObject:
   - component: {fileID: 6819524927592813195}
   - component: {fileID: 6327014105494913911}
   - component: {fileID: 6198287763959398048}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44662,6 +45008,7 @@ GameObject:
   - component: {fileID: 5367191516062513935}
   - component: {fileID: 4579040641946365384}
   - component: {fileID: 5862964877777689433}
+  - component: {fileID: 5419422063550005645}
   m_Layer: 6
   m_Name: Building_Stadium
   m_TagString: Building
@@ -44762,6 +45109,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 35.460045, y: 11.730206, z: 44.755478}
   m_Center: {x: -0.3217516, y: 5.823163, z: -0.0017976761}
+--- !u!114 &5419422063550005645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214682686724711690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4225093106615811781
 GameObject:
   m_ObjectHideFlags: 0
@@ -44774,6 +45133,7 @@ GameObject:
   - component: {fileID: 2502576335206777390}
   - component: {fileID: 5708546320026928899}
   - component: {fileID: 8080018433039879212}
+  - component: {fileID: 6550616687234242361}
   m_Layer: 6
   m_Name: Building Sky_small_color02
   m_TagString: Building
@@ -44874,6 +45234,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &6550616687234242361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225093106615811781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4227410095622419193
 GameObject:
   m_ObjectHideFlags: 0
@@ -44997,7 +45369,7 @@ GameObject:
   - component: {fileID: 2450447097038569203}
   - component: {fileID: 2771145651856229006}
   - component: {fileID: 7532607223688622296}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45446,7 +45818,7 @@ GameObject:
   - component: {fileID: 5008832308554745290}
   - component: {fileID: 3378898448270551240}
   - component: {fileID: 6884748674294275551}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45537,6 +45909,7 @@ GameObject:
   - component: {fileID: 1378457616228476765}
   - component: {fileID: 3748984199250469283}
   - component: {fileID: 3550852093442601040}
+  - component: {fileID: 5034357720877979850}
   m_Layer: 6
   m_Name: Building_Residential_color01 (2)
   m_TagString: Building
@@ -45637,6 +46010,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &5034357720877979850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283571800341641192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4286129670497399412
 GameObject:
   m_ObjectHideFlags: 0
@@ -45648,7 +46033,7 @@ GameObject:
   - component: {fileID: 4728435756035638182}
   - component: {fileID: 7924194092686080658}
   - component: {fileID: 4530119882856481734}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45851,6 +46236,7 @@ GameObject:
   - component: {fileID: 6035345001350188422}
   - component: {fileID: 8319736102310296667}
   - component: {fileID: 7384789321387896822}
+  - component: {fileID: 4433783823543331488}
   m_Layer: 6
   m_Name: Building Sky_small_color03
   m_TagString: Building
@@ -45951,6 +46337,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &4433783823543331488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300366130098217346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4301093903842679539
 GameObject:
   m_ObjectHideFlags: 0
@@ -45963,6 +46361,7 @@ GameObject:
   - component: {fileID: 8497100825308740578}
   - component: {fileID: 143463812934709299}
   - component: {fileID: 4898178797912624028}
+  - component: {fileID: 2628699989459031943}
   m_Layer: 6
   m_Name: Building_Pizza (3)
   m_TagString: Building
@@ -46063,6 +46462,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.971008, y: 7.7953634, z: 13.567871}
   m_Center: {x: -0.69062805, y: 3.8976827, z: 0.07848716}
+--- !u!114 &2628699989459031943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4301093903842679539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4309255518840544849
 GameObject:
   m_ObjectHideFlags: 0
@@ -46590,7 +47001,7 @@ GameObject:
   - component: {fileID: 3714574861197733989}
   - component: {fileID: 3382702788237735418}
   - component: {fileID: 3236624697986538147}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46681,6 +47092,7 @@ GameObject:
   - component: {fileID: 7258363993512686956}
   - component: {fileID: 7819708459913552332}
   - component: {fileID: 6581511124568507180}
+  - component: {fileID: 5039700501421096587}
   m_Layer: 6
   m_Name: Building_House_02_color03
   m_TagString: Building
@@ -46781,6 +47193,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.582718, y: 9.043972, z: 13.00732}
   m_Center: {x: -0.42346716, y: 4.5219393, z: -0.10574341}
+--- !u!114 &5039700501421096587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342300543548139731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4346934650986212146
 GameObject:
   m_ObjectHideFlags: 0
@@ -46792,7 +47216,7 @@ GameObject:
   - component: {fileID: 8932444326797023935}
   - component: {fileID: 2671958167253097312}
   - component: {fileID: 3259371559782485840}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46882,7 +47306,7 @@ GameObject:
   - component: {fileID: 2088413860788645725}
   - component: {fileID: 8672300400653605053}
   - component: {fileID: 9087735281376752207}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46973,7 +47397,7 @@ GameObject:
   - component: {fileID: 4325258059277723507}
   - component: {fileID: 5804376068081866760}
   - component: {fileID: 9187155737429555860}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47199,6 +47623,7 @@ GameObject:
   - component: {fileID: 2203866349231086393}
   - component: {fileID: 114013169620533586}
   - component: {fileID: 1869683638031233416}
+  - component: {fileID: 7826406884395023263}
   m_Layer: 6
   m_Name: Building_Bakery (1)
   m_TagString: Building
@@ -47299,6 +47724,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.589754, y: 8.480352, z: 11.275148}
   m_Center: {x: 0.00055766106, y: 4.240176, z: 0.27842164}
+--- !u!114 &7826406884395023263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4382237595012995677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4383939713475464463
 GameObject:
   m_ObjectHideFlags: 0
@@ -47311,6 +47748,7 @@ GameObject:
   - component: {fileID: 1820868764003972844}
   - component: {fileID: 2264185046333236608}
   - component: {fileID: 87313346489371930}
+  - component: {fileID: 7643878412328185988}
   m_Layer: 6
   m_Name: Building Sky_small_color02 (2)
   m_TagString: Building
@@ -47411,6 +47849,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &7643878412328185988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383939713475464463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4384451470078935891
 GameObject:
   m_ObjectHideFlags: 0
@@ -47871,6 +48321,7 @@ GameObject:
   - component: {fileID: 6399643301952883486}
   - component: {fileID: 7103139646514775022}
   - component: {fileID: 343598080576592863}
+  - component: {fileID: 8243215578011032960}
   m_Layer: 6
   m_Name: Building Sky_big_color01 (3)
   m_TagString: Building
@@ -47971,6 +48422,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &8243215578011032960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4410214744203373458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4410936885790505131
 GameObject:
   m_ObjectHideFlags: 0
@@ -48296,7 +48759,7 @@ GameObject:
   - component: {fileID: 1523514067518815248}
   - component: {fileID: 6153422070462366323}
   - component: {fileID: 7439920259299589253}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic cone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48499,6 +48962,7 @@ GameObject:
   - component: {fileID: 1702100314518074499}
   - component: {fileID: 6126793556314462177}
   - component: {fileID: 3436020519141261615}
+  - component: {fileID: 2373672268011424292}
   m_Layer: 6
   m_Name: Building Sky_big_color03 (1)
   m_TagString: Building
@@ -48599,6 +49063,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &2373672268011424292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440863378480757198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4456198813546022278
 GameObject:
   m_ObjectHideFlags: 0
@@ -48701,6 +49177,7 @@ GameObject:
   - component: {fileID: 6270240479679797574}
   - component: {fileID: 7657591331436209237}
   - component: {fileID: 8962142017522652810}
+  - component: {fileID: 374862169012109163}
   m_Layer: 6
   m_Name: Building_House_01_color03
   m_TagString: Building
@@ -48801,6 +49278,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.891638, y: 9.053619, z: 12.602821}
   m_Center: {x: -0.56064415, y: 4.5260267, z: -0.13327432}
+--- !u!114 &374862169012109163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474435087148490687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4503995306290697697
 GameObject:
   m_ObjectHideFlags: 0
@@ -48925,7 +49414,7 @@ GameObject:
   - component: {fileID: 78250896590307074}
   - component: {fileID: 9212709777460183632}
   - component: {fileID: 8784670949957369215}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Helipad (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49352,7 +49841,7 @@ GameObject:
   - component: {fileID: 3441739803261920540}
   - component: {fileID: 2903391678774014886}
   - component: {fileID: 7707620436333324468}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49667,6 +50156,7 @@ GameObject:
   - component: {fileID: 747932294982205967}
   - component: {fileID: 3784052529193661221}
   - component: {fileID: 9070484983458289345}
+  - component: {fileID: 2031872428405192021}
   m_Layer: 6
   m_Name: Building Sky_big_color02 (3)
   m_TagString: Building
@@ -49767,6 +50257,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &2031872428405192021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4577096712038212541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4589477119672034760
 GameObject:
   m_ObjectHideFlags: 0
@@ -50092,7 +50594,7 @@ GameObject:
   - component: {fileID: 1993569294857336232}
   - component: {fileID: 7025030926557373104}
   - component: {fileID: 2185867668956958919}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic cone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50182,7 +50684,7 @@ GameObject:
   - component: {fileID: 1018825664664295264}
   - component: {fileID: 387558252188839307}
   - component: {fileID: 6704033760172026169}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (97)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50273,6 +50775,7 @@ GameObject:
   - component: {fileID: 1801356720435647192}
   - component: {fileID: 4101714677139342514}
   - component: {fileID: 4169286374653366447}
+  - component: {fileID: 6101013448101776670}
   m_Layer: 6
   m_Name: Building_House_03_color03 (2)
   m_TagString: Building
@@ -50373,6 +50876,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &6101013448101776670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622875484180848078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4630855371780706914
 GameObject:
   m_ObjectHideFlags: 0
@@ -51017,7 +51532,7 @@ GameObject:
   - component: {fileID: 5257562598834945689}
   - component: {fileID: 1577586243832497162}
   - component: {fileID: 7984265424911249199}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51534,7 +52049,7 @@ GameObject:
   - component: {fileID: 7829826425407054706}
   - component: {fileID: 6466509162132246610}
   - component: {fileID: 5526524580689429252}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51648,6 +52163,7 @@ GameObject:
   - component: {fileID: 998207830219740195}
   - component: {fileID: 3393850257077019620}
   - component: {fileID: 1022641340419672264}
+  - component: {fileID: 6889710199100332059}
   m_Layer: 6
   m_Name: Building_House_04_color01 (2)
   m_TagString: Building
@@ -51748,6 +52264,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 24.771994, y: 7.870478, z: 15.32235}
   m_Center: {x: 0.7986021, y: 3.7148387, z: 0.11547756}
+--- !u!114 &6889710199100332059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4748105814628940967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4759373044893816407
 GameObject:
   m_ObjectHideFlags: 0
@@ -51871,7 +52399,7 @@ GameObject:
   - component: {fileID: 5735831918680541787}
   - component: {fileID: 6536322233669132162}
   - component: {fileID: 5398574025408004781}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52073,7 +52601,7 @@ GameObject:
   - component: {fileID: 1033478627631005785}
   - component: {fileID: 7613602068307052893}
   - component: {fileID: 2684551989102823542}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (106)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52275,7 +52803,7 @@ GameObject:
   - component: {fileID: 8066395446146416080}
   - component: {fileID: 6797528451835329514}
   - component: {fileID: 5867324476794095430}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52680,6 +53208,7 @@ GameObject:
   - component: {fileID: 3863553131629617518}
   - component: {fileID: 147624025373207648}
   - component: {fileID: 2106955264966463678}
+  - component: {fileID: 4586033358793216858}
   m_Layer: 6
   m_Name: Building_Pizza
   m_TagString: Building
@@ -52780,6 +53309,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.971008, y: 7.7953634, z: 13.567871}
   m_Center: {x: -0.69062805, y: 3.8976827, z: 0.07848716}
+--- !u!114 &4586033358793216858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802374689956505886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4807061756498225772
 GameObject:
   m_ObjectHideFlags: 0
@@ -52903,7 +53444,7 @@ GameObject:
   - component: {fileID: 621272730541090918}
   - component: {fileID: 3002154490887005147}
   - component: {fileID: 569120839838789153}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52993,7 +53534,7 @@ GameObject:
   - component: {fileID: 4432409863287965598}
   - component: {fileID: 4241869948658468656}
   - component: {fileID: 6070074953726839660}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53083,7 +53624,7 @@ GameObject:
   - component: {fileID: 969574948517276642}
   - component: {fileID: 1475908484071844354}
   - component: {fileID: 8876957293236522847}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53173,7 +53714,7 @@ GameObject:
   - component: {fileID: 8587522571861887741}
   - component: {fileID: 4637220347810805975}
   - component: {fileID: 5141411639683723601}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_small (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53577,7 +54118,7 @@ GameObject:
   - component: {fileID: 9071330200575840625}
   - component: {fileID: 2250320704911007359}
   - component: {fileID: 4997818822869762942}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53779,7 +54320,7 @@ GameObject:
   - component: {fileID: 827192973829781668}
   - component: {fileID: 7218392975856326442}
   - component: {fileID: 7641977104276018130}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54162,6 +54703,7 @@ GameObject:
   - component: {fileID: 1264081907265587359}
   - component: {fileID: 5695008311437225795}
   - component: {fileID: 184269932974955769}
+  - component: {fileID: 7227838976724031532}
   m_Layer: 6
   m_Name: Building_House_02_color01 (1)
   m_TagString: Building
@@ -54262,6 +54804,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.582718, y: 9.043972, z: 13.00732}
   m_Center: {x: -0.42346716, y: 4.5219393, z: -0.10574341}
+--- !u!114 &7227838976724031532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941590880639007697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &4962787193930038486
 GameObject:
   m_ObjectHideFlags: 0
@@ -54274,7 +54828,7 @@ GameObject:
   - component: {fileID: 8454104611364600106}
   - component: {fileID: 658033223546204934}
   - component: {fileID: 1640707691016152232}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54476,7 +55030,7 @@ GameObject:
   - component: {fileID: 647027976000553803}
   - component: {fileID: 7207519011523710360}
   - component: {fileID: 4953137979506609656}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (80)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54567,6 +55121,7 @@ GameObject:
   - component: {fileID: 2946776195112000960}
   - component: {fileID: 2517617212311536134}
   - component: {fileID: 302357358422698353}
+  - component: {fileID: 8890033351624442557}
   m_Layer: 0
   m_Name: Natures_House Floor (37)
   m_TagString: Untagged
@@ -54668,6 +55223,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &8890033351624442557
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009602101364749454}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5014315404204969138
 GameObject:
   m_ObjectHideFlags: 0
@@ -54903,7 +55474,7 @@ GameObject:
   - component: {fileID: 2120350329784585209}
   - component: {fileID: 1450094677409791923}
   - component: {fileID: 7195824484743791935}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55106,7 +55677,7 @@ GameObject:
   - component: {fileID: 8791722128013009315}
   - component: {fileID: 6881395918015533575}
   - component: {fileID: 4435412048377918697}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55286,7 +55857,7 @@ GameObject:
   - component: {fileID: 3634641629181998955}
   - component: {fileID: 8105141821481898610}
   - component: {fileID: 533995354454853723}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (118)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55488,7 +56059,7 @@ GameObject:
   - component: {fileID: 2764178136497435244}
   - component: {fileID: 3307015255087141925}
   - component: {fileID: 3347875015480937190}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55579,6 +56150,7 @@ GameObject:
   - component: {fileID: 1504936295034600937}
   - component: {fileID: 6698798669190513987}
   - component: {fileID: 6506517976478874485}
+  - component: {fileID: 548989895866253341}
   m_Layer: 6
   m_Name: Building Sky_big_color03 (2)
   m_TagString: Building
@@ -55679,6 +56251,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &548989895866253341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078901686742614075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5083008320220338281
 GameObject:
   m_ObjectHideFlags: 0
@@ -55691,6 +56275,7 @@ GameObject:
   - component: {fileID: 8168152045121900688}
   - component: {fileID: 651041996192245931}
   - component: {fileID: 3300259185816452743}
+  - component: {fileID: 8184158877532855566}
   m_Layer: 6
   m_Name: Building Sky_small_color02 (1)
   m_TagString: Building
@@ -55791,6 +56376,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &8184158877532855566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083008320220338281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5090628506306938288
 GameObject:
   m_ObjectHideFlags: 0
@@ -56251,7 +56848,7 @@ GameObject:
   - component: {fileID: 2649760938597992803}
   - component: {fileID: 4648090726186436641}
   - component: {fileID: 23282686640909250}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Helipad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56363,7 +56960,7 @@ GameObject:
   - component: {fileID: 3170850501812998190}
   - component: {fileID: 8016751942363852454}
   - component: {fileID: 7304009539525824223}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56454,6 +57051,7 @@ GameObject:
   - component: {fileID: 4369927038489970504}
   - component: {fileID: 1806784787818213792}
   - component: {fileID: 252602639331840124}
+  - component: {fileID: 1471146387164945225}
   m_Layer: 6
   m_Name: Building Sky_small_color01
   m_TagString: Building
@@ -56554,6 +57152,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &1471146387164945225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147353278407306999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5151088558993366390
 GameObject:
   m_ObjectHideFlags: 0
@@ -56767,7 +57377,7 @@ GameObject:
   - component: {fileID: 3208425172009145002}
   - component: {fileID: 3203614311313955815}
   - component: {fileID: 525415533521516389}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57261,7 +57871,7 @@ GameObject:
   - component: {fileID: 1456352802878657391}
   - component: {fileID: 4560095238853664699}
   - component: {fileID: 3587666206628458325}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (100)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57532,7 +58142,7 @@ GameObject:
   - component: {fileID: 2978664898504051041}
   - component: {fileID: 4675716984359776988}
   - component: {fileID: 1762108748180168636}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57645,7 +58255,7 @@ GameObject:
   - component: {fileID: 6119818069794293778}
   - component: {fileID: 4031850789732240822}
   - component: {fileID: 5059804178466456154}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57848,6 +58458,7 @@ GameObject:
   - component: {fileID: 5834980348920077740}
   - component: {fileID: 3800372615898887930}
   - component: {fileID: 5197483716912379442}
+  - component: {fileID: 8387616198338764503}
   m_Layer: 6
   m_Name: Building_Super Market
   m_TagString: Building
@@ -57948,6 +58559,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 23.752502, y: 7.5784726, z: 13.25293}
   m_Center: {x: -0.47326565, y: 3.7887337, z: 0.8263693}
+--- !u!114 &8387616198338764503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5287418748865809079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5292174128590532929
 GameObject:
   m_ObjectHideFlags: 0
@@ -58273,7 +58896,7 @@ GameObject:
   - component: {fileID: 1275515219426344288}
   - component: {fileID: 4135756791629181632}
   - component: {fileID: 5123874792086320263}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58476,7 +59099,7 @@ GameObject:
   - component: {fileID: 1384563266869611294}
   - component: {fileID: 4757922190751622248}
   - component: {fileID: 290242336747558907}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58656,7 +59279,7 @@ GameObject:
   - component: {fileID: 4431349663929108680}
   - component: {fileID: 6526603229925870592}
   - component: {fileID: 2492433155903743725}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (103)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58836,7 +59459,7 @@ GameObject:
   - component: {fileID: 4947688290510805164}
   - component: {fileID: 4492994753551680568}
   - component: {fileID: 7946271023916753657}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58926,7 +59549,7 @@ GameObject:
   - component: {fileID: 999036323030813122}
   - component: {fileID: 7447891683268935526}
   - component: {fileID: 2107551278487757828}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59218,7 +59841,7 @@ GameObject:
   - component: {fileID: 3416469693965533417}
   - component: {fileID: 3892644618108224713}
   - component: {fileID: 1283190185986828084}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59309,7 +59932,7 @@ GameObject:
   - component: {fileID: 720975190523232104}
   - component: {fileID: 3013365192693981271}
   - component: {fileID: 6977754675156741989}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59533,7 +60156,7 @@ GameObject:
   - component: {fileID: 1127662343673315676}
   - component: {fileID: 8757346408025512271}
   - component: {fileID: 6695690068269176068}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59735,7 +60358,7 @@ GameObject:
   - component: {fileID: 3487691547678484495}
   - component: {fileID: 3673890572021764650}
   - component: {fileID: 2253168625793785178}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59937,7 +60560,7 @@ GameObject:
   - component: {fileID: 3128674962397837577}
   - component: {fileID: 3978980399156568220}
   - component: {fileID: 1920835334624212514}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60207,7 +60830,7 @@ GameObject:
   - component: {fileID: 5820211523544661121}
   - component: {fileID: 2724432785527000410}
   - component: {fileID: 8585697599521446827}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60297,7 +60920,7 @@ GameObject:
   - component: {fileID: 2245953231669135789}
   - component: {fileID: 5749060499645454913}
   - component: {fileID: 5701995113851190512}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60499,7 +61122,7 @@ GameObject:
   - component: {fileID: 6328106991313280296}
   - component: {fileID: 4879893742986521490}
   - component: {fileID: 8956370025108075561}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60589,7 +61212,7 @@ GameObject:
   - component: {fileID: 8628595408643724790}
   - component: {fileID: 2275472120479115202}
   - component: {fileID: 7865016950981228104}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60679,7 +61302,7 @@ GameObject:
   - component: {fileID: 4515762124486400093}
   - component: {fileID: 4835759362094071091}
   - component: {fileID: 3675787151272041725}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60859,7 +61482,7 @@ GameObject:
   - component: {fileID: 3849758995638922809}
   - component: {fileID: 4116103326797691415}
   - component: {fileID: 3575830318071847766}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Control Barrier Fence (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61331,7 +61954,7 @@ GameObject:
   - component: {fileID: 2732765352510908396}
   - component: {fileID: 6428487290980227212}
   - component: {fileID: 7857970785621885825}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61421,7 +62044,7 @@ GameObject:
   - component: {fileID: 5709492807088044015}
   - component: {fileID: 7004081123324193141}
   - component: {fileID: 853646678949577658}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (90)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61623,7 +62246,7 @@ GameObject:
   - component: {fileID: 5895496016985674678}
   - component: {fileID: 7782106956250155838}
   - component: {fileID: 4789850969629107982}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_small (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61826,6 +62449,7 @@ GameObject:
   - component: {fileID: 7397870094543093335}
   - component: {fileID: 1002050981392197570}
   - component: {fileID: 5382844751847403663}
+  - component: {fileID: 455345229205242784}
   m_Layer: 6
   m_Name: Building_House_02_color02
   m_TagString: Building
@@ -61926,6 +62550,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.582718, y: 9.043972, z: 13.00732}
   m_Center: {x: -0.42346716, y: 4.5219393, z: -0.10574341}
+--- !u!114 &455345229205242784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687842633803228022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5701375108859303491
 GameObject:
   m_ObjectHideFlags: 0
@@ -62140,7 +62776,7 @@ GameObject:
   - component: {fileID: 3242460363798497646}
   - component: {fileID: 2438652745113957734}
   - component: {fileID: 1974660361364076569}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62230,7 +62866,7 @@ GameObject:
   - component: {fileID: 1221490048971142236}
   - component: {fileID: 2118731196005169865}
   - component: {fileID: 1461230288329177204}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62320,7 +62956,7 @@ GameObject:
   - component: {fileID: 8500750196272619156}
   - component: {fileID: 1444903525339275551}
   - component: {fileID: 7105618831446771095}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (119)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62411,6 +63047,7 @@ GameObject:
   - component: {fileID: 4921076215144418097}
   - component: {fileID: 3524896352608456475}
   - component: {fileID: 792615464855993085}
+  - component: {fileID: 4783046503335994537}
   m_Layer: 6
   m_Name: Building_House_03_color03 (1)
   m_TagString: Building
@@ -62511,6 +63148,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &4783046503335994537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747703493724158684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5753623339205828558
 GameObject:
   m_ObjectHideFlags: 0
@@ -62522,7 +63171,7 @@ GameObject:
   - component: {fileID: 583416354360144495}
   - component: {fileID: 5032030783571068621}
   - component: {fileID: 8426296427825936975}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (105)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62612,7 +63261,7 @@ GameObject:
   - component: {fileID: 8350227275946449886}
   - component: {fileID: 4840450499386562733}
   - component: {fileID: 2660016101092632548}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62703,7 +63352,7 @@ GameObject:
   - component: {fileID: 580401800144500842}
   - component: {fileID: 8978033842802195231}
   - component: {fileID: 2728086356987621295}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62816,7 +63465,7 @@ GameObject:
   - component: {fileID: 8080694374506885829}
   - component: {fileID: 91142787839872031}
   - component: {fileID: 2763652859341034870}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic cone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63198,7 +63847,7 @@ GameObject:
   - component: {fileID: 4565083950520212886}
   - component: {fileID: 1370785967088591923}
   - component: {fileID: 7758853655554439172}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63401,6 +64050,7 @@ GameObject:
   - component: {fileID: 7475811818659959289}
   - component: {fileID: 2804961733586555439}
   - component: {fileID: 5082291078084204286}
+  - component: {fileID: 2254091709161346222}
   m_Layer: 6
   m_Name: Building_Residential_color03 (2)
   m_TagString: Building
@@ -63501,6 +64151,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &2254091709161346222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831617051146272811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5870419973505178000
 GameObject:
   m_ObjectHideFlags: 0
@@ -63624,7 +64286,7 @@ GameObject:
   - component: {fileID: 4374687250615579377}
   - component: {fileID: 4943773597048369854}
   - component: {fileID: 2497321430245515906}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63804,7 +64466,7 @@ GameObject:
   - component: {fileID: 8720524934658605570}
   - component: {fileID: 3971961878812391059}
   - component: {fileID: 425625235713695240}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64096,7 +64758,7 @@ GameObject:
   - component: {fileID: 7673225844665760623}
   - component: {fileID: 7581582823924799752}
   - component: {fileID: 4863615372372422186}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64187,6 +64849,7 @@ GameObject:
   - component: {fileID: 6996296622411685509}
   - component: {fileID: 4295386691596992905}
   - component: {fileID: 8820750602740058382}
+  - component: {fileID: 9041136904984915928}
   m_Layer: 6
   m_Name: Building_Residential_color01 (1)
   m_TagString: Building
@@ -64287,6 +64950,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &9041136904984915928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934430737641950695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5965699602317539795
 GameObject:
   m_ObjectHideFlags: 0
@@ -64298,7 +64973,7 @@ GameObject:
   - component: {fileID: 8816713612713095343}
   - component: {fileID: 6753090597742001050}
   - component: {fileID: 2781158379357682875}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64389,6 +65064,7 @@ GameObject:
   - component: {fileID: 8266495786318084998}
   - component: {fileID: 3518534782839445951}
   - component: {fileID: 358486485639372317}
+  - component: {fileID: 7706781415462096992}
   m_Layer: 6
   m_Name: Building_Chicken Shop (1)
   m_TagString: Building
@@ -64489,6 +65165,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218786, y: 9.7579, z: 10.000432}
   m_Center: {x: -0.000025510788, y: 4.8779163, z: 0.20891619}
+--- !u!114 &7706781415462096992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981689349987074494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &5999597650827501783
 GameObject:
   m_ObjectHideFlags: 0
@@ -64500,7 +65188,7 @@ GameObject:
   - component: {fileID: 5483915622439074633}
   - component: {fileID: 6370133123660333136}
   - component: {fileID: 5582345858170256238}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64680,7 +65368,7 @@ GameObject:
   - component: {fileID: 7536984227059916167}
   - component: {fileID: 72853049060944379}
   - component: {fileID: 7158751427758218103}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64860,7 +65548,7 @@ GameObject:
   - component: {fileID: 4855396779457392403}
   - component: {fileID: 7153131603388937969}
   - component: {fileID: 1630035724274234285}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65152,7 +65840,7 @@ GameObject:
   - component: {fileID: 1766299298190683689}
   - component: {fileID: 7506318942468904068}
   - component: {fileID: 6420239425230709905}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65686,6 +66374,7 @@ Transform:
   - {fileID: 5741642889363200901}
   - {fileID: 7079882513110941565}
   - {fileID: 8751561761466595162}
+  - {fileID: 3005222413359070284}
   - {fileID: 2248946770108487530}
   m_Father: {fileID: 3215775394314972366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65903,6 +66592,7 @@ GameObject:
   - component: {fileID: 6387654648706265872}
   - component: {fileID: 6832236766209587814}
   - component: {fileID: 3136878614827307752}
+  - component: {fileID: 3117051482072462231}
   m_Layer: 6
   m_Name: Building_Clothing
   m_TagString: Building
@@ -66003,6 +66693,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.126186, y: 11.605602, z: 12.155823}
   m_Center: {x: 0.08278918, y: 5.803236, z: 0.03450966}
+--- !u!114 &3117051482072462231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082974528793303362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6091108655225078150
 GameObject:
   m_ObjectHideFlags: 0
@@ -66328,7 +67030,7 @@ GameObject:
   - component: {fileID: 4110576708530255937}
   - component: {fileID: 3845951126007786621}
   - component: {fileID: 5028248866695505917}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Antenna (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66418,7 +67120,7 @@ GameObject:
   - component: {fileID: 1245790128801743589}
   - component: {fileID: 3749880328055362687}
   - component: {fileID: 4151451083639536319}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Antenna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66509,6 +67211,7 @@ GameObject:
   - component: {fileID: 6277974227393065618}
   - component: {fileID: 5352476726137416390}
   - component: {fileID: 6954408899363536428}
+  - component: {fileID: 4684302051084782731}
   m_Layer: 6
   m_Name: Building_Coffee Shop (1)
   m_TagString: Building
@@ -66609,6 +67312,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19.375298, y: 7.0017276, z: 12.457808}
   m_Center: {x: -0.32732582, y: 3.5000346, z: 0.15602803}
+--- !u!114 &4684302051084782731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106502633153746547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6107541085238023394
 GameObject:
   m_ObjectHideFlags: 0
@@ -66732,7 +67447,7 @@ GameObject:
   - component: {fileID: 7088808153375481864}
   - component: {fileID: 4787566138805881994}
   - component: {fileID: 4952792531123234031}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66912,7 +67627,7 @@ GameObject:
   - component: {fileID: 5938392222728863959}
   - component: {fileID: 4804459325615288135}
   - component: {fileID: 2895518069251423101}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67002,7 +67717,7 @@ GameObject:
   - component: {fileID: 3203026778560806888}
   - component: {fileID: 3405206598701600551}
   - component: {fileID: 1285699042529576154}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67204,7 +67919,7 @@ GameObject:
   - component: {fileID: 7770964257919586574}
   - component: {fileID: 7252028077589542557}
   - component: {fileID: 3604975348100879125}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (98)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67407,7 +68122,7 @@ GameObject:
   - component: {fileID: 5142628034517726697}
   - component: {fileID: 2265221202949448286}
   - component: {fileID: 491170615154543516}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67632,7 +68347,7 @@ GameObject:
   - component: {fileID: 1890836287782842555}
   - component: {fileID: 3590171708153862951}
   - component: {fileID: 6173537778379640512}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67722,7 +68437,7 @@ GameObject:
   - component: {fileID: 7996351025619449262}
   - component: {fileID: 4121435705465355201}
   - component: {fileID: 4610322761835751348}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68104,7 +68819,7 @@ GameObject:
   - component: {fileID: 3968951424839459144}
   - component: {fileID: 5499291743952382934}
   - component: {fileID: 8169684826600615445}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68194,7 +68909,7 @@ GameObject:
   - component: {fileID: 2358585608111895457}
   - component: {fileID: 3719387216144388995}
   - component: {fileID: 8296325519075871588}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (112)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68285,6 +69000,7 @@ GameObject:
   - component: {fileID: 3222199536127661301}
   - component: {fileID: 7633550845819382996}
   - component: {fileID: 6610752605473217798}
+  - component: {fileID: 4029845609716461306}
   m_Layer: 6
   m_Name: Building Sky_big_color02 (1)
   m_TagString: Building
@@ -68385,6 +69101,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &4029845609716461306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212537614119447784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6215033931698335044
 GameObject:
   m_ObjectHideFlags: 0
@@ -68396,7 +69124,7 @@ GameObject:
   - component: {fileID: 3709266436139048392}
   - component: {fileID: 1741814442301353869}
   - component: {fileID: 5093604476616388043}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (123)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68486,7 +69214,7 @@ GameObject:
   - component: {fileID: 3115596398789974171}
   - component: {fileID: 5045935625241579501}
   - component: {fileID: 4314849512309584674}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (84)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69161,7 +69889,7 @@ GameObject:
   - component: {fileID: 7228413000961829124}
   - component: {fileID: 8041587851178989786}
   - component: {fileID: 356836711389186442}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69275,6 +70003,7 @@ GameObject:
   - component: {fileID: 5459220917044705655}
   - component: {fileID: 5711847175510215349}
   - component: {fileID: 29717932349573750}
+  - component: {fileID: 2953610374511032468}
   m_Layer: 6
   m_Name: Building_Residential_color01
   m_TagString: Building
@@ -69375,6 +70104,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &2953610374511032468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339348086822495782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6344340402671570823
 GameObject:
   m_ObjectHideFlags: 0
@@ -69387,7 +70128,7 @@ GameObject:
   - component: {fileID: 1497957129917381883}
   - component: {fileID: 4668775797923108675}
   - component: {fileID: 4699186756090374988}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69500,7 +70241,7 @@ GameObject:
   - component: {fileID: 494291742272894067}
   - component: {fileID: 7427370645009591979}
   - component: {fileID: 599648482479340107}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69590,7 +70331,7 @@ GameObject:
   - component: {fileID: 3699095304746795497}
   - component: {fileID: 4315052836764175247}
   - component: {fileID: 9154266785065409506}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (121)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69973,6 +70714,7 @@ GameObject:
   - component: {fileID: 6807649214985457219}
   - component: {fileID: 3665938625811520399}
   - component: {fileID: 4903574570105765635}
+  - component: {fileID: 1707519168156765305}
   m_Layer: 6
   m_Name: Building Sky_small_color03 (1)
   m_TagString: Building
@@ -70073,6 +70815,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &1707519168156765305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426579866014077176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6428701927323106156
 GameObject:
   m_ObjectHideFlags: 0
@@ -70084,7 +70838,7 @@ GameObject:
   - component: {fileID: 231834214545890290}
   - component: {fileID: 516925299366709824}
   - component: {fileID: 1350002863532515421}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70264,7 +71018,7 @@ GameObject:
   - component: {fileID: 234665980147575396}
   - component: {fileID: 923258970673419440}
   - component: {fileID: 7564438897431617000}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (113)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70781,7 +71535,7 @@ GameObject:
   - component: {fileID: 3846236009051427421}
   - component: {fileID: 6755309747721388206}
   - component: {fileID: 1576706018578902110}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70894,7 +71648,7 @@ GameObject:
   - component: {fileID: 2909299233011650421}
   - component: {fileID: 1906698865028045371}
   - component: {fileID: 2948199633985661949}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71245,6 +71999,7 @@ GameObject:
   - component: {fileID: 3722694353529206303}
   - component: {fileID: 2799797189674726629}
   - component: {fileID: 4302038684266145028}
+  - component: {fileID: 7000967155364035889}
   m_Layer: 6
   m_Name: Building_Fast Food
   m_TagString: Building
@@ -71345,6 +72100,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218785, y: 9.757901, z: 10.353149}
   m_Center: {x: 0.03484392, y: 4.878778, z: -0.19550061}
+--- !u!114 &7000967155364035889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6554509922789085424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6571046730205492952
 GameObject:
   m_ObjectHideFlags: 0
@@ -71469,6 +72236,7 @@ GameObject:
   - component: {fileID: 6348860017221866900}
   - component: {fileID: 6062765935562775776}
   - component: {fileID: 2081928101330932910}
+  - component: {fileID: 3938311766239531441}
   m_Layer: 6
   m_Name: Building_House_03_color02
   m_TagString: Building
@@ -71569,6 +72337,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &3938311766239531441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6571565254836284559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6575710984662843425
 GameObject:
   m_ObjectHideFlags: 0
@@ -71580,7 +72360,7 @@ GameObject:
   - component: {fileID: 6366814773246644924}
   - component: {fileID: 8752467449300841026}
   - component: {fileID: 4946188140723724146}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71850,7 +72630,7 @@ GameObject:
   - component: {fileID: 1473535472176638392}
   - component: {fileID: 7286857769300609790}
   - component: {fileID: 3418201985654899620}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Antenna (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71941,6 +72721,7 @@ GameObject:
   - component: {fileID: 8753683770542360795}
   - component: {fileID: 8522939371645697279}
   - component: {fileID: 1932463824176103245}
+  - component: {fileID: 4250477662634210415}
   m_Layer: 6
   m_Name: Building_Fast Food (1)
   m_TagString: Building
@@ -72041,6 +72822,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218785, y: 9.757901, z: 10.353149}
   m_Center: {x: 0.03484392, y: 4.878778, z: -0.19550061}
+--- !u!114 &4250477662634210415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609612602245133394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6637245578278721339
 GameObject:
   m_ObjectHideFlags: 0
@@ -72276,7 +73069,7 @@ GameObject:
   - component: {fileID: 7528228924162683581}
   - component: {fileID: 3403895182832865126}
   - component: {fileID: 8977067371805649475}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72366,7 +73159,7 @@ GameObject:
   - component: {fileID: 4875925310832990226}
   - component: {fileID: 6606370244282148964}
   - component: {fileID: 2610752256978441221}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72749,7 +73542,7 @@ GameObject:
   - component: {fileID: 6291319000363150054}
   - component: {fileID: 4229845277320721054}
   - component: {fileID: 6122883117986631970}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73063,7 +73856,7 @@ GameObject:
   - component: {fileID: 8097515798332360848}
   - component: {fileID: 6087700125518171420}
   - component: {fileID: 7615688292686035913}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof_prop (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73243,7 +74036,7 @@ GameObject:
   - component: {fileID: 5985399618748323654}
   - component: {fileID: 8464641562802067851}
   - component: {fileID: 962304178601232071}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73557,7 +74350,7 @@ GameObject:
   - component: {fileID: 3483473885342140251}
   - component: {fileID: 7392296879187085029}
   - component: {fileID: 8664167792067776304}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (82)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74029,7 +74822,7 @@ GameObject:
   - component: {fileID: 908455075105951683}
   - component: {fileID: 6693969235703008229}
   - component: {fileID: 7560484919103786867}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74502,6 +75295,7 @@ GameObject:
   - component: {fileID: 7888665820495285962}
   - component: {fileID: 8788576791325261483}
   - component: {fileID: 2069146060327243107}
+  - component: {fileID: 5971983579164836089}
   m_Layer: 6
   m_Name: Building_Auto Service
   m_TagString: Building
@@ -74602,6 +75396,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 18.271511, y: 6.9995446, z: 8.263669}
   m_Center: {x: -0.22107792, y: 3.5002534, z: 0.049095154}
+--- !u!114 &5971983579164836089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919805019557022323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6921741883763936271
 GameObject:
   m_ObjectHideFlags: 0
@@ -74704,6 +75510,7 @@ GameObject:
   - component: {fileID: 30830901713481562}
   - component: {fileID: 1051628008709762109}
   - component: {fileID: 5348826860072040914}
+  - component: {fileID: 2309072312435630965}
   m_Layer: 6
   m_Name: Building_Residential_color03 (3)
   m_TagString: Building
@@ -74804,6 +75611,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &2309072312435630965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927661477131292171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &6936327817662344594
 GameObject:
   m_ObjectHideFlags: 0
@@ -74815,7 +75634,7 @@ GameObject:
   - component: {fileID: 2287899411570388302}
   - component: {fileID: 7639668881275072177}
   - component: {fileID: 8313381532853080909}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74905,7 +75724,7 @@ GameObject:
   - component: {fileID: 4680784406050289264}
   - component: {fileID: 4208961542879428336}
   - component: {fileID: 5755925168699964363}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (124)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75399,7 +76218,7 @@ GameObject:
   - component: {fileID: 4561907594565243152}
   - component: {fileID: 7055275209121133206}
   - component: {fileID: 6807162491747828663}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_small (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75489,7 +76308,7 @@ GameObject:
   - component: {fileID: 6999511227964930602}
   - component: {fileID: 9177667698651640575}
   - component: {fileID: 9222897370739229172}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75803,7 +76622,7 @@ GameObject:
   - component: {fileID: 3396063472376960574}
   - component: {fileID: 7576102908305481270}
   - component: {fileID: 2391446297177995522}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75984,6 +76803,7 @@ GameObject:
   - component: {fileID: 3034469217369373798}
   - component: {fileID: 6841704605074702399}
   - component: {fileID: 3260320359999057498}
+  - component: {fileID: 4600599444275062238}
   m_Layer: 6
   m_Name: Building_Restaurant (1)
   m_TagString: Building
@@ -76084,6 +76904,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.2054796, z: 0.28388584}
+--- !u!114 &4600599444275062238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007038547657007393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7023181749566884472
 GameObject:
   m_ObjectHideFlags: 0
@@ -76320,6 +77152,7 @@ GameObject:
   - component: {fileID: 3170749892187161581}
   - component: {fileID: 1134396168150442690}
   - component: {fileID: 6314266895326665403}
+  - component: {fileID: 4636948028310766259}
   m_Layer: 11
   m_Name: Road Lane_01 (74)
   m_TagString: Untagged
@@ -76420,6 +77253,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 40, y: 0.40000173, z: 40}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!208 &4636948028310766259
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034303796365746566}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 0.2, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7035991382051671847
 GameObject:
   m_ObjectHideFlags: 0
@@ -76544,7 +77393,7 @@ GameObject:
   - component: {fileID: 2000728707362167787}
   - component: {fileID: 8005797547983522176}
   - component: {fileID: 3755695346935979183}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (120)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76747,6 +77596,7 @@ GameObject:
   - component: {fileID: 8287117607137749873}
   - component: {fileID: 4315789213810077346}
   - component: {fileID: 8929514698953929057}
+  - component: {fileID: 8737719583584479934}
   m_Layer: 6
   m_Name: Building Sky_small_color03 (2)
   m_TagString: Building
@@ -76847,6 +77697,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &8737719583584479934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051709063473472348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7065667638918948569
 GameObject:
   m_ObjectHideFlags: 0
@@ -76858,7 +77720,7 @@ GameObject:
   - component: {fileID: 7592882136551761686}
   - component: {fileID: 1898259577645698810}
   - component: {fileID: 6517313419267178825}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_large (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76948,7 +77810,7 @@ GameObject:
   - component: {fileID: 1650496768587579791}
   - component: {fileID: 7762963075824302372}
   - component: {fileID: 3550810496784934731}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Bench_1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77331,6 +78193,7 @@ GameObject:
   - component: {fileID: 3416158940146783206}
   - component: {fileID: 6353957984048751470}
   - component: {fileID: 5074113704713093839}
+  - component: {fileID: 3970552179260573939}
   m_Layer: 11
   m_Name: Road Lane_01 (83)
   m_TagString: Untagged
@@ -77431,6 +78294,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 40, y: 0.40000173, z: 40}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!208 &3970552179260573939
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7110134744669270334}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 0.2, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7114737722059657543
 GameObject:
   m_ObjectHideFlags: 0
@@ -77655,6 +78534,118 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20, y: 0.0000008742278, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7122173251993301345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3005222413359070284}
+  - component: {fileID: 654180048398727027}
+  - component: {fileID: 3981828036315430008}
+  - component: {fileID: 3752066714549346962}
+  m_Layer: 13
+  m_Name: Natures_Grass Bar (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &3005222413359070284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122173251993301345}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 179.997, y: 0, z: 149.5}
+  m_LocalScale: {x: 1, y: 1, z: 14.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5936395928693533695}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &654180048398727027
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122173251993301345}
+  m_Mesh: {fileID: 4300000, guid: 60550932e430af1479cebb05e97130ae, type: 3}
+--- !u!23 &3981828036315430008
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122173251993301345}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 39f651e340882304fa6f21b321d3bea5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3752066714549346962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7122173251993301345}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.80000144, z: 7}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &7140599966541420911
 GameObject:
   m_ObjectHideFlags: 0
@@ -77778,7 +78769,7 @@ GameObject:
   - component: {fileID: 4691833926393452170}
   - component: {fileID: 7579768359431534877}
   - component: {fileID: 8890651634004268014}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (110)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77868,7 +78859,7 @@ GameObject:
   - component: {fileID: 7523609357583073970}
   - component: {fileID: 190011088319896952}
   - component: {fileID: 6894746619879114768}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (102)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77959,7 +78950,7 @@ GameObject:
   - component: {fileID: 5716300754977815252}
   - component: {fileID: 7967191112280248207}
   - component: {fileID: 2715434789168488118}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Helipad (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78071,7 +79062,7 @@ GameObject:
   - component: {fileID: 7954590830579586849}
   - component: {fileID: 208161387253703491}
   - component: {fileID: 760286212242044327}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78162,6 +79153,7 @@ GameObject:
   - component: {fileID: 3801200530702968876}
   - component: {fileID: 2526666991590754495}
   - component: {fileID: 4834024919302072971}
+  - component: {fileID: 5878044735348890794}
   m_Layer: 6
   m_Name: Building Sky_small_color03 (5)
   m_TagString: Building
@@ -78262,6 +79254,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &5878044735348890794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7199150193987297896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7212693587781599546
 GameObject:
   m_ObjectHideFlags: 0
@@ -78363,7 +79367,7 @@ GameObject:
   - component: {fileID: 4238455160854676939}
   - component: {fileID: 4424214358855966666}
   - component: {fileID: 9157559585587947928}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78879,7 +79883,7 @@ GameObject:
   - component: {fileID: 4701754773929559783}
   - component: {fileID: 3842306156903478309}
   - component: {fileID: 2228853790970601778}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (111)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79081,7 +80085,7 @@ GameObject:
   - component: {fileID: 1812795894620006280}
   - component: {fileID: 4243787313539464704}
   - component: {fileID: 7378457156679716883}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79283,7 +80287,7 @@ GameObject:
   - component: {fileID: 4988515880246378908}
   - component: {fileID: 4229540853147691316}
   - component: {fileID: 2400752235517095207}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80248,6 +81252,7 @@ GameObject:
   - component: {fileID: 6453290815734848342}
   - component: {fileID: 1678902306528082580}
   - component: {fileID: 368291029744919907}
+  - component: {fileID: 3906996560663920645}
   m_Layer: 0
   m_Name: Natures_House Floor (35)
   m_TagString: Untagged
@@ -80349,6 +81354,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &3906996560663920645
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7373958893385065509}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7378402418120563444
 GameObject:
   m_ObjectHideFlags: 0
@@ -81168,7 +82189,7 @@ GameObject:
   - component: {fileID: 6436534775070276223}
   - component: {fileID: 43456880097313114}
   - component: {fileID: 2161254623386783907}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (81)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81258,7 +82279,7 @@ GameObject:
   - component: {fileID: 8337469344587464961}
   - component: {fileID: 4047673318474299936}
   - component: {fileID: 6647034267695874237}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81348,7 +82369,7 @@ GameObject:
   - component: {fileID: 3333934118510471112}
   - component: {fileID: 2059803741404300289}
   - component: {fileID: 7149769616008875869}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81641,6 +82662,7 @@ GameObject:
   - component: {fileID: 8821887622064728675}
   - component: {fileID: 5007038847960382698}
   - component: {fileID: 5951759261338721217}
+  - component: {fileID: 7156417091906461217}
   m_Layer: 6
   m_Name: Building Sky_big_color01 (2)
   m_TagString: Building
@@ -81741,6 +82763,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &7156417091906461217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540860235164832441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7546906637199327082
 GameObject:
   m_ObjectHideFlags: 0
@@ -81976,7 +83010,7 @@ GameObject:
   - component: {fileID: 7616952892166072768}
   - component: {fileID: 465213809919911156}
   - component: {fileID: 272504742510094158}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (114)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82066,7 +83100,7 @@ GameObject:
   - component: {fileID: 1926733848687717613}
   - component: {fileID: 7875400833623252604}
   - component: {fileID: 7832467054898970102}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82157,6 +83191,7 @@ GameObject:
   - component: {fileID: 1943211405514738999}
   - component: {fileID: 2346274115222811295}
   - component: {fileID: 5205975800761168749}
+  - component: {fileID: 8757143569732917676}
   m_Layer: 6
   m_Name: Building_Chicken Shop
   m_TagString: Building
@@ -82257,6 +83292,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218786, y: 9.7579, z: 10.000432}
   m_Center: {x: -0.000025510788, y: 4.8779163, z: 0.20891619}
+--- !u!114 &8757143569732917676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566726101524325168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7574020474392054523
 GameObject:
   m_ObjectHideFlags: 0
@@ -82269,6 +83316,7 @@ GameObject:
   - component: {fileID: 4720638544333611559}
   - component: {fileID: 5771681664402254715}
   - component: {fileID: 4220728600180458403}
+  - component: {fileID: 4295039184405964081}
   m_Layer: 6
   m_Name: Building Sky_small_color03 (4)
   m_TagString: Building
@@ -82369,6 +83417,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &4295039184405964081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574020474392054523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7589225476194934044
 GameObject:
   m_ObjectHideFlags: 0
@@ -82494,6 +83554,7 @@ GameObject:
   - component: {fileID: 8640374175368277777}
   - component: {fileID: 2893286345276704802}
   - component: {fileID: 4240582540312171383}
+  - component: {fileID: 7000874047024199229}
   m_Layer: 6
   m_Name: Building_Gift Shop (1)
   m_TagString: Building
@@ -82594,6 +83655,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.218784, y: 6.499003, z: 10.571994}
   m_Center: {x: -0.00001859665, y: 3.2495005, z: 0.3619852}
+--- !u!114 &7000874047024199229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601483705025274285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7601786689175874838
 GameObject:
   m_ObjectHideFlags: 0
@@ -82898,6 +83971,7 @@ GameObject:
   - component: {fileID: 1758392227755132697}
   - component: {fileID: 7073555380467410010}
   - component: {fileID: 510178386310354110}
+  - component: {fileID: 3052292477820494786}
   m_Layer: 11
   m_Name: Road Lane_01 (82)
   m_TagString: Untagged
@@ -82998,6 +84072,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 40, y: 0.40000173, z: 40}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!208 &3052292477820494786
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618601501319987996}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 0.2, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7624174594984212225
 GameObject:
   m_ObjectHideFlags: 0
@@ -83099,7 +84189,7 @@ GameObject:
   - component: {fileID: 60092001848823003}
   - component: {fileID: 2513098665539277714}
   - component: {fileID: 8605977511856088209}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83571,7 +84661,7 @@ GameObject:
   - component: {fileID: 6961787617727270611}
   - component: {fileID: 1295951287912553998}
   - component: {fileID: 814914181011816909}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83773,7 +84863,7 @@ GameObject:
   - component: {fileID: 4455852950020900039}
   - component: {fileID: 7633219961296627811}
   - component: {fileID: 3615812276475392485}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84177,7 +85267,7 @@ GameObject:
   - component: {fileID: 1882868126261324346}
   - component: {fileID: 6638679031734915102}
   - component: {fileID: 7494368448312989861}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84448,6 +85538,7 @@ GameObject:
   - component: {fileID: 3333555556583944167}
   - component: {fileID: 380958564491530352}
   - component: {fileID: 8180173527799927227}
+  - component: {fileID: 5378475337036665917}
   m_Layer: 6
   m_Name: Building Sky_big_color02 (2)
   m_TagString: Building
@@ -84548,6 +85639,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &5378475337036665917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773741699885162124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7774680411015541918
 GameObject:
   m_ObjectHideFlags: 0
@@ -84559,7 +85662,7 @@ GameObject:
   - component: {fileID: 5732799626242805817}
   - component: {fileID: 2892309168132778563}
   - component: {fileID: 8892767762992943718}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84761,7 +85864,7 @@ GameObject:
   - component: {fileID: 1099712576187791971}
   - component: {fileID: 5906066037039269250}
   - component: {fileID: 4996053369104111162}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (85)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85414,7 +86517,7 @@ GameObject:
   - component: {fileID: 1512966511068239761}
   - component: {fileID: 214528367445692456}
   - component: {fileID: 3626171508947747394}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85841,6 +86944,7 @@ GameObject:
   - component: {fileID: 6097595925116578597}
   - component: {fileID: 1167538732422239508}
   - component: {fileID: 2568030015073293987}
+  - component: {fileID: 292700345792093014}
   m_Layer: 6
   m_Name: Building_Factory
   m_TagString: Building
@@ -85941,6 +87045,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.400005, y: 18.970465, z: 27.500004}
   m_Center: {x: -0.0000014305115, y: 9.485232, z: -0.5269308}
+--- !u!114 &292700345792093014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935856430729645245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7937072438977001084
 GameObject:
   m_ObjectHideFlags: 0
@@ -85953,6 +87069,7 @@ GameObject:
   - component: {fileID: 5078246487555340131}
   - component: {fileID: 6348814985734227362}
   - component: {fileID: 1971488606359681302}
+  - component: {fileID: 8971005095269089578}
   m_Layer: 6
   m_Name: Building_House_01_color01
   m_TagString: Building
@@ -86053,6 +87170,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.891638, y: 9.053619, z: 12.602821}
   m_Center: {x: -0.56064415, y: 4.5260267, z: -0.13327432}
+--- !u!114 &8971005095269089578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937072438977001084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &7944221559976842061
 GameObject:
   m_ObjectHideFlags: 0
@@ -86558,7 +87687,7 @@ GameObject:
   - component: {fileID: 7779506606741210013}
   - component: {fileID: 4239836800147918620}
   - component: {fileID: 8339840040462459925}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_BillBoard_small (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86873,6 +88002,7 @@ GameObject:
   - component: {fileID: 7528251564983710722}
   - component: {fileID: 3522007026986058625}
   - component: {fileID: 3347384970934791373}
+  - component: {fileID: 5003890121681997970}
   m_Layer: 11
   m_Name: Road Lane_01 (66)
   m_TagString: Untagged
@@ -86973,6 +88103,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 40, y: 0.40000173, z: 40}
   m_Center: {x: 0, y: 0.2, z: 0}
+--- !u!208 &5003890121681997970
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029567293987590131}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 0.2, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8035213063779641057
 GameObject:
   m_ObjectHideFlags: 0
@@ -87254,7 +88400,7 @@ GameObject:
   - component: {fileID: 8660711871924100640}
   - component: {fileID: 5977064784560032368}
   - component: {fileID: 274691982067712737}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87434,7 +88580,7 @@ GameObject:
   - component: {fileID: 853995423793892977}
   - component: {fileID: 8203952858452411038}
   - component: {fileID: 5879461467090694025}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (92)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87637,7 +88783,7 @@ GameObject:
   - component: {fileID: 8974318425749395164}
   - component: {fileID: 2614859930655119419}
   - component: {fileID: 2112024811291288035}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88042,7 +89188,7 @@ GameObject:
   - component: {fileID: 3271764665081515875}
   - component: {fileID: 5676174296892163411}
   - component: {fileID: 1848484077779502841}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88132,7 +89278,7 @@ GameObject:
   - component: {fileID: 4226669570560226732}
   - component: {fileID: 5401600993779089779}
   - component: {fileID: 6910356852900730420}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Dustbin (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88223,6 +89369,7 @@ GameObject:
   - component: {fileID: 4193347558908706527}
   - component: {fileID: 3608445820036836933}
   - component: {fileID: 7680612280150370407}
+  - component: {fileID: 7222274720526867984}
   m_Layer: 0
   m_Name: Natures_House Floor (31)
   m_TagString: Untagged
@@ -88324,6 +89471,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &7222274720526867984
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8174748016756892718}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8185680254402216160
 GameObject:
   m_ObjectHideFlags: 0
@@ -88515,7 +89678,7 @@ GameObject:
   - component: {fileID: 7809710817974957230}
   - component: {fileID: 7282998854224977801}
   - component: {fileID: 1512223120703578527}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88605,7 +89768,7 @@ GameObject:
   - component: {fileID: 9036705484140989411}
   - component: {fileID: 8761507205382872778}
   - component: {fileID: 4220484113724947474}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88696,7 +89859,7 @@ GameObject:
   - component: {fileID: 3717939044816748968}
   - component: {fileID: 361340752682724596}
   - component: {fileID: 8342144107238471372}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88808,7 +89971,7 @@ GameObject:
   - component: {fileID: 7700772723386467058}
   - component: {fileID: 6687392088203961207}
   - component: {fileID: 6663394119235537034}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (56)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89212,7 +90375,7 @@ GameObject:
   - component: {fileID: 2169763282807040425}
   - component: {fileID: 6531394252085692240}
   - component: {fileID: 5881643055424183241}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89302,7 +90465,7 @@ GameObject:
   - component: {fileID: 885213295999730935}
   - component: {fileID: 4579788870221280114}
   - component: {fileID: 4041474090831018828}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (101)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89730,7 +90893,7 @@ GameObject:
   - component: {fileID: 2490671214815269718}
   - component: {fileID: 4119798098298161293}
   - component: {fileID: 6120796733220112792}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90068,6 +91231,7 @@ GameObject:
   - component: {fileID: 1047768428421889001}
   - component: {fileID: 1709879112841247357}
   - component: {fileID: 3767859579226095296}
+  - component: {fileID: 4382165304983632490}
   m_Layer: 0
   m_Name: Natures_House Floor (36)
   m_TagString: Untagged
@@ -90169,6 +91333,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &4382165304983632490
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291152436292806618}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8315881605375699255
 GameObject:
   m_ObjectHideFlags: 0
@@ -90271,6 +91451,7 @@ GameObject:
   - component: {fileID: 6894983787762874712}
   - component: {fileID: 6483054108809335790}
   - component: {fileID: 6881840112353375119}
+  - component: {fileID: 3503921115454538911}
   m_Layer: 6
   m_Name: Building_Shoes Shop
   m_TagString: Building
@@ -90371,6 +91552,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.039232, y: 8.357073, z: 12.035599}
   m_Center: {x: 0.5025642, y: 4.1785145, z: 0.5064604}
+--- !u!114 &3503921115454538911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339641739476447894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8347367958775340885
 GameObject:
   m_ObjectHideFlags: 0
@@ -90472,7 +91665,7 @@ GameObject:
   - component: {fileID: 744868555993413538}
   - component: {fileID: 4649064286234951022}
   - component: {fileID: 2225721556256020719}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90563,6 +91756,7 @@ GameObject:
   - component: {fileID: 4557735765537135359}
   - component: {fileID: 820591549867566685}
   - component: {fileID: 455630777119830800}
+  - component: {fileID: 2158021906949421071}
   m_Layer: 6
   m_Name: Building_House_04_color03 (1)
   m_TagString: Building
@@ -90663,6 +91857,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 24.771994, y: 7.870478, z: 15.32235}
   m_Center: {x: 0.7986021, y: 3.7148387, z: 0.11547756}
+--- !u!114 &2158021906949421071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383140137564460461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8389730875658204930
 GameObject:
   m_ObjectHideFlags: 0
@@ -90764,7 +91970,7 @@ GameObject:
   - component: {fileID: 6916915786989656949}
   - component: {fileID: 9221994077922099557}
   - component: {fileID: 6814844592714014040}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90855,6 +92061,7 @@ GameObject:
   - component: {fileID: 1832147968603610226}
   - component: {fileID: 5090705554163230641}
   - component: {fileID: 2727982940804093698}
+  - component: {fileID: 2972893080881254515}
   m_Layer: 6
   m_Name: Building_House_02_color02 (1)
   m_TagString: Building
@@ -90955,6 +92162,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.582718, y: 9.043972, z: 13.00732}
   m_Center: {x: -0.42346716, y: 4.5219393, z: -0.10574341}
+--- !u!114 &2972893080881254515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403516273820241388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8415593163561326978
 GameObject:
   m_ObjectHideFlags: 0
@@ -90967,6 +92186,7 @@ GameObject:
   - component: {fileID: 1547221600788092349}
   - component: {fileID: 1596123604816460079}
   - component: {fileID: 1276412869456769483}
+  - component: {fileID: 4069914327115949902}
   m_Layer: 6
   m_Name: Building Sky_small_color03 (3)
   m_TagString: Building
@@ -91067,6 +92287,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000001, y: 16.928885, z: 13.065448}
   m_Center: {x: 0.000009059906, y: 8.464442, z: 0.475636}
+--- !u!114 &4069914327115949902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415593163561326978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8429306629366485183
 GameObject:
   m_ObjectHideFlags: 0
@@ -91078,7 +92310,7 @@ GameObject:
   - component: {fileID: 3278679199868219999}
   - component: {fileID: 5985251871319964139}
   - component: {fileID: 991445348547350567}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91908,7 +93140,7 @@ GameObject:
   - component: {fileID: 3410274709909141916}
   - component: {fileID: 453771682107967330}
   - component: {fileID: 7177147922185073396}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (104)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92089,6 +93321,7 @@ GameObject:
   - component: {fileID: 3169694204895941516}
   - component: {fileID: 6367328541581773946}
   - component: {fileID: 8263660999270872463}
+  - component: {fileID: 8928760586898555450}
   m_Layer: 6
   m_Name: Building Sky_big_color01
   m_TagString: Building
@@ -92189,6 +93422,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 27.319477, y: 49.604683, z: 24.592896}
   m_Center: {x: -0.0000047683716, y: 24.802334, z: 0.24895811}
+--- !u!114 &8928760586898555450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567846178627498740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8572667619977235483
 GameObject:
   m_ObjectHideFlags: 0
@@ -92201,6 +93446,7 @@ GameObject:
   - component: {fileID: 1845224004779611656}
   - component: {fileID: 355886146245007578}
   - component: {fileID: 4242191213559399147}
+  - component: {fileID: 3795612127144830863}
   m_Layer: 6
   m_Name: Building_House_03_color02 (1)
   m_TagString: Building
@@ -92301,6 +93547,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &3795612127144830863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572667619977235483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8574181821080650427
 GameObject:
   m_ObjectHideFlags: 0
@@ -92492,7 +93750,7 @@ GameObject:
   - component: {fileID: 5480678208809017618}
   - component: {fileID: 5857239459867850241}
   - component: {fileID: 5752741520580619958}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92673,6 +93931,7 @@ GameObject:
   - component: {fileID: 9172916850447011496}
   - component: {fileID: 7340937832465243633}
   - component: {fileID: 1476395570033711707}
+  - component: {fileID: 9025609840998095839}
   m_Layer: 6
   m_Name: Building_Gas Station
   m_TagString: Building
@@ -92773,6 +94032,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.000006, y: 7.994399, z: 25.601995}
   m_Center: {x: -0.06580925, y: 3.9971995, z: 2.4292269}
+--- !u!114 &9025609840998095839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599839219538008757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8604919049568773566
 GameObject:
   m_ObjectHideFlags: 0
@@ -92875,6 +94146,7 @@ GameObject:
   - component: {fileID: 6494757144233345046}
   - component: {fileID: 1772671445337919553}
   - component: {fileID: 5776371883938448572}
+  - component: {fileID: 4130709320033324188}
   m_Layer: 6
   m_Name: Building_Residential_color03
   m_TagString: Building
@@ -92975,6 +94247,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16.229427, y: 19.239717, z: 12.664908}
   m_Center: {x: -0.00013637543, y: 9.619859, z: 0.05764866}
+--- !u!114 &4130709320033324188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8613328615708358965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8613654229633798359
 GameObject:
   m_ObjectHideFlags: 0
@@ -92986,7 +94270,7 @@ GameObject:
   - component: {fileID: 5760449448195683019}
   - component: {fileID: 8879951298409496752}
   - component: {fileID: 3031648521291391463}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93412,7 +94696,7 @@ GameObject:
   - component: {fileID: 3228276698870175941}
   - component: {fileID: 3260845826170840188}
   - component: {fileID: 6131320740595448877}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (126)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93997,7 +95281,7 @@ GameObject:
   - component: {fileID: 1397284226586667833}
   - component: {fileID: 3565711162873588492}
   - component: {fileID: 1178554611997478333}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94603,7 +95887,7 @@ GameObject:
   - component: {fileID: 8076030024809941911}
   - component: {fileID: 530341749024652700}
   - component: {fileID: 2757630067219780995}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94693,7 +95977,7 @@ GameObject:
   - component: {fileID: 4182107734767952520}
   - component: {fileID: 5966257904195229137}
   - component: {fileID: 9058910881191714799}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94784,6 +96068,7 @@ GameObject:
   - component: {fileID: 4393586148039256387}
   - component: {fileID: 2286790091282450019}
   - component: {fileID: 3454377317523137426}
+  - component: {fileID: 7560377420089248734}
   m_Layer: 6
   m_Name: Building_Restaurant (3)
   m_TagString: Building
@@ -94884,6 +96169,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.2054796, z: 0.28388584}
+--- !u!114 &7560377420089248734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8770526330810260413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8789473526595222088
 GameObject:
   m_ObjectHideFlags: 0
@@ -94895,7 +96192,7 @@ GameObject:
   - component: {fileID: 2784348514742781846}
   - component: {fileID: 8263491392035577732}
   - component: {fileID: 1957983758642826974}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94985,7 +96282,7 @@ GameObject:
   - component: {fileID: 2892315904126818631}
   - component: {fileID: 5587322710047673614}
   - component: {fileID: 6144463165685875839}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95277,7 +96574,7 @@ GameObject:
   - component: {fileID: 1328904687232468157}
   - component: {fileID: 6700224847919150716}
   - component: {fileID: 7828303200909359949}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95367,7 +96664,7 @@ GameObject:
   - component: {fileID: 4969424541712667060}
   - component: {fileID: 2166905729020989171}
   - component: {fileID: 6017309490878633260}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95459,6 +96756,7 @@ GameObject:
   - component: {fileID: 6771498235381136566}
   - component: {fileID: 6576526587003944659}
   - component: {fileID: 6245173612511604768}
+  - component: {fileID: 2569576922049299316}
   m_Layer: 6
   m_Name: Building_Bar
   m_TagString: Building
@@ -95581,6 +96879,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3578935, y: 10.411013, z: 7.4074726}
   m_Center: {x: -0.0225451, y: 5.205495, z: 0.28388584}
+--- !u!114 &2569576922049299316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8876245575035707000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8882051087723935234
 GameObject:
   m_ObjectHideFlags: 0
@@ -95593,6 +96903,7 @@ GameObject:
   - component: {fileID: 3790496218421634189}
   - component: {fileID: 2130828536273762543}
   - component: {fileID: 9027267757557203163}
+  - component: {fileID: 7062358154831797215}
   m_Layer: 6
   m_Name: Building_House_03_color03
   m_TagString: Building
@@ -95693,6 +97004,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.255001, y: 9.610818, z: 14.407763}
   m_Center: {x: -0.07696676, y: 4.7428584, z: -0.17988753}
+--- !u!114 &7062358154831797215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882051087723935234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca6fb2fbac9d63488a1c56137f42c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDestination
 --- !u!1 &8885749197131396921
 GameObject:
   m_ObjectHideFlags: 0
@@ -95705,6 +97028,7 @@ GameObject:
   - component: {fileID: 9077860745001564601}
   - component: {fileID: 653908218245210694}
   - component: {fileID: 9023606212361317925}
+  - component: {fileID: 6188311080817728143}
   m_Layer: 0
   m_Name: Natures_House Floor (32)
   m_TagString: Untagged
@@ -95806,6 +97130,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!208 &6188311080817728143
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885749197131396921}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5000001, y: 0.1, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8887081414088052059
 GameObject:
   m_ObjectHideFlags: 0
@@ -96333,7 +97673,7 @@ GameObject:
   - component: {fileID: 2778727045319542805}
   - component: {fileID: 2807837670698925165}
   - component: {fileID: 207923426961034088}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96424,7 +97764,7 @@ GameObject:
   - component: {fileID: 3389290108564263700}
   - component: {fileID: 8885328387579419096}
   - component: {fileID: 7519304333683961375}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof prop air
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96537,7 +97877,7 @@ GameObject:
   - component: {fileID: 6791033869125342318}
   - component: {fileID: 5202756822242715246}
   - component: {fileID: 1790899267512128948}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96763,7 +98103,7 @@ GameObject:
   - component: {fileID: 8502135114671223471}
   - component: {fileID: 5903694731309458226}
   - component: {fileID: 2510881839693606980}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96854,7 +98194,7 @@ GameObject:
   - component: {fileID: 417287040583020392}
   - component: {fileID: 4181754004497514637}
   - component: {fileID: 3007797086196569523}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Windmill (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96967,7 +98307,7 @@ GameObject:
   - component: {fileID: 6039416940897690595}
   - component: {fileID: 2465089750708939769}
   - component: {fileID: 286759209471090588}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97147,7 +98487,7 @@ GameObject:
   - component: {fileID: 8852107652779123758}
   - component: {fileID: 3045450027428800062}
   - component: {fileID: 2952995135058132875}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (109)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97237,7 +98577,7 @@ GameObject:
   - component: {fileID: 367814643868212166}
   - component: {fileID: 528405771284866470}
   - component: {fileID: 437679799203620314}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97529,7 +98869,7 @@ GameObject:
   - component: {fileID: 7147988969544560647}
   - component: {fileID: 609891242475244110}
   - component: {fileID: 9082910798847963633}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97709,7 +99049,7 @@ GameObject:
   - component: {fileID: 719067174488554711}
   - component: {fileID: 590465443473844069}
   - component: {fileID: 2224461605064935683}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (117)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97871,7 +99211,6 @@ Transform:
   - {fileID: 1901737676229212083}
   - {fileID: 3333934118510471112}
   - {fileID: 4137125807666731927}
-  - {fileID: 7748565733621979879}
   - {fileID: 3278679199868219999}
   - {fileID: 1231171546812576786}
   - {fileID: 830318548878166082}
@@ -98207,7 +99546,7 @@ GameObject:
   - component: {fileID: 4011229794191652415}
   - component: {fileID: 4328024590380053722}
   - component: {fileID: 4722213102490619276}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98387,7 +99726,7 @@ GameObject:
   - component: {fileID: 6210346404672606596}
   - component: {fileID: 6916603760198730443}
   - component: {fileID: 5218243775178373928}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98791,7 +100130,7 @@ GameObject:
   - component: {fileID: 874862641950633616}
   - component: {fileID: 2601450397959059534}
   - component: {fileID: 4196083784571686017}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98881,7 +100220,7 @@ GameObject:
   - component: {fileID: 3577983911740845379}
   - component: {fileID: 2464161320887866126}
   - component: {fileID: 7279602305193370732}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Hydrant (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99083,7 +100422,7 @@ GameObject:
   - component: {fileID: 1618939214434464420}
   - component: {fileID: 2894206253348997370}
   - component: {fileID: 9100957169638572268}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99173,7 +100512,7 @@ GameObject:
   - component: {fileID: 8146969537755108610}
   - component: {fileID: 1814221053164761333}
   - component: {fileID: 443238118188096827}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (107)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99263,7 +100602,7 @@ GameObject:
   - component: {fileID: 2086560700714532293}
   - component: {fileID: 1523495476961970595}
   - component: {fileID: 4209512845527071804}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99443,7 +100782,7 @@ GameObject:
   - component: {fileID: 3406653658109382831}
   - component: {fileID: 5232421100369772792}
   - component: {fileID: 3744881181810553647}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99623,7 +100962,7 @@ GameObject:
   - component: {fileID: 4789165834051913955}
   - component: {fileID: 4082702121235156007}
   - component: {fileID: 5562995273431252719}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99713,7 +101052,7 @@ GameObject:
   - component: {fileID: 8514085517395068117}
   - component: {fileID: 7368385424906723702}
   - component: {fileID: 2123608754582731455}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Roof Antenna (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99803,7 +101142,7 @@ GameObject:
   - component: {fileID: 8754161885502234657}
   - component: {fileID: 7659230790044315507}
   - component: {fileID: 3171076008460914589}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Traffic Signal_big (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100005,7 +101344,7 @@ GameObject:
   - component: {fileID: 1422472091562667435}
   - component: {fileID: 1690665564493989762}
   - component: {fileID: 7778839021420435072}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Props_Street Light (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,8 @@ public class DistractedState : IGPSHumanState
     public void Enter()
     {
         Debug.Log("Entering DistractedState State");
-        human.StopMoving();
+       // human.StopMoving();
+        human.StopAgent();
         human.ShowMessage("I'll join them.");
         human.ShowInteractionCircle(Color.red);
         timer = 0f;

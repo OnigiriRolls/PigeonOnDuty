@@ -24,12 +24,12 @@ public class FollowingState : IGPSHumanState
     public void Update()
     {
         human.StateProgress = human.DistractionPercent;
+        human.FollowTarget();
+        if (human.IsDistracted())
+            human.ChangeState(new DistractedState(human));
     }
 
     public void FixedUpdate()
     {
-        human.FollowTarget();
-        if (human.IsDistracted())
-            human.ChangeState(new DistractedState(human));
     }
 }
