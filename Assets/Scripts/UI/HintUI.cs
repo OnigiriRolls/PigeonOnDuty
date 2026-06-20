@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HintUI : MonoBehaviour
 {
+    [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text hintText;
 
     private Coroutine currentRoutine;
@@ -13,7 +14,7 @@ public class HintUI : MonoBehaviour
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         hintText.text = message;
-        gameObject.SetActive(true);
+        panel.SetActive(true);
     }
 
     public void Show(string message, float duration)
@@ -25,14 +26,14 @@ public class HintUI : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 
     private IEnumerator ShowRoutine(string message, float duration)
     {
         hintText.text = message;
-        gameObject.SetActive(true);
+        panel.SetActive(true);
         yield return new WaitForSecondsRealtime(duration);
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 }

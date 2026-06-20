@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 814609929723420393}
   - component: {fileID: 8695288101894765034}
   - component: {fileID: 5855582637689201315}
+  - component: {fileID: 367527578057225833}
+  - component: {fileID: 2952279246618051155}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -68,6 +70,7 @@ MonoBehaviour:
   highMusic: {fileID: 8300000, guid: a4861b09ceeab9a41b3c18eb04188b81, type: 3}
   midAltitude: 51
   highAltitude: 151
+  maxThrottle: 130
 --- !u!114 &334364185767018330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8177dc83a4c1b4aa88cd052ab42971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayScoreUI
-  scoreText: {fileID: 0}
+  reputationText: {fileID: 0}
 --- !u!114 &443502973139152938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,5 +141,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MissionRewardUI
   reward: {fileID: 0}
   missionText: {fileID: 0}
-  scoreText: {fileID: 0}
+  reputationText: {fileID: 0}
+  coinsText: {fileID: 0}
   rewardClip: {fileID: 8300000, guid: e8ebe5bd46b73d24680b128ea372f5b9, type: 3}
+--- !u!114 &367527578057225833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751abac1e2e643e48a78e9d577d84300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnlockMessageUI
+  panel: {fileID: 0}
+  titleText: {fileID: 0}
+  nameText: {fileID: 0}
+--- !u!114 &2952279246618051155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19228c24fec1ff24e95987b67bc8a18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HintUI
+  panel: {fileID: 0}
+  hintText: {fileID: 0}

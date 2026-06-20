@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class GPSMissionController : MonoBehaviour
 {
-    public bool IsEscortActive => state == GPSMissionState.EscortTraveler;
-
     [SerializeField] private HumanFollower humanPrefab;
     [SerializeField] private Transform humanSpawnPoint;
     [SerializeField] private Transform player;
     [SerializeField] private Transform gpsSpawnPointsParent;
     [SerializeField] private float reachTravelerDistance = 5f;
     [SerializeField] private Transform gpsDestinationParent;
+    [SerializeField] private HintUI hintUI;
 
     private GPSMissionState state;
     private GPSMission activeMission;
@@ -18,7 +17,6 @@ public class GPSMissionController : MonoBehaviour
     private bool missionRunning;
     private EndlessRunManager endlessRunManager;
     private GameManager gameManager;
-    private HintUI hintUI;
 
     public enum GPSMissionState
     {
@@ -31,7 +29,6 @@ public class GPSMissionController : MonoBehaviour
     {
         endlessRunManager = FindAnyObjectByType<EndlessRunManager>();
         gameManager = FindAnyObjectByType<GameManager>();
-        hintUI = FindAnyObjectByType<HintUI>();
     }
 
     public void StartMission(GPSMission mission)
@@ -47,7 +44,7 @@ public class GPSMissionController : MonoBehaviour
         state = GPSMissionState.ReachTraveler;
         endlessRunManager.SetCurrentObjectiveAndTimer(currentHuman.transform);
         hintUI.Show("Find the Human");
-        Debug.Log("Reach the traveler");
+        currentHuman.ShowInteractionCircle(Color.yellow);
     }
 
     private Transform GetClosestSpawnPoint()
@@ -70,12 +67,12 @@ public class GPSMissionController : MonoBehaviour
     {
         state = GPSMissionState.EscortTraveler;
         currentHuman.Initialize(player);
+        currentHuman.HideInteractionCircle();
         currentHuman.ShowMessage("Let's go!");
         GPSDestination destination = GetRandomDestination();
         endlessRunManager.CleanCurrentObjective();
         endlessRunManager.SpawnNextObjectiveAndCollectibles(destination.transform);
         hintUI.Show("Escort the Human", 4f);
-        Debug.Log("Traveler is now following");
     }
 
     private GPSDestination GetRandomDestination()

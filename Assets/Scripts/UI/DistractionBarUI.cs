@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,6 @@ public class DistractionBarUI : MonoBehaviour
     {
         if (human == null)
             return;
-        slider.value = human.DistractionPercent;
+        slider.value = human.StateProgress;
     }
 }

@@ -1,21 +1,18 @@
+using TMPro;
 using UnityEngine;
 
-public enum HumanState
-{
-    Following,
-    Distracted,
-    Returning
-}
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-
 [RequireComponent(typeof(NPCDialogueUI))]
 public class HumanFollower : MonoBehaviour
 {
-    public HumanState State => state;
     public float DistractionPercent => distractionMeter / maxDistraction;
+    public float DistractionReactionTime => distractionReactionTime;
+    public float RecallDuration => recallDuration;
+    public float ParadeDuration => paradeDuration;
     public float CurrentSpeed { get; private set; }
-    public bool CanBeRecalled => state == HumanState.Distracted;
+    public float StateProgress { get; set; }
+    public string StateLabel { get; set; }
 
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float stopDistance = 5f;
@@ -27,22 +24,31 @@ public class HumanFollower : MonoBehaviour
     [SerializeField] private float distractionDecayRate = 25f;
     [SerializeField] private float distractionRecoveryRate = 10f;
     [SerializeField] private float paradeCheckRadius = 0.5f;
+    [SerializeField] private float recallDistance = 10f;
+    [SerializeField] private float distractionReactionTime = 5f;
+    [SerializeField] private float recallDuration = 2f;
+    [SerializeField] private float paradeDuration = 10f;
+    [SerializeField] private GameObject recallCircle;
+    [SerializeField] private GameObject hintPanel;
+    [SerializeField] private TMP_Text hintText;
 
     private Transform target;
     private Rigidbody rb;
     private CapsuleCollider capsule;
     private bool isMoving = true;
     private float distractionMeter;
-    private HumanState state;
     private NPCDialogueUI dialogueUI;
+    private SpriteRenderer recallCircleRenderer;
+    private IGPSHumanState currentState;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
         dialogueUI = GetComponent<NPCDialogueUI>();
+        recallCircleRenderer = recallCircle.GetComponent<SpriteRenderer>();
         distractionMeter = maxDistraction;
-        state = HumanState.Following;
+        ChangeState(new FollowingState(this));
     }
 
     public void Initialize(Transform targetToFollow)
@@ -50,33 +56,36 @@ public class HumanFollower : MonoBehaviour
         target = targetToFollow;
     }
 
+    private void Update()
+    {
+        currentState?.Update();
+    }
+
     private void FixedUpdate()
     {
         UpdateDistraction();
-        if (state == HumanState.Distracted)
-        {
-            CurrentSpeed = 0f;
-            return;
-        }
+        currentState?.FixedUpdate();
+    }
+
+    public void ChangeState(IGPSHumanState newState)
+    {
+        currentState?.Exit();
+        currentState = newState;
+        currentState.Enter();
+    }
+
+    public bool FollowTarget()
+    {
         if (target == null)
         {
             CurrentSpeed = 0f;
-            return;
+            return false;
         }
-
         Vector3 targetPosition = target.position;
         targetPosition.y = transform.position.y;
         Vector3 direction = targetPosition - transform.position;
         float distance = direction.magnitude;
-        if (state == HumanState.Returning)
-        {
-            if (distance <= stopDistance)
-            {
-                state = HumanState.Following;
-                CurrentSpeed = 0f;
-                return;
-            }
-        }
+
         if (isMoving)
         {
             if (distance <= stopDistance)
@@ -91,23 +100,24 @@ public class HumanFollower : MonoBehaviour
         if (!isMoving)
         {
             CurrentSpeed = 0f;
-            return;
+            return true;
         }
 
         Vector3 moveDirection = direction.normalized;
         Vector3 nextPosition = rb.position + moveSpeed * Time.fixedDeltaTime * moveDirection;
 
-        bool blocked = IsBlocked(nextPosition);
-        if (blocked)
+        if (IsBlocked(nextPosition))
         {
             CurrentSpeed = 0f;
-            return;
+            return false;
         }
 
         rb.MovePosition(nextPosition);
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
         CurrentSpeed = moveSpeed;
+
+        return false;
     }
 
     private void UpdateDistraction()
@@ -121,11 +131,21 @@ public class HumanFollower : MonoBehaviour
         else
             distractionMeter += distractionRecoveryRate * Time.fixedDeltaTime;
         distractionMeter = Mathf.Clamp(distractionMeter, 0f, maxDistraction);
+    }
 
-        if (distractionMeter <= 0f && state == HumanState.Following)
-        {
-            BecomeDistracted();
-        }
+    public bool IsDistracted()
+    {
+        return distractionMeter <= 0f;
+    }
+
+    public void StopMoving()
+    {
+        CurrentSpeed = 0f;
+    }
+
+    public void RefreshDistractionMeter()
+    {
+        distractionMeter = maxDistraction;
     }
 
     private bool IsBlocked(Vector3 nextPosition)
@@ -138,24 +158,6 @@ public class HumanFollower : MonoBehaviour
         return Physics.CheckCapsule(point1, point2, radius, obstacleLayer);
     }
 
-    private void BecomeDistracted()
-    {
-        state = HumanState.Distracted;
-        CurrentSpeed = 0f;
-        ShowMessage("I'll join them.");
-        Debug.Log("Human joined the parade");
-    }
-
-    public void Recall()
-    {
-        if (state != HumanState.Distracted)
-            return;
-        distractionMeter = maxDistraction;
-        state = HumanState.Returning;
-        ShowMessage("I lost you for a second...");
-        Debug.Log("Human recalled");
-    }
-
     public float GetDistractionPercent()
     {
         return distractionMeter / maxDistraction;
@@ -164,5 +166,43 @@ public class HumanFollower : MonoBehaviour
     public void ShowMessage(string message)
     {
         dialogueUI.ShowMessage(message);
+    }
+
+    public void ShowInteractionCircle(Color color)
+    {
+        recallCircleRenderer.color = color;
+        recallCircle.SetActive(true);
+    }
+
+    public void HideInteractionCircle()
+    {
+        recallCircle.SetActive(false);
+    }
+
+    public void ShowHint(string message)
+    {
+        if (hintPanel.activeSelf && hintText.text == message)
+            return;
+        hintText.text = message;
+        hintPanel.SetActive(true);
+    }
+
+    public void HideHint()
+    {
+        hintPanel.SetActive(false);
+    }
+
+    public bool CanRecallNow()
+    {
+        if (target == null)
+            return false;
+        float distance = Vector3.Distance(target.position, transform.position);
+        return distance <= recallDistance;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, recallDistance);
     }
 }
