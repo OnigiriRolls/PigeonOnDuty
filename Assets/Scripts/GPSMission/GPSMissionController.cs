@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GPSMissionController : MonoBehaviour
@@ -6,9 +8,10 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private Transform humanSpawnPoint;
     [SerializeField] private Transform player;
     [SerializeField] private Transform gpsSpawnPointsParent;
-    [SerializeField] private float reachTravelerDistance = 5f;
     [SerializeField] private Transform gpsDestinationParent;
     [SerializeField] private HintUI hintUI;
+    [SerializeField] private ParadeManager paradeManager;
+    [SerializeField] private float minimumDistance = 300f;
 
     private GPSMissionState state;
     private GPSMission activeMission;
@@ -70,6 +73,7 @@ public class GPSMissionController : MonoBehaviour
         currentHuman.HideInteractionCircle();
         currentHuman.ShowMessage("Let's go!");
         GPSDestination destination = GetRandomDestination();
+        paradeManager.SpawnParades(currentHuman.transform.position, destination.transform.position);
         endlessRunManager.CleanCurrentObjective();
         endlessRunManager.SpawnNextObjectiveAndCollectibles(destination.transform);
         hintUI.Show("Escort the Human", 4f);
@@ -78,12 +82,21 @@ public class GPSMissionController : MonoBehaviour
     private GPSDestination GetRandomDestination()
     {
         GPSDestination[] destinations = gpsDestinationParent.GetComponentsInChildren<GPSDestination>();
-        return destinations[Random.Range(0, destinations.Length)];
+        List<GPSDestination> validDestinations = destinations
+            .Where(d => Vector3.Distance(player.position, d.transform.position) >= minimumDistance)
+            .ToList();
+
+        if (validDestinations.Count == 0)
+        {
+            Debug.LogWarning("No valid destinations found.");
+            return destinations[Random.Range(0, destinations.Length)];
+        }
+        return validDestinations[Random.Range(0, validDestinations.Count)];
     }
 
     public void StopMission()
     {
-        missionRunning = false;
+        ClearMission();
         if (currentHuman != null)
             Destroy(currentHuman.gameObject);
     }
@@ -108,8 +121,7 @@ public class GPSMissionController : MonoBehaviour
 
     private void UpdateReachTraveler()
     {
-        float distance = Vector3.Distance(player.position, currentHuman.transform.position);
-        if (distance <= reachTravelerDistance)
+        if (currentHuman.CanInteract())
         {
             StartEscort();
         }
@@ -132,7 +144,7 @@ public class GPSMissionController : MonoBehaviour
 
     private void FailMission()
     {
-        missionRunning = false;
+        ClearMission();
         Debug.Log("GPS Mission Failed");
         gameManager.GameOver(DeathReason.TimeUp);
     }
@@ -144,10 +156,9 @@ public class GPSMissionController : MonoBehaviour
         return Mathf.Max(0f, activeMission.lostTime - lostTimer);
     }
 
-    public float GetDistanceToHuman()
+    private void ClearMission()
     {
-        if (currentHuman == null)
-            return 0f;
-        return Vector3.Distance(player.position, currentHuman.transform.position);
+        paradeManager.ClearAllParades();
+        missionRunning = false;
     }
 }

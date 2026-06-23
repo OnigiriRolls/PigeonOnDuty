@@ -14,7 +14,6 @@ public class FollowingState : IGPSHumanState
        // human.StateLabel = "DISTRACTION";
         human.StateProgress = 1f;
         human.RefreshDistractionMeter();
-        Debug.Log("Entering Following State");
     }
 
     public void Exit()

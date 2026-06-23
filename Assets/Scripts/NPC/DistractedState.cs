@@ -12,8 +12,6 @@ public class DistractedState : IGPSHumanState
 
     public void Enter()
     {
-        Debug.Log("Entering DistractedState State");
-       // human.StopMoving();
         human.StopAgent();
         human.ShowMessage("I'll join them.");
         human.ShowInteractionCircle(Color.red);
@@ -23,7 +21,6 @@ public class DistractedState : IGPSHumanState
 
     public void Exit()
     {
-        Debug.Log("Exiting DistractedState State");
     }
 
     public void Update()
@@ -38,7 +35,7 @@ public class DistractedState : IGPSHumanState
             human.ChangeState(new JoinedParadeState(human));
             return;
         }
-        if (human.CanRecallNow())
+        if (human.CanInteract())
             human.ShowHint("Press [E] to call back.");
         else
         {

@@ -1,16 +1,21 @@
 using UnityEngine;
 
+[RequireComponent(typeof(ParadeZoneController))]
 public class ParadeZone : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private ParadeZoneController parade;
+    private bool wasSpawned = false;
+
+    private void Awake()
     {
-        
+        parade = GetComponent<ParadeZoneController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (!other.CompareTag("Player") || wasSpawned)
+            return;
+        wasSpawned = true;
+        parade.SpawnParade();
     }
 }

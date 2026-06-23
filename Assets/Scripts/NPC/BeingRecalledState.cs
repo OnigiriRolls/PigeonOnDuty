@@ -12,7 +12,6 @@ public class BeingRecalledState : IGPSHumanState
 
     public void Enter()
     {
-        Debug.Log("Entering BeingRecalledState State");
         recallProgress = 0f;
         human.ShowMessage("Wait, I'm coming!");
         human.ShowHint("Hold [E]...");
@@ -26,7 +25,7 @@ public class BeingRecalledState : IGPSHumanState
 
     public void Update()
     {
-        if (!human.CanRecallNow())
+        if (!human.CanInteract())
         {
             human.ChangeState(new DistractedState(human));
             return;

@@ -12,7 +12,6 @@ public class JoinedParadeState : IGPSHumanState
 
     public void Enter()
     {
-        Debug.Log("Entering JoinedParadeState State");
         timer = 0f;
         human.ShowMessage("This looks fun!");
     }
