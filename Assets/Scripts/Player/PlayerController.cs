@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerConfig config;
     [SerializeField] private MissionManager missionManager;
     [SerializeField] private float windInfluence = 1f;
+    [SerializeField] private float hoverDrag = 8f;
 
     private float throttle;
     private float roll;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool isWindCarried;
     private Vector3 windCarryDirection;
     private float windCarryTimer;
+    private bool isHovering;
 
     private Rigidbody rb;
     private PlayerHealth health;
@@ -64,8 +66,11 @@ public class PlayerController : MonoBehaviour
         roll = Input.GetAxis("Roll");
         pitch = Input.GetAxis("Pitch");
 
-        if (Input.GetKey(KeyCode.Space)) throttle += config.throttleIncrement;
-        else if (Input.GetKey(KeyCode.LeftControl)) throttle -= config.throttleIncrement;
+        isHovering = Input.GetKey(KeyCode.Q);
+        if (Input.GetKey(KeyCode.Space))
+            throttle += config.throttleIncrement;
+        else if (Input.GetKey(KeyCode.LeftControl))
+            throttle -= config.throttleIncrement;
 
         throttle = Mathf.Clamp(throttle, 0f, config.maxThrottle * throttleMultiplier);
     }
@@ -85,6 +90,12 @@ public class PlayerController : MonoBehaviour
         if (isWindCarried)
         {
             HandleWindCarry();
+            return;
+        }
+
+        if (isHovering)
+        {
+            HandleHover();
             return;
         }
 
@@ -133,6 +144,21 @@ public class PlayerController : MonoBehaviour
         isWindCarried = true;
         windCarryDirection = direction.normalized;
         windCarryTimer = duration;
+    }
+
+    private void HandleHover()
+    {
+        rb.angularVelocity = Vector3.zero;
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, hoverDrag * Time.fixedDeltaTime);
+        float turnAmount = roll * config.turnSpeed * Time.fixedDeltaTime;
+        Quaternion yawRotation = Quaternion.Euler(0f, turnAmount, 0f);
+        float currentPitch = transform.eulerAngles.x;
+        if (currentPitch > 180f)
+            currentPitch -= 360f;
+        float pitchAmount = -pitch * config.pitchSpeed * Time.fixedDeltaTime;
+        float targetPitch = Mathf.Clamp(currentPitch + pitchAmount, -config.maxPitchAngle, config.maxPitchAngle);
+        Quaternion pitchRotation = Quaternion.Euler(targetPitch, transform.eulerAngles.y, 0f);
+        rb.MoveRotation(yawRotation * pitchRotation);
     }
 
     private void UpdateFlyAnimationSpeed()

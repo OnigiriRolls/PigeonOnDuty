@@ -16,6 +16,6 @@ MonoBehaviour:
   maxThrottle: 100
   maxThrust: 200
   lift: 135
-  turnSpeed: 90
-  pitchSpeed: 30
+  turnSpeed: 110
+  pitchSpeed: 60
   maxPitchAngle: 40

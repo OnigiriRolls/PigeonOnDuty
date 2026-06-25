@@ -5188,8 +5188,8 @@ MonoBehaviour:
   paradeParent: {fileID: 394100472}
   minParades: 14
   maxParades: 16
-  maxDistanceFromPath: 300
-  minimumDistanceBetweenParades: 100
+  maxDistanceFromPath: 450
+  minimumDistanceBetweenParades: 150
 --- !u!1 &1250004502
 GameObject:
   m_ObjectHideFlags: 0
@@ -7046,7 +7046,6 @@ MonoBehaviour:
   humanSpawnPoint: {fileID: 702585684}
   player: {fileID: 1517355606}
   gpsSpawnPointsParent: {fileID: 412899728}
-  reachTravelerDistance: 10
   gpsDestinationParent: {fileID: 4519225368683084398}
   hintUI: {fileID: 1889079388895480468}
   paradeManager: {fileID: 1245119266}
@@ -8637,6 +8636,10 @@ PrefabInstance:
       propertyPath: deathReasonText
       value: 
       objectReference: {fileID: 1117591398}
+    - target: {fileID: 5158143141275384477, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
