@@ -10,6 +10,7 @@ public class MissionManager : MonoBehaviour
     public bool HasActiveMission => ActiveMission != null;
     public EndlessRunManager EndlessRunManager => endlessRunManager;
     public GPSMissionController GPSMissionController => gpsMissionController;
+    public NewsMissionController NewsMissionController => newsMissionController;
     public event Action<List<MissionData>> OnMissionSelectionRequested;
     public event Action<MissionData> OnMissionSelected;
 
@@ -19,6 +20,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private MissionDatabase missionDatabase;
     [SerializeField] private EndlessRunManager endlessRunManager;
     [SerializeField] private GPSMissionController gpsMissionController;
+    [SerializeField] private NewsMissionController newsMissionController;
 
     private RewardManager rewardManager;
     private PlayerHealth playerHealth;
@@ -63,7 +65,7 @@ public class MissionManager : MonoBehaviour
 
 #if UNITY_EDITOR
         available = available
-            .Where(m => m is GPSMission)
+            .Where(m => m is NewsMission)
             .ToList();
 #endif
         int count = Mathf.Min(3, available.Count);

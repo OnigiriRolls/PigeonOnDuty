@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class PedestrianMovement : MonoBehaviour
+public class PedestrianMovement : MonoBehaviour, INPCMovement
 {
     public float CurrentSpeed => agent.velocity.magnitude;
 
