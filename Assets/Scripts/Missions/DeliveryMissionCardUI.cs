@@ -18,7 +18,7 @@ public class DeliveryMissionCardUI : MonoBehaviour
         this.onSelected = onSelected;
         titleText.text = mission.missionName;
         descriptionText.text = $"{mission.description}{Environment.NewLine}{Environment.NewLine}" +
-            $"Note:{Environment.NewLine}{Environment.NewLine}" +
+            $"Dispatcher:{Environment.NewLine}{Environment.NewLine}" +
             $"{mission.GetRandomFlavorText()}";
         selectButton.onClick.RemoveAllListeners();
         selectButton.onClick.AddListener(SelectMission);
