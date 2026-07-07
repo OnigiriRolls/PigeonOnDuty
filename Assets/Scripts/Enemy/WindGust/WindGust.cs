@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class WindGust : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 25f;
-    [SerializeField] private float lifeTime = 8f;
-    [SerializeField] private float carryDuration = 1.5f;
-    [SerializeField] private float upwardInfluence = 0.5f;
-    [SerializeField] private float trackingDistance = 20f;
+    public WindGustConfig Config => config;
+
+    [SerializeField] private WindGustConfig config;
 
     private Transform player;
     private bool stoppedTracking;
     private Vector3 moveDirection;
+    private float moveSpeed;
 
-    public void Initialize(Vector3 direction, Transform targetPlayer)
+    public void Initialize(Vector3 direction, Transform targetPlayer, float speed)
     {
         player = targetPlayer;
         moveDirection = direction.normalized;
-        Destroy(gameObject, lifeTime);
+        moveSpeed = speed;
+        Destroy(gameObject, config.lifeTime);
     }
 
     private void Update()
@@ -24,7 +24,7 @@ public class WindGust : MonoBehaviour
         if (!stoppedTracking && player != null)
         {
             float distance = Vector3.Distance(transform.position, player.position);
-            if (distance > trackingDistance)
+            if (distance > config.trackingDistance)
             {
                 moveDirection = (player.position - transform.position).normalized;
                 transform.rotation = Quaternion.LookRotation(moveDirection);
@@ -42,8 +42,8 @@ public class WindGust : MonoBehaviour
         if (!other.TryGetComponent<PlayerController>(out var player))
             return;
 
-        Vector3 carryDirection = (moveDirection + Vector3.up * upwardInfluence).normalized;
-        player.StartWindCarry(carryDirection, carryDuration);
+        Vector3 carryDirection = (moveDirection + Vector3.up * config.upwardInfluence).normalized;
+        player.StartWindCarry(carryDirection, config.carryDuration, 35f, 4f);
         Destroy(gameObject);
     }
 }

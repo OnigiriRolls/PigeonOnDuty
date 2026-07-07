@@ -2044,6 +2044,7 @@ Transform:
   - {fileID: 622098705}
   - {fileID: 652098070}
   - {fileID: 1352022614}
+  - {fileID: 1943505447}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356087204 stripped
@@ -3870,6 +3871,7 @@ MonoBehaviour:
   isNewsMissionActive: 0
   isGPSMissionActive: 1
   areAllMissionsActive: 0
+  missionTimer: {fileID: 1943505448}
 --- !u!1 &653847633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1576205524323083582, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -5110,6 +5112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8aae88ba38e144fb908930080d7ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewsMissionController
+  clientAssigner: {fileID: 0}
   pedestrianSpawner: {fileID: 916693773}
 --- !u!1 &939591844
 GameObject:
@@ -8600,6 +8603,7 @@ MonoBehaviour:
   hintUI: {fileID: 1889079388895480468}
   paradeManager: {fileID: 1245119266}
   minimumDistance: 300
+  missionTimer: {fileID: 1943505448}
 --- !u!1 &1814445605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1140854019855486496, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -9237,6 +9241,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7b69e5a4e065478559ba930750433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParadeSpawnPoint
+--- !u!1 &1943505446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943505447}
+  - component: {fileID: 1943505448}
+  m_Layer: 0
+  m_Name: MissionTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1943505447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943505446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 354423832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1943505448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943505446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f27dd83ee43b940a371e95b5c1e0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MissionTimer
 --- !u!1 &1946676326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2174477363678073121, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -10191,6 +10239,10 @@ PrefabInstance:
       propertyPath: altitudeText
       value: 
       objectReference: {fileID: 1838814440}
+    - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+      propertyPath: missionTimer
+      value: 
+      objectReference: {fileID: 1943505448}
     - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
       propertyPath: throttleText
       value: 
@@ -13648,7 +13700,7 @@ PrefabInstance:
       objectReference: {fileID: 652098071}
     - target: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
       propertyPath: extraTimeBuffer
-      value: 300
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
       propertyPath: playerTransform

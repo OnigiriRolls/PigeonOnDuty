@@ -54,11 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7122c349050aa40b6005f9d3ebcb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindGust
-  moveSpeed: 15
-  lifeTime: 8
-  carryDuration: 2.5
-  upwardInfluence: 0.5
-  trackingDistance: 8
+  config: {fileID: 11400000, guid: 097b79dab2b24dc46b5e89daf2f0880c, type: 2}
 --- !u!65 &5272498300971893111
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -143,7 +139,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (8)
@@ -221,7 +217,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (3)
@@ -299,7 +295,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 14facbdf20e82da4082bbb1d6b8d8796, type: 2}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve
@@ -377,7 +373,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (4)
@@ -455,7 +451,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (1)
@@ -533,7 +529,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (6)
@@ -611,7 +607,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (2)
@@ -689,7 +685,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (7)
@@ -767,7 +763,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 89ef381060ebfdc439fbd3650eebd326, type: 2}
     - target: {fileID: 919132149155446097, guid: 554486e309b40b04a9e5790fff0c1508, type: 3}
       propertyPath: m_Name
       value: WindCurve (5)

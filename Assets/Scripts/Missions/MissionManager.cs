@@ -11,6 +11,7 @@ public class MissionManager : MonoBehaviour
     public EndlessRunManager EndlessRunManager => endlessRunManager;
     public GPSMissionController GPSMissionController => gpsMissionController;
     public NewsMissionController NewsMissionController => newsMissionController;
+    public MissionTimer MissionTimer => missionTimer;
     public event Action<List<MissionData>> OnMissionSelectionRequested;
     public event Action<MissionData> OnMissionSelected;
 
@@ -24,6 +25,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private bool isNewsMissionActive;
     [SerializeField] private bool isGPSMissionActive;
     [SerializeField] private bool areAllMissionsActive;
+    [SerializeField] private MissionTimer missionTimer;
 
     private RewardManager rewardManager;
     private PlayerHealth playerHealth;
@@ -71,7 +73,7 @@ public class MissionManager : MonoBehaviour
             .Where(m =>
                 (m is NewsMission && isNewsMissionActive) ||
                 (m is GPSMission && isGPSMissionActive) ||
-                (areAllMissionsActive == true))
+                (m is DeliveryMission && areAllMissionsActive))
             .ToList();
 #endif
         int count = Mathf.Min(3, available.Count);

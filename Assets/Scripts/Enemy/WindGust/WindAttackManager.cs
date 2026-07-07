@@ -5,7 +5,7 @@ using UnityEngine;
 public class WindAttackManager : MonoBehaviour
 {
     [SerializeField] private WindGust windGustPrefab;
-    [SerializeField] private Transform player;
+    [SerializeField] private PlayerController player;
     [SerializeField] private float attackIntervalMin = 10f;
     [SerializeField] private float attackIntervalMax = 20f;
     [SerializeField] private int minGusts = 2;
@@ -20,10 +20,12 @@ public class WindAttackManager : MonoBehaviour
 
     private float attackInterval;
     private bool attackRunning;
+    private Transform playerTransform;
 
     private void Start()
     {
         attackInterval = Random.Range(attackIntervalMin, attackIntervalMax);
+        playerTransform = player.transform;
     }
 
     private void Update()
@@ -79,14 +81,16 @@ public class WindAttackManager : MonoBehaviour
     private void SpawnRandomGust()
     {
         Vector3[] directions = {
-            player.right, -player.right,
-            (player.right + Vector3.up).normalized, (-player.right + Vector3.up).normalized,
-            (player.right + Vector3.down).normalized, (-player.right + Vector3.down).normalized };
+            playerTransform.right, -playerTransform.right,
+            (playerTransform.right + Vector3.up).normalized, (-playerTransform.right + Vector3.up).normalized,
+            (playerTransform.right + Vector3.down).normalized, (-playerTransform.right + Vector3.down).normalized };
 
         Vector3 direction = directions[Random.Range(0, directions.Length)];
-        bool comesFromRight = Vector3.Dot(direction, player.right) > 0f;
+        bool comesFromRight = Vector3.Dot(direction, playerTransform.right) > 0f;
         Vector3 spawnPosition = comesFromRight ? spawnPosRight.position : spawnPosLeft.position;
         WindGust gust = Instantiate(windGustPrefab, spawnPosition, Quaternion.LookRotation(direction));
-        gust.Initialize(direction, player);
+        float playerSpeed = player.Velocity.magnitude * 3.6f;
+        float gustSpeed = windGustPrefab.Config.GetMoveSpeed(playerSpeed);
+        gust.Initialize(direction, playerTransform, gustSpeed);
     }
 }

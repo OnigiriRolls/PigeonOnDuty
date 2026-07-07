@@ -29,10 +29,12 @@ public class PlayerController : MonoBehaviour
     private bool isGliding;
     private float throttleMultiplier = 1f;
     private float currentFlySpeed = 1f;
-    private bool isWindCarried;
-    private Vector3 windCarryDirection;
-    private float windCarryTimer;
+    private Vector3 windDirection;
+    private float windTimer;
+    private float windSpeed;
+    private float windLerpSpeed;
     private bool isHovering;
+    private WindType currentWindType = WindType.None;
 
     private Rigidbody rb;
     private PlayerHealth health;
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInputs()
     {
-        if (isWindCarried)
+        if (currentWindType == WindType.Carry)
             return;
 
         roll = Input.GetAxis("Roll");
@@ -80,17 +82,19 @@ public class PlayerController : MonoBehaviour
         HandleInputs();
         CheckGrounded();
         UpdateFlyAnimationSpeed();
-        Vector3 wind =
-        WindManager.Instance.GetWindAtPosition(transform.position);
-        Debug.DrawRay(transform.position, wind, Color.cyan);
     }
 
     private void FixedUpdate()
     {
-        if (isWindCarried)
+        switch (currentWindType)
         {
-            HandleWindCarry();
-            return;
+            case WindType.Carry:
+                HandleWindCarry();
+                return;
+
+            case WindType.Assist:
+                HandleWindAssist();
+                break;
         }
 
         if (isHovering)
@@ -126,10 +130,18 @@ public class PlayerController : MonoBehaviour
 
     private void HandleWindCarry()
     {
-        windCarryTimer -= Time.fixedDeltaTime;
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, windCarryDirection * 35f, Time.fixedDeltaTime * 4f);
-        if (windCarryTimer <= 0f)
-            isWindCarried = false;
+        windTimer -= Time.fixedDeltaTime;
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, windDirection * windSpeed, Time.fixedDeltaTime * windLerpSpeed);
+        if (windTimer <= 0f)
+            currentWindType = WindType.None;
+    }
+
+    private void HandleWindAssist()
+    {
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, windDirection * windSpeed, Time.fixedDeltaTime * windLerpSpeed);
+        windTimer -= Time.fixedDeltaTime;
+        if (windTimer <= 0f)
+            currentWindType = WindType.None;
     }
 
     private void ApplyWind()
@@ -138,12 +150,25 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity += Time.fixedDeltaTime * windInfluence * wind;
     }
 
-    public void StartWindCarry(Vector3 direction, float duration)
+    public void StartWindCarry(Vector3 direction, float duration, float speed, float lerpSpeed)
     {
         throttle = 0f;
-        isWindCarried = true;
-        windCarryDirection = direction.normalized;
-        windCarryTimer = duration;
+        currentWindType = WindType.Carry;
+        StartWind(direction, duration, speed, lerpSpeed);
+    }
+
+    public void StartWindAssist(Vector3 direction, float duration, float speed, float lerpSpeed)
+    {
+        currentWindType = WindType.Assist;
+        StartWind(direction, duration, speed, lerpSpeed);
+    }
+
+    private void StartWind(Vector3 direction, float duration, float speed, float lerpSpeed)
+    {
+        windDirection = direction.normalized;
+        windTimer = duration;
+        windSpeed = speed;
+        windLerpSpeed = lerpSpeed;
     }
 
     private void HandleHover()
@@ -208,5 +233,10 @@ public class PlayerController : MonoBehaviour
     {
         missionManager.OnMissionSelected -= HandleMissionSelected;
         health.OnDeath -= HandleDeath;
+    }
+
+    public void StopWindCarry()
+    {
+        currentWindType = WindType.None;
     }
 }

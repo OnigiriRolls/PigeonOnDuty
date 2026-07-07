@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4faa6d3e23015dc448bd390f6085e2cf, type: 3}
+  m_Name: WindGustConfig
+  m_EditorClassIdentifier: Assembly-CSharp::WindGustConfig
+  moveSpeed: 15
+  lifeTime: 2
+  carryDuration: 2.5
+  upwardInfluence: 0.5
+  trackingDistance: 8
+  slowThreshold: 75
+  mediumThreshold: 100
+  slowMoveSpeed: 15
+  mediumMoveSpeed: 19
+  fastMoveSpeed: 23

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EndlessRunManager : MonoBehaviour
 {
-    public float CheckpointTimer { get; private set; }
-    public bool TimerStarted => timerStarted;
     public Transform CurrentObjective => currentObjective;
 
     [SerializeField] private CollectibleManager collectibleManager;
@@ -15,46 +13,17 @@ public class EndlessRunManager : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float expectedSpeedKmh = 50f;
     [SerializeField] private float extraTimeBuffer = 10f;
-    [SerializeField] private float minimumStartSpeed = 5f;
     [SerializeField] private AudioClip lowMusic;
 
     private Waypoint[] waypoints;
     private Waypoint currentWaypoint;
-    private bool timerStarted;
-    private PlayerController playerController;
-    private GameManager gameManager;
     private Transform currentObjective;
 
     private void Start()
     {
-        playerController = playerTransform.GetComponent<PlayerController>();
         waypoints = FindObjectsByType<Waypoint>();
-        gameManager = FindAnyObjectByType<GameManager>();
         AudioManager.Instance.PlayMusic(lowMusic);
         SaveManager.Instance.AddRun();
-    }
-
-    private void Update()
-    {
-        if (!timerStarted)
-        {
-            TryStartTimer();
-            return;
-        }
-        CheckpointTimer -= Time.deltaTime;
-        if (CheckpointTimer <= 0f)
-        {
-            //Debug.Log("Game Over - Time's up!");
-            gameManager.GameOver(DeathReason.TimeUp);
-        }
-    }
-
-    private void TryStartTimer()
-    {
-        float speed = playerController.Velocity.magnitude;
-        if (speed < minimumStartSpeed)
-            return;
-        timerStarted = true;
     }
 
     public void SpawnNextCheckpointAndCollectibles()
@@ -86,7 +55,6 @@ public class EndlessRunManager : MonoBehaviour
         GameObject checkpointPrefab = GetPostCheckpointPrefab(currentWaypoint.AltitudeLayer);
         GameObject currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetObjectiveRotation(currentWaypoint.transform.position), checkpointParent);
         currentObjective = currentCheckpoint.transform;
-        SetupCheckpointTimer(currentObjective);
     }
 
     private void SpawnNextObjective(Transform objectiveTransform)
@@ -103,7 +71,6 @@ public class EndlessRunManager : MonoBehaviour
 
         GameObject currentCheckpoint = Instantiate(gpsCheckpoint, objectiveTransform.position, objectiveTransform.rotation, checkpointParent);
         currentObjective = currentCheckpoint.transform;
-        SetupCheckpointTimer(currentObjective);
     }
 
     private GameObject GetPostCheckpointPrefab(AltitudeLayer layer)
@@ -135,25 +102,22 @@ public class EndlessRunManager : MonoBehaviour
         return Quaternion.LookRotation(direction) * Quaternion.Euler(0f, 180f, 0f); ;
     }
 
-    private void SetupCheckpointTimer(Transform checkpoint)
+    public float CalculateTimeForTarget(Transform target)
     {
-        float distance = Vector3.Distance(playerTransform.position, checkpoint.position);
+        float distance = Vector3.Distance(playerTransform.position, target.position);
         float expectedSpeedMs = expectedSpeedKmh / 3.6f;
-        CheckpointTimer = distance / expectedSpeedMs + extraTimeBuffer;
+        return distance / expectedSpeedMs + extraTimeBuffer;
     }
 
-    private void HandleMissionSelected(MissionData mission)
+    public void StartCheckpointTimer(MissionTimer timer, float multiplier = 1f)
     {
-        if (mission is DeliveryMission deliveryMission)
-        {
-            CheckpointTimer *= deliveryMission.timerMultiplier;
-        }
+        float duration = CalculateTimeForTarget(currentObjective);
+        timer.StartTimer(duration, multiplier);
     }
 
-    public void SetCurrentObjectiveAndTimer(Transform target)
+    public void SetCurrentObjective(Transform target)
     {
         currentObjective = target;
-        SetupCheckpointTimer(target);
     }
 
     public void CleanCurrentObjective()

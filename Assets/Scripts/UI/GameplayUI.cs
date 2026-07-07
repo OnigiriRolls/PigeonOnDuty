@@ -8,7 +8,6 @@ public class GameplayUI : StopAudio
     public AltitudeLayer CurrentLayer => currentLayer;
 
     [SerializeField] private PlayerController player;
-    [SerializeField] private EndlessRunManager runManager;
     [SerializeField] private MissionManager deliveryMissionManager;
     [SerializeField] private TextMeshProUGUI throttleText;
     [SerializeField] private Image throttleBar;
@@ -27,6 +26,7 @@ public class GameplayUI : StopAudio
     [SerializeField] private float midAltitude = 51f;
     [SerializeField] private float highAltitude = 151f;
     [SerializeField] private float maxThrottle = 130f;
+    [SerializeField] private MissionTimer missionTimer;
 
     private AltitudeLayer currentLayer;
     private Color timerInitialColor;
@@ -106,7 +106,16 @@ public class GameplayUI : StopAudio
 
     private void UpdateTimer()
     {
-        float timer = runManager.CheckpointTimer;
+        if (!missionTimer.IsRunning)
+        {
+            AudioManager.Instance.StopUILoop();
+            timerText.text = "";
+            if (clockAnimator.enabled)
+                clockAnimator.enabled = false;
+            timerText.color = timerInitialColor;
+            return;
+        }
+        float timer = missionTimer.RemainingTime;
         timer = Mathf.Max(timer, 0f);
         timerText.text = Mathf.CeilToInt(timer).ToString();
         UpdateTimerAudio(timer);
@@ -114,16 +123,12 @@ public class GameplayUI : StopAudio
         {
             timerText.color = Color.red;
             if (!clockAnimator.enabled)
-            {
                 clockAnimator.enabled = true;
-            }
         }
         else
         {
             if (clockAnimator.enabled)
-            {
                 clockAnimator.enabled = false;
-            }
             timerText.color = timerInitialColor;
         }
     }

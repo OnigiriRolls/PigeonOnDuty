@@ -12,6 +12,7 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private HintUI hintUI;
     [SerializeField] private ParadeManager paradeManager;
     [SerializeField] private float minimumDistance = 300f;
+    [SerializeField] private MissionTimer missionTimer;
 
     private GPSMissionState state;
     private GPSMission activeMission;
@@ -32,6 +33,7 @@ public class GPSMissionController : MonoBehaviour
     {
         endlessRunManager = FindAnyObjectByType<EndlessRunManager>();
         gameManager = FindAnyObjectByType<GameManager>();
+        missionTimer.OnTimerExpired += FailMission;
     }
 
     public void StartMission(GPSMission mission)
@@ -45,7 +47,9 @@ public class GPSMissionController : MonoBehaviour
         lostTimer = 0f;
         missionRunning = true;
         state = GPSMissionState.ReachTraveler;
-        endlessRunManager.SetCurrentObjectiveAndTimer(currentHuman.transform);
+        endlessRunManager.SetCurrentObjective(currentHuman.transform);
+        float duration = endlessRunManager.CalculateTimeForTarget(currentHuman.transform);
+        missionTimer.StartTimer(duration);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
     }
@@ -76,6 +80,8 @@ public class GPSMissionController : MonoBehaviour
         paradeManager.SpawnParades(currentHuman.transform.position, destination.transform.position);
         endlessRunManager.CleanCurrentObjective();
         endlessRunManager.SpawnNextObjectiveAndCollectibles(destination.transform);
+        float duration = endlessRunManager.CalculateTimeForTarget(destination.transform);
+        missionTimer.StartTimer(duration);
         hintUI.Show("Escort the Human", 4f);
     }
 
@@ -158,7 +164,13 @@ public class GPSMissionController : MonoBehaviour
 
     private void ClearMission()
     {
+        missionTimer.StopTimer();
         paradeManager.ClearAllParades();
         missionRunning = false;
+    }
+
+    private void OnDestroy()
+    {
+        missionTimer.OnTimerExpired -= FailMission;
     }
 }

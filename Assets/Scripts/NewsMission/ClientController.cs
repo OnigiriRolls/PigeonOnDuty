@@ -6,6 +6,7 @@ public class ClientController : MonoBehaviour
     public bool IsActiveClient => isActiveClient;
     public event Action<ClientController> OnBecameClient;
     public event Action<ClientController> OnStoppedBeingClient;
+    public event Action<ClientController> OnDeliveryCompleted;
 
     [SerializeField] private bool isActiveClient;
 
@@ -23,5 +24,14 @@ public class ClientController : MonoBehaviour
             return;
         isActiveClient = false;
         OnStoppedBeingClient?.Invoke(this);
+    }
+
+    public void CompleteDelivery()
+    {
+        if (!isActiveClient)
+            return;
+        isActiveClient = false;
+        OnStoppedBeingClient?.Invoke(this);
+        OnDeliveryCompleted?.Invoke(this);
     }
 }
