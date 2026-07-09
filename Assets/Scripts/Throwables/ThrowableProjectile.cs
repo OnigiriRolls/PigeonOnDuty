@@ -7,8 +7,6 @@ public abstract class ThrowableProjectile : MonoBehaviour
 
     protected Rigidbody rb;
 
-    protected PickupManager pickupManager;
-
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,9 +33,4 @@ public abstract class ThrowableProjectile : MonoBehaviour
     }
 
     protected abstract void HandleImpact(Collision collision);
-
-    public void Initialize(PickupManager manager)
-    {
-        pickupManager = manager;
-    }
 }

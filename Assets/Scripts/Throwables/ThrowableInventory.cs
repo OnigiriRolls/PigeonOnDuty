@@ -4,35 +4,67 @@ using UnityEngine;
 
 public class ThrowableInventory : MonoBehaviour
 {
-    public event Action<ThrowableData, int> OnItemChanged;
+    public ThrowableData EquippedItem => equippedItem;
+    public event Action<ThrowableData, int> OnInventoryChanged;
 
-    [SerializeField] private List<InventorySlot> items = new();
+    [SerializeField] private List<InventorySlot> slots = new();
+    [SerializeField] private ThrowableData equippedItem;
+
+    public void Equip(ThrowableData item)
+    {
+        equippedItem = item;
+        OnInventoryChanged?.Invoke(item, GetAmount(item));
+    }
+
+    public bool TryConsumeEquipped()
+    {
+        return TryConsume(equippedItem);
+    }
 
     public bool TryConsume(ThrowableData item)
     {
-        InventorySlot slot = items.Find(s => s.item == item);
+        InventorySlot slot = GetSlot(item);
         if (slot == null)
             return false;
-        if (slot.amount <= 0)
+        if (slot.Amount <= 0)
             return false;
-        slot.amount--;
+        slot.Amount--;
+        OnInventoryChanged?.Invoke(item, slot.Amount);
         return true;
     }
 
     public void Add(ThrowableData item, int amount)
     {
-        InventorySlot slot = items.Find(s => s.item == item);
+        InventorySlot slot = GetSlot(item);
         if (slot == null)
         {
-            slot = new InventorySlot { item = item, amount = 0 };
-            items.Add(slot);
+            slot = new InventorySlot { Item = item, Amount = 0 };
+            slots.Add(slot);
         }
-        slot.amount += amount;
+        slot.Amount += amount;
+        OnInventoryChanged?.Invoke(item, slot.Amount);
     }
 
     public int GetAmount(ThrowableData item)
     {
-        InventorySlot slot = items.Find(s => s.item == item);
-        return slot == null ? 0 : slot.amount;
+        InventorySlot slot = GetSlot(item);
+        return slot == null ? 0 : slot.Amount;
+    }
+
+    private InventorySlot GetSlot(ThrowableData item)
+    {
+        return slots.Find(s => s.Item == item);
+    }
+
+    public void SetAmount(ThrowableData item, int amount)
+    {
+        InventorySlot slot = GetSlot(item);
+        if (slot == null)
+        {
+            slot = new InventorySlot { Item = item };
+            slots.Add(slot);
+        }
+        slot.Amount = amount;
+        OnInventoryChanged?.Invoke(item, amount);
     }
 }

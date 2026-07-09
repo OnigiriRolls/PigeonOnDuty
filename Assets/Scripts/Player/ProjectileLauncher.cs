@@ -4,9 +4,8 @@ public class ProjectileLauncher : MonoBehaviour
 {
     [SerializeField] private ThrowTrajectoryPreview trajectoryPreview;
     [SerializeField] private AnimationCurve chargeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-    [SerializeField] private ThrowableData equippedThrowable;
+    [SerializeField] private ThrowableInventory inventory;
     [SerializeField] private ThrowCalculator throwCalculator;
-    [SerializeField] private PickupManager pickupManager;
 
     private float currentForce;
     private bool isCharging;
@@ -32,18 +31,26 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void StartCharging()
     {
+        ThrowableData item = inventory.EquippedItem;
+        if (item == null)
+            return;
+        if (inventory.GetAmount(item) <= 0)
+            return;
         isCharging = true;
         chargeTime = 0f;
-        currentForce = equippedThrowable.minForce;
+        currentForce = item.minForce;
         trajectoryPreview.Show();
         trajectoryPreview.UpdateTrajectory(currentForce);
     }
 
     private void UpdateCharge()
     {
+        ThrowableData item = inventory.EquippedItem;
+        if (item == null)
+            return;
         chargeTime += Time.deltaTime;
-        float t = Mathf.Clamp01(chargeTime / equippedThrowable.chargeDuration);
-        currentForce = Mathf.Lerp(equippedThrowable.minForce, equippedThrowable.maxForce, chargeCurve.Evaluate(t));
+        float t = Mathf.Clamp01(chargeTime / item.chargeDuration);
+        currentForce = Mathf.Lerp(item.minForce, item.maxForce, chargeCurve.Evaluate(t));
         trajectoryPreview.UpdateTrajectory(currentForce);
     }
 
@@ -58,8 +65,12 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Throw()
     {
-        ThrowableProjectile projectile = Instantiate(equippedThrowable.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);
-        projectile.Initialize(pickupManager);
+        ThrowableData item = inventory.EquippedItem;
+        if (item == null)
+            return;
+        if (!inventory.TryConsume(item))
+            return;
+        ThrowableProjectile projectile = Instantiate(item.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);
         projectile.Launch(throwCalculator.GetLaunchVelocity(currentForce));
     }
 }

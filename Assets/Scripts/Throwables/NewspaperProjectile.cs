@@ -12,7 +12,6 @@ public class NewspaperProjectile : ThrowableProjectile
         rb.isKinematic = true;
         ThrowablePickup pickup = GetComponent<ThrowablePickup>();
         pickup.enabled = true;
-        pickup.Init(pickupManager);
         GetComponent<Collider>().isTrigger = true;
     }
 }

@@ -46,4 +46,15 @@ public class PedestrianController : MonoBehaviour
         currentState = newState;
         currentState.Enter();
     }
+
+    public void TryCollectPickup(ThrowablePickup pickup)
+    {
+        if (pickup == null)
+            return;
+        if (!pickup.TryReserve())
+            return;
+        if (currentState is CollectPickupState)
+            return;
+        ChangeState(new CollectPickupState(this, pickup));
+    }
 }
