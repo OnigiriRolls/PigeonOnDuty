@@ -12,11 +12,6 @@ public abstract class ThrowableProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    protected virtual void Start()
-    {
-        Destroy(gameObject, lifetime);
-    }
-
     private void FixedUpdate()
     {
         Debug.DrawRay(transform.position, rb.linearVelocity, Color.green);

@@ -3,13 +3,18 @@ using UnityEngine;
 public class CollectPickupState : IPedestrianState
 {
     private readonly PedestrianController controller;
-    private readonly ThrowablePickup pickup;
+    private ThrowablePickup pickup;
     private bool collected;
 
-    public CollectPickupState(PedestrianController controller, ThrowablePickup pickup)
+    public CollectPickupState(PedestrianController controller)
     {
         this.controller = controller;
+    }
+
+    public void SetPickup(ThrowablePickup pickup)
+    {
         this.pickup = pickup;
+        collected = false;
     }
 
     public void Enter()
@@ -25,8 +30,9 @@ public class CollectPickupState : IPedestrianState
             return;
         }
         controller.Movement.MoveTo(pickup.transform.position);
-        if (controller.Movement.HasReachedDestination)
+        if (controller.Movement.HasReachedDestination(3f))
         {
+            controller.PickUp(pickup);
             pickup.Collect();
             collected = true;
             controller.ChangeState(controller.WalkingState);

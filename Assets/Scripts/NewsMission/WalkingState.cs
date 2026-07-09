@@ -17,7 +17,7 @@ public class WalkingState : IPedestrianState
 
     public void Update()
     {
-        if (!controller.Movement.HasReachedDestination)
+        if (!controller.Movement.HasReachedDestination(10f))
             return;
         controller.ChangeState(controller.WaitingState);
     }

@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
@@ -12,6 +13,7 @@ public class ProjectileLauncher : MonoBehaviour
     private float chargeTime;
     private bool ThrowPressed => Input.GetKeyDown(KeyCode.LeftShift);
     private bool ThrowReleased => Input.GetKeyUp(KeyCode.LeftShift);
+    private bool CancelPressed => Input.GetKeyDown(KeyCode.Z);
 
     private void Update()
     {
@@ -27,6 +29,8 @@ public class ProjectileLauncher : MonoBehaviour
             StartCharging();
         if (ThrowReleased)
             ReleaseThrow();
+        if (CancelPressed)
+            CancelThrow();
     }
 
     private void StartCharging()
@@ -52,15 +56,15 @@ public class ProjectileLauncher : MonoBehaviour
         float t = Mathf.Clamp01(chargeTime / item.chargeDuration);
         currentForce = Mathf.Lerp(item.minForce, item.maxForce, chargeCurve.Evaluate(t));
         trajectoryPreview.UpdateTrajectory(currentForce);
+        trajectoryPreview.SetMaxCharge(t >= 0.999f);
     }
 
     private void ReleaseThrow()
     {
         if (!isCharging)
             return;
-        isCharging = false;
-        trajectoryPreview.Hide();
         Throw();
+        ResetThrow();
     }
 
     private void Throw()
@@ -72,5 +76,21 @@ public class ProjectileLauncher : MonoBehaviour
             return;
         ThrowableProjectile projectile = Instantiate(item.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);
         projectile.Launch(throwCalculator.GetLaunchVelocity(currentForce));
+    }
+
+    private void CancelThrow()
+    {
+        if (!isCharging)
+            return;
+        ResetThrow();
+    }
+
+    private void ResetThrow()
+    {
+        isCharging = false;
+        chargeTime = 0f;
+        currentForce = 0f;
+        trajectoryPreview.Hide();
+        trajectoryPreview.SetMaxCharge(false);
     }
 }

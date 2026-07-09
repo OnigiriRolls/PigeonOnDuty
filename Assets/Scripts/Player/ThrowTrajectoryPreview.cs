@@ -7,6 +7,11 @@ public class ThrowTrajectoryPreview : MonoBehaviour
     [SerializeField] private float timeBetweenPoints = 0.1f;
     [SerializeField] private float gravityMultiplier = 1f;
     [SerializeField] private ThrowCalculator throwCalculator;
+    [SerializeField] private Gradient normalGradient;
+    [SerializeField] private Gradient maxChargeGradient;
+    [SerializeField] private AudioClip maxChargeClip;
+
+    private bool maxChargeReached;
 
     private void Awake()
     {
@@ -17,6 +22,8 @@ public class ThrowTrajectoryPreview : MonoBehaviour
     {
         lineRenderer.positionCount = pointCount;
         lineRenderer.enabled = true;
+        maxChargeReached = false;
+        lineRenderer.colorGradient = normalGradient;
     }
 
     public void Hide()
@@ -36,5 +43,15 @@ public class ThrowTrajectoryPreview : MonoBehaviour
             Vector3 point = start + velocity * t + 0.5f * t * t * gravity;
             lineRenderer.SetPosition(i, point);
         }
+    }
+
+    public void SetMaxCharge(bool reached)
+    {
+        if (maxChargeReached == reached)
+            return;
+        maxChargeReached = reached;
+        lineRenderer.colorGradient = reached ? maxChargeGradient : normalGradient;
+        if (reached)
+            AudioManager.Instance.PlaySFX(maxChargeClip);
     }
 }

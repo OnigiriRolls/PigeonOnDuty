@@ -6,16 +6,6 @@ public class PedestrianMovement : MonoBehaviour, INPCMovement
 {
     public float CurrentSpeed => agent.velocity.magnitude;
 
-    public bool HasReachedDestination
-    {
-        get
-        {
-            if (agent.pathPending)
-                return false;
-            return agent.remainingDistance <= agent.stoppingDistance;
-        }
-    }
-
     private NavMeshAgent agent;
 
     private void Awake()
@@ -37,5 +27,19 @@ public class PedestrianMovement : MonoBehaviour, INPCMovement
     public void Resume()
     {
         agent.isStopped = false;
+    }
+
+    public bool HasReachedDestination()
+    {
+        if (agent.pathPending)
+            return false;
+        return agent.remainingDistance <= agent.stoppingDistance;
+    }
+
+    public bool HasReachedDestination(float acceptableDistance)
+    {
+        if (agent.pathPending)
+            return false;
+        return agent.remainingDistance <= acceptableDistance;
     }
 }
