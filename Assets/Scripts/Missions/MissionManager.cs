@@ -38,6 +38,7 @@ public class MissionManager : MonoBehaviour
         playerHealth = FindAnyObjectByType<PlayerHealth>();
         playerHealthUI = FindAnyObjectByType<PlayerHealthUI>();
         unlockManager = FindAnyObjectByType<UnlockManager>();
+        newsMissionController.OnMissionCompleted += CompleteActiveMission;
         RequestMissionSelection();
     }
 
@@ -97,5 +98,11 @@ public class MissionManager : MonoBehaviour
         missionRewardUI.ShowReward(ActiveMission.reputationReward, ActiveMission.coinReward);
         ActiveMission = null;
         RequestMissionSelection();
+    }
+
+    private void OnDestroy()
+    {
+        if (newsMissionController != null)
+            newsMissionController.OnMissionCompleted -= CompleteActiveMission;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ThrowablePickup : MonoBehaviour
@@ -7,6 +8,13 @@ public class ThrowablePickup : MonoBehaviour
     public bool IsReserved { get; private set; }
 
     [SerializeField] private ThrowableData item;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float pulseDuration = 3f;
+
+    private void Start()
+    {
+        StartCoroutine(LifetimeRoutine());
+    }
 
     public void Collect()
     {
@@ -28,5 +36,16 @@ public class ThrowablePickup : MonoBehaviour
     public void ReleaseReservation()
     {
         IsReserved = false;
+    }
+
+    private IEnumerator LifetimeRoutine()
+    {
+        float waitTime = Mathf.Max(0f, item.pickupLifetime - pulseDuration);
+        yield return new WaitForSeconds(waitTime);
+        if (animator != null)
+            animator.SetTrigger("Pulse");
+        yield return new WaitForSeconds(pulseDuration);
+        if (!IsCollected)
+            Destroy(gameObject);
     }
 }

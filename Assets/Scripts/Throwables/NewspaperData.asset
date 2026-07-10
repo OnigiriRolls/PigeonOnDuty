@@ -15,7 +15,9 @@ MonoBehaviour:
   itemName: Newspaper
   icon: {fileID: 21300000, guid: 998a534e1f713d74f905b53890cb1eaa, type: 3}
   projectilePrefab: {fileID: 8717998661933101975, guid: 40363be9b7d80ce4ca078f29669c7ff3, type: 3}
+  pickupPrefab: {fileID: 4467696329768906792, guid: 3796dd39c6ad32f4d9a7cb869bac3b77, type: 3}
   minForce: 10
   maxForce: 35
   chargeDuration: 1.5
   gravityMultiplier: 1
+  pickupLifetime: 15

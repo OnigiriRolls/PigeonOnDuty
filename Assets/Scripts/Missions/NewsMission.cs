@@ -15,5 +15,6 @@ public class NewsMission : MissionData
 
     public override void CompleteMission(MissionManager missionManager)
     {
+        missionManager.NewsMissionController.EndMission();
     }
 }

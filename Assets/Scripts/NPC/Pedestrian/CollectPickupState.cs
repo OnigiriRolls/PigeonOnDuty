@@ -29,13 +29,12 @@ public class CollectPickupState : IPedestrianState
             controller.ChangeState(controller.WalkingState);
             return;
         }
-        controller.Movement.MoveTo(pickup.transform.position);
         if (controller.Movement.HasReachedDestination(3f))
         {
             controller.PickUp(pickup);
             pickup.Collect();
             collected = true;
-            controller.ChangeState(controller.WalkingState);
+            controller.ChangeState(controller.CarryItemState);
         }
     }
 

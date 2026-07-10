@@ -6,8 +6,10 @@ public class ThrowableData : ScriptableObject
     public string itemName;
     public Sprite icon;
     public ThrowableProjectile projectilePrefab;
+    public ThrowablePickup pickupPrefab;
     public float minForce = 10f;
     public float maxForce = 35f;
     public float chargeDuration = 1.5f;
     public float gravityMultiplier = 1f;
+    public float pickupLifetime = 15f;
 }

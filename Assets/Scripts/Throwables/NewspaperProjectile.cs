@@ -6,6 +6,8 @@ public class NewspaperProjectile : ThrowableProjectile
 {
     protected override void HandleImpact(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+            return;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;

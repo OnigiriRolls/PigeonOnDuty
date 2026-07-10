@@ -9,15 +9,12 @@ public class WalkingState : IPedestrianState
 
     public void Enter()
     {
-        PedestrianWaypoint waypoint = controller.WaypointNetwork.GetRandomWaypoint();
-        if (waypoint == null)
-            return;
-        controller.Movement.MoveTo(waypoint.transform.position);
+        controller.Movement.MoveToNextWaypoint();
     }
 
     public void Update()
     {
-        if (!controller.Movement.HasReachedDestination(10f))
+        if (!controller.Movement.HasReachedDestination(3f))
             return;
         controller.ChangeState(controller.WaitingState);
     }

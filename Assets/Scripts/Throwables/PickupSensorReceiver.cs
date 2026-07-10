@@ -12,6 +12,8 @@ public class PickupSensorReceiver : MonoBehaviour
 
     public void NotifyPickup(ThrowablePickup pickup)
     {
+        if (controller.CarriedItem != null)
+            return;
         if (pickup == null)
             return;
         controller.TryCollectPickup(pickup);

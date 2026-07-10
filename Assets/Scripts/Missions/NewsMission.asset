@@ -27,5 +27,5 @@ MonoBehaviour:
   coinReward: 30
   unlockId: human_delivery
   startingNewspapers: 1000
-  minClients: 3
+  minClients: 2
   maxClients: 4
