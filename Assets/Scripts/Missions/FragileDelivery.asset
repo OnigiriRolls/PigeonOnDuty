@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
   missionName: Fragile Delivery
   description: A delicate package must arrive intact
+  timeBuffer: 300
   flavorTexts:
   - Handle with care. Seriously.
   - Try not to drop this one.

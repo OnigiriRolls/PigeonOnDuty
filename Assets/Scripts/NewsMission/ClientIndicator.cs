@@ -16,13 +16,13 @@ public class ClientIndicator : MonoBehaviour
     private void OnEnable()
     {
         client.OnBecameClient += ShowIndicator;
-        client.OnStoppedBeingClient += HideIndicator;
+        client.OnDeliveryCompleted += HideIndicator;
     }
 
     private void OnDisable()
     {
         client.OnBecameClient -= ShowIndicator;
-        client.OnStoppedBeingClient -= HideIndicator;
+        client.OnDeliveryCompleted -= HideIndicator;
     }
 
     private void ShowIndicator(ClientController client)

@@ -16,4 +16,9 @@ public class GPSMission : MissionData
     {
         missionManager.GPSMissionController.StopMission();
     }
+
+    public override void FailMission(MissionManager missionManager)
+    {
+        missionManager.GPSMissionController.FailMission();
+    }
 }

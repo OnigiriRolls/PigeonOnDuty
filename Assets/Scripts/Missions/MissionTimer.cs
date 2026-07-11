@@ -5,7 +5,6 @@ public class MissionTimer : MonoBehaviour
 {
     public float RemainingTime => remainingTime;
     public bool IsRunning => isRunning;
-
     public event Action OnTimerExpired;
 
     private float remainingTime;
@@ -27,6 +26,11 @@ public class MissionTimer : MonoBehaviour
     {
         remainingTime = duration * multiplier;
         isRunning = true;
+    }
+
+    public void AddTime(float seconds)
+    {
+        remainingTime += seconds;
     }
 
     public void StopTimer()

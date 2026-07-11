@@ -10,6 +10,8 @@ public class ThrowTrajectoryPreview : MonoBehaviour
     [SerializeField] private Gradient normalGradient;
     [SerializeField] private Gradient maxChargeGradient;
     [SerializeField] private AudioClip maxChargeClip;
+    [SerializeField] private LandingMarker landingMarker;
+    [SerializeField] private LayerMask collisionMask;
 
     private bool maxChargeReached;
 
@@ -30,19 +32,35 @@ public class ThrowTrajectoryPreview : MonoBehaviour
     {
         lineRenderer.enabled = false;
         lineRenderer.positionCount = 0;
+        landingMarker.Hide();
     }
 
     public void UpdateTrajectory(float throwForce)
     {
+        lineRenderer.positionCount = pointCount;
         Vector3 start = throwCalculator.ThrowPosition;
         Vector3 velocity = throwCalculator.GetLaunchVelocity(throwForce);
+        Vector3 previousPoint = start;
         for (int i = 0; i < pointCount; i++)
         {
             float t = i * timeBetweenPoints;
             Vector3 gravity = Physics.gravity * gravityMultiplier;
             Vector3 point = start + velocity * t + 0.5f * t * t * gravity;
+            if (Physics.Linecast(previousPoint, point, out RaycastHit hit, collisionMask))
+            {
+                lineRenderer.positionCount = i + 1;
+                lineRenderer.SetPosition(i, hit.point);
+                if (hit.normal.y > 0.7f)
+                    landingMarker.Show(hit.point);
+                else
+                    landingMarker.Hide();
+                return;
+            }
             lineRenderer.SetPosition(i, point);
+            previousPoint = point;
         }
+        landingMarker.Hide();
+        lineRenderer.positionCount = pointCount;
     }
 
     public void SetMaxCharge(bool reached)

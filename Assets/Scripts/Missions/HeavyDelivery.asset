@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
   missionName: Heavy Delivery
   description: A bulky parcel weighs down your flight
+  timeBuffer: 300
   flavorTexts:
   - Who packed bricks in here?
   - Your wings already regret this.

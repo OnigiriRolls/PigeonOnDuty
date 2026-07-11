@@ -14,36 +14,73 @@ public class NewsMissionController : MonoBehaviour
     [SerializeField] private ThrowableData newspaperData;
     [SerializeField] private MinimapIconManager minimapIconManager;
     [SerializeField] private MinimapIcon clientIconPrefab;
+    [SerializeField] private TravelTimeCalculator travelTimeCalculator;
+    [SerializeField] private MissionTimer missionTimer;
+    [SerializeField] private Transform player;
 
     private List<ClientController> activeClients = new();
+    private NewsMission currentMission;
 
-    public void StartMission(int minClients, int maxClients, int startingNewspapers)
+    public void StartMission(NewsMission newsMission)
     {
+        currentMission = newsMission;
         pedestrianSpawner.SpawnPedestrians();
         playerInventory.Equip(newspaperData);
-        playerInventory.SetAmount(newspaperData, startingNewspapers);
-        int clientCount = Random.Range(minClients, maxClients + 1);
+        playerInventory.SetAmount(newspaperData, currentMission.startingNewspapers);
+        int clientCount = Random.Range(currentMission.minClients, currentMission.maxClients + 1);
         activeClients = clientAssigner.AssignRandomClients(clientCount);
         foreach (ClientController client in activeClients)
         {
             client.Initialize(newspaperData);
             minimapIconManager.CreateIcon(clientIconPrefab, client.transform);
-            client.OnStoppedBeingClient += HandleClientDelivered;
+            client.OnDeliveryCompleted += HandleClientDelivered;
         }
+        StartTimerForClosestClient();
     }
 
     private void HandleClientDelivered(ClientController client)
     {
-        client.OnStoppedBeingClient -= HandleClientDelivered;
+        client.OnDeliveryCompleted -= HandleClientDelivered;
         activeClients.Remove(client);
         minimapIconManager.RemoveIcon(client.transform);
         if (activeClients.Count == 0)
             OnMissionCompleted?.Invoke();
+        StartTimerForClosestClient();
     }
 
-    public void EndMission()
+    public void ClearMission()
     {
+        foreach (ClientController client in activeClients)
+        {
+            client.OnDeliveryCompleted -= HandleClientDelivered;
+        }
         clientAssigner.ClearClients(activeClients);
         activeClients.Clear();
+    }
+
+    private ClientController GetClosestClient()
+    {
+        ClientController closest = null;
+        float closestDistance = float.MaxValue;
+        foreach (ClientController client in activeClients)
+        {
+            float distance = Vector3.Distance(player.position, client.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closest = client;
+            }
+        }
+
+        return closest;
+    }
+
+    private void StartTimerForClosestClient()
+    {
+        ClientController closest = GetClosestClient();
+        if (closest == null)
+            return;
+        float duration = travelTimeCalculator.CalculateTime(closest.transform, currentMission.timeBuffer);
+        missionTimer.StartTimer(duration);
     }
 }

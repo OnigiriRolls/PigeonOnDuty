@@ -10,10 +10,12 @@ public class ThrowablePickup : MonoBehaviour
     [SerializeField] private ThrowableData item;
     [SerializeField] private Animator animator;
     [SerializeField] private float pulseDuration = 3f;
+    [SerializeField] private GameObject colliderZone;
 
     private void Start()
     {
         StartCoroutine(LifetimeRoutine());
+        colliderZone.SetActive(true);
     }
 
     public void Collect()

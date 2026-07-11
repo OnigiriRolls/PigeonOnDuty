@@ -10,11 +10,17 @@ public class NewsMission : MissionData
 
     public override void StartMission(MissionManager missionManager)
     {
-        missionManager.NewsMissionController.StartMission(minClients, maxClients, startingNewspapers);
+        missionManager.NewsMissionController.StartMission(this);
     }
 
     public override void CompleteMission(MissionManager missionManager)
     {
-        missionManager.NewsMissionController.EndMission();
+        missionManager.NewsMissionController.ClearMission();
+    }
+
+    public override void FailMission(MissionManager missionManager)
+    {
+        Debug.Log("News mission failed.");
+        missionManager.NewsMissionController.ClearMission();
     }
 }

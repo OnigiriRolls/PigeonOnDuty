@@ -13,6 +13,7 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private ParadeManager paradeManager;
     [SerializeField] private float minimumDistance = 300f;
     [SerializeField] private MissionTimer missionTimer;
+    [SerializeField] private TravelTimeCalculator travelTimeCalculator;
 
     private GPSMissionState state;
     private GPSMission activeMission;
@@ -20,7 +21,6 @@ public class GPSMissionController : MonoBehaviour
     private float lostTimer;
     private bool missionRunning;
     private EndlessRunManager endlessRunManager;
-    private GameManager gameManager;
 
     public enum GPSMissionState
     {
@@ -32,8 +32,6 @@ public class GPSMissionController : MonoBehaviour
     private void Start()
     {
         endlessRunManager = FindAnyObjectByType<EndlessRunManager>();
-        gameManager = FindAnyObjectByType<GameManager>();
-        missionTimer.OnTimerExpired += FailMission;
     }
 
     public void StartMission(GPSMission mission)
@@ -48,7 +46,7 @@ public class GPSMissionController : MonoBehaviour
         missionRunning = true;
         state = GPSMissionState.ReachTraveler;
         endlessRunManager.SetCurrentObjective(currentHuman.transform);
-        float duration = endlessRunManager.CalculateTimeForTarget(currentHuman.transform);
+        float duration = travelTimeCalculator.CalculateTime(currentHuman.transform, activeMission.timeBuffer);
         missionTimer.StartTimer(duration);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
@@ -80,7 +78,7 @@ public class GPSMissionController : MonoBehaviour
         paradeManager.SpawnParades(currentHuman.transform.position, destination.transform.position);
         endlessRunManager.CleanCurrentObjective();
         endlessRunManager.SpawnNextObjectiveAndCollectibles(destination.transform);
-        float duration = endlessRunManager.CalculateTimeForTarget(destination.transform);
+        float duration = travelTimeCalculator.CalculateTime(destination.transform, activeMission.timeBuffer);
         missionTimer.StartTimer(duration);
         hintUI.Show("Escort the Human", 4f);
     }
@@ -148,11 +146,10 @@ public class GPSMissionController : MonoBehaviour
         }
     }
 
-    private void FailMission()
+    public void FailMission()
     {
         ClearMission();
         Debug.Log("GPS Mission Failed");
-        gameManager.GameOver(DeathReason.TimeUp);
     }
 
     public float GetRemainingLostTime()
@@ -167,10 +164,5 @@ public class GPSMissionController : MonoBehaviour
         missionTimer.StopTimer();
         paradeManager.ClearAllParades();
         missionRunning = false;
-    }
-
-    private void OnDestroy()
-    {
-        missionTimer.OnTimerExpired -= FailMission;
     }
 }

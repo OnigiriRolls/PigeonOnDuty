@@ -5,7 +5,7 @@ public class ClientController : MonoBehaviour
 {
     public bool IsActiveClient => isActiveClient;
     public event Action<ClientController> OnBecameClient;
-    public event Action<ClientController> OnStoppedBeingClient;
+    public event Action<ClientController> OnDeliveryCompleted;
 
     [SerializeField] private bool isActiveClient;
     [SerializeField] private ThrowableData requestedItem;
@@ -21,6 +21,7 @@ public class ClientController : MonoBehaviour
         if (item == requestedItem && IsActiveClient)
         {
             pickupFeedback.PlayCorrect();
+            CompleteDelivery();
             return;
         }
         pickupFeedback.PlayWrong();
@@ -36,9 +37,12 @@ public class ClientController : MonoBehaviour
 
     public void ClearClient()
     {
-        if (!isActiveClient)
-            return;
         isActiveClient = false;
-        OnStoppedBeingClient?.Invoke(this);
+    }
+
+    private void CompleteDelivery()
+    {
+        ClearClient();
+        OnDeliveryCompleted?.Invoke(this);
     }
 }

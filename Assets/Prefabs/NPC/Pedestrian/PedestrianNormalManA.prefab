@@ -1910,9 +1910,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.82
   m_Speed: 20
-  m_Acceleration: 30
+  m_Acceleration: 25
   avoidancePriority: 50
-  m_AngularSpeed: 720
+  m_AngularSpeed: 500
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1935,6 +1935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianMovement
   waypointNetwork: {fileID: 0}
   currentWaypoint: {fileID: 0}
+  stuckDistance: 0.2
+  stuckTime: 10
   success: 0
 --- !u!114 &6383415150370579951
 MonoBehaviour:
@@ -2039,7 +2041,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8259504472839011165}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

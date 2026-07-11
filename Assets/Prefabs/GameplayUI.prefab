@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5855582637689201315}
   - component: {fileID: 367527578057225833}
   - component: {fileID: 2952279246618051155}
+  - component: {fileID: 5679805289366882457}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -52,7 +53,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
   player: {fileID: 0}
-  runManager: {fileID: 0}
   deliveryMissionManager: {fileID: 0}
   throttleText: {fileID: 0}
   throttleBar: {fileID: 0}
@@ -71,6 +71,7 @@ MonoBehaviour:
   midAltitude: 51
   highAltitude: 151
   maxThrottle: 130
+  missionTimer: {fileID: 0}
 --- !u!114 &334364185767018330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +174,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HintUI
   panel: {fileID: 0}
   hintText: {fileID: 0}
+--- !u!114 &5679805289366882457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6206697560603183726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d8509000a1df24eada7ff04bc947ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewsMissionUI
+  missionManager: {fileID: 0}
+  minimapUI: {fileID: 0}
+  inventoryUI: {fileID: 0}

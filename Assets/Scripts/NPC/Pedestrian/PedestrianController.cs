@@ -1,6 +1,6 @@
 using UnityEngine;
-[RequireComponent(typeof(PedestrianMovement))]
 
+[RequireComponent(typeof(PedestrianMovement))]
 [RequireComponent(typeof(ClientController))]
 public class PedestrianController : MonoBehaviour
 {
@@ -36,6 +36,7 @@ public class PedestrianController : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<PedestrianMovement>();
+        movement.OnStuck += HandleStuck;
         clientController = GetComponent<ClientController>();
         walkingState = new WalkingState(this);
         waitingState = new WaitingState(this);
@@ -91,16 +92,29 @@ public class PedestrianController : MonoBehaviour
         CarriedItem = pickup.Item;
         carryVisual.Show(CarriedItem);
         clientController.HandlePickup(pickup.Item);
-        clientController.ClearClient();
     }
 
     public void DropCarriedItem()
     {
         if (CarriedItem == null)
             return;
-        var pickup = Instantiate(CarriedItem.pickupPrefab, dropPoint.position, Quaternion.identity);
+        Instantiate(CarriedItem.pickupPrefab, dropPoint.position, Quaternion.identity);
         carryVisual.Hide();
         CarriedItem = null;
         pickupCooldown = pickupCooldownDuration;
+    }
+
+    private void HandleStuck()
+    {
+        Debug.Log("stuck " + currentStateName);
+        if (currentState == walkingState || currentState == carryItemState)
+        {
+            movement.MoveToNextWaypoint();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        movement.OnStuck -= HandleStuck;
     }
 }

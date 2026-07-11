@@ -22,6 +22,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private EndlessRunManager endlessRunManager;
     [SerializeField] private GPSMissionController gpsMissionController;
     [SerializeField] private NewsMissionController newsMissionController;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private bool isNewsMissionActive;
     [SerializeField] private bool isGPSMissionActive;
     [SerializeField] private bool areAllMissionsActive;
@@ -39,6 +40,7 @@ public class MissionManager : MonoBehaviour
         playerHealthUI = FindAnyObjectByType<PlayerHealthUI>();
         unlockManager = FindAnyObjectByType<UnlockManager>();
         newsMissionController.OnMissionCompleted += CompleteActiveMission;
+        missionTimer.OnTimerExpired += HandleMissionTimerExpired;
         RequestMissionSelection();
     }
 
@@ -100,9 +102,18 @@ public class MissionManager : MonoBehaviour
         RequestMissionSelection();
     }
 
+    private void HandleMissionTimerExpired()
+    {
+        if (ActiveMission == null)
+            return;
+        ActiveMission.FailMission(this);
+        gameManager.GameOver(DeathReason.TimeUp);
+    }
+
     private void OnDestroy()
     {
         if (newsMissionController != null)
             newsMissionController.OnMissionCompleted -= CompleteActiveMission;
+        missionTimer.OnTimerExpired -= HandleMissionTimerExpired;
     }
 }

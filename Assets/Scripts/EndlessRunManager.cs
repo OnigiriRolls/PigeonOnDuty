@@ -5,14 +5,13 @@ public class EndlessRunManager : MonoBehaviour
     public Transform CurrentObjective => currentObjective;
 
     [SerializeField] private CollectibleManager collectibleManager;
+    [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private GameObject postCheckpointHigh;
     [SerializeField] private GameObject postCheckpointMid;
     [SerializeField] private GameObject postCheckpointLow;
     [SerializeField] private GameObject gpsCheckpoint;
     [SerializeField] private Transform checkpointParent;
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float expectedSpeedKmh = 50f;
-    [SerializeField] private float extraTimeBuffer = 10f;
     [SerializeField] private AudioClip lowMusic;
 
     private Waypoint[] waypoints;
@@ -102,16 +101,9 @@ public class EndlessRunManager : MonoBehaviour
         return Quaternion.LookRotation(direction) * Quaternion.Euler(0f, 180f, 0f); ;
     }
 
-    public float CalculateTimeForTarget(Transform target)
+    public void StartCheckpointTimer(MissionTimer timer, float timeBuffer, float multiplier = 1f)
     {
-        float distance = Vector3.Distance(playerTransform.position, target.position);
-        float expectedSpeedMs = expectedSpeedKmh / 3.6f;
-        return distance / expectedSpeedMs + extraTimeBuffer;
-    }
-
-    public void StartCheckpointTimer(MissionTimer timer, float multiplier = 1f)
-    {
-        float duration = CalculateTimeForTarget(currentObjective);
+        float duration = travelTimeCalculator.CalculateTime(currentObjective, timeBuffer);
         timer.StartTimer(duration, multiplier);
     }
 

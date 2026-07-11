@@ -6,6 +6,7 @@ public abstract class MissionData : ScriptableObject
     [Header("General")]
     public string missionName;
     public string description;
+    public float timeBuffer = 20f;
     public string[] flavorTexts;
 
     [Header("Rewards")]
@@ -24,4 +25,5 @@ public abstract class MissionData : ScriptableObject
 
     public abstract void StartMission(MissionManager missionManager);
     public abstract void CompleteMission(MissionManager missionManager);
+    public abstract void FailMission(MissionManager missionManager);
 }

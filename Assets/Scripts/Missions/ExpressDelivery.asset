@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
   missionName: Express Delivery
   description: An urgent message cannot wait
+  timeBuffer: 300
   flavorTexts:
   - This one can't wait!
   - Move those wings, messenger!

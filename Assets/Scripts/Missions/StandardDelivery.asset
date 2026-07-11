@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
   missionName: Standard Delivery
   description: A routine delivery across the city
+  timeBuffer: 300
   flavorTexts:
   - Just another day in the pigeon business.
   - A message waits. Try not to get distracted.
