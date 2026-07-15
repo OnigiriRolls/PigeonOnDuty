@@ -5,7 +5,7 @@ public class CrowAttackState : CrowState
     private Vector3 dashTarget;
     private bool dashStarted;
 
-    public CrowAttackState(CrowController crowController) : base(crowController)
+    public CrowAttackState(BaseCrowController crowController) : base(crowController)
     {
     }
 
@@ -28,11 +28,11 @@ public class CrowAttackState : CrowState
             crow.CurrentAttacks++;
             if (crow.CurrentAttacks >= crow.Config.maxAttacks)
             {
-                crow.ChangeState(new CrowLeaveState(crow));
+                crow.OnAttackFinished();
             }
             else
             {
-                crow.ChangeState(new CrowChaseState(crow));
+                crow.ChangeState(crow.ChaseState);
             }
         }
     }

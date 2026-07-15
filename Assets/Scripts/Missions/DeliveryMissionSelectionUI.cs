@@ -7,9 +7,8 @@ public class DeliveryMissionSelectionUI : MonoBehaviour
     [SerializeField] private DeliveryMissionCardUI[] missionCards;
     [SerializeField] private MissionManager manager;
 
-    private void Start()
+    private void Awake()
     {
-        panel.SetActive(false);
         manager.OnMissionSelectionRequested += ShowMissionSelection;
     }
 

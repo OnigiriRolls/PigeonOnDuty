@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class PedestrianPickupFeedback : MonoBehaviour
     [SerializeField] private AudioClip wrongClip;
     [SerializeField] private string[] correctTexts;
     [SerializeField] private string[] wrongTexts;
+    [SerializeField] private AudioSource audioSource;
 
     private Coroutine currentRoutine;
 
@@ -18,7 +20,7 @@ public class PedestrianPickupFeedback : MonoBehaviour
     {
         feedbackCircle.color = correctCircleColor;
         feedbackCircle.gameObject.SetActive(true);
-        AudioManager.Instance.PlaySFX(correctClip);
+        AudioManager.Instance.PlayRandomSFX(correctClip, audioSource);
         dialogue.ShowMessage(correctTexts[Random.Range(0, correctTexts.Length)]);
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
@@ -29,7 +31,7 @@ public class PedestrianPickupFeedback : MonoBehaviour
     {
         feedbackCircle.color = wrongCircleColor;
         feedbackCircle.gameObject.SetActive(true);
-        AudioManager.Instance.PlaySFX(wrongClip);
+        AudioManager.Instance.PlayRandomSFX(wrongClip, audioSource);
         dialogue.ShowMessage(wrongTexts[Random.Range(0, wrongTexts.Length)]);
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);

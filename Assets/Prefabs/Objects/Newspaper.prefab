@@ -108,7 +108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3925913346634155500
 Transform:
   m_ObjectHideFlags: 0
@@ -412,6 +412,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
+  pickUpSensor: {fileID: 4443247928064879501}
 --- !u!114 &6252094461385350526
 MonoBehaviour:
   m_ObjectHideFlags: 0

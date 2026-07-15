@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewsMission
   missionName: Human Delivery
   description: Deliver newspapers to moving citizens.
-  timeBuffer: 20
+  timeBuffer: 300
   flavorTexts:
   - Extra! Extra! Someone actually reads the newspaper!
   - Customer is walking. Good luck catching them.
@@ -27,6 +27,10 @@ MonoBehaviour:
   reputationReward: 40
   coinReward: 30
   unlockId: human_delivery
-  startingNewspapers: 1000
+  startingItems:
+  - Item: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
+    Amount: 1000
+  - Item: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
+    Amount: 1000
   minClients: 2
   maxClients: 4

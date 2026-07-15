@@ -25,8 +25,9 @@ public class NewsMissionController : MonoBehaviour
     {
         currentMission = newsMission;
         pedestrianSpawner.SpawnPedestrians();
-        playerInventory.Equip(newspaperData);
-        playerInventory.SetAmount(newspaperData, currentMission.startingNewspapers);
+
+        playerInventory.Initialize(currentMission.startingItems);
+
         int clientCount = Random.Range(currentMission.minClients, currentMission.maxClients + 1);
         activeClients = clientAssigner.AssignRandomClients(clientCount);
         foreach (ClientController client in activeClients)

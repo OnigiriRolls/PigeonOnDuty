@@ -53,11 +53,8 @@ public class AudioManager : StopAudio
         PlaySFX(clip);
     }
 
-    public void PlayRandomSFXLoop(AudioClip[] clips, AudioSource source)
+    public void PlayRandomSFX(AudioClip clip, AudioSource source)
     {
-        if (clips.Length == 0)
-            return;
-        AudioClip clip = clips[Random.Range(0, clips.Length)];
         if (clip == null)
             return;
         if (source.clip == clip && source.isPlaying)
@@ -67,6 +64,14 @@ public class AudioManager : StopAudio
         source.clip = clip;
         source.volume = sfxVolume * masterVolume;
         source.Play();
+    }
+
+    public void PlayRandomSFX(AudioClip[] clips, AudioSource source)
+    {
+        if (clips.Length == 0)
+            return;
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        PlayRandomSFX(clip, source);
     }
 
     public void PlayUILoop(AudioClip clip)

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a94a8feeb66535428960df6aaf24a25, type: 3}
-  m_Name: CrowConfig
+  m_Name: DamageCrowConfig
   m_EditorClassIdentifier: Assembly-CSharp::CrowConfig
+  ability: {fileID: 11400000, guid: 8da98fe63e0ea4c41a48aa88cd59336f, type: 2}
   rotationSpeed: 7
   chaseSpeed: 70
   followTolerance: 20
@@ -20,3 +21,4 @@ MonoBehaviour:
   maxWaitTime: 8
   dashSpeed: 100
   maxAttacks: 2
+  detectionRadius: 120

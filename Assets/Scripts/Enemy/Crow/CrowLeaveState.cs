@@ -1,11 +1,17 @@
 public class CrowLeaveState : CrowState
 {
-    public CrowLeaveState(CrowController crowController) : base(crowController)
+    public CrowLeaveState(AttackCrowController crowController) : base(crowController)
     {
+        crow = crowController;
+    }
+
+    public override void Enter()
+    {
+        EnemyAggroManager.Instance.Release(crow);
     }
 
     public override void UpdateState()
     {
-        crow.MoveTowardsSpawnPositionAndDestroyCrow(crow.Config.chaseSpeed);
+        ((AttackCrowController)crow).MoveTowardsDespawn(crow.Config.chaseSpeed);
     }
 }

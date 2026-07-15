@@ -26,7 +26,7 @@ public class ParadeZoneController : MonoBehaviour
 
     public void SpawnParade()
     {
-        AudioManager.Instance.PlayRandomSFXLoop(clips, audioSource);
+        AudioManager.Instance.PlayRandomSFX(clips, audioSource);
         Transform[] spawnPoints = GetSpawnPoints();
         int count = Random.Range(minPeople, maxPeople + 1);
         for (int i = 0; i < count; i++)

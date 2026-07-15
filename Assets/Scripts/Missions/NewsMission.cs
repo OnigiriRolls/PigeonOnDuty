@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewsMission", menuName = "Game/Missions/News Mission")]
 public class NewsMission : MissionData
 {
-    [Header("NEWS")]
-    public int startingNewspapers = 10;
+    [Header("News")]
+    public List<InventorySlot> startingItems = new();
     public int minClients = 3;
     public int maxClients = 4;
 

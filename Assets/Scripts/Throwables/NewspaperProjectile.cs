@@ -5,6 +5,7 @@ using UnityEngine;
 public class NewspaperProjectile : ThrowableProjectile
 {
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject pickUpSensor;
 
     protected override void HandleImpact(Collision collision)
     {
@@ -23,6 +24,7 @@ public class NewspaperProjectile : ThrowableProjectile
         ThrowablePickup pickup = GetComponent<ThrowablePickup>();
         pickup.enabled = true;
         GetComponent<Collider>().isTrigger = true;
+        pickUpSensor.SetActive(true);
         enabled = false;
     }
 }

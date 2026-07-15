@@ -14,9 +14,12 @@ public class ProjectileLauncher : MonoBehaviour
     private bool ThrowPressed => Input.GetKeyDown(KeyCode.LeftShift);
     private bool ThrowReleased => Input.GetKeyUp(KeyCode.LeftShift);
     private bool CancelPressed => Input.GetKeyDown(KeyCode.Z);
+    private bool PreviousPressed => Input.GetKeyDown(KeyCode.R);
+    private bool NextPressed => Input.GetKeyDown(KeyCode.E);
 
     private void Update()
     {
+        HandleSelection();
         HandleInput();
         if (!isCharging)
             return;
@@ -33,9 +36,18 @@ public class ProjectileLauncher : MonoBehaviour
             CancelThrow();
     }
 
+    private void HandleSelection()
+    {
+        if (PreviousPressed)
+            inventory.SelectPrevious();
+
+        if (NextPressed)
+            inventory.SelectNext();
+    }
+
     private void StartCharging()
     {
-        ThrowableData item = inventory.EquippedItem;
+        ThrowableData item = inventory.SelectedItem;
         if (item == null)
             return;
         if (inventory.GetAmount(item) <= 0)
@@ -49,7 +61,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void UpdateCharge()
     {
-        ThrowableData item = inventory.EquippedItem;
+        ThrowableData item = inventory.SelectedItem;
         if (item == null)
             return;
         chargeTime += Time.deltaTime;
@@ -69,7 +81,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     private void Throw()
     {
-        ThrowableData item = inventory.EquippedItem;
+        ThrowableData item = inventory.SelectedItem;
         if (item == null)
             return;
         if (!inventory.TryConsume(item))

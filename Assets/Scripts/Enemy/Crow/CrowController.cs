@@ -1,19 +1,29 @@
 using UnityEngine;
 
-public class CrowController : StopAudio
+public class CrowController : StopAudio, IEnemyPursuer
 {
     public bool CanHitPlayer { get; set; }
     public bool CanTakeDamage { get; set; }
     public int CurrentAttacks { get; set; }
     public CrowConfig Config => config;
     public Transform Player => player;
+    public CrowStartMode StartMode => startMode;
+    public CrowChaseState ChaseState { get; private set; }
+    public CrowAttackState AttackState { get; private set; }
+    public CrowLeaveState LeaveState { get; private set; }
+    public CrowPatrolState PatrolState { get; private set; }
+    public CrowReturnState ReturnState { get; private set; }
+    public CrowPatrolZone PatrolZone { get; private set; }
+    public ThrowableData CarriedItem { get; private set; }
 
     [SerializeField] private GameObject hitEffectPrefab;
     [SerializeField] private CrowConfig config;
     [SerializeField] private AudioClip[] crowSounds;
     [SerializeField] private AudioClip hitClip;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private float minSoundInterval = 2f;
     [SerializeField] private float maxSoundInterval = 5f;
+    [SerializeField] private CarryVisual carryVisual;
 
     private Transform player;
     private CrowState currentState;
@@ -21,16 +31,39 @@ public class CrowController : StopAudio
     private CrowSpawner spawner;
     private Transform spawnPosition;
     private float soundTimer;
+    private CrowStartMode startMode;
+    private bool isDestroyed;
 
-    public void Initialize(Transform playerTransform, CrowSpawner crowManager, Transform spawnPosition)
+    private void Awake()
+    {
+        //ChaseState = new CrowChaseState(this);
+        //AttackState = new CrowAttackState(this);
+        //LeaveState = new CrowLeaveState(this);
+        //PatrolState = new CrowPatrolState(this);
+        //ReturnState = new CrowReturnState(this);
+        isDestroyed = false;
+    }
+
+    public void Initialize(Transform playerTransform, CrowSpawner crowSpawner, Transform spawnPosition, CrowStartMode mode, CrowPatrolZone patrolZone = null)
     {
         CanTakeDamage = false;
-        spawner = crowManager;
+        spawner = crowSpawner;
         player = playerTransform;
         playerController = player.GetComponent<PlayerController>();
         this.spawnPosition = spawnPosition;
+        startMode = mode;
+        PatrolZone = patrolZone;
         ResetSoundTimer();
-        ChangeState(new CrowChaseState(this));
+        switch (mode)
+        {
+            case CrowStartMode.AttackPlayer:
+                ChangeState(ChaseState);
+                break;
+
+            case CrowStartMode.Patrol:
+                ChangeState(PatrolState);
+                break;
+        }
     }
 
     private void Update()
@@ -76,19 +109,6 @@ public class CrowController : StopAudio
         return player.position - flatRight * config.leftOffset + playerController.Velocity * predictionTime;
     }
 
-    public Vector3 GetPredictedPlayerPositionWithOffset1(float predictionTime)
-    {
-        Quaternion yawOnly = Quaternion.Euler(0f, player.eulerAngles.y, 0f);
-        Vector3 flatRight = yawOnly * Vector3.right;
-        return player.position + flatRight * 5f + playerController.Velocity * predictionTime;
-    }
-
-
-    public Vector3 GetPredictedPlayerPosition(float predictionTime)
-    {
-        return player.position + playerController.Velocity * predictionTime;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
@@ -99,13 +119,17 @@ public class CrowController : StopAudio
         if (!CanHitPlayer) return;
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Crow);
+            ThrowableData throwable = config.ability.Execute(playerController);
+            if (throwable != null)
+                PickUp(throwable);
             Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         }
     }
 
     private void UpdateCrowSounds()
     {
+        if (isDestroyed)
+            return;
         soundTimer -= Time.deltaTime;
         if (soundTimer > 0f)
             return;
@@ -115,7 +139,7 @@ public class CrowController : StopAudio
 
     private void PlayCrowSound()
     {
-        AudioManager.Instance.PlayRandomSFX(crowSounds);
+        AudioManager.Instance.PlayRandomSFX(crowSounds, audioSource);
     }
 
     private void ResetSoundTimer()
@@ -125,8 +149,11 @@ public class CrowController : StopAudio
 
     public void DestroyCrow()
     {
-        spawner.FinishEnemy();
-        AudioManager.Instance.PlaySFX(hitClip);
+        isDestroyed = true;
+        EnemyAggroManager.Instance.Release(this);
+        if (startMode == CrowStartMode.AttackPlayer)
+            spawner.FinishEnemy();
+        AudioManager.Instance.PlayRandomSFX(hitClip, audioSource);
         Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -134,5 +161,29 @@ public class CrowController : StopAudio
     protected override void HandleGameOver()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (PatrolZone == null)
+            return;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(PatrolZone.Center, PatrolZone.Radius);
+    }
+
+    public void PickUp(ThrowableData item)
+    {
+        CarriedItem = item;
+        carryVisual.Show(item);
+    }
+
+    public void DropItem()
+    {
+        if (CarriedItem == null)
+            return;
+
+        Instantiate(CarriedItem.pickupPrefab, transform.position, Quaternion.identity);
+        carryVisual.Hide();
+        CarriedItem = null;
     }
 }

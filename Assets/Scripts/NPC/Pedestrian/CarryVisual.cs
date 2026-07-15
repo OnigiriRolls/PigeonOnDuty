@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PedestrianCarryVisual : MonoBehaviour
+public class CarryVisual : MonoBehaviour
 {
     [SerializeField] private Image carriedItemIcon;
 

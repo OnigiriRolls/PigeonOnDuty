@@ -5,39 +5,42 @@ using UnityEngine.UI;
 public class ThrowableInventoryUI : MonoBehaviour
 {
     [SerializeField] private ThrowableInventory inventory;
-    [SerializeField] private Image icon;
-    [SerializeField] private TMP_Text amountText;
+    [SerializeField] private InventorySlotUI[] slots;
 
     private void OnEnable()
     {
         inventory.OnInventoryChanged += Refresh;
-        ThrowableData item = inventory.EquippedItem;
-        if (item != null)
-            Refresh(item, inventory.GetAmount(item));
-        else
-            Hide();
+        inventory.OnSelectionChanged += RefreshSelection;
+        Refresh();
     }
 
     private void OnDisable()
     {
         inventory.OnInventoryChanged -= Refresh;
+        inventory.OnSelectionChanged -= RefreshSelection;
     }
 
     private void Refresh(ThrowableData item, int amount)
     {
-        if (item == null)
-        {
-            Hide();
-            return;
-        }
-        icon.enabled = true;
-        icon.sprite = item.icon;
-        amountText.text = amount.ToString();
+        Refresh();
     }
 
-    private void Hide()
+    private void RefreshSelection(ThrowableData item)
     {
-        icon.enabled = false;
-        amountText.text = "";
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i >= inventory.Slots.Count)
+            {
+                slots[i].Hide();
+                continue;
+            }
+            InventorySlot slot = inventory.Slots[i];
+            slots[i].Setup(slot.Item, slot.Amount, slot.Item == inventory.SelectedItem);
+        }
     }
 }

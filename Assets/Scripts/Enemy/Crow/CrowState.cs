@@ -1,8 +1,8 @@
 public abstract class CrowState
 {
-    protected CrowController crow;
+    protected BaseCrowController crow;
 
-    public CrowState(CrowController crow)
+    public CrowState(BaseCrowController crow)
     {
         this.crow = crow;
     }

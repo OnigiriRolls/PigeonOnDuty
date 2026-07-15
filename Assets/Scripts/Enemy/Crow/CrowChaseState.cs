@@ -5,7 +5,7 @@ public class CrowChaseState : CrowState
     private float waitTimer;
     private bool reachedPigeon;
 
-    public CrowChaseState(CrowController crowController) : base(crowController)
+    public CrowChaseState(BaseCrowController crowController) : base(crowController)
     {
     }
 
@@ -32,7 +32,7 @@ public class CrowChaseState : CrowState
             waitTimer -= Time.deltaTime;
             if (waitTimer <= 0)
             {
-                crow.ChangeState(new CrowAttackState(crow));
+                crow.ChangeState(crow.AttackState);
             }
         }
     }

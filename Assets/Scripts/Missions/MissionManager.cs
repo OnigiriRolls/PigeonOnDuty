@@ -47,8 +47,8 @@ public class MissionManager : MonoBehaviour
     public void RequestMissionSelection()
     {
         List<MissionData> missions = GenerateMissionChoices();
-        Time.timeScale = 0f;
         OnMissionSelectionRequested?.Invoke(missions);
+        Time.timeScale = 0f;
     }
 
     public void SelectMission(MissionData mission)

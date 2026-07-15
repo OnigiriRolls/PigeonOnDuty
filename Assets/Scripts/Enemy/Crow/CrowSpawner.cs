@@ -11,7 +11,7 @@ public class CrowSpawner : EnemySpawner
 
     protected override void InitializeEnemy(GameObject enemy)
     {
-        CrowController controller = enemy.GetComponent<CrowController>();
+        AttackCrowController controller = enemy.GetComponent<AttackCrowController>();
         controller.Initialize(player.transform, this, spawnPosition);
     }
 }

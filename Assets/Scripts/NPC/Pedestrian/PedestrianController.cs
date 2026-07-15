@@ -18,7 +18,7 @@ public class PedestrianController : MonoBehaviour
     [field: SerializeField] public float MinWaitTime { get; private set; } = 1f;
     [field: SerializeField] public float MaxWaitTime { get; private set; } = 4f;
 
-    [SerializeField] private PedestrianCarryVisual carryVisual;
+    [SerializeField] private CarryVisual carryVisual;
     [SerializeField] private float carryDuration = 10f;
     [SerializeField] private Transform dropPoint;
     [SerializeField] private string currentStateName;
@@ -106,7 +106,7 @@ public class PedestrianController : MonoBehaviour
 
     private void HandleStuck()
     {
-        Debug.Log("stuck " + currentStateName);
+        //Debug.Log("stuck " + currentStateName);
         if (currentState == walkingState || currentState == carryItemState)
         {
             movement.MoveToNextWaypoint();

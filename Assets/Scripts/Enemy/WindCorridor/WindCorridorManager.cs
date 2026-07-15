@@ -6,9 +6,14 @@ public class WindCorridorManager : MonoBehaviour
     [SerializeField] private WindCorridor prefab;
     [SerializeField] private WindCorridorConfig config;
     [SerializeField] private PlayerController player;
+    [SerializeField] private LayerMask obstacleMask;
+
+    private Vector3 corridorSize;
 
     private void Start()
     {
+        BoxCollider box = prefab.GetComponent<BoxCollider>();
+        corridorSize = Vector3.Scale(box.size, prefab.transform.localScale) * 0.5f;
         StartCoroutine(SpawnRoutine());
     }
 
@@ -24,11 +29,21 @@ public class WindCorridorManager : MonoBehaviour
 
     private void SpawnCorridor()
     {
-        Vector3 offset = player.transform.right * Random.Range(-config.horizontalOffset, config.horizontalOffset);
-        offset += player.transform.up * Random.Range(-config.verticalOffset, config.verticalOffset);
+        const int maxAttempts = 10;
         Vector3 direction = player.Velocity.sqrMagnitude > 1f ? player.Velocity.normalized : player.transform.forward;
-        Vector3 position = player.transform.position + direction * config.spawnDistance + offset;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        Instantiate(prefab, position, rotation);
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3 offset = player.transform.right * Random.Range(-config.horizontalOffset, config.horizontalOffset);
+            offset += player.transform.up * Random.Range(-config.verticalOffset, config.verticalOffset);
+            Vector3 position = player.transform.position + direction * config.spawnDistance + offset;
+
+            bool blocked = Physics.CheckBox(position, corridorSize, rotation, obstacleMask);
+            if (!blocked)
+            {
+                Instantiate(prefab, position, rotation);
+                return;
+            }
+        }
     }
 }
