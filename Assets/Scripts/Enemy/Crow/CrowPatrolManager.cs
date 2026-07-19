@@ -7,7 +7,7 @@ public class CrowPatrolManager : MonoBehaviour
     [SerializeField] private StealerCrowController crowStealerPrefab;
     [SerializeField] private Transform player;
     [SerializeField] private Transform spawnParent;
-    [SerializeField] private CrowPatrolZone patrolZonePrefab;
+    [SerializeField] private PatrolZone patrolZonePrefab;
 
     [Header("World")]
     [SerializeField] private Vector2 worldMin;
@@ -24,7 +24,7 @@ public class CrowPatrolManager : MonoBehaviour
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private Transform despawnPoint;
 
-    private readonly List<CrowPatrolZone> patrolZones = new();
+    private readonly List<PatrolZone> patrolZones = new();
 
     private void Start()
     {
@@ -72,7 +72,7 @@ public class CrowPatrolManager : MonoBehaviour
         //if (Physics.CheckSphere(position, obstacleCheckRadius, obstacleMask))
         //    continue;
 
-        CrowPatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, spawnParent);
+        PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, spawnParent);
         patrolZones.Add(zone);
         StealerCrowController crow = Instantiate(crowStealerPrefab, position, Quaternion.identity, spawnParent);
         crow.Initialize(player, zone, despawnPoint);

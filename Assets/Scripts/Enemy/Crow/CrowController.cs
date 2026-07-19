@@ -13,7 +13,7 @@ public class CrowController : StopAudio, IEnemyPursuer
     public CrowLeaveState LeaveState { get; private set; }
     public CrowPatrolState PatrolState { get; private set; }
     public CrowReturnState ReturnState { get; private set; }
-    public CrowPatrolZone PatrolZone { get; private set; }
+    public PatrolZone PatrolZone { get; private set; }
     public ThrowableData CarriedItem { get; private set; }
 
     [SerializeField] private GameObject hitEffectPrefab;
@@ -44,7 +44,7 @@ public class CrowController : StopAudio, IEnemyPursuer
         isDestroyed = false;
     }
 
-    public void Initialize(Transform playerTransform, CrowSpawner crowSpawner, Transform spawnPosition, CrowStartMode mode, CrowPatrolZone patrolZone = null)
+    public void Initialize(Transform playerTransform, CrowSpawner crowSpawner, Transform spawnPosition, CrowStartMode mode, PatrolZone patrolZone = null)
     {
         CanTakeDamage = false;
         spawner = crowSpawner;

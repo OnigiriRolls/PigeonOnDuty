@@ -4,9 +4,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SphereCollider))]
-public class CrowPatrolZone : MonoBehaviour
+public class PatrolZone : MonoBehaviour
 {
-    [SerializeField] private float radius = 30f;
+    [SerializeField] private float radius = 60f;
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private int maxAttemptsPerPoint = 10;
     [SerializeField] private float pointCheckRadius = 5f;
@@ -25,6 +25,12 @@ public class CrowPatrolZone : MonoBehaviour
         trigger = GetComponent<SphereCollider>();
         trigger.radius = radius;
         GeneratePatrolPoints();
+    }
+
+    public void SetRadius(float radius)
+    {
+        this.radius = radius;
+        trigger.radius = radius;
     }
 
     private void GeneratePatrolPoints()

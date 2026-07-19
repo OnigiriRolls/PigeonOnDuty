@@ -3,7 +3,7 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class StealerCrowController : BaseCrowController, IThrowTarget
 {
-    public CrowPatrolZone PatrolZone { get; protected set; }
+    public PatrolZone PatrolZone { get; protected set; }
     public bool HasStolenItem => carriedItem != null;
     public CrowReturnState ReturnState { get; private set; }
     public CrowPatrolState PatrolState { get; protected set; }
@@ -24,7 +24,7 @@ public class StealerCrowController : BaseCrowController, IThrowTarget
         ConfusedState = new CrowConfusedState(this);
     }
 
-    public void Initialize(Transform player, CrowPatrolZone patrolZone, Transform despawnPoint)
+    public void Initialize(Transform player, PatrolZone patrolZone, Transform despawnPoint)
     {
         InitializePlayer(player);
         PatrolZone = patrolZone;
