@@ -103,10 +103,10 @@ GameObject:
   - component: {fileID: 4300678150660658980}
   - component: {fileID: 4831507928445627384}
   - component: {fileID: 1121389099000045331}
-  - component: {fileID: 1187302433227079513}
   - component: {fileID: 5566693193930301259}
-  - component: {fileID: 2079970034977420111}
   - component: {fileID: 5561374983296405885}
+  - component: {fileID: 193617295252046293}
+  - component: {fileID: 4200488656316436049}
   m_Layer: 0
   m_Name: Feather
   m_TagString: Untagged
@@ -216,28 +216,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!64 &1187302433227079513
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385754817458844085}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 994117056965248728, guid: 60366d35fd675974880fba9ab0c2082d, type: 3}
 --- !u!114 &5566693193930301259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,23 +232,6 @@ MonoBehaviour:
   animator: {fileID: 5561374983296405885}
   pulseDuration: 3
   colliderZone: {fileID: 3422817299681016274}
---- !u!114 &2079970034977420111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385754817458844085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86ffa6ada213f842a680c7b39bcaee5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewspaperProjectile
-  lifetime: 10
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  pickUpSensor: {fileID: 450507685081390742}
 --- !u!95 &5561374983296405885
 Animator:
   serializedVersion: 7
@@ -293,6 +254,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &193617295252046293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385754817458844085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec14a48375cf71438c1f7005711bfc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FeatherProjectile
+  lifetime: 10
+  pickupSensor: {fileID: 450507685081390742}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  homingStrength: 30
+--- !u!135 &4200488656316436049
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385754817458844085}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0.29810786, y: 0.17606533, z: 0.46932328}
 --- !u!1 &450507685081390742
 GameObject:
   m_ObjectHideFlags: 0

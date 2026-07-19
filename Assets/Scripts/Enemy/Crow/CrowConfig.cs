@@ -27,6 +27,9 @@ public class CrowConfig : ScriptableObject
     public float safeReturnAltitude = 70f;
     public float returnTolerance = 5f;
 
+    [Header("Confused")]
+    public float confusedDuration = 3f;
+
     [Header("Detection")]
     public float detectionRadius = 120f;
 }

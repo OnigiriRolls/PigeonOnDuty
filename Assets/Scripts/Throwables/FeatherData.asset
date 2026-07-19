@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ThrowableData
   itemName: Feather
   icon: {fileID: 21300000, guid: e786959d1340513418606b9bfd074fdd, type: 3}
-  projectilePrefab: {fileID: 2079970034977420111, guid: 8beea7ee618a79a4eb855ccb578d4a77, type: 3}
+  projectilePrefab: {fileID: 193617295252046293, guid: 8beea7ee618a79a4eb855ccb578d4a77, type: 3}
   pickupPrefab: {fileID: 3594110842216032031, guid: 42f3393890d44c64787e4b63174c7a3e, type: 3}
-  minForce: 10
-  maxForce: 35
+  minForce: 5
+  maxForce: 15
   chargeDuration: 1.5
-  gravityMultiplier: 1
+  gravityMultiplier: 0.8
   pickupLifetime: 15

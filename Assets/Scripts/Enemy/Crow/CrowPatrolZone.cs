@@ -1,33 +1,81 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class CrowPatrolZone
+[RequireComponent(typeof(SphereCollider))]
+public class CrowPatrolZone : MonoBehaviour
 {
-    public Vector3 Center { get; }
-    public float Radius { get; }
+    [SerializeField] private float radius = 30f;
+    [SerializeField] private LayerMask obstacleMask;
+    [SerializeField] private int maxAttemptsPerPoint = 10;
+    [SerializeField] private float pointCheckRadius = 5f;
+    [SerializeField] private int patrolPointCount = 20;
 
-    private readonly LayerMask obstacleMask;
-    private readonly float checkRadius;
-    private readonly int maxAttempts;
+    private readonly List<Vector3> patrolPoints = new();
 
-    public CrowPatrolZone(Vector3 center, float radius, LayerMask obstacleMask, float checkRadius = 5f, int maxAttempts = 10)
+    public Vector3 Center => transform.position;
+    public float Radius => radius;
+    public bool IsPlayerInside { get; private set; }
+
+    private SphereCollider trigger;
+
+    private void Awake()
     {
-        Center = center;
-        Radius = radius;
-        this.obstacleMask = obstacleMask;
-        this.checkRadius = checkRadius;
-        this.maxAttempts = maxAttempts;
+        trigger = GetComponent<SphereCollider>();
+        trigger.radius = radius;
+        GeneratePatrolPoints();
+    }
+
+    private void GeneratePatrolPoints()
+    {
+        patrolPoints.Clear();
+        int attempts = 0;
+        int maxGenerationAttempts = patrolPointCount * maxAttemptsPerPoint;
+
+        while (patrolPoints.Count < patrolPointCount && attempts < maxGenerationAttempts)
+        {
+            attempts++;
+            Vector2 offset = Random.insideUnitCircle * Radius;
+            Vector3 point = Center + new Vector3(offset.x, 0f, offset.y);
+            if (Physics.CheckSphere(point, pointCheckRadius, obstacleMask))
+                continue;
+            patrolPoints.Add(point);
+        }
+
+        if (patrolPoints.Count == 0)
+        {
+            Debug.LogWarning("Couldn't generate patrol points.");
+            patrolPoints.Add(Center);
+        }
     }
 
     public Vector3 GetRandomPoint()
     {
-        for (int i = 0; i < maxAttempts; i++)
+        return patrolPoints[Random.Range(0, patrolPoints.Count)];
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            IsPlayerInside = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            IsPlayerInside = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(Center, Radius);
+
+        Gizmos.color = Color.yellow;
+        foreach (Vector3 point in patrolPoints)
         {
-            Vector2 offset = Random.insideUnitCircle * Radius;
-            Vector3 point = Center + new Vector3(offset.x, 0f, offset.y);
-            if (!Physics.CheckSphere(point, checkRadius, obstacleMask))
-                return point;
+            Gizmos.DrawSphere(point, 0.5f);
         }
-        Debug.Log("return center");
-        return Center;
     }
 }

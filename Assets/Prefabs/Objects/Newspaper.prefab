@@ -409,10 +409,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewspaperProjectile
   lifetime: 10
+  pickupSensor: {fileID: 4443247928064879501}
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
-  pickUpSensor: {fileID: 4443247928064879501}
 --- !u!114 &6252094461385350526
 MonoBehaviour:
   m_ObjectHideFlags: 0

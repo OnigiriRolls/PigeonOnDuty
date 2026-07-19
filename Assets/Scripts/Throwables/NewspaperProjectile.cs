@@ -1,11 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(ThrowablePickup))]
-[RequireComponent(typeof(Collider))]
 public class NewspaperProjectile : ThrowableProjectile
 {
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private GameObject pickUpSensor;
 
     protected override void HandleImpact(Collision collision)
     {
@@ -14,17 +12,5 @@ public class NewspaperProjectile : ThrowableProjectile
         if (((1 << collision.gameObject.layer) & groundLayer) == 0)
             return;
         BecomePickup();
-    }
-
-    private void BecomePickup()
-    {
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.isKinematic = true;
-        ThrowablePickup pickup = GetComponent<ThrowablePickup>();
-        pickup.enabled = true;
-        GetComponent<Collider>().isTrigger = true;
-        pickUpSensor.SetActive(true);
-        enabled = false;
     }
 }

@@ -8,7 +8,6 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
     public int CurrentAttacks { get; set; }
     public CrowConfig Config => config;
     public Transform Player => player;
-    public CrowPatrolZone PatrolZone { get; protected set; }
     public CrowChaseState ChaseState { get; protected set; }
     public CrowAttackState AttackState { get; protected set; }
 

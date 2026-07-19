@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
@@ -7,52 +6,52 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private AnimationCurve chargeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField] private ThrowableInventory inventory;
     [SerializeField] private ThrowCalculator throwCalculator;
+    [SerializeField] private FeatherAutoAim autoAim;
 
     private float currentForce;
-    private bool isCharging;
     private float chargeTime;
+    private bool isCharging;
     private bool ThrowPressed => Input.GetKeyDown(KeyCode.LeftShift);
     private bool ThrowReleased => Input.GetKeyUp(KeyCode.LeftShift);
     private bool CancelPressed => Input.GetKeyDown(KeyCode.Z);
     private bool PreviousPressed => Input.GetKeyDown(KeyCode.R);
     private bool NextPressed => Input.GetKeyDown(KeyCode.E);
 
+
     private void Update()
     {
         HandleSelection();
-        HandleInput();
         if (!isCharging)
-            return;
-        UpdateCharge();
-    }
+        {
+            if (ThrowPressed)
+                StartCharging();
 
-    private void HandleInput()
-    {
-        if (ThrowPressed)
-            StartCharging();
+            return;
+        }
+
+        UpdateCharge();
         if (ThrowReleased)
-            ReleaseThrow();
+            Throw();
         if (CancelPressed)
-            CancelThrow();
+            ResetThrow();
     }
 
     private void HandleSelection()
     {
         if (PreviousPressed)
             inventory.SelectPrevious();
-
         if (NextPressed)
             inventory.SelectNext();
     }
 
     private void StartCharging()
     {
+        isCharging = true;
         ThrowableData item = inventory.SelectedItem;
         if (item == null)
             return;
         if (inventory.GetAmount(item) <= 0)
             return;
-        isCharging = true;
         chargeTime = 0f;
         currentForce = item.minForce;
         trajectoryPreview.Show();
@@ -71,14 +70,6 @@ public class ProjectileLauncher : MonoBehaviour
         trajectoryPreview.SetMaxCharge(t >= 0.999f);
     }
 
-    private void ReleaseThrow()
-    {
-        if (!isCharging)
-            return;
-        Throw();
-        ResetThrow();
-    }
-
     private void Throw()
     {
         ThrowableData item = inventory.SelectedItem;
@@ -87,13 +78,11 @@ public class ProjectileLauncher : MonoBehaviour
         if (!inventory.TryConsume(item))
             return;
         ThrowableProjectile projectile = Instantiate(item.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);
+        if (projectile is FeatherProjectile feather && autoAim.CurrentTarget != null)
+        {
+            feather.SetTarget(autoAim.CurrentTarget);
+        }
         projectile.Launch(throwCalculator.GetLaunchVelocity(currentForce));
-    }
-
-    private void CancelThrow()
-    {
-        if (!isCharging)
-            return;
         ResetThrow();
     }
 
@@ -104,5 +93,6 @@ public class ProjectileLauncher : MonoBehaviour
         currentForce = 0f;
         trajectoryPreview.Hide();
         trajectoryPreview.SetMaxCharge(false);
+        autoAim.ClearTarget();
     }
 }

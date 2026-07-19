@@ -8,7 +8,6 @@ public class StealNewspaperAbility : CrowAbility
     public override ThrowableData Execute(PlayerController player)
     {
         ThrowableInventory inventory = player.GetComponentInChildren<ThrowableInventory>();
-        Debug.Log("Steal");
         inventory.TryConsume(newspaper);
         return newspaper;
     }

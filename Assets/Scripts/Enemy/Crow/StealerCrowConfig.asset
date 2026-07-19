@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CrowConfig
   ability: {fileID: 11400000, guid: af0ee33d6259a4545b685df355e683c2, type: 2}
   rotationSpeed: 7
-  patrolSpeed: 10
+  patrolSpeed: 5
   chaseSpeed: 70
   followTolerance: 20
   leftOffset: 5
@@ -24,4 +24,5 @@ MonoBehaviour:
   maxAttacks: 1
   safeReturnAltitude: 170
   returnTolerance: 5
+  confusedDuration: 10
   detectionRadius: 120

@@ -7,6 +7,7 @@ public class CrowPatrolManager : MonoBehaviour
     [SerializeField] private StealerCrowController crowStealerPrefab;
     [SerializeField] private Transform player;
     [SerializeField] private Transform spawnParent;
+    [SerializeField] private CrowPatrolZone patrolZonePrefab;
 
     [Header("World")]
     [SerializeField] private Vector2 worldMin;
@@ -21,8 +22,6 @@ public class CrowPatrolManager : MonoBehaviour
     [SerializeField] private float zoneSpacing = 20f;
     [SerializeField] private float patrolRadius = 60f;
     [SerializeField] private LayerMask obstacleMask;
-    [SerializeField] private float obstacleCheckRadius = 5f;
-    [SerializeField] private int maxSpawnAttempts = 20;
     [SerializeField] private Transform despawnPoint;
 
     private readonly List<CrowPatrolZone> patrolZones = new();
@@ -67,16 +66,16 @@ public class CrowPatrolManager : MonoBehaviour
         Vector3 cellCenter = new(worldMin.x + (cell.x + 0.5f) * cellSize, 0f, worldMin.y + (cell.y + 0.5f) * cellSize);
         //for (int attempt = 0; attempt < maxSpawnAttempts; attempt++)
         //{
-            Vector2 offset = Random.insideUnitCircle * maxOffset;
-            Vector3 position = cellCenter + new Vector3(offset.x, Random.Range(minHeight, maxHeight), offset.y);
+        Vector2 offset = Random.insideUnitCircle * maxOffset;
+        Vector3 position = cellCenter + new Vector3(offset.x, Random.Range(minHeight, maxHeight), offset.y);
 
-            //if (Physics.CheckSphere(position, obstacleCheckRadius, obstacleMask))
-            //    continue;
+        //if (Physics.CheckSphere(position, obstacleCheckRadius, obstacleMask))
+        //    continue;
 
-            CrowPatrolZone zone = new(position, patrolRadius, obstacleMask, obstacleCheckRadius, maxSpawnAttempts);
-            patrolZones.Add(zone);
-            StealerCrowController crow = Instantiate(crowStealerPrefab, position, Quaternion.identity, spawnParent);
-            crow.Initialize(player, zone, despawnPoint);
+        CrowPatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, spawnParent);
+        patrolZones.Add(zone);
+        StealerCrowController crow = Instantiate(crowStealerPrefab, position, Quaternion.identity, spawnParent);
+        crow.Initialize(player, zone, despawnPoint);
         //    return;
         //}
 

@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowTrajectoryPreview : MonoBehaviour
 {
+    public IReadOnlyList<Vector3> TrajectoryPoints => trajectoryPoints;
+    public bool IsVisible => lineRenderer.enabled;
+
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private int pointCount = 30;
     [SerializeField] private float timeBetweenPoints = 0.1f;
@@ -14,6 +18,7 @@ public class ThrowTrajectoryPreview : MonoBehaviour
     [SerializeField] private LayerMask collisionMask;
 
     private bool maxChargeReached;
+    private readonly List<Vector3> trajectoryPoints = new();
 
     private void Awake()
     {
@@ -37,6 +42,7 @@ public class ThrowTrajectoryPreview : MonoBehaviour
 
     public void UpdateTrajectory(float throwForce)
     {
+        trajectoryPoints.Clear();
         lineRenderer.positionCount = pointCount;
         Vector3 start = throwCalculator.ThrowPosition;
         Vector3 velocity = throwCalculator.GetLaunchVelocity(throwForce);
@@ -46,10 +52,12 @@ public class ThrowTrajectoryPreview : MonoBehaviour
             float t = i * timeBetweenPoints;
             Vector3 gravity = Physics.gravity * gravityMultiplier;
             Vector3 point = start + velocity * t + 0.5f * t * t * gravity;
+            trajectoryPoints.Add(point);
             if (Physics.Linecast(previousPoint, point, out RaycastHit hit, collisionMask))
             {
                 lineRenderer.positionCount = i + 1;
                 lineRenderer.SetPosition(i, hit.point);
+                trajectoryPoints.Add(hit.point);
                 if (hit.normal.y > 0.7f)
                     landingMarker.Show(hit.point);
                 else
