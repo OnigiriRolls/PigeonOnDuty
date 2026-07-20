@@ -7,6 +7,7 @@ public class BalloonController : StopAudio
     [SerializeField] private AudioClip movementClip;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private AudioClip[] explosionClips;
+    [SerializeField] private BalloonAttack attack;
 
     private Transform player;
     private Vector3 moveDirection;
@@ -14,6 +15,12 @@ public class BalloonController : StopAudio
     private bool directChase;
     private float driftTimer;
     private AudioSource audioSource;
+
+    public enum BalloonAttack
+    {
+        Damage,
+        DropNewspaper
+    }
 
     public void Initialize(Transform targetPlayer, BalloonSpawner balloonManager)
     {
@@ -83,7 +90,16 @@ public class BalloonController : StopAudio
         bool isOtherCloud = other.gameObject.layer == LayerMask.NameToLayer("Cloud");
         if (other.CompareTag("Player") && directChase)
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Balloon);
+            switch (attack)
+            {
+                case BalloonAttack.Damage:
+                    other.GetComponent<PlayerHealth>().TakeDamage(1, DeathReason.Balloon);
+                    break;
+
+                case BalloonAttack.DropNewspaper:
+                    other.GetComponent<ProjectileLauncher>().DropOneNewspaper();
+                    break;
+            }
             Explode();
         }
         else if (other.CompareTag("Building") || isOtherCloud)

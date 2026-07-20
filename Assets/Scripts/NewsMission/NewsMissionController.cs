@@ -10,6 +10,7 @@ public class NewsMissionController : MonoBehaviour
 
     [SerializeField] private ClientAssigner clientAssigner;
     [SerializeField] private PedestrianSpawner pedestrianSpawner;
+    [SerializeField] private TimedEnemySpawner balloonSpawner;
     [SerializeField] private ThrowableInventory playerInventory;
     [SerializeField] private ThrowableData newspaperData;
     [SerializeField] private MinimapIconManager minimapIconManager;
@@ -25,7 +26,7 @@ public class NewsMissionController : MonoBehaviour
     {
         currentMission = newsMission;
         pedestrianSpawner.SpawnPedestrians();
-
+        balloonSpawner.Begin();
         playerInventory.Initialize(currentMission.startingItems);
 
         int clientCount = Random.Range(currentMission.minClients, currentMission.maxClients + 1);
@@ -57,6 +58,7 @@ public class NewsMissionController : MonoBehaviour
         }
         clientAssigner.ClearClients(activeClients);
         activeClients.Clear();
+        balloonSpawner.Stop();
     }
 
     private ClientController GetClosestClient()

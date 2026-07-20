@@ -7,6 +7,7 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private ThrowableInventory inventory;
     [SerializeField] private ThrowCalculator throwCalculator;
     [SerializeField] private FeatherAutoAim autoAim;
+    [SerializeField] private ThrowableData newspaperItem;
 
     private float currentForce;
     private float chargeTime;
@@ -94,5 +95,15 @@ public class ProjectileLauncher : MonoBehaviour
         trajectoryPreview.Hide();
         trajectoryPreview.SetMaxCharge(false);
         autoAim.ClearTarget();
+    }
+
+    public void DropOneNewspaper()
+    {
+        if (inventory.TryConsume(newspaperItem))
+        {
+            ThrowableProjectile projectile = Instantiate(newspaperItem.projectilePrefab, transform.position, Quaternion.identity);
+            Vector3 velocity = transform.forward * 2f + Vector3.down * 4f;
+            projectile.Launch(velocity);
+        }
     }
 }
