@@ -6,19 +6,18 @@ public class DogPatrolManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private PatrolZone patrolZonePrefab;
     [SerializeField] private DogController dogPrefab;
+    [SerializeField] private Transform dogParent;
 
     [Header("City")]
-    [SerializeField] private Vector2 citySize = new Vector2(600f, 600f);
-    [SerializeField] private Vector3 cityCenter = Vector3.zero;
-
+    [SerializeField] private Vector2 worldMin;
+    [SerializeField] private Vector2 worldMax;
+    [SerializeField] private float height = 0.1f;
+  
     [Header("Dog Zones")]
     [SerializeField] private int gridX = 2;
     [SerializeField] private int gridZ = 2;
     [SerializeField] private int dogZoneCount = 4;
     [SerializeField] private float patrolRadius = 60f;
-
-    [Header("Obstacle Check")]
-    [SerializeField] private LayerMask obstacleMask;
 
     private readonly List<PatrolZone> patrolZones = new();
 
@@ -30,12 +29,9 @@ public class DogPatrolManager : MonoBehaviour
     public void GenerateDogs()
     {
         patrolZones.Clear();
-
         List<Bounds> cells = CreateGridCells();
         Shuffle(cells);
-
         int count = Mathf.Min(dogZoneCount, cells.Count);
-
         for (int i = 0; i < count; i++)
         {
             CreateDogZone(cells[i]);
@@ -45,52 +41,33 @@ public class DogPatrolManager : MonoBehaviour
     private void CreateDogZone(Bounds cell)
     {
         Vector3 position = RandomPointInside(cell);
-
-        PatrolZone zone = Instantiate(
-            patrolZonePrefab,
-            position,
-            Quaternion.identity,
-            transform);
-
-        zone.SetRadius(patrolRadius);
-
-        DogController dog = Instantiate(
-            dogPrefab,
-            position,
-            Quaternion.identity,
-            transform);
-
+        PatrolZone zone = Instantiate(  patrolZonePrefab,   position,   Quaternion.identity,   dogParent);
+        zone.InitNavMeshPoints(patrolRadius);
+        DogController dog = Instantiate(   dogPrefab,    position,     Quaternion.identity,     dogParent);
         dog.PatrolZone = zone;
-
         patrolZones.Add(zone);
     }
 
     private List<Bounds> CreateGridCells()
     {
         List<Bounds> cells = new();
-
-        float cellWidth = citySize.x / gridX;
-        float cellDepth = citySize.y / gridZ;
-
-        Vector3 origin = cityCenter -
-            new Vector3(citySize.x * 0.5f, 0f, citySize.y * 0.5f);
-
+        float cityWidth = worldMax.x - worldMin.x;
+        float cityDepth = worldMax.y - worldMin.y;
+        float cellWidth = cityWidth / gridX;
+        float cellDepth = cityDepth / gridZ;
         for (int x = 0; x < gridX; x++)
         {
             for (int z = 0; z < gridZ; z++)
             {
-                Vector3 center = origin +
-                    new Vector3(
-                        x * cellWidth + cellWidth * 0.5f,
-                        0f,
-                        z * cellDepth + cellDepth * 0.5f);
-
-                cells.Add(new Bounds(
-                    center,
-                    new Vector3(cellWidth, 0f, cellDepth)));
+                float minCellX = worldMin.x + x * cellWidth;
+                float maxCellX = minCellX + cellWidth;
+                float minCellZ = worldMin.y + z * cellDepth;
+                float maxCellZ = minCellZ + cellDepth;
+                Bounds cell = new Bounds();
+                cell.SetMinMax(new Vector3(minCellX, height, minCellZ), new Vector3(maxCellX, height, maxCellZ));
+                cells.Add(cell);
             }
         }
-
         return cells;
     }
 

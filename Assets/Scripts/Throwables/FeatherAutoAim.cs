@@ -3,13 +3,13 @@ using System;
 
 public class FeatherAutoAim : MonoBehaviour
 {
-    public StealerCrowController CurrentTarget => currentTarget;
+    public IThrowTarget CurrentTarget => currentTarget;
 
     [SerializeField] private ThrowTrajectoryPreview preview;
-    [SerializeField] private LayerMask crowLayer;
+    [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float autoAimRadius = 2.5f;
 
-    private StealerCrowController currentTarget;
+    private IThrowTarget currentTarget;
 
     private void Update()
     {
@@ -20,7 +20,7 @@ public class FeatherAutoAim : MonoBehaviour
 
     private void UpdateTarget()
     {
-        StealerCrowController bestTarget = null;
+        IThrowTarget bestTarget = null;
         float bestDistance = float.MaxValue;
         var points = preview.TrajectoryPoints;
         if (points.Count < 2)
@@ -33,16 +33,16 @@ public class FeatherAutoAim : MonoBehaviour
         {
             Vector3 a = points[i - 1];
             Vector3 b = points[i];
-            Collider[] hits = Physics.OverlapCapsule(a, b, autoAimRadius, crowLayer);
+            Collider[] hits = Physics.OverlapCapsule(a, b, autoAimRadius, targetLayer);
             foreach (Collider hit in hits)
             {
-                if (!hit.TryGetComponent(out StealerCrowController crow))
+                if (!hit.TryGetComponent(out IThrowTarget target))
                     continue;
-                float d = Vector3.Distance(a, crow.transform.position);
+                float d = Vector3.Distance(a, target.AimPoint.position);
                 if (d < bestDistance)
                 {
                     bestDistance = d;
-                    bestTarget = crow;
+                    bestTarget = target;
                 }
             }
         }
@@ -50,7 +50,7 @@ public class FeatherAutoAim : MonoBehaviour
         SetCurrentTarget(bestTarget);
     }
 
-    private void SetCurrentTarget(StealerCrowController newTarget)
+    private void SetCurrentTarget(IThrowTarget newTarget)
     {
         //Debug.Log(newTarget);
         if (currentTarget == newTarget)

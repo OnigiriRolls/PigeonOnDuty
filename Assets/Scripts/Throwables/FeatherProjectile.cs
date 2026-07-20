@@ -4,9 +4,9 @@ using static UnityEditor.Progress;
 public class FeatherProjectile : ThrowableProjectile
 {
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float homingStrength = 10f;
+    [SerializeField] private float homingStrength = 20f;
 
-    private StealerCrowController target;
+    private IThrowTarget target;
 
     protected override void HandleImpact(Collision collision)
     {
@@ -25,7 +25,7 @@ public class FeatherProjectile : ThrowableProjectile
         }
     }
 
-    public void SetTarget(StealerCrowController crow)
+    public void SetTarget(IThrowTarget crow)
     {
         target = crow;
     }
@@ -36,7 +36,8 @@ public class FeatherProjectile : ThrowableProjectile
         if (target == null)
             return;
 
-        Vector3 aimPoint = target.transform.position +  target.transform.forward * 0.5f;
+        //Vector3 aimPoint = target.AimPoint.position +  target.AimPoint.forward * 0.5f;
+        Vector3 aimPoint = target.AimPoint.position +  target.AimPoint.forward;
         Vector3 desired = (aimPoint - transform.position).normalized;
         Vector3 current = rb.linearVelocity.normalized;
         Vector3 newDirection = Vector3.RotateTowards(current, desired, homingStrength * Time.fixedDeltaTime, 0f);

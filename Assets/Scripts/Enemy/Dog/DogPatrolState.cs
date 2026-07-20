@@ -16,8 +16,17 @@ public class DogPatrolState : DogState
     public override void UpdateState()
     {
         dog.MoveTowards(currentTarget, dog.Config.patrolSpeed);
-        if (Vector3.Distance(dog.transform.position, currentTarget) < 1f)
+        if (dog.HasReachedDestination())
             PickNextPoint();
+        if (dog.PatrolZone.HasNewspapers)
+        {
+            var newspaper = dog.PatrolZone.GetClosestNewspaper(dog.transform.position);
+            if (newspaper != null)
+            {
+                dog.FetchState.SetTarget(newspaper);
+                dog.ChangeState(dog.FetchState);
+            }
+        }
     }
 
     private void PickNextPoint()

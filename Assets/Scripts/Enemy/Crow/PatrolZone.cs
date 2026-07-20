@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SphereCollider))]
 public class PatrolZone : MonoBehaviour
 {
+    public bool HasNewspapers => newspapers.Count > 0;
+
     [SerializeField] private float radius = 60f;
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private int maxAttemptsPerPoint = 10;
@@ -13,6 +16,7 @@ public class PatrolZone : MonoBehaviour
     [SerializeField] private int patrolPointCount = 20;
 
     private readonly List<Vector3> patrolPoints = new();
+    private readonly List<NewspaperProjectile> newspapers = new();
 
     public Vector3 Center => transform.position;
     public float Radius => radius;
@@ -23,14 +27,20 @@ public class PatrolZone : MonoBehaviour
     private void Awake()
     {
         trigger = GetComponent<SphereCollider>();
+    }
+
+    public void InitPatrolPoints(float radius)
+    {
+        this.radius = radius;
         trigger.radius = radius;
         GeneratePatrolPoints();
     }
 
-    public void SetRadius(float radius)
+    public void InitNavMeshPoints(float radius)
     {
         this.radius = radius;
         trigger.radius = radius;
+        GenerateNavMeshPoints();
     }
 
     private void GeneratePatrolPoints()
@@ -56,6 +66,49 @@ public class PatrolZone : MonoBehaviour
         }
     }
 
+    private void GenerateNavMeshPoints()
+    {
+        patrolPoints.Clear();
+        int attempts = 0;
+        int maxGenerationAttempts = patrolPointCount * maxAttemptsPerPoint;
+        while (patrolPoints.Count < patrolPointCount && attempts < maxGenerationAttempts)
+        {
+            attempts++;
+            Vector2 offset = Random.insideUnitCircle * Radius;
+            Vector3 candidate = Center + new Vector3(offset.x, 0f, offset.y);
+            if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, 5f, NavMesh.AllAreas))
+            {
+                patrolPoints.Add(hit.position);
+            }
+        }
+
+        if (patrolPoints.Count == 0)
+        {
+            Debug.LogWarning("Couldn't generate nav mesh points.");
+            patrolPoints.Add(Center);
+        }
+    }
+
+    public NewspaperProjectile GetClosestNewspaper(Vector3 position)
+    {
+        newspapers.RemoveAll(n => n == null);
+        NewspaperProjectile closest = null;
+        float closestDistance = float.MaxValue;
+        foreach (var newspaper in newspapers)
+        {
+            if (!newspaper.IsPickup)
+                continue;
+            float sqrDistance = (newspaper.transform.position - position).sqrMagnitude;
+            if (sqrDistance < closestDistance)
+            {
+                closestDistance = sqrDistance;
+                closest = newspaper;
+            }
+        }
+
+        return closest;
+    }
+
     public Vector3 GetRandomPoint()
     {
         return patrolPoints[Random.Range(0, patrolPoints.Count)];
@@ -65,19 +118,28 @@ public class PatrolZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             IsPlayerInside = true;
+        else if (other.CompareTag("Newspaper"))
+        {
+            NewspaperProjectile newspaper = other.GetComponent<NewspaperProjectile>();
+            newspapers.Add(newspaper);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
             IsPlayerInside = false;
+        else if (other.CompareTag("Newspaper"))
+        {
+            NewspaperProjectile newspaper = other.GetComponent<NewspaperProjectile>();
+            newspapers.Remove(newspaper);
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(Center, Radius);
-
         Gizmos.color = Color.yellow;
         foreach (Vector3 point in patrolPoints)
         {

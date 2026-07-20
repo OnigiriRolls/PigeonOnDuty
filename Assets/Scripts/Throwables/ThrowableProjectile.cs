@@ -1,17 +1,20 @@
 using UnityEngine;
+using static UnityEngine.Rendering.STP;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(ThrowablePickup))]
 [RequireComponent(typeof(Collider))]
 public abstract class ThrowableProjectile : MonoBehaviour
 {
+    public bool IsPickup => isPickup;
+
     [SerializeField] protected float lifetime = 10f;
     [SerializeField] protected GameObject pickupSensor;
 
     protected Rigidbody rb;
     protected Collider itemCollider;
     protected ThrowablePickup pickup;
-    protected bool alreadyPickup;
+    private bool isPickup;
 
     protected virtual void Awake()
     {
@@ -48,9 +51,9 @@ public abstract class ThrowableProjectile : MonoBehaviour
 
     protected void BecomePickup()
     {
-        if (alreadyPickup)
+        if (isPickup)
             return;
-        alreadyPickup = true;
+        isPickup = true;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.isKinematic = true;

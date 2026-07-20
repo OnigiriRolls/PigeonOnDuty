@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianController
   <MinWaitTime>k__BackingField: 1
   <MaxWaitTime>k__BackingField: 4
-  carryVisual: {fileID: 0}
+  carryVisual: {fileID: 8666956496656724568}
   carryDuration: 10
   dropPoint: {fileID: 4243912022128158382}
   currentStateName: 

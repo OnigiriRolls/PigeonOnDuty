@@ -3,6 +3,7 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class StealerCrowController : BaseCrowController, IThrowTarget
 {
+    public Transform AimPoint => transform;
     public PatrolZone PatrolZone { get; protected set; }
     public bool HasStolenItem => carriedItem != null;
     public CrowReturnState ReturnState { get; private set; }

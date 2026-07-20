@@ -271,7 +271,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
-  homingStrength: 30
+  homingStrength: 40
 --- !u!135 &4200488656316436049
 SphereCollider:
   m_ObjectHideFlags: 0

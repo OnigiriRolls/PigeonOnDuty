@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Building
   - GPSHuman
+  - Newspaper
+  - Pickup
   layers:
   - Default
   - TransparentFX

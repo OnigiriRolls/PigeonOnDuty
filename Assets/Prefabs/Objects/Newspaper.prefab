@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3176113392846804010}
   m_Layer: 0
   m_Name: PickupSensor
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 8863248357465617006}
   m_Layer: 0
   m_Name: Newspaper
-  m_TagString: Untagged
+  m_TagString: Newspaper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

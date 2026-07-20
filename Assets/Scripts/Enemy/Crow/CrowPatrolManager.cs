@@ -73,6 +73,7 @@ public class CrowPatrolManager : MonoBehaviour
         //    continue;
 
         PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, spawnParent);
+        zone.InitPatrolPoints(patrolRadius);
         patrolZones.Add(zone);
         StealerCrowController crow = Instantiate(crowStealerPrefab, position, Quaternion.identity, spawnParent);
         crow.Initialize(player, zone, despawnPoint);
