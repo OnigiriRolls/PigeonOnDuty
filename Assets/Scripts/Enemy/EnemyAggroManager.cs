@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyAggroManager : MonoBehaviour
 {
     public static EnemyAggroManager Instance { get; private set; }
+    public bool HasActivePursuer => activePursuer != null;
 
     private IEnemyPursuer activePursuer;
 

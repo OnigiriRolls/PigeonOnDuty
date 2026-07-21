@@ -27,10 +27,5 @@ MonoBehaviour:
   reputationReward: 40
   coinReward: 30
   unlockId: human_delivery
-  startingItems:
-  - Item: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
-    Amount: 1000
-  - Item: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
-    Amount: 1000
   minClients: 2
-  maxClients: 4
+  maxClients: 3

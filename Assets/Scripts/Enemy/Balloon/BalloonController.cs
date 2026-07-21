@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class BalloonController : StopAudio
+public class BalloonController : StopAudio, IEnemyPursuer
 {
     [SerializeField] private BalloonConfig config;
     [SerializeField] private AudioClip movementClip;
@@ -97,7 +97,7 @@ public class BalloonController : StopAudio
                     break;
 
                 case BalloonAttack.DropNewspaper:
-                    other.GetComponent<ProjectileLauncher>().DropOneNewspaper();
+                    other.GetComponentInChildren<ProjectileLauncher>().DropOneNewspaper();
                     break;
             }
             Explode();
@@ -110,6 +110,7 @@ public class BalloonController : StopAudio
 
     private void Explode()
     {
+        EnemyAggroManager.Instance.Release(this);
         if (explosionEffect != null)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);

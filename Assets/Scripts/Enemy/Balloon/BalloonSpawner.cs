@@ -13,6 +13,12 @@ public class BalloonSpawner : EnemySpawner
     protected override void InitializeEnemy(GameObject enemy)
     {
         BalloonController controller = enemy.GetComponent<BalloonController>();
+        if (!EnemyAggroManager.Instance.TryAcquire(controller))
+        {
+            Destroy(enemy);
+            FinishEnemy();
+            return;
+        }
         controller.Initialize(player.transform, this);
     }
 }

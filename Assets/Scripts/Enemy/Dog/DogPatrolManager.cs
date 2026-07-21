@@ -12,7 +12,7 @@ public class DogPatrolManager : MonoBehaviour
     [SerializeField] private Vector2 worldMin;
     [SerializeField] private Vector2 worldMax;
     [SerializeField] private float height = 0.1f;
-  
+
     [Header("Dog Zones")]
     [SerializeField] private int gridX = 2;
     [SerializeField] private int gridZ = 2;
@@ -20,11 +20,6 @@ public class DogPatrolManager : MonoBehaviour
     [SerializeField] private float patrolRadius = 60f;
 
     private readonly List<PatrolZone> patrolZones = new();
-
-    private void Start()
-    {
-        GenerateDogs();
-    }
 
     public void GenerateDogs()
     {
@@ -41,9 +36,9 @@ public class DogPatrolManager : MonoBehaviour
     private void CreateDogZone(Bounds cell)
     {
         Vector3 position = RandomPointInside(cell);
-        PatrolZone zone = Instantiate(  patrolZonePrefab,   position,   Quaternion.identity,   dogParent);
+        PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, dogParent);
         zone.InitNavMeshPoints(patrolRadius);
-        DogController dog = Instantiate(   dogPrefab,    position,     Quaternion.identity,     dogParent);
+        DogController dog = Instantiate(dogPrefab, position, Quaternion.identity, dogParent);
         dog.PatrolZone = zone;
         patrolZones.Add(zone);
     }

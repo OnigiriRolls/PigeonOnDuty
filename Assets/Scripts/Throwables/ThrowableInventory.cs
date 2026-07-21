@@ -107,11 +107,4 @@ public class ThrowableInventory : MonoBehaviour
         slot.Amount = amount;
         OnInventoryChanged?.Invoke(item, amount);
     }
-
-    public void Initialize(List<InventorySlot> startingItems)
-    {
-        foreach (InventorySlot slot in startingItems)
-            SetAmount(slot.Item, slot.Amount);
-        Select(startingItems[0].Item);
-    }
 }

@@ -79,9 +79,9 @@ public class ProjectileLauncher : MonoBehaviour
         if (!inventory.TryConsume(item))
             return;
         ThrowableProjectile projectile = Instantiate(item.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);
-        if (projectile is FeatherProjectile feather && autoAim.CurrentTarget != null)
+        if (autoAim.CurrentTarget != null)
         {
-            feather.SetTarget(autoAim.CurrentTarget);
+            projectile.SetTarget(autoAim.CurrentTarget);
         }
         projectile.Launch(throwCalculator.GetLaunchVelocity(currentForce));
         ResetThrow();

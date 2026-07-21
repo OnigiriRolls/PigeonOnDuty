@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BalloonController
   config: {fileID: 11400000, guid: 3dcad5696d7ebde45b8a8b2a29a0743d, type: 2}
   movementClip: {fileID: 8300000, guid: 50214324fd200da46b40e44f3d86f4ca, type: 3}
-  explosionEffect: {fileID: 7769189311215101425, guid: aae3911e137fe3f47abea562d0a2a4e8, type: 3}
+  explosionEffect: {fileID: 3165599323873317304, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
   explosionClips:
   - {fileID: 8300000, guid: 8c5c17e1ea6312f49a9a756923aa8b7e, type: 3}
   attack: 1

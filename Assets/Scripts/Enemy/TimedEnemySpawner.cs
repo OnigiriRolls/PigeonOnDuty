@@ -42,8 +42,8 @@ public class TimedEnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        spawner.SpawnEnemy();
         enemyAlive = true;
+        spawner.SpawnEnemy();
     }
 
     private void HandleEnemyFinished()

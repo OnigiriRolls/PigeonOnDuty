@@ -2239,8 +2239,6 @@ Transform:
   - {fileID: 1791866457}
   - {fileID: 937640228}
   - {fileID: 916693771}
-  - {fileID: 1768051322}
-  - {fileID: 1462272995}
   - {fileID: 1245119265}
   - {fileID: 1659997054}
   - {fileID: 1131372081}
@@ -5477,12 +5475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewsMissionController
   clientAssigner: {fileID: 937640230}
   pedestrianSpawner: {fileID: 916693773}
-  balloonSpawner: {fileID: 1768051324}
-  crowSpawner: {fileID: 6698614267393107773}
-  dogSpawner: {fileID: 1462272997}
   playerInventory: {fileID: 12916799}
   newspaperData: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
-  featherData: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
   minimapIconManager: {fileID: 2084443272}
   clientIconPrefab: {fileID: 3796832034003442013, guid: 2386c549b56f2434582d97f4af328f61, type: 3}
   travelTimeCalculator: {fileID: 503221262}
@@ -8341,12 +8335,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462272994}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 1216242143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462272997
 MonoBehaviour:
@@ -8363,8 +8357,8 @@ MonoBehaviour:
   patrolZonePrefab: {fileID: 3210125958476753058, guid: 954bf15c3ad95264190847b6d47598b9, type: 3}
   dogPrefab: {fileID: 4841621913102157306, guid: de5a25bc2c55ad34f93c689554c85126, type: 3}
   dogParent: {fileID: 211090430}
-  worldMin: {x: 60, y: 80}
-  worldMax: {x: 840, y: 700}
+  worldMin: {x: 25, y: 25}
+  worldMax: {x: 875, y: 755}
   height: 0.1
   gridX: 3
   gridZ: 2
@@ -9113,6 +9107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1918126834}
   - {fileID: 293713795}
   - {fileID: 1838203875}
   - {fileID: 1732699851}
@@ -9811,71 +9806,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.003, y: 1.0940001, z: -0.194}
   m_TimeToStationary: 0.5
---- !u!1 &1768051321
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1768051322}
-  - component: {fileID: 1768051324}
-  - component: {fileID: 1768051323}
-  m_Layer: 0
-  m_Name: BalloonNewsSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1768051322
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768051321}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 354423832}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1768051323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768051321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11b08d087d21854e8734fd82759b099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BalloonSpawner
-  player: {fileID: 1517355608}
-  spawnPosition: {fileID: 255600296}
-  enemyPrefab: {fileID: 4124631096244138354, guid: 236f63c89eb28d941b10df05c3c44da5, type: 3}
-  minAltitude: 51
-  maxAltitude: 150
---- !u!114 &1768051324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768051321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6fe9dce2a28f9740a13e2dd715788d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimedEnemySpawner
-  spawner: {fileID: 1768051323}
-  minSpawnDelay: 15
-  maxSpawnDelay: 25
 --- !u!1 &1791866456
 GameObject:
   m_ObjectHideFlags: 0
@@ -10684,7 +10614,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1517355606}
+  m_Father: {fileID: 1659997054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1918126835
 MonoBehaviour:
@@ -10808,7 +10738,6 @@ MonoBehaviour:
   inventory: {fileID: 12916799}
   throwCalculator: {fileID: 293713796}
   autoAim: {fileID: 1732699852}
-  newspaperItem: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
 --- !u!120 &1918126837
 LineRenderer:
   serializedVersion: 3
@@ -12243,10 +12172,7 @@ PrefabInstance:
       objectReference: {fileID: 1117591398}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4231757608728839868, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1918126834}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
 --- !u!1001 &5123336687087680229
@@ -12411,7 +12337,10 @@ PrefabInstance:
       objectReference: {fileID: 255600296}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3499531651437363688, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1462272995}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3827215510019727664, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       insertIndex: -1
@@ -12438,11 +12367,11 @@ MonoBehaviour:
   player: {fileID: 1517355606}
   spawnParent: {fileID: 1865137281}
   patrolZonePrefab: {fileID: 3210125958476753058, guid: 954bf15c3ad95264190847b6d47598b9, type: 3}
-  worldMin: {x: 60, y: 80}
-  worldMax: {x: 840, y: 700}
+  worldMin: {x: 5, y: 5}
+  worldMax: {x: 900, y: 780}
   minHeight: 20
   maxHeight: 50
-  crowsPerSquareKilometer: 20
+  crowsPerSquareKilometer: 30
   zoneSpacing: 20
   patrolRadius: 60
   obstacleMask:
@@ -15116,63 +15045,6 @@ MonoBehaviour:
   CycleDuration: 35
   CycleProgress: 0
   Paused: 0
---- !u!1001 &8188025951249001563
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3165599323873317304, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_Name
-      value: BalloonHitRedPS
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684454428838842004, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 30e735a30437ce749bcfc9c655b6e9fe, type: 3}
 --- !u!123 &8806667430870163770
 LensFlare:
   m_ObjectHideFlags: 0
@@ -15622,4 +15494,3 @@ SceneRoots:
   - {fileID: 1578661822}
   - {fileID: 195073059}
   - {fileID: 7081249254438630857}
-  - {fileID: 8188025951249001563}

@@ -2,8 +2,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(PedestrianMovement))]
 [RequireComponent(typeof(ClientController))]
-public class PedestrianController : MonoBehaviour
+public class PedestrianController : MonoBehaviour, IThrowTarget
 {
+    public Transform AimPoint => transform;
     public PedestrianMovement Movement => movement;
     public WaypointNetwork WaypointNetwork { get; private set; }
     public ThrowableData CarriedItem { get; private set; }
@@ -23,6 +24,7 @@ public class PedestrianController : MonoBehaviour
     [SerializeField] private Transform dropPoint;
     [SerializeField] private string currentStateName;
     [SerializeField] private float pickupCooldownDuration = 2f;
+    [SerializeField] private GameObject targetRing;
 
     private PedestrianMovement movement;
     private IPedestrianState currentState;
@@ -111,6 +113,26 @@ public class PedestrianController : MonoBehaviour
         {
             movement.MoveToNextWaypoint();
         }
+    }
+
+    public void OnHit(ThrowableData item)
+    {
+        if (CarriedItem == null && item.itemName == "Newspaper")
+        {
+            PickUp(item.pickupPrefab);
+            return;
+        }
+
+        if (item.itemName == "Feather")
+        {
+            DropCarriedItem();
+            ChangeState(walkingState);
+        }
+    }
+
+    public void ShowTargetRing(bool show)
+    {
+        targetRing.SetActive(show);
     }
 
     private void OnDestroy()

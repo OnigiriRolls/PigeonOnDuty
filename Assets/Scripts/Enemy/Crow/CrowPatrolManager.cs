@@ -26,12 +26,7 @@ public class CrowPatrolManager : MonoBehaviour
 
     private readonly List<PatrolZone> patrolZones = new();
 
-    private void Start()
-    {
-        SpawnCrowZones();
-    }
-
-    private void SpawnCrowZones()
+    public void SpawnCrowZones()
     {
         float width = worldMax.x - worldMin.x;
         float height = worldMax.y - worldMin.y;

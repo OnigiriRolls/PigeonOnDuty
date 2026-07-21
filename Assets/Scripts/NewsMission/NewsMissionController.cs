@@ -11,8 +11,11 @@ public class NewsMissionController : MonoBehaviour
     [SerializeField] private ClientAssigner clientAssigner;
     [SerializeField] private PedestrianSpawner pedestrianSpawner;
     [SerializeField] private TimedEnemySpawner balloonSpawner;
+    [SerializeField] private CrowPatrolManager crowSpawner;
+    [SerializeField] private DogPatrolManager dogSpawner;
     [SerializeField] private ThrowableInventory playerInventory;
     [SerializeField] private ThrowableData newspaperData;
+    [SerializeField] private ThrowableData featherData;
     [SerializeField] private MinimapIconManager minimapIconManager;
     [SerializeField] private MinimapIcon clientIconPrefab;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
@@ -27,8 +30,8 @@ public class NewsMissionController : MonoBehaviour
         currentMission = newsMission;
         pedestrianSpawner.SpawnPedestrians();
         balloonSpawner.Begin();
-        playerInventory.Initialize(currentMission.startingItems);
-
+        crowSpawner.SpawnCrowZones();
+        dogSpawner.GenerateDogs();
         int clientCount = Random.Range(currentMission.minClients, currentMission.maxClients + 1);
         activeClients = clientAssigner.AssignRandomClients(clientCount);
         foreach (ClientController client in activeClients)
@@ -37,6 +40,9 @@ public class NewsMissionController : MonoBehaviour
             minimapIconManager.CreateIcon(clientIconPrefab, client.transform);
             client.OnDeliveryCompleted += HandleClientDelivered;
         }
+        Debug.Log(activeClients.Count);
+        playerInventory.SetAmount(newspaperData, activeClients.Count + 1000);
+        playerInventory.SetAmount(featherData, activeClients.Count + 1000);
         StartTimerForClosestClient();
     }
 

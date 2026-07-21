@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.Rendering.STP;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -10,11 +11,13 @@ public abstract class ThrowableProjectile : MonoBehaviour
 
     [SerializeField] protected float lifetime = 10f;
     [SerializeField] protected GameObject pickupSensor;
+    [SerializeField] private float homingStrength = 20f;
 
     protected Rigidbody rb;
     protected Collider itemCollider;
     protected ThrowablePickup pickup;
     private bool isPickup;
+    private IThrowTarget target;
 
     protected virtual void Awake()
     {
@@ -25,7 +28,20 @@ public abstract class ThrowableProjectile : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        Debug.DrawRay(transform.position, rb.linearVelocity, Color.green);
+        if (target == null)
+            return;
+
+        //Vector3 aimPoint = target.AimPoint.position +  target.AimPoint.forward * 0.5f;
+        Vector3 aimPoint = target.AimPoint.position + target.AimPoint.forward;
+        Vector3 desired = (aimPoint - transform.position).normalized;
+        Vector3 current = rb.linearVelocity.normalized;
+        Vector3 newDirection = Vector3.RotateTowards(current, desired, homingStrength * Time.fixedDeltaTime, 0f);
+        rb.linearVelocity = newDirection * rb.linearVelocity.magnitude;
+    }
+
+    public void SetTarget(IThrowTarget crow)
+    {
+        target = crow;
     }
 
     public virtual void Launch(Vector3 initialVelocity)
@@ -38,13 +54,13 @@ public abstract class ThrowableProjectile : MonoBehaviour
         HandleImpact(collision);
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    public virtual void HandleHitboxTrigger(Collider other)
     {
-        HandleTrigger(other);
-    }
-
-    protected virtual void HandleTrigger(Collider other)
-    {
+        if (other.TryGetComponent(out IThrowTarget target))
+        {
+            target.OnHit(pickup.Item);
+            Destroy(gameObject);
+        }
     }
 
     protected abstract void HandleImpact(Collision collision);
