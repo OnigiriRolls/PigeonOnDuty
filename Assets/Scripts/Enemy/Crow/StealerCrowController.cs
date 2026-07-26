@@ -1,7 +1,6 @@
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
-public class StealerCrowController : BaseCrowController, IThrowTarget
+public class StealerCrowController : BaseCrowController, IThrowTarget, IProjectileTarget
 {
     public Transform AimPoint => transform;
     public PatrolZone PatrolZone { get; protected set; }
@@ -84,14 +83,15 @@ public class StealerCrowController : BaseCrowController, IThrowTarget
         Invoke(nameof(TeleportToPatrol), 2f);
     }
 
-    public void OnHit(ThrowableData item)
+    public bool OnHit(ThrowableData item)
     {
         if (item.itemName != "Feather")
-            return;
+            return false;
         if (!HasStolenItem)
-            return;
+            return false;
         DropStolenItem();
         ChangeState(ConfusedState);
+        return true;
     }
 
     public void ShowTargetRing(bool show)
@@ -103,5 +103,10 @@ public class StealerCrowController : BaseCrowController, IThrowTarget
     {
         if (confusedIcon != null)
             confusedIcon.SetActive(show);
+    }
+
+    public bool CanBeHitBy(ThrowableData item)
+    {
+        return item.itemName == "Feather";
     }
 }

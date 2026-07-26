@@ -1,35 +1,48 @@
-using System.Diagnostics;
+using System;
+using UnityEngine;
 
 public class DogFetchState : DogState
 {
-    private NewspaperProjectile target;
+    private ThrowablePickup targetPickup;
+    private readonly DogController controller;
+
+    private bool pickedUp;
 
     public DogFetchState(DogController dog) : base(dog)
     {
+        controller = dog;
     }
 
     public override void Enter()
     {
+        pickedUp = false;
         dog.ShowInterest();
-    }
-
-    public void SetTarget(NewspaperProjectile newspaper)
-    {
-        target = newspaper;
     }
 
     public override void UpdateState()
     {
-        if (target == null || !target.IsPickup)
+        if (targetPickup == null && !pickedUp)
         {
+            Debug.Log("targetPickup = null");
             dog.ChangeState(dog.PatrolState);
             return;
         }
-        dog.MoveTowards(target.transform.position, dog.Config.patrolSpeed);
+        dog.MoveTowards(targetPickup.transform.position, dog.Config.patrolSpeed);
+        if (Vector3.Distance(controller.transform.position, targetPickup.transform.position) < 3f)
+        {
+            pickedUp = controller.PickUp(targetPickup);
+            dog.ChangeState(dog.CarryState);
+            return;
+        }
     }
 
     public override void Exit()
     {
-        dog.HideInterest();
+        dog.HideCarryVisual();
+    }
+
+    public void SetTarget(ThrowablePickup pickup)
+    {
+        targetPickup = pickup;
     }
 }

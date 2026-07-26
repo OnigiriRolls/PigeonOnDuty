@@ -5,16 +5,9 @@ public class PlayerPickupCollector : MonoBehaviour
     [SerializeField] private ThrowableInventory inventory;
     [SerializeField] private AudioClip pickupSound;
 
-    private void OnTriggerEnter(Collider other)
+    public void Collect(ThrowablePickup pickup)
     {
-        if (!other.TryGetComponent(out ThrowablePickup pickup))
-            return;
-        if (pickup.enabled)
-            Collect(pickup);
-    }
-
-    private void Collect(ThrowablePickup pickup)
-    {
+        Debug.Log("Player pickup " + pickup.name);
         inventory.Add(pickup.Item, 1);
         AudioManager.Instance.PlaySFX(pickupSound);
         pickup.ReleaseReservation();

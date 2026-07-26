@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PedestrianController))]
-public class PickupSensorReceiver : MonoBehaviour
+public class PedestrianPickupReceiver : MonoBehaviour, IPickupReceiver
 {
     private PedestrianController controller;
 

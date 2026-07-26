@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3176113392846804010}
   m_Layer: 0
   m_Name: PickupSensor
-  m_TagString: Pickup
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickupSensor
   pickup: {fileID: 6252094461385350526}
   colliderZone: {fileID: 6039629371894709607}
+  pickupDelay: 0.5
 --- !u!1 &5838155681884470875
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +413,7 @@ MonoBehaviour:
   lifetime: 10
   pickupSensor: {fileID: 4443247928064879501}
   homingStrength: 60
+  projectileHitbox: {fileID: 8494251129257160591}
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -517,5 +519,10 @@ PrefabInstance:
 --- !u!4 &5238691282975121222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 635763271188069881, guid: bb9738a782a5d28478fbc2e68c0cefbf, type: 3}
+  m_PrefabInstance: {fileID: 4639057969387758271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8494251129257160591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3855251435781885232, guid: bb9738a782a5d28478fbc2e68c0cefbf, type: 3}
   m_PrefabInstance: {fileID: 4639057969387758271}
   m_PrefabAsset: {fileID: 0}

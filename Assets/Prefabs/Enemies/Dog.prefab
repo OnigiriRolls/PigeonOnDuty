@@ -930,7 +930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efefeded5ce1d7d42b53b5e2d6ce5101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DogController
-  newspaper: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
   config: {fileID: 11400000, guid: 37154f2bf36a6e14bb50601810c17295, type: 2}
   carryVisual: {fileID: 3895022610733677456}
   exclamationMark: {fileID: 21300000, guid: e96f632258278234fbf78d5afeeb886f, type: 3}
@@ -942,6 +941,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6fb60ac0dbcb7d349b838ad0d36bc693, type: 3}
   scaredClips:
   - {fileID: 8300000, guid: 7497556222dd3784abd50bfcca1af404, type: 3}
+  state: 
 --- !u!54 &3232074636151091762
 Rigidbody:
   m_ObjectHideFlags: 0

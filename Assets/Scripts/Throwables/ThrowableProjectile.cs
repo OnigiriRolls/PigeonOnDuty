@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.Rendering.STP;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(ThrowablePickup))]
@@ -12,6 +10,7 @@ public abstract class ThrowableProjectile : MonoBehaviour
     [SerializeField] protected float lifetime = 10f;
     [SerializeField] protected GameObject pickupSensor;
     [SerializeField] private float homingStrength = 20f;
+    [SerializeField] private GameObject projectileHitbox;
 
     protected Rigidbody rb;
     protected Collider itemCollider;
@@ -56,11 +55,13 @@ public abstract class ThrowableProjectile : MonoBehaviour
 
     public virtual void HandleHitboxTrigger(Collider other)
     {
-        if (other.TryGetComponent(out IThrowTarget target))
-        {
-            target.OnHit(pickup.Item);
+        if (!other.TryGetComponent(out IProjectileTarget target))
+            return;
+        if (!target.CanBeHitBy(pickup.Item))
+            return;
+
+        if (target.OnHit(pickup.Item))
             Destroy(gameObject);
-        }
     }
 
     protected abstract void HandleImpact(Collision collision);
@@ -77,6 +78,8 @@ public abstract class ThrowableProjectile : MonoBehaviour
         pickup.enabled = true;
         if (pickupSensor != null)
             pickupSensor.SetActive(true);
+        projectileHitbox.SetActive(false);
+        PickupManager.Instance.Register(pickup);
         enabled = false;
     }
 }

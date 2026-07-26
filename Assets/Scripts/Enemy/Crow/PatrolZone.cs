@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 public class PatrolZone : MonoBehaviour
 {
     public bool HasNewspapers => newspapers.Count > 0;
+    public Vector3 Center => transform.position;
+    public float Radius => radius;
+    public bool IsPlayerInside { get; private set; }
 
     [SerializeField] private float radius = 60f;
     [SerializeField] private LayerMask obstacleMask;
@@ -17,11 +20,6 @@ public class PatrolZone : MonoBehaviour
 
     private readonly List<Vector3> patrolPoints = new();
     private readonly List<NewspaperProjectile> newspapers = new();
-
-    public Vector3 Center => transform.position;
-    public float Radius => radius;
-    public bool IsPlayerInside { get; private set; }
-
     private SphereCollider trigger;
 
     private void Awake()
@@ -134,6 +132,11 @@ public class PatrolZone : MonoBehaviour
             NewspaperProjectile newspaper = other.GetComponent<NewspaperProjectile>();
             newspapers.Remove(newspaper);
         }
+    }
+
+    public bool Contains(Vector3 position)
+    {
+        return (position - transform.position).sqrMagnitude <= radius * radius;
     }
 
     private void OnDrawGizmosSelected()

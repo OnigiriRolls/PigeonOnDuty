@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PedestrianMovement))]
 [RequireComponent(typeof(ClientController))]
-public class PedestrianController : MonoBehaviour, IThrowTarget
+public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarget
 {
     public Transform AimPoint => transform;
     public PedestrianMovement Movement => movement;
@@ -75,15 +75,17 @@ public class PedestrianController : MonoBehaviour, IThrowTarget
 
     public void TryCollectPickup(ThrowablePickup pickup)
     {
+        if (!clientController.IsActiveClient)
+            return;
         if (pickupCooldown > 0f)
             return;
         if (CarriedItem != null)
             return;
         if (pickup == null)
             return;
-        if (!pickup.TryReserve())
-            return;
         if (currentState is CollectPickupState)
+            return;
+        if (!pickup.TryReserve())
             return;
         collectPickupState.SetPickup(pickup);
         ChangeState(collectPickupState);
@@ -115,19 +117,25 @@ public class PedestrianController : MonoBehaviour, IThrowTarget
         }
     }
 
-    public void OnHit(ThrowableData item)
+    public bool OnHit(ThrowableData item)
     {
         if (CarriedItem == null && item.itemName == "Newspaper")
         {
+            if (!clientController.IsActiveClient)
+                return false;
             PickUp(item.pickupPrefab);
-            return;
+            ChangeState(carryItemState);
+            return true;
         }
 
         if (item.itemName == "Feather")
         {
             DropCarriedItem();
             ChangeState(walkingState);
+            return true;
         }
+
+        return false;
     }
 
     public void ShowTargetRing(bool show)
@@ -138,5 +146,10 @@ public class PedestrianController : MonoBehaviour, IThrowTarget
     private void OnDestroy()
     {
         movement.OnStuck -= HandleStuck;
+    }
+
+    public bool CanBeHitBy(ThrowableData item)
+    {
+        return item.itemName == "Feather" || item.itemName == "Newspaper";
     }
 }

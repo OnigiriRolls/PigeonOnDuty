@@ -1,10 +1,11 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class DogController : MonoBehaviour, IThrowTarget
+public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
 {
     public Transform AimPoint => transform;
     public PatrolZone PatrolZone { get; set; }
@@ -16,7 +17,6 @@ public class DogController : MonoBehaviour, IThrowTarget
     public DogScaredState ScaredState { get; private set; }
     public bool HasNewspaper => hasNewspaper;
 
-    [SerializeField] private ThrowableData newspaper;
     [SerializeField] private DogConfig config;
     [SerializeField] private CarryVisual carryVisual;
     [SerializeField] private Sprite exclamationMark;
@@ -94,10 +94,11 @@ public class DogController : MonoBehaviour, IThrowTarget
         return !agent.pathPending && agent.remainingDistance <= tolerance;
     }
 
-    public void PickUp()
+    public bool PickUp(ThrowablePickup pickup)
     {
+        Destroy(pickup.transform.gameObject);
         hasNewspaper = true;
-        carryVisual.Show(newspaper);
+        return true;
     }
 
     public void DropNewspaper()
@@ -105,18 +106,12 @@ public class DogController : MonoBehaviour, IThrowTarget
         if (!HasNewspaper)
             return;
         hasNewspaper = false;
-        carryVisual.Hide();
-        Instantiate(newspaper.pickupPrefab, transform.position, Quaternion.identity);
+        Instantiate(config.newspaper.pickupPrefab, transform.position, Quaternion.identity);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ShowNewspaper()
     {
-        if (other.CompareTag("Pickup") && CurrentState != CarryState)
-        {
-            Destroy(other.transform.parent.gameObject);
-            ChangeState(CarryState);
-            PickUp();
-        }
+        carryVisual.Show(config.newspaper);
     }
 
     public void ShowInterest()
@@ -124,16 +119,19 @@ public class DogController : MonoBehaviour, IThrowTarget
         carryVisual.Show(exclamationMark);
     }
 
-    public void HideInterest()
+    public void HideCarryVisual()
     {
         carryVisual.Hide();
     }
 
-    public void OnHit(ThrowableData item)
+    public bool OnHit(ThrowableData item)
     {
+        if (item.itemName != "Feather")
+            return false;
         if (CurrentState == ScaredState)
-            return;
+            return false;
         ChangeState(ScaredState);
+        return true;
     }
 
     public void ShowTargetRing(bool show)
@@ -144,5 +142,10 @@ public class DogController : MonoBehaviour, IThrowTarget
     public void PlayScaredSound()
     {
         AudioManager.Instance.PlayRandomSFX(scaredClips, audioSource);
+    }
+
+    public bool CanBeHitBy(ThrowableData item)
+    {
+        return item.itemName == "Feather";
     }
 }

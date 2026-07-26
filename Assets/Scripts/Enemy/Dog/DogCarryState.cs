@@ -10,6 +10,7 @@ public class DogCarryState : DogState
 
     public override void Enter()
     {
+        dog.ShowNewspaper();
         PickNextPoint();
     }
 
@@ -25,5 +26,10 @@ public class DogCarryState : DogState
     private void PickNextPoint()
     {
         targetPoint = dog.PatrolZone.GetRandomPoint();
+    }
+
+    public override void Exit()
+    {
+        dog.HideCarryVisual();
     }
 }

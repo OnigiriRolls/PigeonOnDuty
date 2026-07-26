@@ -4,6 +4,7 @@ using UnityEngine;
 public class ThrowablePickup : MonoBehaviour
 {
     public ThrowableData Item => item;
+    public bool CanBeCollected => canBeCollected;
     public bool IsCollected { get; private set; }
     public bool IsReserved { get; private set; }
 
@@ -12,10 +13,25 @@ public class ThrowablePickup : MonoBehaviour
     [SerializeField] private float pulseDuration = 3f;
     [SerializeField] private GameObject colliderZone;
 
+    private bool canBeCollected;
+
     private void Start()
     {
-        StartCoroutine(LifetimeRoutine());
+        //StartCoroutine(LifetimeRoutine());
         colliderZone.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        PickupManager.Instance.Register(this);
+        StartCoroutine(EnablePickup());
+    }
+
+    private IEnumerator EnablePickup()
+    {
+        canBeCollected = false;
+        yield return new WaitForSeconds(0.5f);
+        canBeCollected = true;
     }
 
     public void Collect()
@@ -49,5 +65,11 @@ public class ThrowablePickup : MonoBehaviour
         yield return new WaitForSeconds(pulseDuration);
         if (!IsCollected)
             Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        if (PickupManager.Instance != null)
+            PickupManager.Instance.Unregister(this);
     }
 }

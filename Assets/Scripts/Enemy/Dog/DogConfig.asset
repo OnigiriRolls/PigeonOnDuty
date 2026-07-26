@@ -15,3 +15,4 @@ MonoBehaviour:
   patrolSpeed: 25
   scaredSpeed: 40
   scaredDuration: 5
+  newspaper: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}

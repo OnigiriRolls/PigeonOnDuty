@@ -18,14 +18,11 @@ public class DogPatrolState : DogState
         dog.MoveTowards(currentTarget, dog.Config.patrolSpeed);
         if (dog.HasReachedDestination())
             PickNextPoint();
-        if (dog.PatrolZone.HasNewspapers)
+        ThrowablePickup pickup = PickupManager.Instance.GetClosestPickup(dog.PatrolZone, dog.Config.newspaper);
+        if (pickup != null)
         {
-            var newspaper = dog.PatrolZone.GetClosestNewspaper(dog.transform.position);
-            if (newspaper != null)
-            {
-                dog.FetchState.SetTarget(newspaper);
-                dog.ChangeState(dog.FetchState);
-            }
+            dog.FetchState.SetTarget(pickup);
+            dog.ChangeState(dog.FetchState);
         }
     }
 
