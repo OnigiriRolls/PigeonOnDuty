@@ -7,7 +7,6 @@ public class FeatherProjectile : ThrowableProjectile
 
     protected override void HandleImpact(Collision collision)
     {
-        Debug.Log("collision " +  collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player"))
             return;
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)

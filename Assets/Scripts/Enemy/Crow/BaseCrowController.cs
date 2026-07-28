@@ -25,6 +25,7 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
 
     private float soundTimer;
     private bool isDestroyed;
+    private bool isActive = true;
 
     protected virtual void Awake()
     {
@@ -34,6 +35,8 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
 
     protected virtual void Update()
     {
+        if (!isActive)
+            return;
         UpdateCrowSounds();
         currentState?.UpdateState();
     }
@@ -93,7 +96,6 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
 
     public virtual void DestroyCrow()
     {
-        Debug.Log("Crow destroyed " + transform.position);
         isDestroyed = true;
         EnemyAggroManager.Instance.Release(this);
         AudioManager.Instance.PlayRandomSFX(hitClip, audioSource);
@@ -103,7 +105,7 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
 
     private void UpdateCrowSounds()
     {
-        if(isDestroyed)
+        if (isDestroyed)
             return;
         soundTimer -= Time.deltaTime;
         if (soundTimer > 0f)
@@ -120,5 +122,10 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
     protected override void HandleGameOver()
     {
         gameObject.SetActive(false);
+    }
+
+    internal void Deactivate()
+    {
+        isActive = false;
     }
 }

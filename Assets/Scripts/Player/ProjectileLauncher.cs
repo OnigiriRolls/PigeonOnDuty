@@ -8,6 +8,7 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private ThrowCalculator throwCalculator;
     [SerializeField] private FeatherAutoAim autoAim;
     [SerializeField] private ThrowableData newspaperItem;
+    [SerializeField] private AudioClip inventorySound;
 
     private float currentForce;
     private float chargeTime;
@@ -77,7 +78,10 @@ public class ProjectileLauncher : MonoBehaviour
         if (item == null)
             return;
         if (!inventory.TryConsume(item))
+        {
+            //AudioManager.Instance.PlaySFX(inventorySound);
             return;
+        }
         ThrowableProjectile projectile = Instantiate(item.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);
         if (autoAim.CurrentTarget != null)
         {

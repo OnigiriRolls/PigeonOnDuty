@@ -32,6 +32,7 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
     private float nextBarkTime;
     private NavMeshAgent agent;
     private float currentSpeed;
+    private bool isActive = true;
 
     private void Awake()
     {
@@ -57,6 +58,8 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
 
     private void Update()
     {
+        if (!isActive)
+            return;
         UpdateAnimationMoveSpeed();
         barkTimer += Time.deltaTime;
         if (CurrentState != ScaredState && barkTimer >= nextBarkTime)
@@ -85,6 +88,10 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
 
     public void MoveTowards(Vector3 target, float speed)
     {
+        if (!agent.enabled)
+            return;
+        if (!agent.isOnNavMesh)
+            return;
         agent.speed = speed;
         agent.SetDestination(target);
     }
@@ -147,5 +154,10 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
     public bool CanBeHitBy(ThrowableData item)
     {
         return item.itemName == "Feather";
+    }
+
+    public void Deactivate()
+    {
+        isActive = false;
     }
 }

@@ -8,10 +8,11 @@ public abstract class EnemySpawner : MonoBehaviour
     [SerializeField] protected Transform spawnPosition;
     [SerializeField] private GameObject enemyPrefab;
 
-    public void SpawnEnemy()
+    public GameObject SpawnEnemy()
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity);
         InitializeEnemy(enemy);
+        return enemy;
     }
 
     protected abstract void InitializeEnemy(GameObject enemy);

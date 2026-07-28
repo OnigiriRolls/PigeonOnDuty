@@ -20,6 +20,7 @@ public class DogPatrolManager : MonoBehaviour
     [SerializeField] private float patrolRadius = 60f;
 
     private readonly List<PatrolZone> patrolZones = new();
+    private readonly List<DogController> dogs = new();
 
     public void GenerateDogs()
     {
@@ -39,6 +40,7 @@ public class DogPatrolManager : MonoBehaviour
         PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, dogParent);
         zone.InitNavMeshPoints(patrolRadius);
         DogController dog = Instantiate(dogPrefab, position, Quaternion.identity, dogParent);
+        dogs.Add(dog);
         dog.PatrolZone = zone;
         patrolZones.Add(zone);
     }
@@ -81,5 +83,28 @@ public class DogPatrolManager : MonoBehaviour
             int j = Random.Range(0, i + 1);
             (list[i], list[j]) = (list[j], list[i]);
         }
+    }
+
+    public void ClearDogs()
+    {
+        foreach (DogController dog in dogs)
+        {
+            if (dog != null)
+            {
+                dog.Deactivate();
+                Destroy(dog.gameObject);
+            }
+        }
+        dogs.Clear();
+    }
+
+    public void ClearPatrolZones()
+    {
+        foreach (PatrolZone zone in patrolZones)
+        {
+            if (zone != null)
+                Destroy(zone.gameObject);
+        }
+        patrolZones.Clear();
     }
 }

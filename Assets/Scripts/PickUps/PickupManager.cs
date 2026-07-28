@@ -25,6 +25,8 @@ public class PickupManager : MonoBehaviour
 
     public ThrowablePickup GetClosestPickup(PatrolZone zone, ThrowableData data)
     {
+        if (zone == null)
+            return null;
         ThrowablePickup closest = null;
         float bestDistance = float.MaxValue;
         pickups.RemoveAll(p => p == null);

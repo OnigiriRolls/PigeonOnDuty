@@ -25,18 +25,11 @@ public class ThrowableInventory : MonoBehaviour
     {
         if (slots.Count == 0)
             return;
-        int start = selectedIndex;
-        do
-        {
-            selectedIndex++;
-            if (selectedIndex >= slots.Count)
-                selectedIndex = 0;
-            if (IsSelectable(selectedIndex))
-            {
-                OnSelectionChanged?.Invoke(SelectedItem);
-                return;
-            }
-        } while (selectedIndex != start);
+
+        selectedIndex++;
+        if (selectedIndex >= slots.Count)
+            selectedIndex = 0;
+        OnSelectionChanged?.Invoke(SelectedItem);
     }
 
     public void SelectPrevious()
@@ -49,16 +42,6 @@ public class ThrowableInventory : MonoBehaviour
         OnSelectionChanged?.Invoke(SelectedItem);
     }
 
-    private bool IsSelectable(int index)
-    {
-        return slots[index].Amount > 0;
-    }
-
-    public bool TryConsumeEquipped()
-    {
-        return TryConsume(SelectedItem);
-    }
-
     public bool TryConsume(ThrowableData item)
     {
         InventorySlot slot = GetSlot(item);
@@ -67,8 +50,6 @@ public class ThrowableInventory : MonoBehaviour
         if (slot.Amount <= 0)
             return false;
         slot.Amount--;
-        if (item == SelectedItem && slot.Amount == 0)
-            SelectNext();
         OnInventoryChanged?.Invoke(item, slot.Amount);
         return true;
     }

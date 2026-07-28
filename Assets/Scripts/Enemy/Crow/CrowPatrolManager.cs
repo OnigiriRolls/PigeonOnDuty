@@ -25,6 +25,7 @@ public class CrowPatrolManager : MonoBehaviour
     [SerializeField] private Transform despawnPoint;
 
     private readonly List<PatrolZone> patrolZones = new();
+    private readonly List<BaseCrowController> crows = new();
 
     public void SpawnCrowZones()
     {
@@ -72,6 +73,7 @@ public class CrowPatrolManager : MonoBehaviour
         patrolZones.Add(zone);
         StealerCrowController crow = Instantiate(crowStealerPrefab, position, Quaternion.identity, spawnParent);
         crow.Initialize(player, zone, despawnPoint);
+        crows.Add(crow);
         //    return;
         //}
 
@@ -85,5 +87,24 @@ public class CrowPatrolManager : MonoBehaviour
             int j = Random.Range(0, i + 1);
             (list[i], list[j]) = (list[j], list[i]);
         }
+    }
+
+    public void Clear()
+    {
+        foreach (BaseCrowController crow in crows)
+        {
+            if (crow != null)
+            {
+                crow.Deactivate();
+                Destroy(crow.gameObject);
+            }
+        }
+        crows.Clear();
+        foreach (PatrolZone zone in patrolZones)
+        {
+            if (zone != null)
+                Destroy(zone.gameObject);
+        }
+        patrolZones.Clear();
     }
 }

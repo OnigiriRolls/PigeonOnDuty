@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,25 +6,23 @@ public class ThrowablePickup : MonoBehaviour
 {
     public ThrowableData Item => item;
     public bool CanBeCollected => canBeCollected;
+    public int Amount => amount;
     public bool IsCollected { get; private set; }
     public bool IsReserved { get; private set; }
+    public event Action OnCollected;
 
     [SerializeField] private ThrowableData item;
-    [SerializeField] private Animator animator;
-    [SerializeField] private float pulseDuration = 3f;
-    [SerializeField] private GameObject colliderZone;
+    [SerializeField] private int amount = 1;
 
     private bool canBeCollected;
 
     private void Start()
     {
-        //StartCoroutine(LifetimeRoutine());
-        colliderZone.SetActive(true);
+        PickupManager.Instance.Register(this);
     }
 
     private void OnEnable()
     {
-        PickupManager.Instance.Register(this);
         StartCoroutine(EnablePickup());
     }
 
@@ -39,6 +38,7 @@ public class ThrowablePickup : MonoBehaviour
         if (IsCollected)
             return;
         IsCollected = true;
+        OnCollected?.Invoke();
         Destroy(gameObject);
     }
 
@@ -54,17 +54,6 @@ public class ThrowablePickup : MonoBehaviour
     public void ReleaseReservation()
     {
         IsReserved = false;
-    }
-
-    private IEnumerator LifetimeRoutine()
-    {
-        float waitTime = Mathf.Max(0f, item.pickupLifetime - pulseDuration);
-        yield return new WaitForSeconds(waitTime);
-        if (animator != null)
-            animator.SetTrigger("Pulse");
-        yield return new WaitForSeconds(pulseDuration);
-        if (!IsCollected)
-            Destroy(gameObject);
     }
 
     private void OnDisable()

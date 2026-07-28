@@ -72,4 +72,14 @@ public class PedestrianSpawner : MonoBehaviour
         }
         return result;
     }
+
+    public void Clear()
+    {
+        foreach (Pedestrian pedestrian in pedestrians)
+        {
+            if (pedestrian != null)
+                Destroy(pedestrian.gameObject);
+        }
+        pedestrians.Clear();
+    }
 }

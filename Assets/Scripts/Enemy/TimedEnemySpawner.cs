@@ -9,6 +9,7 @@ public class TimedEnemySpawner : MonoBehaviour
     private bool active;
     private bool enemyAlive;
     private float timer;
+    private GameObject currentEnemy;
 
     private void OnEnable()
     {
@@ -35,15 +36,16 @@ public class TimedEnemySpawner : MonoBehaviour
         ResetTimer();
     }
 
-    public void Stop()
+    public void StopAndClear()
     {
         active = false;
+        Destroy(currentEnemy);
     }
 
     private void SpawnEnemy()
     {
         enemyAlive = true;
-        spawner.SpawnEnemy();
+        currentEnemy = spawner.SpawnEnemy();
     }
 
     private void HandleEnemyFinished()

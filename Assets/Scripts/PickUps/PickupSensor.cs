@@ -5,10 +5,8 @@ using UnityEngine;
 public class PickupSensor : MonoBehaviour
 {
     [SerializeField] private ThrowablePickup pickup;
-    [SerializeField] private SpriteRenderer colliderZone;
     [SerializeField] private float pickupDelay = 0.5f;
 
-    private Color lastColor;
     private Collider sphereCollider;
 
     private void OnEnable()
@@ -22,16 +20,7 @@ public class PickupSensor : MonoBehaviour
     {
         if (!other.TryGetComponent(out IPickupReceiver receiver))
             return;
-        lastColor = colliderZone.color;
-        colliderZone.color = Color.green;
         receiver.NotifyPickup(pickup);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.TryGetComponent(out IPickupReceiver _))
-            return;
-        colliderZone.color = lastColor;
     }
 
     private IEnumerator DelayPickup()

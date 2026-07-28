@@ -7,8 +7,7 @@ public class PlayerPickupCollector : MonoBehaviour
 
     public void Collect(ThrowablePickup pickup)
     {
-        Debug.Log("Player pickup " + pickup.name);
-        inventory.Add(pickup.Item, 1);
+        inventory.Add(pickup.Item, pickup.Amount);
         AudioManager.Instance.PlaySFX(pickupSound);
         pickup.ReleaseReservation();
         pickup.Collect();

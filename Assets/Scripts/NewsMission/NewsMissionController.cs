@@ -40,10 +40,9 @@ public class NewsMissionController : MonoBehaviour
             minimapIconManager.CreateIcon(clientIconPrefab, client.transform);
             client.OnDeliveryCompleted += HandleClientDelivered;
         }
-        Debug.Log(activeClients.Count);
-        playerInventory.SetAmount(newspaperData, activeClients.Count + 1000);
-        playerInventory.SetAmount(featherData, activeClients.Count + 1000);
-        StartTimerForClosestClient();
+        playerInventory.SetAmount(newspaperData, activeClients.Count + 1);
+        playerInventory.SetAmount(featherData, activeClients.Count);
+        missionTimer.StartTimer(activeClients.Count * currentMission.timeBuffer);
     }
 
     private void HandleClientDelivered(ClientController client)
@@ -53,7 +52,6 @@ public class NewsMissionController : MonoBehaviour
         minimapIconManager.RemoveIcon(client.transform);
         if (activeClients.Count == 0)
             OnMissionCompleted?.Invoke();
-        StartTimerForClosestClient();
     }
 
     public void ClearMission()
@@ -64,32 +62,10 @@ public class NewsMissionController : MonoBehaviour
         }
         clientAssigner.ClearClients(activeClients);
         activeClients.Clear();
-        balloonSpawner.Stop();
-    }
-
-    private ClientController GetClosestClient()
-    {
-        ClientController closest = null;
-        float closestDistance = float.MaxValue;
-        foreach (ClientController client in activeClients)
-        {
-            float distance = Vector3.Distance(player.position, client.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closest = client;
-            }
-        }
-
-        return closest;
-    }
-
-    private void StartTimerForClosestClient()
-    {
-        ClientController closest = GetClosestClient();
-        if (closest == null)
-            return;
-        float duration = travelTimeCalculator.CalculateTime(closest.transform, currentMission.timeBuffer);
-        missionTimer.StartTimer(duration);
+        balloonSpawner.StopAndClear();
+        pedestrianSpawner.Clear();
+        crowSpawner.Clear();
+        dogSpawner.ClearDogs();
+        dogSpawner.ClearPatrolZones();
     }
 }

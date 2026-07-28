@@ -34,6 +34,10 @@ public class PedestrianMovement : MonoBehaviour, INPCMovement
 
     public void MoveTo(Vector3 destination)
     {
+        if (!agent.enabled)
+            return;
+        if (!agent.isOnNavMesh)
+            return;
         agent.isStopped = false;
         success = agent.SetDestination(destination);
     }

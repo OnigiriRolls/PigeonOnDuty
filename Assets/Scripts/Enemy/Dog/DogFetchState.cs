@@ -23,11 +23,10 @@ public class DogFetchState : DogState
     {
         if (targetPickup == null && !pickedUp)
         {
-            Debug.Log("targetPickup = null");
             dog.ChangeState(dog.PatrolState);
             return;
         }
-        dog.MoveTowards(targetPickup.transform.position, dog.Config.patrolSpeed);
+        dog.MoveTowards(targetPickup.transform.position, dog.Config.fetchSpeed);
         if (Vector3.Distance(controller.transform.position, targetPickup.transform.position) < 3f)
         {
             pickedUp = controller.PickUp(targetPickup);
