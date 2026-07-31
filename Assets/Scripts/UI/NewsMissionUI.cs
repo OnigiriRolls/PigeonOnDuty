@@ -3,7 +3,6 @@ using UnityEngine;
 public class NewsMissionUI : MonoBehaviour
 {
     [SerializeField] private MissionManager missionManager;
-    [SerializeField] private GameObject minimapUI;
     [SerializeField] private GameObject inventoryUI;
 
     private void OnEnable()
@@ -25,7 +24,6 @@ public class NewsMissionUI : MonoBehaviour
     private void UpdateUI(MissionData mission)
     {
         bool isNewsMission = mission is NewsMission;
-        minimapUI.SetActive(isNewsMission);
         inventoryUI.SetActive(isNewsMission);
     }
 }

@@ -48,7 +48,7 @@ public abstract class CollectibleBase : MonoBehaviour
 
         Collect(other.gameObject);
         PlayEffects();
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     protected abstract void Collect(GameObject player);

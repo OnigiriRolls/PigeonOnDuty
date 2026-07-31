@@ -1235,6 +1235,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
+--- !u!1 &179688213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179688214}
+  m_Layer: 0
+  m_Name: NormalMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179688214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179688213}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 707793892}
+  - {fileID: 793118298}
+  - {fileID: 1216242143}
+  - {fileID: 1507542254}
+  m_Father: {fileID: 354423832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192464843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3776691715755307263, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -1675,6 +1710,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2541310324892961557, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
   m_PrefabInstance: {fileID: 4882484556846671129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &255613506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255613507}
+  m_Layer: 0
+  m_Name: NewsMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &255613507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255613506}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 937640228}
+  - {fileID: 916693771}
+  - {fileID: 1768051322}
+  - {fileID: 1457097895}
+  - {fileID: 1462272995}
+  - {fileID: 1245119265}
+  - {fileID: 547507114}
+  m_Father: {fileID: 354423832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &256395533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4941590880639007697, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -2233,25 +2306,19 @@ Transform:
   m_Children:
   - {fileID: 438445162}
   - {fileID: 102518371}
-  - {fileID: 1507542254}
-  - {fileID: 1216242143}
   - {fileID: 873567823}
+  - {fileID: 179688214}
   - {fileID: 1791866457}
-  - {fileID: 937640228}
-  - {fileID: 916693771}
-  - {fileID: 1768051322}
-  - {fileID: 1462272995}
-  - {fileID: 1245119265}
-  - {fileID: 547507114}
+  - {fileID: 255613507}
   - {fileID: 1659997054}
   - {fileID: 1131372081}
-  - {fileID: 793118298}
   - {fileID: 462609938}
   - {fileID: 622098705}
   - {fileID: 652098070}
   - {fileID: 1352022614}
   - {fileID: 503221260}
   - {fileID: 431416392}
+  - {fileID: 379032749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &356087204 stripped
@@ -2346,6 +2413,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975d9fd11b5f66947a64183f36228b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianWaypoint
+--- !u!1 &379032748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 379032749}
+  - component: {fileID: 379032750}
+  m_Layer: 0
+  m_Name: MinimapController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &379032749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379032748}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 354423832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379032750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379032748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980eab3d28dfa8341b1df19a2c903184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapMissionController
+  iconManager: {fileID: 2084443272}
+  clientIconPrefab: {fileID: 3796832034003442013, guid: 2386c549b56f2434582d97f4af328f61, type: 3}
+  checkpointIconPrefab: {fileID: 3796832034003442013, guid: 54dbc9258e582774587a6df609ab9c0c, type: 3}
 --- !u!1 &385272002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +3167,7 @@ MonoBehaviour:
   player: {fileID: 1517355608}
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 14400
 --- !u!1 &463480037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 280646254035082405, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -3557,7 +3671,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 354423832}
+    m_TransformParent: {fileID: 255613507}
     m_Modifications:
     - target: {fileID: 672734324555029318, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3599,20 +3713,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2205361492554027000, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+      propertyPath: sign
+      value: 
+      objectReference: {fileID: 671664255}
+    - target: {fileID: 2205361492554027000, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2963227968700003070, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
       propertyPath: m_Name
       value: FeatherPickupSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2963227968700003070, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307692845992021839, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8580795204930581424, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 2047145436937825605, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
 --- !u!4 &547507114 stripped
 Transform:
@@ -4267,6 +4391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd93999398e4f342be6fa0412648f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleManager
+  playerTransform: {fileID: 1517355606}
   specialCollectibles:
   - prefab: {fileID: 9017457602034675674, guid: 82cec8a7821b44a46a7ac1f0fc1546ee, type: 3}
     type: 1
@@ -4277,9 +4402,6 @@ MonoBehaviour:
     spawnChance: 1
   spawnRadiusSpecials: 20
   maxSpecialCollectibles: 1
-  minCoinCount: 3
-  maxCoinCount: 8
-  coinsSpacing: 5
   collectibleParent: {fileID: 1055828731}
   cloudLayer:
     serializedVersion: 2
@@ -4289,7 +4411,13 @@ MonoBehaviour:
     m_Bits: 64
   roadLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
+  minCoinCount: 3
+  maxCoinCount: 8
+  coinsSpacing: 10
+  minCoinSpawnInterval: 15
+  maxCoinSpawnInterval: 30
+  coinSpawnDistance: 75
 --- !u!4 &622098705
 Transform:
   m_ObjectHideFlags: 0
@@ -4424,13 +4552,13 @@ MonoBehaviour:
   missionRewardUI: {fileID: 95312743}
   unlockMessageUI: {fileID: 1889079388895480461}
   missionDatabase: {fileID: 11400000, guid: 1501790340ba9a3458b2cd104b8babfc, type: 2}
-  endlessRunManager: {fileID: 1507542251}
   gpsMissionController: {fileID: 1791866458}
   newsMissionController: {fileID: 937640229}
+  normalMissionController: {fileID: 707793893}
   gameManager: {fileID: 438445163}
   isNewsMissionActive: 1
   isGPSMissionActive: 0
-  areAllMissionsActive: 1
+  areAllMissionsActive: 0
   missionTimer: {fileID: 503221261}
 --- !u!1 &653847633 stripped
 GameObject:
@@ -4486,6 +4614,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975d9fd11b5f66947a64183f36228b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianWaypoint
+--- !u!1 &671664255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8307692845992021839, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+  m_PrefabInstance: {fileID: 547507113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &679654206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2581584177005189445, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -4622,6 +4755,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
+--- !u!1 &707793891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 707793892}
+  - component: {fileID: 707793893}
+  m_Layer: 0
+  m_Name: NormalMissionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &707793892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707793891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 179688214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &707793893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707793891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efda67ccdc379fe4e965cd5ee624da8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalMissionController
+  checkpointsManager: {fileID: 1507542257}
+  collectibleManager: {fileID: 622098704}
+  windAttackManager: {fileID: 793118299}
+  normalEnemiesSpawner: {fileID: 1369953263}
 --- !u!1 &712947542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8256690362438294592, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -4773,7 +4954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &793118298
 Transform:
   m_ObjectHideFlags: 0
@@ -4787,7 +4968,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 179688214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &793118299
 MonoBehaviour:
@@ -5231,7 +5412,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 255613507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &916693772
 MonoBehaviour:
@@ -5564,7 +5745,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 255613507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &937640229
 MonoBehaviour:
@@ -5581,16 +5762,17 @@ MonoBehaviour:
   clientAssigner: {fileID: 937640230}
   pedestrianSpawner: {fileID: 916693773}
   balloonSpawner: {fileID: 1768051324}
-  crowSpawner: {fileID: 6698614267393107773}
+  crowSpawner: {fileID: 1457097896}
   dogSpawner: {fileID: 1462272997}
+  featherSpawner: {fileID: 1363443664}
   playerInventory: {fileID: 12916799}
   newspaperData: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
   featherData: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
-  minimapIconManager: {fileID: 2084443272}
-  clientIconPrefab: {fileID: 3796832034003442013, guid: 2386c549b56f2434582d97f4af328f61, type: 3}
+  minimapController: {fileID: 379032750}
   travelTimeCalculator: {fileID: 503221262}
   missionTimer: {fileID: 503221261}
   player: {fileID: 1517355606}
+  collectibleManager: {fileID: 622098704}
 --- !u!114 &937640230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5783,7 +5965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 464}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973743262
@@ -7443,7 +7625,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 255613507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1245119266
 MonoBehaviour:
@@ -8056,6 +8238,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.001, y: 1.1320001, z: 0.134}
   m_TimeToStationary: 0.5
+--- !u!114 &1363443664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2205361492554027000, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+  m_PrefabInstance: {fileID: 547507113}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8ce9529edf0aa4fb330313e60a6b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FeatherPickupSpawner
 --- !u!1 &1366967874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2593581899143038637, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -8073,6 +8266,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7b69e5a4e065478559ba930750433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParadeSpawnPoint
+--- !u!114 &1369953263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1513855268286369299, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
+  m_PrefabInstance: {fileID: 6698614267393107771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa141326d3bda164caf0f9f67f439ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManagerSpeedMode
 --- !u!1 &1371803465 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3287036885361324926, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -8407,6 +8611,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448765768}
   m_CullTransparentMesh: 1
+--- !u!1 &1457097894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1457097895}
+  - component: {fileID: 1457097896}
+  m_Layer: 0
+  m_Name: CrowManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1457097895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457097894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 255613507}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1457097896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457097894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f253dc813d6a8f34b85cb4ddab220aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrowPatrolManager
+  crowStealerPrefab: {fileID: 4058030135744460609, guid: bff354fb6ebe3c74ba0711cfcb86dddf, type: 3}
+  player: {fileID: 1517355606}
+  spawnParent: {fileID: 1865137281}
+  patrolZonePrefab: {fileID: 3210125958476753058, guid: 954bf15c3ad95264190847b6d47598b9, type: 3}
+  worldMin: {x: 60, y: 80}
+  worldMax: {x: 840, y: 700}
+  minHeight: 20
+  maxHeight: 50
+  crowsPerSquareKilometer: 35
+  zoneSpacing: 20
+  patrolRadius: 60
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 10304
+  despawnPoint: {fileID: 255600296}
 --- !u!1 &1460040537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3645115401250910235, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -8454,7 +8717,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 255613507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462272997
 MonoBehaviour:
@@ -8655,22 +8918,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7b69e5a4e065478559ba930750433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParadeSpawnPoint
---- !u!114 &1507542251 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
-  m_PrefabInstance: {fileID: 9021787882129977903}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1d0d9a2341221478fbe032412e7aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EndlessRunManager
 --- !u!4 &1507542254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 401087995844280191, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
   m_PrefabInstance: {fileID: 9021787882129977903}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507542257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+  m_PrefabInstance: {fileID: 9021787882129977903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af0481f6224ca441a9431dd7128a526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckpointsManager
+--- !u!114 &1507542258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5337330996471400174, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+  m_PrefabInstance: {fileID: 9021787882129977903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9c0583186bafe46a723ded9cb57eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaypointGenerator
 --- !u!1 &1509581189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5456213536148341437, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -9945,12 +10219,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768051321}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 255613507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1768051323
 MonoBehaviour:
@@ -10038,6 +10312,7 @@ MonoBehaviour:
   minimumDistance: 300
   missionTimer: {fileID: 503221261}
   travelTimeCalculator: {fileID: 503221262}
+  collectibleManager: {fileID: 622098704}
 --- !u!1 &1814445605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1140854019855486496, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -10917,7 +11192,7 @@ MonoBehaviour:
   throwCalculator: {fileID: 293713796}
   autoAim: {fileID: 1732699852}
   newspaperItem: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
-  inventorySound: {fileID: 0}
+  inventorySound: {fileID: 8300000, guid: 7ba8dd6c1bc2ff149aa04aa2f52e6904, type: 3}
 --- !u!120 &1918126837
 LineRenderer:
   serializedVersion: 3
@@ -11602,7 +11877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2084443271
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11624,7 +11899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -123}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084443272
@@ -11873,6 +12148,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1694601789}
+    - target: {fileID: 1507194893341679246, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -8.649902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507194893341679246, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -133
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874426929440966184, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -170
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874426929440966184, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -68
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272221721284811668, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -169.99994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272221721284811668, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -133
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508924400399659650, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -8.649902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3508924400399659650, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -68
+      objectReference: {fileID: 0}
     - target: {fileID: 3969462934240311058, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11977,6 +12284,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 438445163}
+    - target: {fileID: 8637657911524355238, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9098520885050491654, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12456,11 +12767,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 354423832}
+    m_TransformParent: {fileID: 179688214}
     m_Modifications:
     - target: {fileID: 864485216416760744, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       propertyPath: m_Name
-      value: GameManagerSpeedMode
+      value: NormalEnemiesSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 1513855268286369299, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       propertyPath: player
@@ -12527,6 +12838,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1517355608}
     - target: {fileID: 4677581684665117710, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
+      propertyPath: maxAltitude
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677581684665117710, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 255600296}
@@ -12535,49 +12850,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1517355608}
     - target: {fileID: 6816025207037143085, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
+      propertyPath: minAltitude
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816025207037143085, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 255600296}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3827215510019727664, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6698614267393107773}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
---- !u!1 &6698614267393107772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3827215510019727664, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
-  m_PrefabInstance: {fileID: 6698614267393107771}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6698614267393107773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6698614267393107772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f253dc813d6a8f34b85cb4ddab220aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CrowPatrolManager
-  crowStealerPrefab: {fileID: 4058030135744460609, guid: bff354fb6ebe3c74ba0711cfcb86dddf, type: 3}
-  player: {fileID: 1517355606}
-  spawnParent: {fileID: 1865137281}
-  patrolZonePrefab: {fileID: 3210125958476753058, guid: 954bf15c3ad95264190847b6d47598b9, type: 3}
-  worldMin: {x: 60, y: 80}
-  worldMax: {x: 840, y: 700}
-  minHeight: 20
-  maxHeight: 50
-  crowsPerSquareKilometer: 35
-  zoneSpacing: 20
-  patrolRadius: 60
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 10304
-  despawnPoint: {fileID: 255600296}
 --- !u!1001 &7081249254438630857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15562,6 +15846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LineRenderer
       objectReference: {fileID: 0}
+    - target: {fileID: 2119662789124816544, guid: 172c2885da14ddd4a891c1aa9d042e43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6638545479419127178, guid: 172c2885da14ddd4a891c1aa9d042e43, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15609,7 +15897,7 @@ PrefabInstance:
     - target: {fileID: 6904503108328335291, guid: 172c2885da14ddd4a891c1aa9d042e43, type: 3}
       propertyPath: endlessRunManager
       value: 
-      objectReference: {fileID: 1507542251}
+      objectReference: {fileID: 1507542257}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16064,7 +16352,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 354423832}
+    m_TransformParent: {fileID: 179688214}
     m_Modifications:
     - target: {fileID: 401087995844280191, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16106,22 +16394,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 1517355606}
-    - target: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
-      propertyPath: checkpointParent
-      value: 
-      objectReference: {fileID: 598455218}
-    - target: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
-      propertyPath: collectibleManager
-      value: 
-      objectReference: {fileID: 622098704}
-    - target: {fileID: 3830473093162732603, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
-      propertyPath: travelTimeCalculator
-      value: 
-      objectReference: {fileID: 503221262}
     - target: {fileID: 5337330996471400174, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
       propertyPath: buildingsParent
       value: 
@@ -16132,8 +16404,32 @@ PrefabInstance:
       objectReference: {fileID: 598455218}
     - target: {fileID: 6789753198260421151, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
       propertyPath: m_Name
-      value: EndlessRunManager
+      value: CheckpointsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 1517355606}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: checkpointParent
+      value: 
+      objectReference: {fileID: 598455218}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: minimapController
+      value: 
+      objectReference: {fileID: 379032750}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: waypointGenerator
+      value: 
+      objectReference: {fileID: 1507542258}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: collectibleManager
+      value: 
+      objectReference: {fileID: 622098704}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: travelTimeCalculator
+      value: 
+      objectReference: {fileID: 503221262}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

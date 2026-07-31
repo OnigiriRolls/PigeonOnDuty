@@ -135,8 +135,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9592826, y: 2.5381274, z: 0.3851731}
-  m_Center: {x: -0.000000059604645, y: -0.060423553, z: 0.08848737}
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3898910881212473104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   rotationSpeed: 90
   floatAmplitude: 0.25
   floatFrequency: 2
-  lifetime: 20
+  lifetime: 30
   pulseTime: 3
   collectEffect: {fileID: 5451249479019781022, guid: 74860fbbc6a34824a96e6b71cb0672c6, type: 3}
   collectClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}

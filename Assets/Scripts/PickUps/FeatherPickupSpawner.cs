@@ -4,14 +4,16 @@ using UnityEngine;
 public class FeatherPickupSpawner : MonoBehaviour
 {
     [SerializeField] private ThrowablePickup pickupPrefab;
+    [SerializeField] private GameObject sign;
     [SerializeField] private float respawnTime = 10f;
 
     private ThrowablePickup currentPickup;
     private Coroutine respawnRoutine;
 
-    private void OnEnable()
+    public void StartSpawn()
     {
-        if(respawnRoutine  != null)
+        sign.SetActive(true);
+        if (respawnRoutine != null)
         {
             StopCoroutine(respawnRoutine);
             respawnRoutine = null;
@@ -45,12 +47,15 @@ public class FeatherPickupSpawner : MonoBehaviour
         SpawnPickup();
     }
 
-    private void OnDisable()
+    public void StopSpawn()
     {
+        sign.SetActive(false);
         if (respawnRoutine != null)
         {
             StopCoroutine(respawnRoutine);
             respawnRoutine = null;
         }
+        if (currentPickup != null)
+            Destroy(currentPickup.gameObject);
     }
 }

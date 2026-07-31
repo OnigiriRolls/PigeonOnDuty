@@ -8,9 +8,9 @@ public class MissionManager : MonoBehaviour
 {
     public MissionData ActiveMission { get; private set; }
     public bool HasActiveMission => ActiveMission != null;
-    public EndlessRunManager EndlessRunManager => endlessRunManager;
     public GPSMissionController GPSMissionController => gpsMissionController;
     public NewsMissionController NewsMissionController => newsMissionController;
+    public NormalMissionController NormalMissionController => normalMissionController;
     public MissionTimer MissionTimer => missionTimer;
     public event Action<List<MissionData>> OnMissionSelectionRequested;
     public event Action<MissionData> OnMissionSelected;
@@ -19,9 +19,9 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private MissionRewardUI missionRewardUI;
     [SerializeField] private UnlockMessageUI unlockMessageUI;
     [SerializeField] private MissionDatabase missionDatabase;
-    [SerializeField] private EndlessRunManager endlessRunManager;
     [SerializeField] private GPSMissionController gpsMissionController;
     [SerializeField] private NewsMissionController newsMissionController;
+    [SerializeField] private NormalMissionController normalMissionController;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private bool isNewsMissionActive;
     [SerializeField] private bool isGPSMissionActive;

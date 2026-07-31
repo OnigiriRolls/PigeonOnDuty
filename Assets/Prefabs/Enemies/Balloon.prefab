@@ -144,6 +144,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 7769189311215101425, guid: aae3911e137fe3f47abea562d0a2a4e8, type: 3}
   explosionClips:
   - {fileID: 8300000, guid: 8c5c17e1ea6312f49a9a756923aa8b7e, type: 3}
+  attack: 0
 --- !u!135 &5446199139046831023
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -355,7 +356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: feef3c0b833730c4fadccf4eb1ecdbe6, type: 2}
+  - {fileID: 2100000, guid: 54ed77e505dae9049bbbb7c2af7930af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

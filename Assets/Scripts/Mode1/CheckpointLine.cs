@@ -3,7 +3,7 @@ using UnityEngine;
 public class CheckpointLine : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private EndlessRunManager endlessRunManager;
+    [SerializeField] private CheckpointsManager endlessRunManager;
 
     private LineRenderer lineRenderer;
 

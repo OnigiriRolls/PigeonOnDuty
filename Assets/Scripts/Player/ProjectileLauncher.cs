@@ -75,11 +75,10 @@ public class ProjectileLauncher : MonoBehaviour
     private void Throw()
     {
         ThrowableData item = inventory.SelectedItem;
-        if (item == null)
-            return;
-        if (!inventory.TryConsume(item))
+        if (item == null || !inventory.TryConsume(item))
         {
-            //AudioManager.Instance.PlaySFX(inventorySound);
+            Debug.Log("play sound");
+            AudioManager.Instance.PlaySFX(inventorySound);
             return;
         }
         ThrowableProjectile projectile = Instantiate(item.projectilePrefab, throwCalculator.ThrowPosition, Quaternion.identity);

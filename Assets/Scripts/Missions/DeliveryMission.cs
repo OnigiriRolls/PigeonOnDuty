@@ -11,15 +11,16 @@ public class DeliveryMission : MissionData
 
     public override void StartMission(MissionManager missionManager)
     {
-        missionManager.EndlessRunManager.SpawnNextCheckpointAndCollectibles();
-        missionManager.EndlessRunManager.StartCheckpointTimer(missionManager.MissionTimer, timeBuffer, timerMultiplier);
+        missionManager.NormalMissionController.StartMission(missionManager.MissionTimer, timeBuffer, timerMultiplier);
     }
 
     public override void CompleteMission(MissionManager missionManager)
     {
+        missionManager.NormalMissionController.ClearMission();
     }
 
     public override void FailMission(MissionManager missionManager)
     {
+        missionManager.NormalMissionController.ClearMission();
     }
 }

@@ -59,17 +59,17 @@ public class GameplayUI : StopAudio
 
     private void UpdateAltitude()
     {
-        altitudeText.text = $"Altitude: {player.transform.position.y:F0} m";
+       // altitudeText.text = $"Altitude: {player.transform.position.y:F0} m";
     }
 
     private void CheckAltitudeLayer()
     {
-        AltitudeLayer newLayer = GetAltitudeLayer();
-        if (newLayer == currentLayer)
-            return;
+        //AltitudeLayer newLayer = GetAltitudeLayer();
+        //if (newLayer == currentLayer)
+        //    return;
 
-        currentLayer = newLayer;
-        ShowAltitudeTransition();
+        //currentLayer = newLayer;
+        //ShowAltitudeTransition();
     }
 
     private void ShowAltitudeTransition()

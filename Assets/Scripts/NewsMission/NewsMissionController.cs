@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 public class NewsMissionController : MonoBehaviour
 {
-    public IReadOnlyList<ClientController> ActiveClients => activeClients;
     public event Action OnMissionCompleted;
 
     [SerializeField] private ClientAssigner clientAssigner;
@@ -13,14 +12,15 @@ public class NewsMissionController : MonoBehaviour
     [SerializeField] private TimedEnemySpawner balloonSpawner;
     [SerializeField] private CrowPatrolManager crowSpawner;
     [SerializeField] private DogPatrolManager dogSpawner;
+    [SerializeField] private FeatherPickupSpawner featherSpawner;
     [SerializeField] private ThrowableInventory playerInventory;
     [SerializeField] private ThrowableData newspaperData;
     [SerializeField] private ThrowableData featherData;
-    [SerializeField] private MinimapIconManager minimapIconManager;
-    [SerializeField] private MinimapIcon clientIconPrefab;
+    [SerializeField] private MinimapMissionController minimapController;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private Transform player;
+    [SerializeField] private CollectibleManager collectibleManager;
 
     private List<ClientController> activeClients = new();
     private NewsMission currentMission;
@@ -32,24 +32,26 @@ public class NewsMissionController : MonoBehaviour
         balloonSpawner.Begin();
         crowSpawner.SpawnCrowZones();
         dogSpawner.GenerateDogs();
+        featherSpawner.StartSpawn();
         int clientCount = Random.Range(currentMission.minClients, currentMission.maxClients + 1);
         activeClients = clientAssigner.AssignRandomClients(clientCount);
         foreach (ClientController client in activeClients)
         {
             client.Initialize(newspaperData);
-            minimapIconManager.CreateIcon(clientIconPrefab, client.transform);
+            minimapController.ShowClient(client.transform);
             client.OnDeliveryCompleted += HandleClientDelivered;
         }
         playerInventory.SetAmount(newspaperData, activeClients.Count + 1);
         playerInventory.SetAmount(featherData, activeClients.Count);
         missionTimer.StartTimer(activeClients.Count * currentMission.timeBuffer);
+        collectibleManager.StartContinuousCoinSpawning(player);
     }
 
     private void HandleClientDelivered(ClientController client)
     {
         client.OnDeliveryCompleted -= HandleClientDelivered;
         activeClients.Remove(client);
-        minimapIconManager.RemoveIcon(client.transform);
+        minimapController.HideClient(client.transform);
         if (activeClients.Count == 0)
             OnMissionCompleted?.Invoke();
     }
@@ -67,5 +69,7 @@ public class NewsMissionController : MonoBehaviour
         crowSpawner.Clear();
         dogSpawner.ClearDogs();
         dogSpawner.ClearPatrolZones();
+        featherSpawner.StopSpawn();
+        collectibleManager.StopContinuousCoinSpawning();
     }
 }

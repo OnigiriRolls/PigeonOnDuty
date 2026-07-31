@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WaypointGenerator : MonoBehaviour
@@ -6,6 +7,7 @@ public class WaypointGenerator : MonoBehaviour
     public int lowWaypoints = 0;
     public int midWaypoints = 0;
     public int highWaypoints = 0;
+    public IReadOnlyList<Waypoint> Waypoints => waypoints;
 
     [Header("References")]
     [SerializeField] private GameObject buildingsParent;
@@ -25,6 +27,8 @@ public class WaypointGenerator : MonoBehaviour
     [SerializeField] private Vector2 highHeightRange = new(0f, 0f);
     [SerializeField] private Vector2 xRange;
     [SerializeField] private Vector2 zRange;
+
+    private readonly List<Waypoint> waypoints = new();
 
     void Start()
     {
@@ -56,8 +60,7 @@ public class WaypointGenerator : MonoBehaviour
 
     private void GenerateRooftopWaypoint(Transform building)
     {
-        Renderer renderer = building.GetComponent<Renderer>();
-        if (renderer == null)
+        if (!building.TryGetComponent<Renderer>(out var renderer))
             return;
         Bounds bounds = renderer.bounds;
         Vector3 rooftopPos = bounds.center + Vector3.up * (bounds.extents.y + offset);
@@ -82,6 +85,7 @@ public class WaypointGenerator : MonoBehaviour
             GameObject obj = Instantiate(postWaypointPrefab, randomPos, Quaternion.identity, postWaypointParent);
             Waypoint waypoint = obj.GetComponent<Waypoint>();
             waypoint.AltitudeLayer = layer;
+            waypoints.Add(waypoint);
             spawned++;
             if (layer == AltitudeLayer.High)
                 highWaypoints++;
@@ -98,6 +102,7 @@ public class WaypointGenerator : MonoBehaviour
         GameObject waypointObject = Instantiate(postWaypointPrefab, spawnPos, Quaternion.identity, postWaypointParent);
         Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
         waypoint.AltitudeLayer = GetAltitudeLayer(buildingName);
+        waypoints.Add(waypoint);
     }
 
 

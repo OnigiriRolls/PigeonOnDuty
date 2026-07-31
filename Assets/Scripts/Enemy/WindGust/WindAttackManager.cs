@@ -20,16 +20,28 @@ public class WindAttackManager : MonoBehaviour
 
     private float attackInterval;
     private bool attackRunning;
+    private bool isActive;
     private Transform playerTransform;
 
     private void Start()
     {
-        attackInterval = Random.Range(attackIntervalMin, attackIntervalMax);
+        isActive = false;
         playerTransform = player.transform;
+    }
+
+    public void StartAttack()
+    {
+        if (isActive)
+            return;
+        isActive = true;
+        attackRunning = false;
+        attackInterval = Random.Range(attackIntervalMin, attackIntervalMax);
     }
 
     private void Update()
     {
+        if (!isActive)
+            return;
         if (attackRunning)
             return;
         attackInterval -= Time.deltaTime;
@@ -92,5 +104,15 @@ public class WindAttackManager : MonoBehaviour
         float playerSpeed = player.Velocity.magnitude * 3.6f;
         float gustSpeed = windGustPrefab.Config.GetMoveSpeed(playerSpeed);
         gust.Initialize(direction, playerTransform, gustSpeed);
+    }
+
+    public void StopAttack()
+    {
+        isActive = false;
+        attackRunning = false;
+        StopAllCoroutines();
+        if (warningObject != null)
+            warningObject.SetActive(false);
+        AudioManager.Instance.StopEnvironmentalLoop();
     }
 }

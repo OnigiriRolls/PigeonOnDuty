@@ -40,4 +40,10 @@ public class AttackCrowController : BaseCrowController
             Destroy(gameObject);
         }
     }
+
+    public override void DestroyCrow()
+    {
+        spawner.FinishEnemy();
+        base.DestroyCrow();
+    }
 }

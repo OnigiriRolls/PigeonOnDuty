@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3499531651437363688}
   - component: {fileID: 1513855268286369299}
   m_Layer: 0
-  m_Name: GameManagerSpeedMode
+  m_Name: NormalEnemiesSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,8 +52,10 @@ MonoBehaviour:
   - {fileID: 4677581684665117710}
   - {fileID: 6816025207037143085}
   - {fileID: 2789453444958845918}
-  minEncounterCooldown: 5
-  maxEncounterCooldown: 10
+  minTimerCooldown: 5
+  maxTimerCooldown: 10
+  enemyActive: 0
+  timer: 0
 --- !u!1 &3827215510019727664
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,16 +153,6 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1343894034588162628, guid: 6140e3d350f4b9e4fbec574d04d81907, type: 3}
   minAltitude: 51
   maxAltitude: 150
-  steeringStrengthToPlayer: 10
-  steeringStrengthToPlayerDrift: 6
-  driftOffset: 1
-  forwardOffset: 10
-  orbitRadius: 3
-  orbitSpeed: 1
-  minSafeDistance: 1.5
-  moveSpeed: 50
-  minDriftDuration: 15
-  maxDriftDuration: 20
 --- !u!1 &8000137669717486637
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,11 +201,3 @@ MonoBehaviour:
   spawnPosition: {fileID: 0}
   enemyPrefab: {fileID: 4657259812211793084, guid: 4d5657f7eb703924b91852fc93dcdb19, type: 3}
   minAltitude: 151
-  spawnChance: 1
-  spawnCheckInterval: 5
-  forwardDistance: 80
-  upDistance: 10
-  predictionPrecision: 0.1
-  bulletSpeed: 300
-  homingStrength: 10
-  homingDuration: 0.4

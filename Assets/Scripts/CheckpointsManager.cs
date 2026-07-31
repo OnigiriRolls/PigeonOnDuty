@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class EndlessRunManager : MonoBehaviour
+public class CheckpointsManager : MonoBehaviour
 {
     public Transform CurrentObjective => currentObjective;
 
     [SerializeField] private CollectibleManager collectibleManager;
+    [SerializeField] private MinimapMissionController minimapController;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
+    [SerializeField] private WaypointGenerator waypointGenerator;
     [SerializeField] private GameObject postCheckpointHigh;
     [SerializeField] private GameObject postCheckpointMid;
     [SerializeField] private GameObject postCheckpointLow;
@@ -14,32 +16,18 @@ public class EndlessRunManager : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private AudioClip lowMusic;
 
-    private Waypoint[] waypoints;
     private Waypoint currentWaypoint;
     private Transform currentObjective;
 
     private void Start()
     {
-        waypoints = FindObjectsByType<Waypoint>();
         AudioManager.Instance.PlayMusic(lowMusic);
         SaveManager.Instance.AddRun();
     }
 
-    public void SpawnNextCheckpointAndCollectibles()
+    public void SpawnNextCheckpoint()
     {
-        SpawnNextCheckpoint();
-        collectibleManager.SpawnCollectibles(currentObjective, playerTransform.position);
-    }
-
-    public void SpawnNextObjectiveAndCollectibles(Transform objectiveTransform)
-    {
-        SpawnNextObjective(objectiveTransform);
-        collectibleManager.SpawnCollectibles(currentObjective, playerTransform.position);
-    }
-
-    private void SpawnNextCheckpoint()
-    {
-        if (waypoints.Length == 0)
+        if (waypointGenerator.Waypoints.Count == 0)
         {
             Debug.LogWarning("No waypoints found!");
             return;
@@ -54,9 +42,10 @@ public class EndlessRunManager : MonoBehaviour
         GameObject checkpointPrefab = GetPostCheckpointPrefab(currentWaypoint.AltitudeLayer);
         GameObject currentCheckpoint = Instantiate(checkpointPrefab, currentWaypoint.transform.position, GetObjectiveRotation(currentWaypoint.transform.position), checkpointParent);
         currentObjective = currentCheckpoint.transform;
+        minimapController.ShowCheckpoint(currentCheckpoint.transform);
     }
 
-    private void SpawnNextObjective(Transform objectiveTransform)
+    public void SpawnNextObjective(Transform objectiveTransform)
     {
         if (objectiveTransform == null)
         {
@@ -86,7 +75,7 @@ public class EndlessRunManager : MonoBehaviour
         Waypoint randomWaypoint;
         do
         {
-            randomWaypoint = waypoints[Random.Range(0, waypoints.Length)];
+            randomWaypoint = waypointGenerator.Waypoints[Random.Range(0, waypointGenerator.Waypoints.Count)];
         }
         while (randomWaypoint == currentWaypoint);
         return randomWaypoint;
@@ -115,5 +104,10 @@ public class EndlessRunManager : MonoBehaviour
     public void CleanCurrentObjective()
     {
         currentObjective = null;
+    }
+
+    public void ClearCheckpoint()
+    {
+        minimapController.HideCheckpoint(currentObjective.transform);
     }
 }

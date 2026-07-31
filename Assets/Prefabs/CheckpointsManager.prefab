@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 401087995844280191}
-  - component: {fileID: 3830473093162732603}
   - component: {fileID: 5017480667057680537}
   - component: {fileID: 5337330996471400174}
+  - component: {fileID: 8717839489982644810}
   m_Layer: 0
-  m_Name: EndlessRunManager
+  m_Name: CheckpointsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,27 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3830473093162732603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789753198260421151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1d0d9a2341221478fbe032412e7aff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EndlessRunManager
-  collectibleManager: {fileID: 0}
-  travelTimeCalculator: {fileID: 0}
-  postCheckpointHigh: {fileID: 4790226968144365861, guid: 17941dbe32eef6e43a3e6a27e6801493, type: 3}
-  postCheckpointMid: {fileID: 5768456031763822653, guid: 93097110303e1cd40b3b9559ebada71f, type: 3}
-  postCheckpointLow: {fileID: 5852687535155311535, guid: 12eeca775d62eb244b65b97190239beb, type: 3}
-  gpsCheckpoint: {fileID: 6919231965962774971, guid: 9f54df23e7b14f549952709c298d3291, type: 3}
-  checkpointParent: {fileID: 0}
-  playerTransform: {fileID: 0}
-  lowMusic: {fileID: 8300000, guid: a449d11b625d5a7438acae72a9d837a3, type: 3}
 --- !u!114 &5017480667057680537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +87,25 @@ MonoBehaviour:
   highHeightRange: {x: 151, y: 240}
   xRange: {x: 5, y: 855}
   zRange: {x: 5, y: 775}
+--- !u!114 &8717839489982644810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789753198260421151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af0481f6224ca441a9431dd7128a526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckpointsManager
+  collectibleManager: {fileID: 0}
+  minimapController: {fileID: 0}
+  travelTimeCalculator: {fileID: 0}
+  postCheckpointHigh: {fileID: 4790226968144365861, guid: 17941dbe32eef6e43a3e6a27e6801493, type: 3}
+  postCheckpointMid: {fileID: 5768456031763822653, guid: 93097110303e1cd40b3b9559ebada71f, type: 3}
+  postCheckpointLow: {fileID: 5852687535155311535, guid: 12eeca775d62eb244b65b97190239beb, type: 3}
+  gpsCheckpoint: {fileID: 6919231965962774971, guid: 9f54df23e7b14f549952709c298d3291, type: 3}
+  checkpointParent: {fileID: 0}
+  playerTransform: {fileID: 0}
+  lowMusic: {fileID: 8300000, guid: a449d11b625d5a7438acae72a9d837a3, type: 3}

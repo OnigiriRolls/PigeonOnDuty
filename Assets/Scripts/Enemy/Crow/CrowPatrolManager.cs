@@ -53,31 +53,20 @@ public class CrowPatrolManager : MonoBehaviour
         {
             SpawnCrowInCell(cells[i], cellSize);
         }
-        Debug.Log(patrolZones.Count);
     }
 
     private void SpawnCrowInCell(Vector2Int cell, float cellSize)
     {
         float maxOffset = (cellSize - patrolRadius * 2f) * 0.5f;
         Vector3 cellCenter = new(worldMin.x + (cell.x + 0.5f) * cellSize, 0f, worldMin.y + (cell.y + 0.5f) * cellSize);
-        //for (int attempt = 0; attempt < maxSpawnAttempts; attempt++)
-        //{
         Vector2 offset = Random.insideUnitCircle * maxOffset;
         Vector3 position = cellCenter + new Vector3(offset.x, Random.Range(minHeight, maxHeight), offset.y);
-
-        //if (Physics.CheckSphere(position, obstacleCheckRadius, obstacleMask))
-        //    continue;
-
         PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, spawnParent);
         zone.InitPatrolPoints(patrolRadius);
         patrolZones.Add(zone);
         StealerCrowController crow = Instantiate(crowStealerPrefab, position, Quaternion.identity, spawnParent);
         crow.Initialize(player, zone, despawnPoint);
         crows.Add(crow);
-        //    return;
-        //}
-
-        //Debug.Log("Couldn't spawn crow in cell.");
     }
 
     private void Shuffle<T>(IList<T> list)

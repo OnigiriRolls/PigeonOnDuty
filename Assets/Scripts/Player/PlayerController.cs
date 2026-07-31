@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         if (mission is DeliveryMission deliveryMission)
             throttleMultiplier = deliveryMission.throttleMultiplier;
+        else throttleMultiplier = 1f;
     }
 
     private void HandleInputs()

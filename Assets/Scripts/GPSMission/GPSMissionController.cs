@@ -14,13 +14,14 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private float minimumDistance = 300f;
     [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
+    [SerializeField] private CollectibleManager collectibleManager;
 
     private GPSMissionState state;
     private GPSMission activeMission;
     private HumanFollower currentHuman;
     private float lostTimer;
     private bool missionRunning;
-    private EndlessRunManager endlessRunManager;
+    private CheckpointsManager endlessRunManager;
 
     public enum GPSMissionState
     {
@@ -31,7 +32,7 @@ public class GPSMissionController : MonoBehaviour
 
     private void Start()
     {
-        endlessRunManager = FindAnyObjectByType<EndlessRunManager>();
+        endlessRunManager = FindAnyObjectByType<CheckpointsManager>();
     }
 
     public void StartMission(GPSMission mission)
@@ -77,7 +78,8 @@ public class GPSMissionController : MonoBehaviour
         GPSDestination destination = GetRandomDestination();
         paradeManager.SpawnParades(currentHuman.transform.position, destination.transform.position);
         endlessRunManager.CleanCurrentObjective();
-        endlessRunManager.SpawnNextObjectiveAndCollectibles(destination.transform);
+        endlessRunManager.SpawnNextObjective(destination.transform);
+        collectibleManager.StartContinuousCoinSpawning(player);
         float duration = travelTimeCalculator.CalculateTime(destination.transform, activeMission.timeBuffer);
         missionTimer.StartTimer(duration);
         hintUI.Show("Escort the Human", 4f);
@@ -164,5 +166,6 @@ public class GPSMissionController : MonoBehaviour
         missionTimer.StopTimer();
         paradeManager.ClearAllParades();
         missionRunning = false;
+        collectibleManager.StopContinuousCoinSpawning();
     }
 }
