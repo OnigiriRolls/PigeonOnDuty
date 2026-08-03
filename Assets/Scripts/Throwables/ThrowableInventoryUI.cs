@@ -40,6 +40,9 @@ public class ThrowableInventoryUI : MonoBehaviour
                 continue;
             }
             InventorySlot slot = inventory.Slots[i];
+            slots[i].gameObject.SetActive(slot.Enabled);
+            if (!slot.Enabled)
+                continue;
             slots[i].Setup(slot.Item, slot.Amount, slot.Item == inventory.SelectedItem);
         }
     }

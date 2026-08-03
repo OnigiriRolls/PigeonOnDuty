@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,9 +19,6 @@ public class HumanFollower : MonoBehaviour, INPCMovement
 
     [SerializeField] private LayerMask paradeZoneLayer;
     [SerializeField] private float maxDistraction = 100f;
-    [SerializeField] private float distractionDecayRate = 25f;
-    [SerializeField] private float distractionRecoveryRate = 10f;
-    [SerializeField] private float paradeCheckRadius = 0.5f;
     [SerializeField] private float distractionReactionTime = 5f;
     [SerializeField] private float recallDuration = 2f;
     [SerializeField] private float paradeDuration = 10f;
@@ -38,6 +36,8 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     private NavMeshAgent agent;
     private bool speedApplied;
     private float initialSpeed;
+    private bool isInParade;
+    private ParadeController currentParade;
 
     private void Awake()
     {
@@ -47,6 +47,7 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         agent = GetComponent<NavMeshAgent>();
         ChangeState(new FollowingState(this));
         initialSpeed = agent.speed;
+        isInParade = false;
     }
 
     public void Initialize(Transform targetToFollow)
@@ -61,7 +62,6 @@ public class HumanFollower : MonoBehaviour, INPCMovement
 
     private void FixedUpdate()
     {
-        UpdateDistraction();
         currentState?.FixedUpdate();
     }
 
@@ -72,31 +72,29 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         currentState.Enter();
     }
 
-    private void UpdateDistraction()
+    public void NotifyParadeNearby(ParadeController parade)
     {
-        if (IsInsideParade())
-        {
-            distractionMeter -= distractionDecayRate * Time.fixedDeltaTime;
-            Debug.DrawRay(transform.position, Vector3.forward * 5f, Color.red);
-        }
-        else
-            distractionMeter += distractionRecoveryRate * Time.fixedDeltaTime;
-        distractionMeter = Mathf.Clamp(distractionMeter, 0f, maxDistraction);
+        isInParade = true;
+        currentParade = parade;
     }
 
-    private bool IsInsideParade()
+    public bool IsInParade()
     {
-        return Physics.CheckSphere(transform.position, paradeCheckRadius, paradeZoneLayer);
+        return isInParade;
     }
 
-    public bool IsDistracted()
+    public bool IsNearParade()
     {
-        return distractionMeter <= 0f;
+        if (currentParade == null)
+            return false;
+
+        return Vector3.Distance(transform.position, currentParade.transform.position) < 105f;
     }
 
     public void RefreshDistractionMeter()
     {
         distractionMeter = maxDistraction;
+        isInParade = false;
     }
 
     public void ShowMessage(string message)
@@ -145,13 +143,39 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         Vector3 targetPosition = target.position;
         targetPosition.y = transform.position.y;
         agent.SetDestination(targetPosition);
-        bool isInsideParade = IsInsideParade();
-        if (isInsideParade && !speedApplied)
+        if (isInParade && !speedApplied)
         {
-            agent.speed = agent.speed * paradeSpeedMultiplier;
+            agent.speed *= paradeSpeedMultiplier;
             speedApplied = true;
         }
-        if (!isInsideParade)
+        if (!isInParade && speedApplied)
+        {
+            speedApplied = false;
+            agent.speed = initialSpeed;
+        }
+        CurrentSpeed = agent.velocity.magnitude;
+    }
+
+    public void FollowParade()
+    {
+        if (currentParade == null)
+        {
+            StopAgent();
+            return;
+        }
+        agent.isStopped = false;
+        Vector3 targetPosition = currentParade.transform.position;
+        targetPosition.y = transform.position.y;
+        if (Vector3.Distance(transform.position, targetPosition) > 4f)
+        {
+            agent.SetDestination(targetPosition);
+        }
+        if (isInParade && !speedApplied)
+        {
+            agent.speed *= paradeSpeedMultiplier;
+            speedApplied = true;
+        }
+        if (!isInParade && speedApplied)
         {
             speedApplied = false;
             agent.speed = initialSpeed;
@@ -162,5 +186,18 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     public bool CanInteract()
     {
         return interactionZone.PlayerInside;
+    }
+
+    internal void OnDogScared()
+    {
+        if (currentState is DogCaughtState)
+            return;
+        ChangeState(new DogCaughtState(this));
+    }
+
+    internal void OnDogGone()
+    {
+        if (currentState is DogCaughtState)
+            ChangeState(new FollowingState(this));
     }
 }

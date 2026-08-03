@@ -7,6 +7,10 @@ public class WaypointGenerator : MonoBehaviour
     public int lowWaypoints = 0;
     public int midWaypoints = 0;
     public int highWaypoints = 0;
+    public float MinX => xRange.x;
+    public float MaxX => xRange.y;
+    public float MinZ => zRange.x;
+    public float MaxZ => zRange.y;
     public IReadOnlyList<Waypoint> Waypoints => waypoints;
 
     [Header("References")]

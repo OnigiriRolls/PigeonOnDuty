@@ -13,6 +13,7 @@ public class CheckpointsManager : MonoBehaviour
     [SerializeField] private GameObject postCheckpointLow;
     [SerializeField] private GameObject gpsCheckpoint;
     [SerializeField] private Transform checkpointParent;
+    [SerializeField] private Transform gpsCheckpointParent;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private AudioClip lowMusic;
 
@@ -57,8 +58,10 @@ public class CheckpointsManager : MonoBehaviour
             Destroy(currentObjective.gameObject);
         }
 
-        GameObject currentCheckpoint = Instantiate(gpsCheckpoint, objectiveTransform.position, objectiveTransform.rotation, checkpointParent);
+        Vector3 spawnPosition = objectiveTransform.position + objectiveTransform.forward * 30f;
+        GameObject currentCheckpoint = Instantiate(gpsCheckpoint, spawnPosition, objectiveTransform.rotation, gpsCheckpointParent);
         currentObjective = currentCheckpoint.transform;
+        minimapController.ShowCheckpoint(currentCheckpoint.transform);
     }
 
     private GameObject GetPostCheckpointPrefab(AltitudeLayer layer)
@@ -99,6 +102,7 @@ public class CheckpointsManager : MonoBehaviour
     public void SetCurrentObjective(Transform target)
     {
         currentObjective = target;
+        minimapController.ShowCheckpoint(target.transform);
     }
 
     public void CleanCurrentObjective()

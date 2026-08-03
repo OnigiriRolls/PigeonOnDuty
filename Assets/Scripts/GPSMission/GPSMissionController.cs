@@ -11,17 +11,25 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private Transform gpsDestinationParent;
     [SerializeField] private HintUI hintUI;
     [SerializeField] private ParadeManager paradeManager;
+    [SerializeField] private CityParadeManager cityParadeManager;
     [SerializeField] private float minimumDistance = 300f;
     [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private CollectibleManager collectibleManager;
+    [SerializeField] private MinimapMissionController minimapController;
+    [SerializeField] private GPSDogManager dogManager;
+    [SerializeField] private ThrowableInventory playerInventory;
+    [SerializeField] private ThrowableData featherData;
+    [SerializeField] private ThrowableData newspaperData;
+    [SerializeField] private FeatherPickupSpawner featherSpawner;
 
     private GPSMissionState state;
     private GPSMission activeMission;
     private HumanFollower currentHuman;
     private float lostTimer;
     private bool missionRunning;
-    private CheckpointsManager endlessRunManager;
+    private CheckpointsManager checkpointsManager;
+    private GPSDestination currentDestination;
 
     public enum GPSMissionState
     {
@@ -32,7 +40,7 @@ public class GPSMissionController : MonoBehaviour
 
     private void Start()
     {
-        endlessRunManager = FindAnyObjectByType<CheckpointsManager>();
+        checkpointsManager = FindAnyObjectByType<CheckpointsManager>();
     }
 
     public void StartMission(GPSMission mission)
@@ -46,7 +54,7 @@ public class GPSMissionController : MonoBehaviour
         lostTimer = 0f;
         missionRunning = true;
         state = GPSMissionState.ReachTraveler;
-        endlessRunManager.SetCurrentObjective(currentHuman.transform);
+        checkpointsManager.SetCurrentObjective(currentHuman.transform);
         float duration = travelTimeCalculator.CalculateTime(currentHuman.transform, activeMission.timeBuffer);
         missionTimer.StartTimer(duration);
         hintUI.Show("Find the Human");
@@ -72,16 +80,26 @@ public class GPSMissionController : MonoBehaviour
     private void StartEscort()
     {
         state = GPSMissionState.EscortTraveler;
+        checkpointsManager.ClearCheckpoint();
         currentHuman.Initialize(player);
         currentHuman.HideInteractionCircle();
         currentHuman.ShowMessage("Let's go!");
-        GPSDestination destination = GetRandomDestination();
-        paradeManager.SpawnParades(currentHuman.transform.position, destination.transform.position);
-        endlessRunManager.CleanCurrentObjective();
-        endlessRunManager.SpawnNextObjective(destination.transform);
+        currentDestination = GetRandomDestination();
+        minimapController.ShowClient(currentHuman.transform);
+        dogManager.GenerateDogs();
+        playerInventory.SetAmount(newspaperData, 0);
+        playerInventory.SetAmount(featherData, 3);
+        playerInventory.SetEnabled(newspaperData, false);
+        playerInventory.SetEnabled(featherData, true);
+        playerInventory.Select(featherData);
+        //paradeManager.SpawnParades(currentHuman.transform.position, currentDestination.transform.position);
+        cityParadeManager.Initialize(player.transform, currentDestination.transform.position);
+        checkpointsManager.CleanCurrentObjective();
+        checkpointsManager.SpawnNextObjective(currentDestination.transform);
         collectibleManager.StartContinuousCoinSpawning(player);
-        float duration = travelTimeCalculator.CalculateTime(destination.transform, activeMission.timeBuffer);
+        float duration = travelTimeCalculator.CalculateTime(currentDestination.transform, activeMission.timeBuffer);
         missionTimer.StartTimer(duration);
+        featherSpawner.StartSpawn();
         hintUI.Show("Escort the Human", 4f);
     }
 
@@ -163,9 +181,16 @@ public class GPSMissionController : MonoBehaviour
 
     private void ClearMission()
     {
+        minimapController.HideClient(currentHuman.transform);
         missionTimer.StopTimer();
-        paradeManager.ClearAllParades();
+        //paradeManager.ClearAllParades();
+        cityParadeManager.Clear();
         missionRunning = false;
+        checkpointsManager.ClearCheckpoint();
         collectibleManager.StopContinuousCoinSpawning();
+        dogManager.Clear();
+        playerInventory.SetAmount(featherData, 0);
+        playerInventory.SetEnabled(featherData, false);
+        featherSpawner.StopSpawn();
     }
 }

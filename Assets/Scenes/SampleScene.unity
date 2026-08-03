@@ -711,6 +711,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7b69e5a4e065478559ba930750433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParadeSpawnPoint
+--- !u!1 &85126418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85126419}
+  - component: {fileID: 85126420}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (19)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85126419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85126418}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 473.4, y: 1.4, z: 742}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &85126420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85126418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!114 &95312743 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5855582637689201315, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
@@ -1115,6 +1159,59 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.0050000004, y: 2.072, z: 0.030000001}
   m_TimeToStationary: 0.5
+--- !u!1 &157733833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157733834}
+  - component: {fileID: 157733835}
+  m_Layer: 0
+  m_Name: CityParadeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &157733834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157733833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 659103897}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &157733835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157733833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e36100a7f949ca45843561fc505c229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CityParadeManager
+  paradePrefab: {fileID: 3610027339250311603, guid: 060ccc9bffdaf0b42ae8781e6b298773, type: 3}
+  paradePointsParent: {fileID: 412899728}
+  paradeCount: 3
+  activationDistance: 120
+  followPlayerProbabilities:
+  - 0.8
+  - 0.5
+  - 0.3
+  spawnPriorityIndices: 000000000200000004000000
 --- !u!1 &157779275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4807061756498225772, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -1744,7 +1841,6 @@ Transform:
   - {fileID: 1768051322}
   - {fileID: 1457097895}
   - {fileID: 1462272995}
-  - {fileID: 1245119265}
   - {fileID: 547507114}
   m_Father: {fileID: 354423832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2308,7 +2404,7 @@ Transform:
   - {fileID: 102518371}
   - {fileID: 873567823}
   - {fileID: 179688214}
-  - {fileID: 1791866457}
+  - {fileID: 659103897}
   - {fileID: 255613507}
   - {fileID: 1659997054}
   - {fileID: 1131372081}
@@ -2609,6 +2705,50 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.003, y: 1.0940001, z: -0.194}
   m_TimeToStationary: 0.5
+--- !u!1 &388830976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388830977}
+  - component: {fileID: 388830978}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388830977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388830976}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 659, y: 1.4, z: 116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388830978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388830976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!1 &390076862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5831617051146272811, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -2673,6 +2813,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1462548275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &394909062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394909063}
+  - component: {fileID: 394909064}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &394909063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394909062}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 659, y: 1.4, z: 302.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &394909064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394909062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!1 &400387021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4577096712038212541, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -2953,14 +3137,21 @@ Transform:
   - {fileID: 1250004503}
   - {fileID: 105594575}
   - {fileID: 1098799800}
+  - {fileID: 1874872356}
+  - {fileID: 85126419}
   - {fileID: 1904879627}
   - {fileID: 1425219256}
+  - {fileID: 1550726909}
+  - {fileID: 595894428}
   - {fileID: 1627709129}
   - {fileID: 939591845}
   - {fileID: 1914370244}
   - {fileID: 301242050}
   - {fileID: 1106449906}
   - {fileID: 23688972}
+  - {fileID: 1297415583}
+  - {fileID: 394909063}
+  - {fileID: 388830977}
   - {fileID: 2076379614}
   - {fileID: 2050317379}
   - {fileID: 173625472}
@@ -3665,6 +3856,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.006, y: 1.2160001, z: -0.193}
   m_TimeToStationary: 0.5
+--- !u!1 &544856541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544856542}
+  m_Layer: 0
+  m_Name: GPSCheckpointParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544856542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544856541}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1462548275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &547507113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4188,6 +4410,50 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.002, y: 1.1550001, z: -0.193}
   m_TimeToStationary: 0.5
+--- !u!1 &595894427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595894428}
+  - component: {fileID: 595894429}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &595894428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595894427}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 338.4, y: 1.4, z: 706}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595894429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595894427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!1 &598455217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,6 +4573,60 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.0050000004, y: 2.072, z: 0.030000001}
   m_TimeToStationary: 0.5
+--- !u!1 &612124483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612124484}
+  - component: {fileID: 612124486}
+  m_Layer: 0
+  m_Name: DogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612124484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612124483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 659103897}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &612124486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612124483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefe47e44d31c39429d4cb6b164f7914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSDogManager
+  patrolZonePrefab: {fileID: 3210125958476753058, guid: 954bf15c3ad95264190847b6d47598b9, type: 3}
+  dogPrefab: {fileID: 6657516981290914822, guid: 854a60791b10fca47a09a91cf7e7f263, type: 3}
+  dogParent: {fileID: 211090430}
+  worldMin: {x: 60, y: 80}
+  worldMax: {x: 840, y: 700}
+  height: 0.1
+  gridX: 3
+  gridZ: 3
+  dogZoneCount: 8
+  patrolRadius: 70
 --- !u!114 &612695466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 861698394859312938, guid: 17fc699b33291994f8102147efa62455, type: 3}
@@ -4556,8 +4876,8 @@ MonoBehaviour:
   newsMissionController: {fileID: 937640229}
   normalMissionController: {fileID: 707793893}
   gameManager: {fileID: 438445163}
-  isNewsMissionActive: 1
-  isGPSMissionActive: 0
+  isNewsMissionActive: 0
+  isGPSMissionActive: 1
   areAllMissionsActive: 0
   missionTimer: {fileID: 503221261}
 --- !u!1 &653847633 stripped
@@ -4614,6 +4934,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975d9fd11b5f66947a64183f36228b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedestrianWaypoint
+--- !u!1 &659103896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659103897}
+  m_Layer: 0
+  m_Name: GPSMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &659103897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659103896}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1791866457}
+  - {fileID: 1245119265}
+  - {fileID: 157733834}
+  - {fileID: 612124484}
+  m_Father: {fileID: 354423832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671664255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8307692845992021839, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
@@ -5532,14 +5887,21 @@ MonoBehaviour:
   - {fileID: 1250004504}
   - {fileID: 105594576}
   - {fileID: 1098799801}
+  - {fileID: 1874872357}
+  - {fileID: 85126420}
   - {fileID: 1904879628}
   - {fileID: 1425219257}
+  - {fileID: 1550726910}
+  - {fileID: 595894429}
   - {fileID: 1627709130}
   - {fileID: 939591846}
   - {fileID: 1914370245}
   - {fileID: 301242051}
   - {fileID: 1106449907}
   - {fileID: 23688973}
+  - {fileID: 1297415584}
+  - {fileID: 394909064}
+  - {fileID: 388830978}
   - {fileID: 2076379615}
   - {fileID: 2050317380}
   - {fileID: 173625473}
@@ -5946,7 +6308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &973743261
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6200,7 +6562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &995848015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6799,7 +7161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1087885001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7625,7 +7987,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 255613507}
+  m_Father: {fileID: 659103897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1245119266
 MonoBehaviour:
@@ -7939,6 +8301,50 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.006, y: 1.2160001, z: -0.193}
   m_TimeToStationary: 0.5
+--- !u!1 &1297415582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1297415583}
+  - component: {fileID: 1297415584}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1297415583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297415582}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 659, y: 1.4, z: 480}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297415584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297415582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!1 &1299428467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4796976446629979755, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -8772,6 +9178,7 @@ Transform:
   m_Children:
   - {fileID: 412899728}
   - {fileID: 1055828731}
+  - {fileID: 544856542}
   - {fileID: 598455218}
   - {fileID: 1865137281}
   - {fileID: 211090430}
@@ -9141,6 +9548,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7b69e5a4e065478559ba930750433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParadeSpawnPoint
+--- !u!1 &1550726908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550726909}
+  - component: {fileID: 1550726910}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1550726909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550726908}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 338.4, y: 1.4, z: 479}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550726910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550726908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!1 &1555815906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1401909160867006362, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -10288,7 +10739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 354423832}
+  m_Father: {fileID: 659103897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1791866458
 MonoBehaviour:
@@ -10309,10 +10760,17 @@ MonoBehaviour:
   gpsDestinationParent: {fileID: 4519225368683084398}
   hintUI: {fileID: 1889079388895480468}
   paradeManager: {fileID: 1245119266}
+  cityParadeManager: {fileID: 157733835}
   minimumDistance: 300
   missionTimer: {fileID: 503221261}
   travelTimeCalculator: {fileID: 503221262}
   collectibleManager: {fileID: 622098704}
+  minimapController: {fileID: 379032750}
+  dogManager: {fileID: 612124486}
+  playerInventory: {fileID: 12916799}
+  featherData: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
+  newspaperData: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
+  featherSpawner: {fileID: 1363443664}
 --- !u!1 &1814445605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1140854019855486496, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -10844,6 +11302,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7b69e5a4e065478559ba930750433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParadeSpawnPoint
+--- !u!1 &1874872355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874872356}
+  - component: {fileID: 1874872357}
+  m_Layer: 0
+  m_Name: GPSHumanSpawnPoint (18)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874872356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874872355}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 473.4, y: 1.4, z: 412}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412899728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1874872357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874872355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af34f9a9a2af824f81651f1ece23c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedestrianSpawnpoint
 --- !u!1 &1875788215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8415593163561326978, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -12661,6 +13163,10 @@ PrefabInstance:
       propertyPath: deathReasonText
       value: 
       objectReference: {fileID: 1117591398}
+    - target: {fileID: 5343591047319147742, guid: b58bf46239a362a4abaf0ea183ea00ff, type: 3}
+      propertyPath: slots.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -16426,6 +16932,10 @@ PrefabInstance:
       propertyPath: collectibleManager
       value: 
       objectReference: {fileID: 622098704}
+    - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
+      propertyPath: gpsCheckpointParent
+      value: 
+      objectReference: {fileID: 544856542}
     - target: {fileID: 8717839489982644810, guid: c55a4ad660e81a444abc3c60c9630a7e, type: 3}
       propertyPath: travelTimeCalculator
       value: 

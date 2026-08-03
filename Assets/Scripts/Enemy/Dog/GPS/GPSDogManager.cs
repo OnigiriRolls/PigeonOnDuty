@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DogPatrolManager : MonoBehaviour
+public class GPSDogManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PatrolZone patrolZonePrefab;
-    [SerializeField] private DogController dogPrefab;
+    [SerializeField] private GPSDogController dogPrefab;
     [SerializeField] private Transform dogParent;
 
     [Header("City")]
@@ -20,19 +20,16 @@ public class DogPatrolManager : MonoBehaviour
     [SerializeField] private float patrolRadius = 60f;
 
     private readonly List<PatrolZone> patrolZones = new();
-    private readonly List<DogController> dogs = new();
+    private readonly List<GPSDogController> dogs = new();
 
     public void GenerateDogs()
     {
-        ClearDogs();
-        ClearPatrolZones();
+        Clear();
         List<Bounds> cells = CreateGridCells();
         Shuffle(cells);
         int count = Mathf.Min(dogZoneCount, cells.Count);
         for (int i = 0; i < count; i++)
-        {
             CreateDogZone(cells[i]);
-        }
     }
 
     private void CreateDogZone(Bounds cell)
@@ -40,10 +37,10 @@ public class DogPatrolManager : MonoBehaviour
         Vector3 position = RandomPointInside(cell);
         PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, dogParent);
         zone.InitNavMeshPoints(patrolRadius);
-        DogController dog = Instantiate(dogPrefab, position, Quaternion.identity, dogParent);
-        dogs.Add(dog);
+        GPSDogController dog = Instantiate(dogPrefab, position, Quaternion.identity, dogParent);
         dog.PatrolZone = zone;
         patrolZones.Add(zone);
+        dogs.Add(dog);
     }
 
     private List<Bounds> CreateGridCells()
@@ -62,7 +59,9 @@ public class DogPatrolManager : MonoBehaviour
                 float minCellZ = worldMin.y + z * cellDepth;
                 float maxCellZ = minCellZ + cellDepth;
                 Bounds cell = new Bounds();
-                cell.SetMinMax(new Vector3(minCellX, height, minCellZ), new Vector3(maxCellX, height, maxCellZ));
+                cell.SetMinMax(
+                    new Vector3(minCellX, height, minCellZ),
+                    new Vector3(maxCellX, height, maxCellZ));
                 cells.Add(cell);
             }
         }
@@ -86,21 +85,16 @@ public class DogPatrolManager : MonoBehaviour
         }
     }
 
-    public void ClearDogs()
+    public void Clear()
     {
-        foreach (DogController dog in dogs)
+        foreach (GPSDogController dog in dogs)
         {
-            if (dog != null)
-            {
-                dog.Deactivate();
-                Destroy(dog.gameObject);
-            }
+            if (dog == null)
+                continue;
+            dog.Deactivate();
+            Destroy(dog.gameObject);
         }
         dogs.Clear();
-    }
-
-    public void ClearPatrolZones()
-    {
         foreach (PatrolZone zone in patrolZones)
         {
             if (zone != null)

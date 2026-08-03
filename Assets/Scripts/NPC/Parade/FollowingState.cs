@@ -24,8 +24,8 @@ public class FollowingState : IGPSHumanState
     {
         human.StateProgress = human.DistractionPercent;
         human.FollowTarget();
-        if (human.IsDistracted())
-            human.ChangeState(new DistractedState(human));
+        if (human.IsInParade())
+            human.ChangeState(new FollowingParadeState(human));
     }
 
     public void FixedUpdate()

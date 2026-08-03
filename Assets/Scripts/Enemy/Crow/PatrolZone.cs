@@ -11,6 +11,7 @@ public class PatrolZone : MonoBehaviour
     public Vector3 Center => transform.position;
     public float Radius => radius;
     public bool IsPlayerInside { get; private set; }
+    public HumanFollower CurrentHuman { get; private set; }
 
     [SerializeField] private float radius = 60f;
     [SerializeField] private LayerMask obstacleMask;
@@ -121,6 +122,10 @@ public class PatrolZone : MonoBehaviour
             NewspaperProjectile newspaper = other.GetComponent<NewspaperProjectile>();
             newspapers.Add(newspaper);
         }
+        else if (other.CompareTag("GPSHuman"))
+        {
+            CurrentHuman = other.GetComponent<HumanFollower>();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -131,6 +136,10 @@ public class PatrolZone : MonoBehaviour
         {
             NewspaperProjectile newspaper = other.GetComponent<NewspaperProjectile>();
             newspapers.Remove(newspaper);
+        }
+        else if (other.CompareTag("GPSHuman"))
+        {
+            CurrentHuman = null;
         }
     }
 

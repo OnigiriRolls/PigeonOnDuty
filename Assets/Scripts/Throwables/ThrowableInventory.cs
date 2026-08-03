@@ -26,20 +26,37 @@ public class ThrowableInventory : MonoBehaviour
         if (slots.Count == 0)
             return;
 
-        selectedIndex++;
-        if (selectedIndex >= slots.Count)
-            selectedIndex = 0;
-        OnSelectionChanged?.Invoke(SelectedItem);
+        int start = selectedIndex;
+        do
+        {
+            selectedIndex++;
+            if (selectedIndex >= slots.Count)
+                selectedIndex = 0;
+            if (slots[selectedIndex].Enabled)
+            {
+                OnSelectionChanged?.Invoke(SelectedItem);
+                return;
+            }
+        } while (selectedIndex != start);
     }
 
     public void SelectPrevious()
     {
         if (slots.Count == 0)
             return;
-        selectedIndex--;
-        if (selectedIndex < 0)
-            selectedIndex = slots.Count - 1;
-        OnSelectionChanged?.Invoke(SelectedItem);
+
+        int start = selectedIndex;
+        do
+        {
+            selectedIndex--;
+            if (selectedIndex < 0)
+                selectedIndex = slots.Count - 1;
+            if (slots[selectedIndex].Enabled)
+            {
+                OnSelectionChanged?.Invoke(SelectedItem);
+                return;
+            }
+        } while (selectedIndex != start);
     }
 
     public bool TryConsume(ThrowableData item)
@@ -52,6 +69,21 @@ public class ThrowableInventory : MonoBehaviour
         slot.Amount--;
         OnInventoryChanged?.Invoke(item, slot.Amount);
         return true;
+    }
+
+    public void SetEnabled(ThrowableData item, bool enabled)
+    {
+        InventorySlot slot = GetSlot(item);
+        if (slot == null)
+            return;
+        if (slot.Enabled == enabled)
+            return;
+        slot.Enabled = enabled;
+        if (!enabled && SelectedItem == item)
+            SelectNext();
+        if (enabled)
+            OnSelectionChanged?.Invoke(SelectedItem);
+        OnInventoryChanged?.Invoke(item, slot.Amount);
     }
 
     public void Add(ThrowableData item, int amount)

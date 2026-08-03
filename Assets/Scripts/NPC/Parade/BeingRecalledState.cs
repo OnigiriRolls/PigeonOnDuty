@@ -25,9 +25,10 @@ public class BeingRecalledState : IGPSHumanState
 
     public void Update()
     {
+        human.FollowParade();
         if (!human.CanInteract())
         {
-            human.ChangeState(new DistractedState(human));
+            human.ChangeState(new FollowingParadeState(human));
             return;
         }
         if (!Input.GetKey(KeyCode.E))
@@ -43,7 +44,7 @@ public class BeingRecalledState : IGPSHumanState
             human.StateLabel = "";
             human.HideInteractionCircle();
             human.ShowMessage("I lost you for a second...");
-            human.ChangeState(new FollowingState(human));
+            human.ChangeState(new ReturningState(human));
         }
     }
 
