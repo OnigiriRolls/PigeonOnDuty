@@ -1206,7 +1206,6 @@ MonoBehaviour:
   paradePrefab: {fileID: 3610027339250311603, guid: 060ccc9bffdaf0b42ae8781e6b298773, type: 3}
   paradePointsParent: {fileID: 412899728}
   paradeCount: 3
-  activationDistance: 120
   followPlayerProbabilities:
   - 0.8
   - 0.5
@@ -1482,7 +1481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211090430}
   m_Layer: 0
-  m_Name: Dogs
+  m_Name: CrowsDogs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4584,7 +4583,7 @@ GameObject:
   - component: {fileID: 612124484}
   - component: {fileID: 612124486}
   m_Layer: 0
-  m_Name: DogManager
+  m_Name: EnemyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4619,13 +4618,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GPSDogManager
   patrolZonePrefab: {fileID: 3210125958476753058, guid: 954bf15c3ad95264190847b6d47598b9, type: 3}
   dogPrefab: {fileID: 6657516981290914822, guid: 854a60791b10fca47a09a91cf7e7f263, type: 3}
-  dogParent: {fileID: 211090430}
+  crowPrefab: {fileID: 5900547600573309630, guid: 8323ec93b5c781248bc882f4a303920b, type: 3}
+  player: {fileID: 1517355606}
+  despawnPoint: {fileID: 255600296}
+  enemyParent: {fileID: 211090430}
   worldMin: {x: 60, y: 80}
   worldMax: {x: 840, y: 700}
   height: 0.1
-  gridX: 3
-  gridZ: 3
-  dogZoneCount: 8
+  minHeight: 30
+  maxHeight: 60
+  gridX: 4
+  gridZ: 4
+  dogCount: 6
+  crowCount: 6
   patrolRadius: 70
 --- !u!114 &612695466 stripped
 MonoBehaviour:

@@ -28,13 +28,15 @@ public class BeingRecalledState : IGPSHumanState
         human.FollowParade();
         if (!human.CanInteract())
         {
-            human.ChangeState(new FollowingParadeState(human));
+            //human.ChangeState(new FollowingParadeState(human));
+            human.ShowHint("Get closer!");
             return;
         }
+        human.ShowHint("Hold [E]...");
         if (!Input.GetKey(KeyCode.E))
         {
-            recallProgress = 0f;
-            human.StateProgress = 0f;
+            //recallProgress = 0f;
+            //human.StateProgress = 0f;
             return;
         }
         recallProgress += Time.deltaTime;

@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class StealerCrowController : BaseCrowController, IThrowTarget, IProjectileTarget
+public class PatrolCrowController : BaseCrowController, IProjectileTarget, IThrowTarget
 {
-    public Transform AimPoint => transform;
     public PatrolZone PatrolZone { get; protected set; }
-    public bool HasStolenItem => carriedItem != null;
+    public Transform AimPoint => transform;
 
-    [SerializeField] private CarryVisual carryVisual;
     [SerializeField] private GameObject targetRing;
     [SerializeField] private GameObject confusedIcon;
 
-    private ThrowableData carriedItem;
     private Transform despawnPoint;
 
     public void Initialize(Transform player, PatrolZone patrolZone, Transform despawnPoint)
@@ -23,30 +20,12 @@ public class StealerCrowController : BaseCrowController, IThrowTarget, IProjecti
 
     public override void OnPlayerHit()
     {
-        if (HasStolenItem)
-            return;
-        ThrowableData stolenItem = config.ability.Execute(playerController);
-        if (stolenItem == null)
-            return;
-        carriedItem = stolenItem;
-        carryVisual.Show(stolenItem);
+        config.ability.Execute(playerController);
     }
 
     public override void OnAttackFinished()
     {
         ChangeState(ReturnState);
-    }
-
-    public void DropStolenItem()
-    {
-        if (carriedItem == null)
-            return;
-
-        ThrowableProjectile projectile = Instantiate(carriedItem.projectilePrefab, transform.position, Quaternion.identity);
-        Vector3 velocity = transform.forward * 2f + Vector3.down * 4f;
-        projectile.Launch(velocity);
-        carryVisual.Hide();
-        carriedItem = null;
     }
 
     public override void MoveTowardsDespawn(float speed)
@@ -76,9 +55,6 @@ public class StealerCrowController : BaseCrowController, IThrowTarget, IProjecti
     {
         if (item.itemName != "Feather")
             return false;
-        if (!HasStolenItem)
-            return false;
-        DropStolenItem();
         ChangeState(ConfusedState);
         return true;
     }
@@ -101,7 +77,7 @@ public class StealerCrowController : BaseCrowController, IThrowTarget, IProjecti
 
     public override bool CanStartChase()
     {
-        return !HasStolenItem && PatrolZone.IsPlayerInside;
+        return PatrolZone.IsPlayerInside;
     }
 
     public override Vector3 PickNextPoint()

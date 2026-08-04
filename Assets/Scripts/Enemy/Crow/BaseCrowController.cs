@@ -10,6 +10,9 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
     public Transform Player => player;
     public CrowChaseState ChaseState { get; protected set; }
     public CrowAttackState AttackState { get; protected set; }
+    public CrowReturnState ReturnState { get; protected set; }
+    public CrowPatrolState PatrolState { get; protected set; }
+    public CrowConfusedState ConfusedState { get; protected set; }
 
     [SerializeField] protected GameObject hitEffectPrefab;
     [SerializeField] protected CrowConfig config;
@@ -27,10 +30,22 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
     private bool isDestroyed;
     private bool isActive = true;
 
+    public abstract void OnPlayerHit();
+    public abstract void OnAttackFinished();
+    public abstract void MoveTowardsDespawn(float speed);
+    public abstract bool HasReachedDespawn();
+    public abstract void TeleportToPatrol();
+    public abstract bool CanStartChase();
+    public abstract void ShowConfused(bool show);
+    public abstract Vector3 PickNextPoint();
+
     protected virtual void Awake()
     {
         ChaseState = new CrowChaseState(this);
         AttackState = new CrowAttackState(this);
+        PatrolState = new CrowPatrolState(this);
+        ReturnState = new CrowReturnState(this);
+        ConfusedState = new CrowConfusedState(this);
     }
 
     protected virtual void Update()
@@ -73,10 +88,6 @@ public abstract class BaseCrowController : StopAudio, IEnemyPursuer
         Vector3 flatRight = yawOnly * Vector3.right;
         return player.position - flatRight * config.leftOffset + playerController.Velocity * predictionTime;
     }
-
-    public abstract void OnPlayerHit();
-
-    public abstract void OnAttackFinished();
 
     protected virtual void OnTriggerEnter(Collider other)
     {

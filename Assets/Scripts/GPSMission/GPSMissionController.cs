@@ -17,7 +17,7 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private MinimapMissionController minimapController;
-    [SerializeField] private GPSDogManager dogManager;
+    [SerializeField] private GPSEnemyManager dogManager;
     [SerializeField] private ThrowableInventory playerInventory;
     [SerializeField] private ThrowableData featherData;
     [SerializeField] private ThrowableData newspaperData;
@@ -86,7 +86,7 @@ public class GPSMissionController : MonoBehaviour
         currentHuman.ShowMessage("Let's go!");
         currentDestination = GetRandomDestination();
         minimapController.ShowClient(currentHuman.transform);
-        dogManager.GenerateDogs();
+        dogManager.GenerateEnemies(currentHuman.transform.position, currentDestination.transform.position);
         playerInventory.SetAmount(newspaperData, 0);
         playerInventory.SetAmount(featherData, 3);
         playerInventory.SetEnabled(newspaperData, false);

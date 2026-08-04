@@ -48,7 +48,7 @@ MonoBehaviour:
   radius: 60
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 8256
+    m_Bits: 10304
   maxAttemptsPerPoint: 10
   pointCheckRadius: 5
   patrolPointCount: 20

@@ -1,6 +1,6 @@
 public class CrowReturnState : CrowState
 {
-    public CrowReturnState(StealerCrowController crow) : base(crow)
+    public CrowReturnState(BaseCrowController crow) : base(crow)
     {
     }
 
@@ -11,9 +11,9 @@ public class CrowReturnState : CrowState
 
     public override void UpdateState()
     {
-        ((StealerCrowController)crow).MoveTowardsDespawn(crow.Config.chaseSpeed);
-        if (!((StealerCrowController)crow).HasReachedDespawn())
+        crow.MoveTowardsDespawn(crow.Config.chaseSpeed);
+        if (!crow.HasReachedDespawn())
             return;
-        ((StealerCrowController)crow).TeleportToPatrol();
+        crow.TeleportToPatrol();
     }
 }
