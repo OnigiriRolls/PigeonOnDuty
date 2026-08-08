@@ -25,7 +25,6 @@ public class ReturningState : IGPSHumanState
         human.FollowTarget();
         if (!human.IsNearParade())
         {
-            Debug.Log("stop return state");
             human.ChangeState(new FollowingState(human));
         }
     }

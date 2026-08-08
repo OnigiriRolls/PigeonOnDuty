@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         IsGameOver = true;
         OnGameOver?.Invoke();
         AudioManager.Instance.StopAllAudio();
-        Time.timeScale = 0f;
+        PauseManager.Instance.Pause(PauseReason.GameOver);
         gameOverPanel.SetActive(true);
     }
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             return;
         IsPaused = true;
         OnPaused?.Invoke();
-        Time.timeScale = 0f;
+        PauseManager.Instance.Pause(PauseReason.PauseMenu);
     }
 
     public void ResumeGame()
@@ -54,6 +54,6 @@ public class GameManager : MonoBehaviour
             return;
         IsPaused = false;
         OnResumed?.Invoke();
-        Time.timeScale = 1f;
+        PauseManager.Instance.Resume(PauseReason.PauseMenu);
     }
 }

@@ -3,5 +3,6 @@ public enum DeathReason
     TimeUp,
     Crow,
     Bullet,
-    Balloon
+    Balloon,
+    NPCTrustLost
 }

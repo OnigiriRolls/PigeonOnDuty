@@ -13,8 +13,10 @@ public class DogCaughtState : IGPSHumanState
     {
         human.StopAgent();
         human.ShowMessage("Help! That dog is scary!");
-        human.ShowHint("Scare the dog away with a feather!");
+        human.ShowHint("Scare the dog away!");
         human.ShowInteractionCircle(Color.red);
+        human.LoseTrust();
+        human.PlaySound();
     }
 
     public void Exit()

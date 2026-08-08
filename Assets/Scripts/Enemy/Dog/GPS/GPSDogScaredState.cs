@@ -24,4 +24,9 @@ public class GPSDogScaredState : GPSDogState
         if (timer >= ScaredDuration)
             dog.ChangeState(dog.PatrolState);
     }
+
+    public override void Exit()
+    {
+        dog.StopSound();
+    }
 }

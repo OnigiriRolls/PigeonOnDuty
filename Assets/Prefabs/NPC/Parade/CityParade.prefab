@@ -1655,7 +1655,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5668857070848299658
 MonoBehaviour:
@@ -2943,7 +2943,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3399540123967085444
 MonoBehaviour:
@@ -3949,8 +3949,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 82.29149
-  MaxDistance: 130.52098
+  MinDistance: 49.85524
+  MaxDistance: 76.440765
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4338,7 +4338,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5314779202041945972
 MonoBehaviour:
@@ -5971,7 +5971,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4850226045686848902
 MonoBehaviour:
@@ -7205,7 +7205,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6416033100543288550
 MonoBehaviour:
@@ -8908,7 +8908,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4669100130678275377
 MonoBehaviour:
@@ -10530,7 +10530,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5532228371287649351
 MonoBehaviour:
@@ -10705,7 +10705,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5.71
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 8
   m_ObstacleAvoidanceType: 4
 --- !u!114 &8250038326892979837
 MonoBehaviour:
@@ -12314,6 +12314,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8659141583396979482}
     m_Modifications:
+    - target: {fileID: -7069020550836500642, guid: b5612ac4c143a7548b7ca117a37d578f, type: 3}
+      propertyPath: m_WalkableMask
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6389896379724677488, guid: b5612ac4c143a7548b7ca117a37d578f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12361,6 +12365,10 @@ PrefabInstance:
     - target: {fileID: 6999202800337468539, guid: b5612ac4c143a7548b7ca117a37d578f, type: 3}
       propertyPath: clips.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999202800337468539, guid: b5612ac4c143a7548b7ca117a37d578f, type: 3}
+      propertyPath: distractionRadius
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6999202800337468539, guid: b5612ac4c143a7548b7ca117a37d578f, type: 3}
       propertyPath: members.Array.size

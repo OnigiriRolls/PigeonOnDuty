@@ -21,6 +21,7 @@ public class BeingRecalledState : IGPSHumanState
     public void Exit()
     {
         human.HideHint();
+        human.ActivateDistractionBar(false);
     }
 
     public void Update()

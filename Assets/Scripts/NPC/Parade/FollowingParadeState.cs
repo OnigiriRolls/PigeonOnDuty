@@ -13,6 +13,9 @@ public class FollowingParadeState : IGPSHumanState
     {
         human.ShowMessage("This looks fun!");
         human.ShowInteractionCircle(Color.red);
+        human.ActivateDistractionBar(true);
+        human.LoseTrust();
+        human.PlaySound();
     }
 
     public void Exit()

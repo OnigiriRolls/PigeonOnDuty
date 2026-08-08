@@ -13,8 +13,6 @@ public class WindAttackManager : MonoBehaviour
     [SerializeField] private float gustInterval = 1f;
     [SerializeField] private AudioClip[] windAttackClips;
     [SerializeField] private float warningDuration = 3f;
-    [SerializeField] private GameObject warningObject;
-    [SerializeField] private TMP_Text warningTimerText;
     [SerializeField] private Transform spawnPosLeft;
     [SerializeField] private Transform spawnPosRight;
 
@@ -53,20 +51,16 @@ public class WindAttackManager : MonoBehaviour
     private IEnumerator WindAttackSequence()
     {
         attackRunning = true;
-        if (warningObject != null)
-            warningObject.SetActive(true);
-
+        WarningManager.Instance.Show("Strong Winds Incoming", "");
         float timer = warningDuration;
         while (timer > 0f)
         {
-            warningTimerText.text = Mathf.CeilToInt(timer).ToString();
+            WarningManager.Instance.SetContent(Mathf.CeilToInt(timer).ToString());
             timer -= Time.deltaTime;
             yield return null;
         }
 
-        if (warningObject != null)
-            warningObject.SetActive(false);
-
+        WarningManager.Instance.Hide();
         AudioClip clip = windAttackClips[Random.Range(0, windAttackClips.Length)];
         AudioManager.Instance.PlayEnvironmentalLoop(clip);
 
@@ -111,8 +105,7 @@ public class WindAttackManager : MonoBehaviour
         isActive = false;
         attackRunning = false;
         StopAllCoroutines();
-        if (warningObject != null)
-            warningObject.SetActive(false);
+        WarningManager.Instance.Hide();
         AudioManager.Instance.StopEnvironmentalLoop();
     }
 }

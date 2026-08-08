@@ -14,12 +14,14 @@ public class GPSDogController : MonoBehaviour, IThrowTarget, IProjectileTarget
     public GPSDogScaredState ScaredState { get; private set; }
     public GPSDogChaseState ChaseState { get; private set; }
     public GPSDogState CurrentState { get; private set; }
+    public float MaxChaseDuration => maxChaseDuration;
 
     [SerializeField] private DogConfig config;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] barkClips;
     [SerializeField] private AudioClip[] scaredClips;
     [SerializeField] private GameObject targetRing;
+    [SerializeField] private float maxChaseDuration = 5f;
 
     private Animator animator;
     private NavMeshAgent agent;
@@ -93,6 +95,11 @@ public class GPSDogController : MonoBehaviour, IThrowTarget, IProjectileTarget
     public void PlayScaredSound()
     {
         AudioManager.Instance.PlayRandomSFX(scaredClips, audioSource);
+    }
+
+    public void StopSound()
+    {
+        audioSource.Stop();
     }
 
     public bool OnHit(ThrowableData item)

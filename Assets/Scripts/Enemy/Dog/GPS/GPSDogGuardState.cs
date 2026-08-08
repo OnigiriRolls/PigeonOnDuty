@@ -25,6 +25,7 @@ public class GPSDogGuardState : GPSDogState
 
     public override void Exit()
     {
+        dog.StopSound();
         HumanFollower human = dog.PatrolZone.CurrentHuman;
         if (human != null)
             human.OnDogGone();

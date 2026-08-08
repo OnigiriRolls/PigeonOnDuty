@@ -10,6 +10,7 @@ public class CityParadeManager : MonoBehaviour
     [SerializeField] private float[] followPlayerProbabilities = { 0.8f, 0.5f, 0.3f };
     [SerializeField] private int[] spawnPriorityIndices = { 0, 2, 4 };
 
+    private readonly List<ParadeController> paradeControllers = new();
     private readonly List<GameObject> parades = new();
     private readonly List<PedestrianSpawnpoint> paradePoints = new();
     private Transform player;
@@ -41,6 +42,7 @@ public class CityParadeManager : MonoBehaviour
             ParadeController paradeController = parade.GetComponentInChildren<ParadeController>();
             float probability = i < followPlayerProbabilities.Length ? followPlayerProbabilities[i] : 0f;
             paradeController.Initialize(player, paradePoints, spawnPoint, probability);
+            paradeControllers.Add(paradeController);
             parades.Add(parade);
         }
     }
@@ -55,12 +57,27 @@ public class CityParadeManager : MonoBehaviour
         return sorted[preferredIndex];
     }
 
+    public ParadeController GetRandomParade()
+    {
+        if (paradeControllers.Count == 0)
+        {
+            Debug.Log("count = 0");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, paradeControllers.Count);
+        return paradeControllers[randomIndex];
+    }
+
     public void Clear()
     {
+        paradeControllers.Clear();
         foreach (GameObject parade in parades)
         {
             if (parade != null)
+            {
                 Destroy(parade);
+            }
         }
         parades.Clear();
     }

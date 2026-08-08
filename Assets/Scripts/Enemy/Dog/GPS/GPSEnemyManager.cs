@@ -10,6 +10,8 @@ public enum GPSEnemyType
 
 public class GPSEnemyManager : MonoBehaviour
 {
+    public int EnemyCount => dogCount + crowCount;
+
     [Header("References")]
     [SerializeField] private PatrolZone patrolZonePrefab;
     [SerializeField] private GPSDogController dogPrefab;

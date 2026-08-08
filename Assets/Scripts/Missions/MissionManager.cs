@@ -41,6 +41,7 @@ public class MissionManager : MonoBehaviour
         unlockManager = FindAnyObjectByType<UnlockManager>();
         newsMissionController.OnMissionCompleted += CompleteActiveMission;
         missionTimer.OnTimerExpired += HandleMissionTimerExpired;
+        gpsMissionController.SetGameManager(gameManager);
         RequestMissionSelection();
     }
 
@@ -48,7 +49,7 @@ public class MissionManager : MonoBehaviour
     {
         List<MissionData> missions = GenerateMissionChoices();
         OnMissionSelectionRequested?.Invoke(missions);
-        Time.timeScale = 0f;
+        PauseManager.Instance.Pause(PauseReason.MissionSelection);
     }
 
     public void SelectMission(MissionData mission)
@@ -62,7 +63,7 @@ public class MissionManager : MonoBehaviour
             playerHealthUI.Refresh();
         missionRewardUI.HideReward();
         unlockMessageUI.Hide();
-        Time.timeScale = 1f;
+        PauseManager.Instance.Resume(PauseReason.MissionSelection);
     }
 
     private List<MissionData> GenerateMissionChoices()

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6b60c9d3d67dc4ebc36e9381346313, type: 3}
   m_Name: DogConfig
   m_EditorClassIdentifier: Assembly-CSharp::DogConfig
-  patrolSpeed: 25
+  patrolSpeed: 30
   scaredSpeed: 40
+  fetchSpeed: 65
   scaredDuration: 5
   newspaper: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}

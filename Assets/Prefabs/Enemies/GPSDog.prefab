@@ -209,7 +209,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1363,6 +1363,7 @@ MonoBehaviour:
   scaredClips:
   - {fileID: 8300000, guid: 7497556222dd3784abd50bfcca1af404, type: 3}
   targetRing: {fileID: 1367849544420817123}
+  maxChaseDuration: 5
 --- !u!1 &8153950533793752166
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,24 +10,31 @@ using UnityEngine.Rendering;
 public class HumanFollower : MonoBehaviour, INPCMovement
 {
     public float DistractionPercent => distractionMeter / maxDistraction;
-    public float DistractionReactionTime => distractionReactionTime;
     public float RecallDuration => recallDuration;
-    public float ParadeDuration => paradeDuration;
     public float CurrentSpeed { get; private set; }
     public float StateProgress { get; set; }
     public string StateLabel { get; set; }
+    public event Action OnTrustDepleted;
 
     [SerializeField] private LayerMask paradeZoneLayer;
     [SerializeField] private float maxDistraction = 100f;
-    [SerializeField] private float distractionReactionTime = 5f;
     [SerializeField] private float recallDuration = 2f;
-    [SerializeField] private float paradeDuration = 10f;
     [SerializeField] private float paradeSpeedMultiplier = 0.5f;
     [SerializeField] private GameObject recallCircle;
     [SerializeField] private GameObject hintPanel;
     [SerializeField] private TMP_Text hintText;
     [SerializeField] private HumanInteractionZone interactionZone;
+    [SerializeField] private float maxPlayerDistance = 80f;
+    [SerializeField] private float abandonDelay = 5f;
+    [SerializeField] private int maxTrust = 3;
+    [SerializeField] private NPCTrustUI trustUI;
+    [SerializeField] private AudioClip loseNPCClip;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject distractionBar;
 
+    private bool IsWaiting => currentState is FollowerWaitingState;
+    private bool CanWait => currentState is FollowingState || currentState is FollowerWaitingState;
+    private readonly KeyCode WaitKey = KeyCode.F;
     private Transform target;
     private float distractionMeter;
     private NPCDialogueUI dialogueUI;
@@ -38,6 +45,11 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     private float initialSpeed;
     private bool isInParade;
     private ParadeController currentParade;
+    private float abandonTimer;
+    private ParadeController defaultParade;
+    private bool waitingPlayer;
+    private int trust;
+    private HintUI hintUI;
 
     private void Awake()
     {
@@ -48,16 +60,30 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         ChangeState(new FollowingState(this));
         initialSpeed = agent.speed;
         isInParade = false;
+        waitingPlayer = true;
+        trust = maxTrust;
+        trustUI.Refresh(trust);
     }
 
-    public void Initialize(Transform targetToFollow)
+    public void Initialize(Transform targetToFollow, ParadeController defaultParade, HintUI hintUI)
     {
         target = targetToFollow;
+        this.defaultParade = defaultParade;
+        waitingPlayer = false;
+        this.hintUI = hintUI;
     }
 
     private void Update()
     {
         currentState?.Update();
+        if (Input.GetKeyDown(WaitKey) && CanWait)
+        {
+            if (IsWaiting)
+                ResumeFollowing();
+            else
+                Wait();
+        }
+        UpdateAbandon();
     }
 
     private void FixedUpdate()
@@ -72,10 +98,69 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         currentState.Enter();
     }
 
+    private void UpdateAbandon()
+    {
+        if (waitingPlayer)
+            return;
+        if (currentState is not FollowingState)
+        {
+            ResetAbandon();
+            return;
+        }
+        if (target == null)
+        {
+            ResetAbandon();
+            return;
+        }
+
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance <= maxPlayerDistance)
+        {
+            ResetAbandon();
+            return;
+        }
+
+        abandonTimer += Time.deltaTime;
+        float remaining = Mathf.Ceil(abandonDelay - abandonTimer);
+        WarningManager.Instance.Show("Come back!", $"{remaining}");
+        if (abandonTimer >= abandonDelay)
+        {
+            JoinRandomParade();
+        }
+    }
+
+    private void JoinRandomParade()
+    {
+        if (currentState is FollowingParadeState)
+            return;
+        if (defaultParade == null)
+        {
+            Debug.LogWarning("Human cannot join parade: no valid parade assigned.");
+            ResetAbandon();
+            return;
+        }
+
+        ResetAbandon();
+        currentParade = defaultParade;
+        isInParade = true;
+        ShowMessage("I guess I'll follow them...");
+        if (hintUI != null)
+            hintUI.Show("The Human got lost and joined a parade...");
+        ChangeState(new FollowingParadeState(this));
+    }
+
+    public void PlaySound()
+    {
+        AudioManager.Instance.PlayRandomSFX(loseNPCClip, audioSource);
+    }
+
     public void NotifyParadeNearby(ParadeController parade)
     {
-        isInParade = true;
+        if (parade == null)
+            return;
         currentParade = parade;
+        isInParade = true;
+        ResetAbandon();
     }
 
     public bool IsInParade()
@@ -111,6 +196,11 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     public void HideInteractionCircle()
     {
         recallCircle.SetActive(false);
+    }
+
+    public void ActivateDistractionBar(bool active)
+    {
+        distractionBar.SetActive(active);
     }
 
     public void ShowHint(string message)
@@ -160,7 +250,12 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     {
         if (currentParade == null)
         {
+            Debug.Log("current parade = null");
             StopAgent();
+            return;
+        }
+        if (!agent.enabled || !agent.isOnNavMesh)
+        {
             return;
         }
         agent.isStopped = false;
@@ -190,14 +285,48 @@ public class HumanFollower : MonoBehaviour, INPCMovement
 
     internal void OnDogScared()
     {
-        if (currentState is DogCaughtState)
+        if (currentState is DogCaughtState && currentState is not FollowingParadeState)
             return;
+        ResetAbandon();
         ChangeState(new DogCaughtState(this));
     }
 
     internal void OnDogGone()
     {
         if (currentState is DogCaughtState)
+        {
+            ResetAbandon();
             ChangeState(new FollowingState(this));
+        }
+    }
+
+    public void Wait()
+    {
+        ResetAbandon();
+        ChangeState(new FollowerWaitingState(this));
+    }
+
+    public void ResumeFollowing()
+    {
+        ResetAbandon();
+        ChangeState(new FollowingState(this));
+    }
+
+    public void LoseTrust()
+    {
+        trust--;
+        trust = Mathf.Max(0, trust);
+        trustUI.Refresh(trust);
+        if (trust == 0)
+        {
+            OnTrustDepleted?.Invoke();
+        }
+    }
+
+    private void ResetAbandon()
+    {
+        abandonTimer = 0f;
+        if (WarningManager.Instance != null)
+            WarningManager.Instance.Hide();
     }
 }

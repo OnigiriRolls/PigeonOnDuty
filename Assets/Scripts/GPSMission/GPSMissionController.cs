@@ -13,6 +13,7 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private ParadeManager paradeManager;
     [SerializeField] private CityParadeManager cityParadeManager;
     [SerializeField] private float minimumDistance = 300f;
+    [SerializeField] private float bufferTimePerEnemy = 10f;
     [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private CollectibleManager collectibleManager;
@@ -30,6 +31,7 @@ public class GPSMissionController : MonoBehaviour
     private bool missionRunning;
     private CheckpointsManager checkpointsManager;
     private GPSDestination currentDestination;
+    private GameManager gameManager;
 
     public enum GPSMissionState
     {
@@ -43,6 +45,11 @@ public class GPSMissionController : MonoBehaviour
         checkpointsManager = FindAnyObjectByType<CheckpointsManager>();
     }
 
+    public void SetGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
+    }
+
     public void StartMission(GPSMission mission)
     {
         activeMission = mission;
@@ -51,6 +58,7 @@ public class GPSMissionController : MonoBehaviour
 
         Transform spawnPoint = GetClosestSpawnPoint();
         currentHuman = Instantiate(humanPrefab, spawnPoint.position, Quaternion.identity);
+        currentHuman.OnTrustDepleted += HandleHumanTrustDepleted;
         lostTimer = 0f;
         missionRunning = true;
         state = GPSMissionState.ReachTraveler;
@@ -59,6 +67,11 @@ public class GPSMissionController : MonoBehaviour
         missionTimer.StartTimer(duration);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
+    }
+
+    private void HandleHumanTrustDepleted()
+    {
+        FailMission(DeathReason.NPCTrustLost);
     }
 
     private Transform GetClosestSpawnPoint()
@@ -79,12 +92,15 @@ public class GPSMissionController : MonoBehaviour
 
     private void StartEscort()
     {
+        currentDestination = GetRandomDestination();
+        cityParadeManager.Initialize(player.transform, currentDestination.transform.position);
         state = GPSMissionState.EscortTraveler;
         checkpointsManager.ClearCheckpoint();
-        currentHuman.Initialize(player);
+        ParadeController defaultParade = cityParadeManager.GetRandomParade();
+        Debug.Log(defaultParade);
+        currentHuman.Initialize(player, defaultParade, hintUI);
         currentHuman.HideInteractionCircle();
         currentHuman.ShowMessage("Let's go!");
-        currentDestination = GetRandomDestination();
         minimapController.ShowClient(currentHuman.transform);
         dogManager.GenerateEnemies(currentHuman.transform.position, currentDestination.transform.position);
         playerInventory.SetAmount(newspaperData, 0);
@@ -93,11 +109,11 @@ public class GPSMissionController : MonoBehaviour
         playerInventory.SetEnabled(featherData, true);
         playerInventory.Select(featherData);
         //paradeManager.SpawnParades(currentHuman.transform.position, currentDestination.transform.position);
-        cityParadeManager.Initialize(player.transform, currentDestination.transform.position);
         checkpointsManager.CleanCurrentObjective();
         checkpointsManager.SpawnNextObjective(currentDestination.transform);
         collectibleManager.StartContinuousCoinSpawning(player);
-        float duration = travelTimeCalculator.CalculateTime(currentDestination.transform, activeMission.timeBuffer);
+        float buffer = activeMission.timeBuffer + bufferTimePerEnemy * dogManager.EnemyCount;
+        float duration = travelTimeCalculator.CalculateTime(currentDestination.transform, buffer, 30f);
         missionTimer.StartTimer(duration);
         featherSpawner.StartSpawn();
         hintUI.Show("Escort the Human", 4f);
@@ -166,10 +182,11 @@ public class GPSMissionController : MonoBehaviour
         }
     }
 
-    public void FailMission()
+    public void FailMission(DeathReason reason = DeathReason.TimeUp)
     {
         ClearMission();
         Debug.Log("GPS Mission Failed");
+        gameManager.GameOver(reason);
     }
 
     public float GetRemainingLostTime()
@@ -192,5 +209,18 @@ public class GPSMissionController : MonoBehaviour
         playerInventory.SetAmount(featherData, 0);
         playerInventory.SetEnabled(featherData, false);
         featherSpawner.StopSpawn();
+        if (currentHuman != null)
+        {
+            currentHuman.OnTrustDepleted -= HandleHumanTrustDepleted;
+        }
+        WarningManager.Instance.Hide();
+    }
+
+    private void OnDisable()
+    {
+        if (currentHuman != null)
+        {
+            currentHuman.OnTrustDepleted -= HandleHumanTrustDepleted;
+        }
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GPSMission
   missionName: Guide the Traveler
   description: A lost traveler relies on your guidance
-  timeBuffer: 300
+  timeBuffer: 5
   flavorTexts:
   - The human is lost. Again.
   - 'Lead the way, feathered navigator. '
