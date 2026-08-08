@@ -97,7 +97,6 @@ public class GPSMissionController : MonoBehaviour
         state = GPSMissionState.EscortTraveler;
         checkpointsManager.ClearCheckpoint();
         ParadeController defaultParade = cityParadeManager.GetRandomParade();
-        Debug.Log(defaultParade);
         currentHuman.Initialize(player, defaultParade, hintUI);
         currentHuman.HideInteractionCircle();
         currentHuman.ShowMessage("Let's go!");

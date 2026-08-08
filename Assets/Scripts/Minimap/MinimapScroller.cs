@@ -6,6 +6,7 @@ public class MinimapScroller : MonoBehaviour
     public Camera MinimapCamera => minimapCamera;
     public RectTransform MinimapRect => minimapRect;
     public Rect UVRect => minimap.uvRect;
+    public Transform Player => player;
 
     [SerializeField] private RawImage minimap;
     [SerializeField] private RectTransform minimapRect;
