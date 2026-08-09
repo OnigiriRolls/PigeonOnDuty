@@ -11,4 +11,5 @@ public class GameData
     public int totalRuns;
     public bool flightTutorialCompleted;
     public bool newspaperTutorialCompleted;
+    public List<string> completedTutorialIds = new();
 }

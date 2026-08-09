@@ -6703,9 +6703,9 @@ MonoBehaviour:
   newsMissionController: {fileID: 937640229}
   normalMissionController: {fileID: 707793893}
   gameManager: {fileID: 438445163}
-  isNewsMissionActive: 1
+  isNewsMissionActive: 0
   isGPSMissionActive: 0
-  areAllMissionsActive: 0
+  areAllMissionsActive: 1
   missionTimer: {fileID: 503221261}
   flightTutorialController: {fileID: 1639511778}
 --- !u!1 &653074206 stripped

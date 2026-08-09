@@ -11,6 +11,7 @@ public class FollowingParadeState : IGPSHumanState
 
     public void Enter()
     {
+        TutorialManager.Instance.TryShow("tutorial_enemy_city_parade", "Save the human", "The human is lurred by a parade. Get close and get him back! Guide him to his destination!");
         human.ShowMessage("This looks fun!");
         human.ShowInteractionCircle(Color.red);
         human.ActivateDistractionBar(true);

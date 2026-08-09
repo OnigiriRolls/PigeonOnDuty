@@ -67,6 +67,7 @@ public class GPSMissionController : MonoBehaviour
         missionTimer.StartTimer(duration);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
+        TutorialManager.Instance.TryShow("tutorial_mission_enemy", "Guide the player", "Find the human then guide it to the destination. Don't lose its trust!");
     }
 
     private void HandleHumanTrustDepleted()

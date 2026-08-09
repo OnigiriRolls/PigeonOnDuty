@@ -4,7 +4,6 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager Instance { get; private set; }
-    public bool IsShowing => TutorialUI.Instance != null &&  TutorialUI.Instance.IsShowing;
 
     private readonly HashSet<string> completedTutorials = new();
     private string currentTutorialId;
@@ -17,6 +16,20 @@ public class TutorialManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        LoadCompletedTutorials();
+    }
+
+    private void LoadCompletedTutorials()
+    {
+        completedTutorials.Clear();
+        foreach (string tutorialId in SaveManager.Instance.Data.completedTutorialIds)
+        {
+            completedTutorials.Add(tutorialId);
+        }
     }
 
     private void OnEnable()
@@ -40,11 +53,6 @@ public class TutorialManager : MonoBehaviour
     {
         if (HasSeen(tutorialId))
             return false;
-        if (TutorialUI.Instance == null)
-        {
-            Debug.LogWarning("TutorialUI instance was not found.");
-            return false;
-        }
         if (TutorialUI.Instance.IsShowing)
             return false;
 
@@ -58,19 +66,7 @@ public class TutorialManager : MonoBehaviour
         if (string.IsNullOrEmpty(currentTutorialId))
             return;
         completedTutorials.Add(currentTutorialId);
-        currentTutorialId = null;
-    }
-
-    public void Complete(string tutorialId)
-    {
-        completedTutorials.Add(tutorialId);
-        if (currentTutorialId == tutorialId)
-            currentTutorialId = null;
-    }
-
-    public void ResetTutorials()
-    {
-        completedTutorials.Clear();
+        SaveManager.Instance.CompleteTutorial(currentTutorialId);
         currentTutorialId = null;
     }
 }

@@ -111,9 +111,13 @@ public class SaveManager : MonoBehaviour
         Save();
     }
 
-    public void ResetSave()
+    public void CompleteTutorial(string tutorialId)
     {
-        Data = new GameData();
+        if (string.IsNullOrEmpty(tutorialId))
+            return;
+        if (Data.completedTutorialIds.Contains(tutorialId))
+            return;
+        Data.completedTutorialIds.Add(tutorialId);
         Save();
     }
 }

@@ -5,6 +5,7 @@ public class CrowConfig : ScriptableObject
 {
     [Header("General")]
     public CrowAbility ability;
+    public bool stealTutorialMessage = false;
     
     [Header("Movement")]
     public float rotationSpeed = 7f;

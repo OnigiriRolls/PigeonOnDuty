@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolCrowController
   hitEffectPrefab: {fileID: 5149711938787232430, guid: 24486c5f1e34c8a43944bae4a4012f6d, type: 3}
-  config: {fileID: 11400000, guid: 53cc5cad015cf1346b4f382e40ea280c, type: 2}
+  config: {fileID: 11400000, guid: b328560ce98756347ac3845a42da3c9a, type: 2}
   crowSounds:
   - {fileID: 8300000, guid: 68f8174562b09df47a82291dceae5886, type: 3}
   - {fileID: 8300000, guid: fb38274f8a933024aa80835ce9567088, type: 3}
