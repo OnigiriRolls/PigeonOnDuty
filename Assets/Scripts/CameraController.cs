@@ -9,6 +9,11 @@ public class CameraController : MonoBehaviour
     private int index = 0;
     private Vector3 target;
 
+    private void Start()
+    {
+        transform.position = povs[index].position;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) index = 0;

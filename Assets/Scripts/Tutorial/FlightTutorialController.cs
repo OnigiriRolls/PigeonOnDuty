@@ -5,6 +5,7 @@ public class FlightTutorialController : MonoBehaviour
     private enum FlightTutorialStep
     {
         Inactive,
+        Story,
         CheckpointOne,
         CheckpointTwo,
         Completed
@@ -14,6 +15,10 @@ public class FlightTutorialController : MonoBehaviour
     [SerializeField] private MissionManager missionManager;
     [SerializeField] private string tutorialTitle = "FLYING";
     [SerializeField] private string tutorialContent = "Reach the checkpoint and learn how to fly.";
+    [SerializeField] private string tutorialTitle2 = "Good job!";
+    [SerializeField] private string tutorialContent2 = "One more checkpoint and you will start the real delivery missions!";
+    [SerializeField] private string storyTitle = "Pigeons Story";
+    [SerializeField] private string storyContent = "With phones gone, people employ pigeons to deliver messages and goods. Become the best employed pigeon now!";
     [SerializeField] private FlightControlsUI flightControlsUI;
 
     private FlightTutorialStep currentStep;
@@ -27,12 +32,16 @@ public class FlightTutorialController : MonoBehaviour
     {
         if (checkpointsManager != null)
             checkpointsManager.OnCheckpointReached += HandleCheckpointReached;
+        if (TutorialUI.Instance != null)
+            TutorialUI.Instance.OnTutorialClosed += HandleTutorialClosed;
     }
 
     private void OnDisable()
     {
         if (checkpointsManager != null)
             checkpointsManager.OnCheckpointReached -= HandleCheckpointReached;
+        if (TutorialUI.Instance != null)
+            TutorialUI.Instance.OnTutorialClosed -= HandleTutorialClosed;
     }
 
     public void StartTutorial()
@@ -43,6 +52,20 @@ public class FlightTutorialController : MonoBehaviour
             return;
         }
 
+        currentStep = FlightTutorialStep.Story;
+        ShowStoryMessage();
+    }
+
+    private void ShowStoryMessage()
+    {
+        TutorialUI.Instance.Show(storyTitle, storyContent);
+    }
+
+    private void HandleTutorialClosed()
+    {
+        if (currentStep != FlightTutorialStep.Story)
+            return;
+        TutorialUI.Instance.OnTutorialClosed -= HandleTutorialClosed;
         currentStep = FlightTutorialStep.CheckpointOne;
         ShowTutorialMessage();
         flightControlsUI.ShowFlightPanel();
@@ -70,7 +93,7 @@ public class FlightTutorialController : MonoBehaviour
 
     private void ShowSecondCheckpointMessage()
     {
-        TutorialUI.Instance.Show("Good job!", "One more checkpoint and you will start the real delivery missions!");
+        TutorialUI.Instance.Show(tutorialTitle2, tutorialContent2);
     }
 
     private void SpawnSecondCheckpoint()

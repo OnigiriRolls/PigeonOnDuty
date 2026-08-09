@@ -15245,8 +15245,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlightTutorialController
   checkpointsManager: {fileID: 1507542257}
   missionManager: {fileID: 652098071}
-  tutorialTitle: FLYING
+  tutorialTitle: First Step
   tutorialContent: Reach the checkpoint and learn how to fly.
+  tutorialTitle2: Good job!
+  tutorialContent2: One more checkpoint and you will start the real delivery missions!
+  storyTitle: Pigeons Story
+  storyContent: With phones gone, people employ pigeons to deliver messages and goods.
+    Become the best employed pigeon now!
   flightControlsUI: {fileID: 1174589610}
 --- !u!114 &1642083713 stripped
 MonoBehaviour:
