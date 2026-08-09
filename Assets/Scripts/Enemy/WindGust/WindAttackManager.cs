@@ -51,6 +51,7 @@ public class WindAttackManager : MonoBehaviour
     private IEnumerator WindAttackSequence()
     {
         attackRunning = true;
+        TutorialManager.Instance.TryShow("tutorial_enemy_wind", "Wind Enemy", "Evade the next wind gust!");
         WarningManager.Instance.Show("Strong Winds Incoming", "");
         float timer = warningDuration;
         while (timer > 0f)

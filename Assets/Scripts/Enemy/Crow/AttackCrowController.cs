@@ -19,6 +19,7 @@ public class AttackCrowController : BaseCrowController
         this.spawner = spawner;
         this.despawnPoint = despawnPoint;
         ChangeState(ChaseState);
+        TutorialManager.Instance.TryShow("tutorial_enemy_crow_attack", "Crow Enemy", "A crow will attack you! Try smashing it in buildings or clouds...");
     }
 
     public override void OnPlayerHit()

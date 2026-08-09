@@ -20,7 +20,6 @@ public class NormalMissionController : MonoBehaviour
     {
         windAttackManager.StopAttack();
         normalEnemiesSpawner.StopSpawn();
-        checkpointsManager.ClearCheckpoint();
         collectibleManager.StopNormalMissionCollectibles();
     }
 }

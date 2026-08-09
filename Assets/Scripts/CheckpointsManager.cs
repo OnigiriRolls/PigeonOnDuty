@@ -115,7 +115,8 @@ public class CheckpointsManager : MonoBehaviour
 
     public void ClearCheckpoint()
     {
-        minimapController.HideCheckpoint(currentObjective.transform);
+        if (currentObjective != null)
+            minimapController.HideCheckpoint(currentObjective.transform);
     }
 
     public void NotifyCheckpointReached(Transform checkpoint)

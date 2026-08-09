@@ -42,6 +42,7 @@ public class WindCorridorManager : MonoBehaviour
             if (!blocked)
             {
                 Instantiate(prefab, position, rotation);
+                TutorialManager.Instance.TryShow("tutorial_wind_gust", "Wind Corridor", "Try the helpful wind corridor!");
                 return;
             }
         }

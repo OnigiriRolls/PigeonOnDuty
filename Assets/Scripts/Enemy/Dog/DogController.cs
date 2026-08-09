@@ -16,6 +16,7 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
     public DogCarryState CarryState { get; private set; }
     public DogScaredState ScaredState { get; private set; }
     public bool HasNewspaper => hasNewspaper;
+    public event Action OnScared;
 
     [SerializeField] private DogConfig config;
     [SerializeField] private CarryVisual carryVisual;
@@ -48,6 +49,12 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
     {
         ChangeState(PatrolState);
         ResetBarkTimer();
+    }
+
+    public void SetupTutorialNewspaper()
+    {
+        hasNewspaper = true;
+        carryVisual.Show(config.newspaper);
     }
 
     private void ResetBarkTimer()
@@ -138,6 +145,7 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
         if (CurrentState == ScaredState)
             return false;
         ChangeState(ScaredState);
+        OnScared?.Invoke();
         return true;
     }
 

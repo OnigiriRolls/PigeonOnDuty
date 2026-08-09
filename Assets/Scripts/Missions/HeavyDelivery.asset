@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HeavyDelivery
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
   missionName: Heavy Delivery
-  description: A bulky parcel weighs down your flight
+  description: Fly slowly and deliver this heavy package
   timeBuffer: 20
   flavorTexts:
   - Who packed bricks in here?

@@ -40,6 +40,7 @@ public class HelicopterController : StopAudio
         {
             gun.Initialize(player, config);
         }
+        TutorialManager.Instance.TryShow("tutorial_enemy_helicopter", "Helicopter Enemy", "Avoid the bullets and survive the attack! Try hiding in clouds...");
     }
 
     private void Update()

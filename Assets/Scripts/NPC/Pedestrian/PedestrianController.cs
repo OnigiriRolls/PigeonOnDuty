@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PedestrianMovement))]
 [RequireComponent(typeof(ClientController))]
-public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarget
+public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarget, IBasePedestrianController
 {
     public Transform AimPoint => transform;
     public PedestrianMovement Movement => movement;

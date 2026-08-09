@@ -27,6 +27,10 @@ public class BalloonController : StopAudio, IEnemyPursuer
         player = targetPlayer;
         spawner = balloonManager;
         driftTimer = Random.Range(config.minDriftDuration, config.maxDriftDuration);
+        if(attack == BalloonAttack.Damage)
+            TutorialManager.Instance.TryShow("tutorial_enemy_balloon_attack", "Balloon Enemy", "A strange balloon will attack you! Try smashing it in buildings or clouds...");
+        else
+            TutorialManager.Instance.TryShow("tutorial_enemy_balloon_steal", "Balloon Enemy", "This balloon will explode and you will lose 1 newspaper... Be careful!");
     }
 
     protected override void Start()

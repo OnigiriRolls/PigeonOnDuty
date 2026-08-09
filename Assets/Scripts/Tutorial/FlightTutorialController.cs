@@ -45,7 +45,7 @@ public class FlightTutorialController : MonoBehaviour
 
         currentStep = FlightTutorialStep.CheckpointOne;
         ShowTutorialMessage();
-        flightControlsUI.Show();
+        flightControlsUI.ShowFlightPanel();
         checkpointsManager.SpawnNextCheckpoint();
     }
 
@@ -70,7 +70,7 @@ public class FlightTutorialController : MonoBehaviour
 
     private void ShowSecondCheckpointMessage()
     {
-        TutorialUI.Instance.Show("Good job!", "One more checkpoint and you are good to go!");
+        TutorialUI.Instance.Show("Good job!", "One more checkpoint and you will start the real delivery missions!");
     }
 
     private void SpawnSecondCheckpoint()
@@ -84,7 +84,7 @@ public class FlightTutorialController : MonoBehaviour
         currentStep = FlightTutorialStep.Completed;
         SaveManager.Instance.Data.flightTutorialCompleted = true;
         SaveManager.Instance.Save();
-        flightControlsUI.Hide();
+        flightControlsUI.HideFlightPanel();
         checkpointsManager.CleanCurrentObjective();
         missionManager.RequestMissionSelection();
     }

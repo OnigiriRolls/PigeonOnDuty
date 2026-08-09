@@ -1,13 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PedestrianController))]
+[RequireComponent(typeof(IBasePedestrianController))]
 public class PedestrianPickupReceiver : MonoBehaviour, IPickupReceiver
 {
-    private PedestrianController controller;
+    private IBasePedestrianController controller;
 
     private void Awake()
     {
-        controller = GetComponent<PedestrianController>();
+        controller = GetComponent<IBasePedestrianController>();
     }
 
     public void NotifyPickup(ThrowablePickup pickup)

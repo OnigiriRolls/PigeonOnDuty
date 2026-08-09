@@ -3,20 +3,32 @@ using UnityEngine;
 
 public class FlightControlsUI : MonoBehaviour
 {
-    [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject flightPanel;
+    [SerializeField] private GameObject newsPanel;
 
     private void Awake()
     {
-        Hide();
+        HideFlightPanel();
+        HideNewsPanel();
     }
 
-    public void Show()
+    public void ShowFlightPanel()
     {
-        panel.SetActive(true);
+        flightPanel.SetActive(true);
     }
 
-    public void Hide()
+    public void HideFlightPanel()
     {
-        panel.SetActive(false);
+        flightPanel.SetActive(false);
+    }
+
+    public void ShowNewsPanel()
+    {
+        newsPanel.SetActive(true);
+    }
+
+    public void HideNewsPanel()
+    {
+        newsPanel.SetActive(false);
     }
 }

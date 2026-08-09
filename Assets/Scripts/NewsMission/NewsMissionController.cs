@@ -21,11 +21,23 @@ public class NewsMissionController : MonoBehaviour
     [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private Transform player;
     [SerializeField] private CollectibleManager collectibleManager;
+    [SerializeField] private NewspaperTutorialController newspaperTutorialController;
+    [SerializeField] private ScreenTransition screenTransition;
 
     private List<ClientController> activeClients = new();
     private NewsMission currentMission;
 
     public void StartMission(NewsMission newsMission)
+    {
+        if (!SaveManager.Instance.Data.newspaperTutorialCompleted)
+        {
+            newspaperTutorialController.StartTutorial(newsMission);
+            return;
+        }
+        StartRealMission(newsMission);
+    }
+
+    private void StartRealMission(NewsMission newsMission)
     {
         currentMission = newsMission;
         pedestrianSpawner.SpawnPedestrians();
@@ -43,8 +55,12 @@ public class NewsMissionController : MonoBehaviour
         }
         playerInventory.SetAmount(newspaperData, activeClients.Count + 1);
         playerInventory.SetAmount(featherData, activeClients.Count);
+        playerInventory.SetEnabled(newspaperData, true);
+        playerInventory.SetEnabled(featherData, true);
         missionTimer.StartTimer(activeClients.Count * currentMission.timeBuffer);
         collectibleManager.StartContinuousCoinSpawning(player);
+        if (screenTransition.IsBlack)
+            screenTransition.FadeFromBlack();
     }
 
     private void HandleClientDelivered(ClientController client)
@@ -71,5 +87,7 @@ public class NewsMissionController : MonoBehaviour
         dogSpawner.ClearPatrolZones();
         featherSpawner.StopSpawn();
         collectibleManager.StopContinuousCoinSpawning();
+        playerInventory.SetEnabled(newspaperData, false);
+        playerInventory.SetEnabled(featherData, false);
     }
 }

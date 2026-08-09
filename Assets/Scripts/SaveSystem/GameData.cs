@@ -10,4 +10,5 @@ public class GameData
     public List<string> unlockedContentIds = new();
     public int totalRuns;
     public bool flightTutorialCompleted;
+    public bool newspaperTutorialCompleted;
 }

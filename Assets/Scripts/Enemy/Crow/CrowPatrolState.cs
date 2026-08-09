@@ -24,4 +24,9 @@ public class CrowPatrolState : CrowState
                 crow.ChangeState(crow.ChaseState);
         }
     }
+
+    public override void Exit()
+    {
+        TutorialManager.Instance.TryShow("tutorial_enemy_crow_steal", "Crow Enemy", "This crow will steal 1 newspaper...");
+    }
 }

@@ -6,7 +6,9 @@ public enum PauseReason
     PauseMenu,
     MissionSelection,
     GameOver,
-    TutorialMessage
+    TutorialMessage,
+    TutorialWindAttack,
+    TutorialWindGust
 }
 
 public class PauseManager : MonoBehaviour

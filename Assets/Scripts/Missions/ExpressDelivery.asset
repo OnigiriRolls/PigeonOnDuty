@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExpressDelivery
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
   missionName: Express Delivery
-  description: An urgent message cannot wait
+  description: Fly at max speed and deliver the package
   timeBuffer: 20
   flavorTexts:
   - This one can't wait!
