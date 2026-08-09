@@ -7,6 +7,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance;
 
     public event Action<int> OnReputationChanged;
+    public event Action<int> OnCoinsChanged;
     public GameData Data { get; private set; }
     public int TotalCoins => Data.totalCoins;
     public int Reputation => Data.reputation;
@@ -50,6 +51,7 @@ public class SaveManager : MonoBehaviour
         if (amount <= 0)
             return;
         Data.totalCoins += amount;
+        OnCoinsChanged?.Invoke(Data.totalCoins);
     }
 
     public bool SpendCoins(int amount)
@@ -59,6 +61,7 @@ public class SaveManager : MonoBehaviour
         if (Data.totalCoins < amount)
             return false;
         Data.totalCoins -= amount;
+        OnCoinsChanged?.Invoke(Data.totalCoins);
         Save();
         return true;
     }

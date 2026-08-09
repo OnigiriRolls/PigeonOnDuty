@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AudioManager : StopAudio
+public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public AudioClip CurrentMusicClip { get; private set; }
@@ -159,10 +159,6 @@ public class AudioManager : StopAudio
         ambianceSource2.Stop();
         uiLoopSource.Stop();
         environmentalSource.Stop();
-    }
-
-    protected override void HandleGameOver()
-    {
-        StopAllAudio();
+        CurrentMusicClip = null;
     }
 }
