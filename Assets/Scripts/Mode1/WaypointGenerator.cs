@@ -34,7 +34,7 @@ public class WaypointGenerator : MonoBehaviour
 
     private readonly List<Waypoint> waypoints = new();
 
-    void Start()
+    void Awake()
     {
         GenerateWaypoints();
     }

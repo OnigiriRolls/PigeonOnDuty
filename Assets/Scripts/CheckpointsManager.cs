@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CheckpointsManager : MonoBehaviour
 {
     public Transform CurrentObjective => currentObjective;
+    public event Action<Transform> OnCheckpointReached;
 
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private MinimapMissionController minimapController;
@@ -113,5 +116,14 @@ public class CheckpointsManager : MonoBehaviour
     public void ClearCheckpoint()
     {
         minimapController.HideCheckpoint(currentObjective.transform);
+    }
+
+    public void NotifyCheckpointReached(Transform checkpoint)
+    {
+        if (currentObjective != checkpoint)
+            return;
+        ClearCheckpoint();
+        CleanCurrentObjective();
+        OnCheckpointReached?.Invoke(checkpoint);
     }
 }

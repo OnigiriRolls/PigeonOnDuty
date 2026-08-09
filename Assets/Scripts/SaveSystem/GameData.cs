@@ -9,4 +9,5 @@ public class GameData
     public List<string> unlockedSkins = new();
     public List<string> unlockedContentIds = new();
     public int totalRuns;
+    public bool flightTutorialCompleted;
 }

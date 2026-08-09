@@ -27,6 +27,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private bool isGPSMissionActive;
     [SerializeField] private bool areAllMissionsActive;
     [SerializeField] private MissionTimer missionTimer;
+    [SerializeField] private FlightTutorialController flightTutorialController;
 
     private RewardManager rewardManager;
     private PlayerHealth playerHealth;
@@ -42,7 +43,10 @@ public class MissionManager : MonoBehaviour
         newsMissionController.OnMissionCompleted += CompleteActiveMission;
         missionTimer.OnTimerExpired += HandleMissionTimerExpired;
         gpsMissionController.SetGameManager(gameManager);
-        RequestMissionSelection();
+        if (SaveManager.Instance.Data.flightTutorialCompleted)
+            RequestMissionSelection();
+        else
+            flightTutorialController.StartTutorial();
     }
 
     public void RequestMissionSelection()
