@@ -67,7 +67,7 @@ public class GPSMissionController : MonoBehaviour
         missionTimer.StartTimer(duration);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
-        TutorialManager.Instance.TryShow("tutorial_mission_enemy", "Guide the player", "Find the human then guide it to the destination. Don't lose its trust!");
+        TutorialManager.Instance.TryShow("tutorial_mission_gps", "Guide the player", "Find the human then guide it to the destination. Don't lose its trust!");
     }
 
     private void HandleHumanTrustDepleted()
@@ -117,6 +117,7 @@ public class GPSMissionController : MonoBehaviour
         missionTimer.StartTimer(duration);
         featherSpawner.StartSpawn();
         hintUI.Show("Escort the Human", 4f);
+        TutorialManager.Instance.TryShow("tutorial_leave_npc", "New Mechanic", "The human follows you now. Use [F] to leave the human behind and scout ahead. Use [F] to resume following.");
     }
 
     private GPSDestination GetRandomDestination()

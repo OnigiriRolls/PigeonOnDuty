@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StealerCrowConfig
   m_EditorClassIdentifier: Assembly-CSharp::CrowConfig
   ability: {fileID: 11400000, guid: af0ee33d6259a4545b685df355e683c2, type: 2}
+  stealTutorialMessage: 1
   rotationSpeed: 7
   patrolSpeed: 5
   chaseSpeed: 70
