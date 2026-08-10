@@ -2112,6 +2112,7 @@ Transform:
   m_Children:
   - {fileID: 707793892}
   - {fileID: 793118298}
+  - {fileID: 1506163030}
   - {fileID: 1216242143}
   - {fileID: 1507542254}
   m_Father: {fileID: 354423832}
@@ -6704,8 +6705,8 @@ MonoBehaviour:
   normalMissionController: {fileID: 707793893}
   gameManager: {fileID: 438445163}
   isNewsMissionActive: 0
-  isGPSMissionActive: 1
-  areAllMissionsActive: 0
+  isGPSMissionActive: 0
+  areAllMissionsActive: 1
   missionTimer: {fileID: 503221261}
   flightTutorialController: {fileID: 1639511778}
 --- !u!1 &653074206 stripped
@@ -7036,6 +7037,7 @@ MonoBehaviour:
   collectibleManager: {fileID: 622098704}
   windAttackManager: {fileID: 793118299}
   normalEnemiesSpawner: {fileID: 1369953263}
+  helicopterManager: {fileID: 1506163031}
 --- !u!1 &710691884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7331096983950169070, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -7098,6 +7100,37 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &718870582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718870583}
+  m_Layer: 0
+  m_Name: Helicopters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718870583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718870582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1462548275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725033447
 GameObject:
   m_ObjectHideFlags: 0
@@ -13895,6 +13928,7 @@ Transform:
   - {fileID: 1055828731}
   - {fileID: 544856542}
   - {fileID: 598455218}
+  - {fileID: 718870583}
   - {fileID: 1865137281}
   - {fileID: 211090430}
   - {fileID: 394100472}
@@ -14209,6 +14243,58 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &1506163029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506163030}
+  - component: {fileID: 1506163031}
+  m_Layer: 0
+  m_Name: HelicopterPatrolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506163030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506163029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 179688214}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1506163031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506163029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05567bfb88b4b4346bb359a491bfa722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HelicopterPatrolManager
+  helicopterPrefab: {fileID: 1489734749194219046, guid: 2d04f136d38f781418c3cc4002c1da8d, type: 3}
+  patrolPointsParent: {fileID: 412899728}
+  helicopterParent: {fileID: 718870583}
+  player: {fileID: 1517355606}
+  helicopterCount: 4
+  minHeight: 151
+  maxHeight: 250
+  minimumSpawnDistance: 160
 --- !u!1 &1507021115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6168713146616621869, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -20952,6 +21038,10 @@ PrefabInstance:
     - target: {fileID: 1513855268286369299, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       propertyPath: minTimerCooldown
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513855268286369299, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
+      propertyPath: spawners.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2789453444958845918, guid: 0c3223e1929af364e950b859af0f94c4, type: 3}
       propertyPath: player

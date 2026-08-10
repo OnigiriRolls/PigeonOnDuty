@@ -26,9 +26,6 @@ public class HelicopterAudioController : MonoBehaviour
 
     private void PlayClip(AudioClip clip)
     {
-        if (audioSource.clip == clip)
-            return;
-        audioSource.clip = clip;
-        audioSource.Play();
+        AudioManager.Instance.PlayRandomSFX(clip, audioSource);
     }
 }

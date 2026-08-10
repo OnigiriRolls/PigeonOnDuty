@@ -9,7 +9,7 @@ public class HelicopterBullet : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlayRandomSFX(shootClips);
+        //AudioManager.Instance.PlayRandomSFX(shootClips);
         Destroy(gameObject, config.lifetime);
     }
 

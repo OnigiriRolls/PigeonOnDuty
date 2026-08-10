@@ -6,6 +6,7 @@ public class NormalMissionController : MonoBehaviour
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private WindAttackManager windAttackManager;
     [SerializeField] private NormalEnemiesSpawner normalEnemiesSpawner;
+    [SerializeField] private HelicopterPatrolManager helicopterManager;
 
     public void StartMission(MissionTimer missionTimer, float timeBuffer, float timerMultiplier)
     {
@@ -14,6 +15,7 @@ public class NormalMissionController : MonoBehaviour
         checkpointsManager.StartCheckpointTimer(missionTimer, timeBuffer, timerMultiplier);
         windAttackManager.StartAttack();
         normalEnemiesSpawner.StartSpawn();
+        helicopterManager.SpawnHelicopters();
     }
 
     public void ClearMission()
@@ -21,5 +23,6 @@ public class NormalMissionController : MonoBehaviour
         windAttackManager.StopAttack();
         normalEnemiesSpawner.StopSpawn();
         collectibleManager.StopNormalMissionCollectibles();
+        helicopterManager.Clear();
     }
 }
