@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
         input.OnCamera1 += SetCamera1;
         input.OnCamera2 += SetCamera2;
         input.OnCamera3 += SetCamera3;
+        input.OnChangeView += ChangeView;
     }
 
     private void OnDisable()
@@ -27,6 +28,18 @@ public class CameraController : MonoBehaviour
         input.OnCamera1 -= SetCamera1;
         input.OnCamera2 -= SetCamera2;
         input.OnCamera3 -= SetCamera3;
+        input.OnChangeView -= ChangeView;
+    }
+
+    private void ChangeView()
+    {
+        if (povIndex == 2)
+        {
+            povIndex = 0;
+            return;
+        }
+
+        povIndex++;
     }
 
     private void SetCamera1()

@@ -18,27 +18,27 @@ public class FlightControlsUI : MonoBehaviour
 
     public void ShowFlightPanel()
     {
-        string controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[0], "positive");
-        flightTexts[0].text = controlName;
-         controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[1], "negative");
-        flightTexts[1].text = controlName;
-         controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[2], "negative");
-        flightTexts[2].text = controlName;
-         controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[3], "positive");
-        flightTexts[3].text = controlName;
+        //string controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[0], "positive");
+        //flightTexts[0].text = controlName;
+        // controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[1], "negative");
+        //flightTexts[1].text = controlName;
+        // controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[2], "negative");
+        //flightTexts[2].text = controlName;
+        // controlName = InputDisplayHelper.Instance.GetCompositePartDisplayName(flightControlNames[3], "positive");
+        //flightTexts[3].text = controlName;
 
-        for (int i = 4; i < flightTexts.Length; i++)
-        {
-            controlName = InputDisplayHelper.Instance.GetDisplayName(flightControlNames[i]);
-            flightTexts[i].text = controlName;
-            if (i == 7)
-            {
-                controlName = InputDisplayHelper.Instance.GetDisplayName(flightControlNames[i + 1]);
-                flightTexts[i].text += $", {controlName}";
-                controlName = InputDisplayHelper.Instance.GetDisplayName(flightControlNames[i + 2]);
-                flightTexts[i].text += $", {controlName}";
-            }
-        }
+        //for (int i = 4; i < flightTexts.Length; i++)
+        //{
+        //    controlName = InputDisplayHelper.Instance.GetDisplayName(flightControlNames[i]);
+        //    flightTexts[i].text = controlName;
+        //    if (i == 7)
+        //    {
+        //        controlName = InputDisplayHelper.Instance.GetDisplayName(flightControlNames[i + 1]);
+        //        flightTexts[i].text += $", {controlName}";
+        //        controlName = InputDisplayHelper.Instance.GetDisplayName(flightControlNames[i + 2]);
+        //        flightTexts[i].text += $", {controlName}";
+        //    }
+        //}
         flightPanel.SetActive(true);
     }
 
@@ -49,11 +49,11 @@ public class FlightControlsUI : MonoBehaviour
 
     public void ShowNewsPanel()
     {
-        for (int i = 0; i < newsTexts.Length; i++)
-        {
-            string controlName = InputDisplayHelper.Instance.GetDisplayName(newsControlNames[i]);
-            newsTexts[i].text = controlName;
-        }
+        //for (int i = 0; i < newsTexts.Length; i++)
+        //{
+        //    string controlName = InputDisplayHelper.Instance.GetDisplayName(newsControlNames[i]);
+        //    newsTexts[i].text = controlName;
+        //}
         newsPanel.SetActive(true);
     }
 

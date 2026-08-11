@@ -148,7 +148,7 @@
                 {
                     "name": "",
                     "id": "a2c0e343-1267-4c94-b880-b8dbeed6a853",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -170,7 +170,7 @@
                 {
                     "name": "",
                     "id": "4e1fe364-8fb1-4a70-807c-fb59588dde84",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -185,6 +185,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
+                    "action": "Hover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5be3c0f4-c140-4f46-ae1a-1084ecf87881",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Hover",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -213,11 +224,33 @@
                 },
                 {
                     "name": "",
+                    "id": "f6df47c4-c24e-4cec-a94d-4094bb93235d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "ThrowItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7910b3fd-4533-40e7-b180-ac796a29fac3",
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
+                    "action": "CancelThrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c551a707-431a-463b-a2cc-dffc3ad54d2b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "CancelThrow",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -235,11 +268,33 @@
                 },
                 {
                     "name": "",
+                    "id": "83702772-1d73-4d31-a6c3-20570a58a95d",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "27271140-9c1d-497f-8a08-dc1d2b3b70fd",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
+                    "action": "ToggleNPCFollow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "501caf68-107b-49db-9b80-8741cdfff2c1",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "ToggleNPCFollow",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -345,6 +400,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5311cac6-d1b1-42fc-b41b-bb653ce825d2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "16135bc5-bbf5-4957-92f6-1c5d5471f454",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -394,7 +460,13 @@
         {
             "name": "Gamepad",
             "bindingGroup": "Gamepad",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         },
         {
             "name": "Mobile",

@@ -22,6 +22,7 @@ public class PlayerInputController : MonoBehaviour
     public event Action OnThrowReleased;
     public event Action OnCancelThrow;
     public event Action OnSelectItem;
+    public event Action OnChangeView;
 
     [SerializeField] private string defaultActionMap = "Gameplay";
 
@@ -117,5 +118,10 @@ public class PlayerInputController : MonoBehaviour
     {
         if (context.performed)
             OnSelectItem?.Invoke();
+    }
+
+    public void MobileChangeView()
+    {
+        OnChangeView?.Invoke();
     }
 }
