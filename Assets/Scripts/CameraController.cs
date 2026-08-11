@@ -1,30 +1,57 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform[] povs;
     [SerializeField] float speed;
+    [SerializeField] private PlayerInputController input;
 
-    private int index = 0;
-    private Vector3 target;
+    private int povIndex = 0;
 
     private void Start()
     {
-        transform.position = povs[index].position;
+        transform.position = povs[0].position;
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) index = 0;
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) index = 1;
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) index = 2;
-        target = povs[index].position;
+        input.OnCamera1 += SetCamera1;
+        input.OnCamera2 += SetCamera2;
+        input.OnCamera3 += SetCamera3;
+    }
+
+    private void OnDisable()
+    {
+        input.OnCamera1 -= SetCamera1;
+        input.OnCamera2 -= SetCamera2;
+        input.OnCamera3 -= SetCamera3;
+    }
+
+    private void SetCamera1()
+    {
+        povIndex = 0;
+    }
+
+    private void SetCamera2()
+    {
+        povIndex = 1;
+    }
+
+    private void SetCamera3()
+    {
+        povIndex = 2;
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
-        transform.forward = povs[index].forward;
+        MoveCamera(povIndex);
+    }
+
+    private void MoveCamera(int povIndex)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, povs[povIndex].position, Time.deltaTime * speed);
+        transform.forward = povs[povIndex].forward;
     }
 }

@@ -15,6 +15,7 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     public float StateProgress { get; set; }
     public string StateLabel { get; set; }
     public event Action OnTrustDepleted;
+    public bool InteractHeld => playerInputController != null && playerInputController.InteractHeld;
 
     [SerializeField] private LayerMask paradeZoneLayer;
     [SerializeField] private float maxDistraction = 100f;
@@ -34,7 +35,6 @@ public class HumanFollower : MonoBehaviour, INPCMovement
 
     private bool IsWaiting => currentState is FollowerWaitingState;
     private bool CanWait => currentState is FollowingState || currentState is FollowerWaitingState;
-    private readonly KeyCode WaitKey = KeyCode.F;
     private Transform target;
     private float distractionMeter;
     private NPCDialogueUI dialogueUI;
@@ -50,6 +50,7 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     private bool waitingPlayer;
     private int trust;
     private HintUI hintUI;
+    private PlayerInputController playerInputController;
 
     private void Awake()
     {
@@ -65,8 +66,14 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         trustUI.Refresh(trust);
     }
 
-    public void Initialize(Transform targetToFollow, ParadeController defaultParade, HintUI hintUI)
+    public void Initialize(Transform targetToFollow, ParadeController defaultParade, HintUI hintUI, PlayerInputController playerInputController)
     {
+        this.playerInputController = playerInputController;
+        if (playerInputController != null)
+        {
+            playerInputController.OnToggleNPCFollow += ToggleFollowing;
+            playerInputController.OnInteract += HandleInteract;
+        }
         target = targetToFollow;
         this.defaultParade = defaultParade;
         waitingPlayer = false;
@@ -76,13 +83,6 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     private void Update()
     {
         currentState?.Update();
-        if (Input.GetKeyDown(WaitKey) && CanWait)
-        {
-            if (IsWaiting)
-                ResumeFollowing();
-            else
-                Wait();
-        }
         UpdateAbandon();
     }
 
@@ -329,4 +329,32 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         if (WarningManager.Instance != null)
             WarningManager.Instance.Hide();
     }
+
+    private void ToggleFollowing()
+    {
+        if (!CanWait)
+            return;
+        if (IsWaiting)
+            ResumeFollowing();
+        else
+            Wait();
+    }
+
+    private void HandleInteract()
+    {
+        if (currentState is FollowingParadeState && CanInteract())
+        {
+            ChangeState(new BeingRecalledState(this));
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (playerInputController != null)
+        {
+            playerInputController.OnToggleNPCFollow -= ToggleFollowing;
+            playerInputController.OnInteract -= HandleInteract;
+        }
+    }
+
 }

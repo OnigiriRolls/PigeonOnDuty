@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FeatherPickupSpawner
   pickupPrefab: {fileID: 3594110842216032031, guid: 7ba0717ef24419f4a906942e66ca35c2, type: 3}
+  sign: {fileID: 8307692845992021839}
   respawnTime: 10
 --- !u!1 &8002741531890435123
 GameObject:

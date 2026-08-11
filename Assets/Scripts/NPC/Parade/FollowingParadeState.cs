@@ -29,12 +29,8 @@ public class FollowingParadeState : IGPSHumanState
         human.FollowParade();
         if (human.CanInteract())
         {
-            human.ShowHint("Hold [E] to call back.");
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                human.ChangeState(new BeingRecalledState(human));
-            }
+            string interact = InputDisplayHelper.Instance.GetHint("Interact");
+            human.ShowHint($"Hold {interact} to call back.");
         }
         else
         {

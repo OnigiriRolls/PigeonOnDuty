@@ -9,51 +9,49 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private FeatherAutoAim autoAim;
     [SerializeField] private ThrowableData newspaperItem;
     [SerializeField] private AudioClip inventorySound;
+    [SerializeField] private PlayerInputController playerInputController;
 
     private float currentForce;
     private float chargeTime;
     private bool isCharging;
-    private bool ThrowPressed => Input.GetKeyDown(KeyCode.LeftShift);
-    private bool ThrowReleased => Input.GetKeyUp(KeyCode.LeftShift);
-    private bool CancelPressed => Input.GetKeyDown(KeyCode.Z);
-    private bool PreviousPressed => Input.GetKeyDown(KeyCode.R);
-    private bool NextPressed => Input.GetKeyDown(KeyCode.E);
 
+    private void OnEnable()
+    {
+        if (playerInputController == null)
+            return;
+
+        playerInputController.OnThrowPressed += StartCharging;
+        playerInputController.OnThrowReleased += HandleThrowReleased;
+        playerInputController.OnCancelThrow += ResetThrow;
+        playerInputController.OnSelectItem += SelectNext;
+    }
+
+    private void HandleThrowReleased()
+    {
+        if (isCharging)
+            Throw();
+    }
+
+    private void SelectNext()
+    {
+        inventory.SelectNext();
+    }
 
     private void Update()
     {
-        HandleSelection();
         if (!isCharging)
-        {
-            if (ThrowPressed)
-                StartCharging();
-
             return;
-        }
-
         UpdateCharge();
-        if (ThrowReleased)
-            Throw();
-        if (CancelPressed)
-            ResetThrow();
-    }
-
-    private void HandleSelection()
-    {
-        if (PreviousPressed)
-            inventory.SelectPrevious();
-        if (NextPressed)
-            inventory.SelectNext();
     }
 
     private void StartCharging()
     {
-        isCharging = true;
         ThrowableData item = inventory.SelectedItem;
         if (item == null)
             return;
         if (inventory.GetAmount(item) <= 0)
             return;
+        isCharging = true;
         chargeTime = 0f;
         currentForce = item.minForce;
         trajectoryPreview.Show();
@@ -77,7 +75,6 @@ public class ProjectileLauncher : MonoBehaviour
         ThrowableData item = inventory.SelectedItem;
         if (item == null || !inventory.TryConsume(item))
         {
-            Debug.Log("play sound");
             AudioManager.Instance.PlaySFX(inventorySound);
             return;
         }
@@ -108,5 +105,16 @@ public class ProjectileLauncher : MonoBehaviour
             Vector3 velocity = transform.forward * 2f + Vector3.down * 4f;
             projectile.Launch(velocity);
         }
+    }
+
+    private void OnDisable()
+    {
+        if (playerInputController == null)
+            return;
+
+        playerInputController.OnThrowPressed -= StartCharging;
+        playerInputController.OnThrowReleased -= HandleThrowReleased;
+        playerInputController.OnCancelThrow -= ResetThrow;
+        playerInputController.OnSelectItem -= SelectNext;
     }
 }

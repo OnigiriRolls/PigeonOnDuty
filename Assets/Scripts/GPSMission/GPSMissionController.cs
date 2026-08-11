@@ -98,7 +98,8 @@ public class GPSMissionController : MonoBehaviour
         state = GPSMissionState.EscortTraveler;
         checkpointsManager.ClearCheckpoint();
         ParadeController defaultParade = cityParadeManager.GetRandomParade();
-        currentHuman.Initialize(player, defaultParade, hintUI);
+        PlayerInputController playerInputController = player.gameObject.GetComponent<PlayerInputController>();
+        currentHuman.Initialize(player, defaultParade, hintUI, playerInputController);
         currentHuman.HideInteractionCircle();
         currentHuman.ShowMessage("Let's go!");
         minimapController.ShowClient(currentHuman.transform);

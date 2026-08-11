@@ -14,7 +14,8 @@ public class BeingRecalledState : IGPSHumanState
     {
         recallProgress = 0f;
         human.ShowMessage("Wait, I'm coming!");
-        human.ShowHint("Hold [E]...");
+        string interact = InputDisplayHelper.Instance.GetHint("Interact");
+        human.ShowHint($"Hold {interact}...");
       //  human.StateLabel = "CALLING BACK";
     }
 
@@ -27,19 +28,15 @@ public class BeingRecalledState : IGPSHumanState
     public void Update()
     {
         human.FollowParade();
-        if (!human.CanInteract())
+        if (!human.InteractHeld)
         {
-            //human.ChangeState(new FollowingParadeState(human));
             human.ShowHint("Get closer!");
             return;
         }
-        human.ShowHint("Hold [E]...");
-        if (!Input.GetKey(KeyCode.E))
-        {
-            //recallProgress = 0f;
-            //human.StateProgress = 0f;
+        string interact = InputDisplayHelper.Instance.GetHint("Interact");
+        human.ShowHint($"Hold {interact}...");
+        if (!human.InteractHeld)
             return;
-        }
         recallProgress += Time.deltaTime;
         human.StateProgress = recallProgress / human.RecallDuration;
         if (recallProgress >= human.RecallDuration)

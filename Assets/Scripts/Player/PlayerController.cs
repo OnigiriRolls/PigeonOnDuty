@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerHealth))]
+[RequireComponent(typeof(PlayerInputController))]
 public class PlayerController : MonoBehaviour
 {
     public float Throttle => throttle;
@@ -39,11 +40,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private PlayerHealth health;
     private Animator animator;
+    private PlayerInputController input;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         health = GetComponent<PlayerHealth>();
+        input = GetComponent<PlayerInputController>();
     }
 
     private void Start()
@@ -66,13 +69,13 @@ public class PlayerController : MonoBehaviour
         if (currentWindType == WindType.Carry)
             return;
 
-        roll = Input.GetAxis("Roll");
-        pitch = Input.GetAxis("Pitch");
+        roll = input.Roll;
+        pitch = input.Pitch;
 
-        isHovering = Input.GetKey(KeyCode.Q);
-        if (Input.GetKey(KeyCode.Space))
+        isHovering = input.HoverHeld;
+        if (input.ThrottleIncreaseHeld)
             throttle += config.throttleIncrement;
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (input.ThrottleDecreaseHeld)
             throttle -= config.throttleIncrement;
 
         throttle = Mathf.Clamp(throttle, 0f, config.maxThrottle * throttleMultiplier);

@@ -231,7 +231,7 @@ MonoBehaviour:
   projectileHitbox: {fileID: 8494251129257160591}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 10240
+    m_Bits: 75776
 --- !u!114 &6252094461385350526
 MonoBehaviour:
   m_ObjectHideFlags: 0
