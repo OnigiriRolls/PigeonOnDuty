@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5855582637689201315}
   - component: {fileID: 367527578057225833}
   - component: {fileID: 2952279246618051155}
-  - component: {fileID: 5679805289366882457}
+  - component: {fileID: 3336852170545397150}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -53,14 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayUI
   player: {fileID: 0}
-  deliveryMissionManager: {fileID: 0}
   throttleText: {fileID: 0}
   throttleBar: {fileID: 0}
-  throttleLimit: {fileID: 0}
   speedText: {fileID: 0}
-  altitudeText: {fileID: 0}
   timerText: {fileID: 0}
-  altitudeAnimator: {fileID: 0}
   clockAnimator: {fileID: 0}
   clockWarningClip: {fileID: 8300000, guid: b172071a7b5cb83489b713e2b18f30c5, type: 3}
   clockCriticalClip: {fileID: 8300000, guid: 4a9dcd768cd98334cba888e6c9963082, type: 3}
@@ -71,7 +67,6 @@ MonoBehaviour:
   midAltitude: 51
   highAltitude: 151
   maxThrottle: 130
-  missionTimer: {fileID: 0}
 --- !u!114 &334364185767018330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8509d8d362ebe742ad959b1b6f65732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseInput
+  input: {fileID: 0}
 --- !u!114 &8695288101894765034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +123,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  manager: {fileID: 0}
 --- !u!114 &5855582637689201315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HintUI
   panel: {fileID: 0}
   hintText: {fileID: 0}
---- !u!114 &5679805289366882457
+--- !u!114 &3336852170545397150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,9 +178,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6206697560603183726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d8509000a1df24eada7ff04bc947ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 0396d74a988bfcf43adfad774a28af50, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewsMissionUI
-  missionManager: {fileID: 0}
-  minimapUI: {fileID: 0}
-  inventoryUI: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
+  reputationText: {fileID: 0}
+  coinsEarnedText: {fileID: 0}
+  previousCoinsText: {fileID: 0}
+  totalCoinsText: {fileID: 0}
+  deathReasonText: {fileID: 0}
+  gameOverMusic: {fileID: 8300000, guid: 4a49da4cfa46a104fb767dbc9601ee16, type: 3}

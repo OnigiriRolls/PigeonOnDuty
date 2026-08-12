@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DogPatrolManager : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class DogPatrolManager : MonoBehaviour
     private void CreateDogZone(Bounds cell)
     {
         Vector3 position = RandomPointInside(cell);
+        if (!NavMesh.SamplePosition(position, out NavMeshHit hit, 5f, NavMesh.AllAreas))
+        {
+            //Debug.LogWarning($"Could not find NavMesh near {position}. Dog will not spawn.");
+            return;
+        }
         PatrolZone zone = Instantiate(patrolZonePrefab, position, Quaternion.identity, dogParent);
         zone.InitNavMeshPoints(patrolRadius);
         DogController dog = Instantiate(dogPrefab, position, Quaternion.identity, dogParent);

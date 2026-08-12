@@ -119,7 +119,8 @@ public class GPSDogController : MonoBehaviour, IThrowTarget, IProjectileTarget
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     public bool HasReachedHuman(HumanFollower human)

@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private PlayerConfig config;
-    [SerializeField] private MissionManager missionManager;
     [SerializeField] private float windInfluence = 1f;
     [SerializeField] private float hoverDrag = 8f;
 
@@ -53,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = visualModel.GetComponent<Animator>();
         animator.SetBool("IsFlying", true);
-        missionManager.OnMissionSelected += HandleMissionSelected;
+        MissionManager.Instance.OnMissionSelected += HandleMissionSelected;
         health.OnDeath += HandleDeath;
     }
 
@@ -61,6 +60,8 @@ public class PlayerController : MonoBehaviour
     {
         if (mission is DeliveryMission deliveryMission)
             throttleMultiplier = deliveryMission.throttleMultiplier;
+        else if(mission is ArabianNewsMission arabianNewsMission)
+            throttleMultiplier = arabianNewsMission.throttleMultiplier;
         else throttleMultiplier = 1f;
     }
 
@@ -235,7 +236,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        missionManager.OnMissionSelected -= HandleMissionSelected;
+        MissionManager.Instance.OnMissionSelected -= HandleMissionSelected;
         health.OnDeath -= HandleDeath;
     }
 

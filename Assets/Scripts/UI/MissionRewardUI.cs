@@ -21,6 +21,7 @@ public class MissionRewardUI : MonoBehaviour
 
     public void HideReward()
     {
-        reward.SetActive(false);
+        if (reward != null)
+            reward.SetActive(false);
     }
 }

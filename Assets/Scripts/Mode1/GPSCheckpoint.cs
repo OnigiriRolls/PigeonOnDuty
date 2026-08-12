@@ -2,14 +2,8 @@ using UnityEngine;
 
 public class GPSCheckpoint : MonoBehaviour
 {
-    private MissionManager missionManager;
     private bool playerInside;
     private bool humanInside;
-
-    private void Start()
-    {
-        missionManager = FindAnyObjectByType<MissionManager>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,7 +33,7 @@ public class GPSCheckpoint : MonoBehaviour
         if (!humanInside)
             return;
 
-        missionManager.CompleteActiveMission();
+        MissionManager.Instance.CompleteActiveMission();
         Destroy(gameObject);
     }
 }

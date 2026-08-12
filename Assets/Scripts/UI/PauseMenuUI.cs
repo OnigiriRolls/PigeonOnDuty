@@ -4,13 +4,10 @@ public class PauseMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
 
-    private GameManager gameManager;
-
     private void Start()
     {
-        gameManager = FindAnyObjectByType<GameManager>();
-        gameManager.OnPaused += Show;
-        gameManager.OnResumed += Hide;
+        GameManager.Instance.OnPaused += Show;
+        GameManager.Instance.OnResumed += Hide;
     }
 
     private void Show()
@@ -25,7 +22,7 @@ public class PauseMenuUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        gameManager.OnPaused -= Show;
-        gameManager.OnResumed -= Hide;
+        GameManager.Instance.OnPaused -= Show;
+        GameManager.Instance.OnResumed -= Hide;
     }
 }

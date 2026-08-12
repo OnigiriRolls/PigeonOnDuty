@@ -14,7 +14,8 @@ public class PedestrianMovement : MonoBehaviour, INPCMovement
     [SerializeField] private PedestrianWaypoint currentWaypoint;
     [SerializeField] private float stuckDistance = 0.2f;
     [SerializeField] private float stuckTime = 10f;
-    [SerializeField] private bool success;
+    [SerializeField] private float minSpeed = 2f;
+    [SerializeField] private float maxSpeed = 7f;
 
     private NavMeshAgent agent;
     private float stuckTimer;
@@ -24,7 +25,7 @@ public class PedestrianMovement : MonoBehaviour, INPCMovement
     {
         agent = GetComponent<NavMeshAgent>();
         agent.avoidancePriority = Random.Range(30, 71);
-        agent.speed = Random.Range(10f, 20f);
+        agent.speed = Random.Range(minSpeed, maxSpeed);
     }
 
     public void Initialize(WaypointNetwork network)
@@ -39,7 +40,7 @@ public class PedestrianMovement : MonoBehaviour, INPCMovement
         if (!agent.isOnNavMesh)
             return;
         agent.isStopped = false;
-        success = agent.SetDestination(destination);
+        agent.SetDestination(destination);
     }
 
     public void Stop()

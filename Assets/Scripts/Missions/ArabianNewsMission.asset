@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8590925f8599a64bbe47bb13fd8af35, type: 3}
+  m_Name: ArabianNewsMission
+  m_EditorClassIdentifier: Assembly-CSharp::ArabianNewsMission
+  missionName: Arabian Delivery
+  description: Deliver newspapers to moving citizens.
+  timeBuffer: 20
+  flavorTexts:
+  - Extra! Extra! Someone actually reads the newspaper!
+  - Customer is walking. Good luck catching them.
+  - Please don't eat the newspapers.
+  - Crows are not authorized employees.
+  - Customer claims they're 'just around the corner'.
+  - Please don't eat the newspapers.
+  - Try not to hit anyone who didn't subscribe.
+  - Human delivery... pigeon speed.
+  city: 1
+  reputationReward: 60
+  coinReward: 40
+  unlockId: arabian_human_delivery
+  minClients: 2
+  maxClients: 2
+  timerMultiplier: 0.5
+  throttleMultiplier: 0.75

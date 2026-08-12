@@ -4,23 +4,21 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAudioController))]
+[RequireComponent(typeof(PlayerAppearanceController))]
 public class PlayerHealth : MonoBehaviour
 {
     public event Action<int> OnHealthChanged;
     public event Action OnDeath;
     public int CurrentHealth { get; private set; }
     public bool HasShield { get; private set; }
-    public GameObject HitParticlesPrefab => hitParticlesPrefab;
 
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float shieldInvulnerabilityDuration = 2f;
-    [SerializeField] private GameObject hitParticlesPrefab;
     [SerializeField] private GameObject shield;
     [SerializeField] private ParticleSystem shieldBreakEffect;
     [SerializeField] private AudioClip shieldBreakClip;
     [SerializeField] private float shieldDuration = 10f;
     [SerializeField] private float pulseStartTime = 3f;
-    [SerializeField] private Renderer birdRenderer;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private GameObject deathReasonText;
     [SerializeField] private GameObject GameOverUI;
@@ -29,31 +27,26 @@ public class PlayerHealth : MonoBehaviour
 
     private Coroutine shieldCoroutine;
     private PlayerAudioController audioController;
-    private GameManager gameManager;
-    private MissionManager missionManager;
     private Animator shieldAnimator;
-    private Material birdMaterial;
     private bool isInvulnerable;
     private Coroutine pulseCoroutine;
     private Coroutine invulnerabilityCoroutine;
     private DeathReason lastDamageReason;
     private bool dead;
     private GameOverUI gameOverUI;
+    private PlayerAppearanceController appearanceController;
 
     private void Awake()
     {
         CurrentHealth = maxHealth;
         OnHealthChanged?.Invoke(CurrentHealth);
-        birdMaterial = new Material(birdRenderer.material);
-        birdRenderer.material = birdMaterial;
+        audioController = GetComponent<PlayerAudioController>();
+        appearanceController = GetComponent<PlayerAppearanceController>();
     }
 
     private void Start()
     {
-        audioController = GetComponent<PlayerAudioController>();
-        gameManager = FindAnyObjectByType<GameManager>();
         shieldAnimator = shield.GetComponent<Animator>();
-        missionManager = FindAnyObjectByType<MissionManager>();
         gameOverUI = GameOverUI.GetComponent<GameOverUI>();
         dead = false;
     }
@@ -71,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
 
         lastDamageReason = damageReason;
         audioController.PlayHitClip();
-        MissionData mission = missionManager.ActiveMission;
+        MissionData mission = MissionManager.Instance.ActiveMission;
         if (mission is DeliveryMission deliveryMission && deliveryMission.oneHitFail)
         {
             CurrentHealth = 0;
@@ -109,7 +102,7 @@ public class PlayerHealth : MonoBehaviour
     {
         enabled = false;
         yield return new WaitForSeconds(3f);
-        gameManager.GameOver(lastDamageReason);
+        GameManager.Instance.GameOver(lastDamageReason);
     }
 
     public void ActivateShield()
@@ -143,9 +136,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void ConsumeShield(bool blockedDamage)
     {
+        HasShield = false;
         if (blockedDamage)
             StartInvulnerability(shieldInvulnerabilityDuration);
-        HasShield = false;
         shieldAnimator.SetBool("Pulse", false);
         shield.SetActive(false);
         if (shieldCoroutine != null)
@@ -166,10 +159,14 @@ public class PlayerHealth : MonoBehaviour
         pulseCoroutine = StartCoroutine(PulseRoutine());
         yield return new WaitForSeconds(duration);
         if (pulseCoroutine != null)
+        {
             StopCoroutine(pulseCoroutine);
+            pulseCoroutine = null;
+        }
         playerAnimator.SetBool("Pulse", false);
-        birdMaterial.SetColor("_EmissionColor", Color.black);
+        appearanceController.RestoreOriginalEmission();
         isInvulnerable = false;
+        invulnerabilityCoroutine = null;
     }
 
     public void StartInvulnerability(float duration)
@@ -177,7 +174,10 @@ public class PlayerHealth : MonoBehaviour
         if (HasShield)
             return;
         if (invulnerabilityCoroutine != null)
+        {
             StopCoroutine(invulnerabilityCoroutine);
+            invulnerabilityCoroutine = null;
+        }
         invulnerabilityCoroutine = StartCoroutine(InvulnerabilityRoutine(duration));
     }
 
@@ -187,7 +187,7 @@ public class PlayerHealth : MonoBehaviour
         {
             float emission = 2f + Mathf.PingPong(Time.time * 8f, 3f);
             Color emissionColor = Color.white * emission;
-            birdMaterial.SetColor("_EmissionColor", emissionColor);
+            appearanceController.SetEmission(emissionColor);
             yield return WAIT_FOR_SECONDS_0_1;
         }
     }

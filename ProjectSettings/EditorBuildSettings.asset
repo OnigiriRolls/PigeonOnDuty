@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: a078357091bfb384ba680627a3c51dc2
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/DefaultCityScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/ArabCityScene.unity
+    guid: 93e3fb9ae7443b74db9ca5e5e980a1a6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 1351b8f3db68ec643872bc26c0eb622d, type: 3}

@@ -61,7 +61,8 @@ public class PatrolCrowController : BaseCrowController, IProjectileTarget, IThro
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     public override void ShowConfused(bool show)

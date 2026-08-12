@@ -2159,7 +2159,8 @@ MonoBehaviour:
   currentWaypoint: {fileID: 0}
   stuckDistance: 0.2
   stuckTime: 10
-  success: 0
+  minSpeed: 10
+  maxSpeed: 20
 --- !u!114 &6383415150370579951
 MonoBehaviour:
   m_ObjectHideFlags: 0

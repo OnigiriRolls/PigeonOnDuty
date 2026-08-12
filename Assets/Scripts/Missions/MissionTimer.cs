@@ -3,12 +3,25 @@ using UnityEngine;
 
 public class MissionTimer : MonoBehaviour
 {
+    public static MissionTimer Instance { get; private set; }
     public float RemainingTime => remainingTime;
     public bool IsRunning => isRunning;
     public event Action OnTimerExpired;
 
     private float remainingTime;
     private bool isRunning;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Update()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class NewsMissionController : MonoBehaviour
+public class NewsMissionController : MonoBehaviour, IMissionController
 {
     public event Action OnMissionCompleted;
 
@@ -18,7 +18,6 @@ public class NewsMissionController : MonoBehaviour
     [SerializeField] private ThrowableData featherData;
     [SerializeField] private MinimapMissionController minimapController;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
-    [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private Transform player;
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private NewspaperTutorialController newspaperTutorialController;
@@ -26,6 +25,11 @@ public class NewsMissionController : MonoBehaviour
 
     private List<ClientController> activeClients = new();
     private NewsMission currentMission;
+
+    private void Start()
+    {
+        MissionManager.Instance.RegisterController(this);
+    }
 
     public void StartMission(NewsMission newsMission)
     {
@@ -57,7 +61,7 @@ public class NewsMissionController : MonoBehaviour
         playerInventory.SetAmount(featherData, activeClients.Count);
         playerInventory.SetEnabled(newspaperData, true);
         playerInventory.SetEnabled(featherData, true);
-        missionTimer.StartTimer(activeClients.Count * currentMission.timeBuffer);
+        MissionTimer.Instance.StartTimer(activeClients.Count * currentMission.timeBuffer);
         collectibleManager.StartContinuousCoinSpawning(player);
         if (screenTransition.IsBlack)
             screenTransition.FadeFromBlack();
@@ -89,5 +93,32 @@ public class NewsMissionController : MonoBehaviour
         collectibleManager.StopContinuousCoinSpawning();
         playerInventory.SetEnabled(newspaperData, false);
         playerInventory.SetEnabled(featherData, false);
+    }
+
+    public bool CanHandle(MissionData mission)
+    {
+        return mission is NewsMission;
+    }
+
+    public void StartMission(MissionData mission)
+    {
+        if (mission is not NewsMission newsMission)
+            return;
+        StartMission(newsMission);
+    }
+
+    private void OnDestroy()
+    {
+        MissionManager.Instance.UnregisterController(this);
+    }
+
+    public void CompleteMission()
+    {
+        ClearMission();
+    }
+
+    public void FailMission()
+    {
+        ClearMission();
     }
 }

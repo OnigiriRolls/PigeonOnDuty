@@ -44,7 +44,8 @@ public class TutorialPedestrianController : MonoBehaviour, IThrowTarget, IProjec
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     public void TryCollectPickup(ThrowablePickup pickup)

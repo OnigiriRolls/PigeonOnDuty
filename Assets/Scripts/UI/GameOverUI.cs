@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -8,17 +9,35 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI previousCoinsText;
     [SerializeField] private TextMeshProUGUI totalCoinsText;
     [SerializeField] private TextMeshProUGUI deathReasonText;
+    [SerializeField] private Button retryButton;
+    [SerializeField] private Button homeButton;
+    [SerializeField] private GameObject panel;
     [SerializeField] private AudioClip gameOverMusic;
 
-    private void OnEnable()
+    private void Awake()
     {
-        RewardManager rewardManager = FindAnyObjectByType<RewardManager>();
-        GameManager gameManager = FindAnyObjectByType<GameManager>();
-        deathReasonText.text = GetDeathReasonText(gameManager.LastDeathReason);
-        reputationText.text = $"Reputation: {rewardManager.Reputation}";
-        coinsEarnedText.text = $"Coins: {rewardManager.TotalCoins}";
-        previousCoinsText.text = $"Previous Coins: {rewardManager.PreviousCoins}";
+        homeButton.onClick.AddListener(OnHomeClicked);
+        retryButton.onClick.AddListener(OnRetryClicked);
+    }
+
+    private void OnHomeClicked()
+    {
+        SceneLoader.Instance.LoadHomeScene();
+    }
+
+    private void OnRetryClicked()
+    {
+        SceneLoader.Instance.RetryGameplay();
+    }
+
+    public void ShowUI(DeathReason deathReason, int reputation, int totalCoins, int previousCoins)
+    {
+        deathReasonText.text = GetDeathReasonText(deathReason);
+        reputationText.text = $"Reputation: {reputation}";
+        coinsEarnedText.text = $"Coins: {totalCoins}";
+        previousCoinsText.text = $"Previous Coins: {previousCoins}";
         totalCoinsText.text = $"Total Coins: {SaveManager.Instance.TotalCoins}";
+        panel.SetActive(true);
         AudioManager.Instance.PlayMusic(gameOverMusic);
     }
 
@@ -37,5 +56,14 @@ public class GameOverUI : MonoBehaviour
             default:
                 return "You ran out of time :(";
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (homeButton != null)
+            homeButton.onClick.RemoveListener(OnHomeClicked);
+        if (retryButton != null)
+            retryButton.onClick.RemoveListener(OnRetryClicked);
+        AudioManager.Instance.StopAllAudio();
     }
 }

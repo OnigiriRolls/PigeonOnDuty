@@ -153,12 +153,19 @@ public class AudioManager : MonoBehaviour
 
     public void StopAllAudio()
     {
-        sfxSource.Stop();
-        musicSource.Stop();
-        ambianceSource1.Stop();
-        ambianceSource2.Stop();
-        uiLoopSource.Stop();
-        environmentalSource.Stop();
-        CurrentMusicClip = null;
+        if (sfxSource != null)
+            sfxSource.Stop();
+        if (musicSource != null)
+            musicSource.Stop();
+        if (ambianceSource1 != null)
+            ambianceSource1.Stop();
+        if (ambianceSource2 != null)
+            ambianceSource2.Stop();
+        if (uiLoopSource != null)
+            uiLoopSource.Stop();
+        if (environmentalSource != null)
+            environmentalSource.Stop();
+        if (CurrentMusicClip != null)
+            CurrentMusicClip = null;
     }
 }

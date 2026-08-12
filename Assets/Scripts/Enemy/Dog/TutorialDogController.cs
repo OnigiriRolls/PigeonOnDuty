@@ -44,7 +44,8 @@ public class TutorialDogController : MonoBehaviour, IThrowTarget, IProjectileTar
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     public void DropNewspaper()

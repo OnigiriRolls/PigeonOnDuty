@@ -8,6 +8,7 @@ public abstract class MissionData : ScriptableObject
     public string description;
     public float timeBuffer = 20f;
     public string[] flavorTexts;
+    public MissionCity city;
 
     [Header("Rewards")]
     public int reputationReward;
@@ -22,8 +23,4 @@ public abstract class MissionData : ScriptableObject
             return "";
         return flavorTexts[Random.Range(0, flavorTexts.Length)];
     }
-
-    public abstract void StartMission(MissionManager missionManager);
-    public abstract void CompleteMission(MissionManager missionManager);
-    public abstract void FailMission(MissionManager missionManager);
 }

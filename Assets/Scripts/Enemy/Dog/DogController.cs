@@ -151,7 +151,8 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     public void PlayScaredSound()

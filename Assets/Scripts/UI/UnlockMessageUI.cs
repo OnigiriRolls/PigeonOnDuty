@@ -27,11 +27,13 @@ public class UnlockMessageUI : MonoBehaviour
 
     public void Hide()
     {
-        panel.SetActive(false);
+        if (panel == null)
+            panel.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        unlockManager.OnUnlocked -= ShowUnlock;
+        if (unlockManager != null)
+            unlockManager.OnUnlocked -= ShowUnlock;
     }
 }

@@ -96,10 +96,10 @@ public class CheckpointsManager : MonoBehaviour
         return Quaternion.LookRotation(direction) * Quaternion.Euler(0f, 180f, 0f); ;
     }
 
-    public void StartCheckpointTimer(MissionTimer timer, float timeBuffer, float multiplier = 1f)
+    public void StartCheckpointTimer(float timeBuffer, float multiplier = 1f)
     {
         float duration = travelTimeCalculator.CalculateTime(currentObjective, timeBuffer);
-        timer.StartTimer(duration, multiplier);
+        MissionTimer.Instance.StartTimer(duration, multiplier);
     }
 
     public void SetCurrentObjective(Transform target)

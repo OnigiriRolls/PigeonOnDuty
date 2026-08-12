@@ -5,15 +5,19 @@ public class DeliveryMissionSelectionUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
     [SerializeField] private DeliveryMissionCardUI[] missionCards;
-    [SerializeField] private MissionManager manager;
 
-    private void Awake()
+    private void Start()
     {
-        manager.OnMissionSelectionRequested += ShowMissionSelection;
+        MissionManager.Instance.RegisterSelectionUI(this);
     }
 
-    private void ShowMissionSelection(List<MissionData> missions)
+    public void ShowMissionSelection(List<MissionData> missions)
     {
+        if (panel == null)
+        {
+            Debug.Log("panel null");
+            return;
+        }
         panel.SetActive(true);
         for (int i = 0; i < missionCards.Length; i++)
         {
@@ -30,12 +34,12 @@ public class DeliveryMissionSelectionUI : MonoBehaviour
     private void OnMissionSelected(MissionData mission)
     {
         panel.SetActive(false);
-        manager.SelectMission(mission);
+        MissionManager.Instance.SelectMission(mission);
     }
 
     private void OnDestroy()
     {
-        if (manager != null)
-            manager.OnMissionSelectionRequested -= ShowMissionSelection;
+        if (MissionManager.Instance != null)
+            MissionManager.Instance.UnregisterSelectionUI(this);
     }
 }

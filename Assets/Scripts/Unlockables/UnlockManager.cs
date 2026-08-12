@@ -5,7 +5,6 @@ using UnityEngine;
 public class UnlockManager : MonoBehaviour
 {
     public event Action<List<UnlockableData>> OnUnlocked;
-    public IReadOnlyList<MissionData> UnlockedMissions => unlockedMissions;
 
     [SerializeField] private UnlockDatabase database;
     [SerializeField] private MissionDatabase missionDatabase;

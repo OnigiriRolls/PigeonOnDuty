@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class GPSMissionController : MonoBehaviour
+public class GPSMissionController : MonoBehaviour, IMissionController
 {
+    public event Action OnMissionCompleted;
+
     [SerializeField] private HumanFollower humanPrefab;
     [SerializeField] private Transform humanSpawnPoint;
     [SerializeField] private Transform player;
@@ -14,7 +18,6 @@ public class GPSMissionController : MonoBehaviour
     [SerializeField] private CityParadeManager cityParadeManager;
     [SerializeField] private float minimumDistance = 300f;
     [SerializeField] private float bufferTimePerEnemy = 10f;
-    [SerializeField] private MissionTimer missionTimer;
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private MinimapMissionController minimapController;
@@ -43,11 +46,8 @@ public class GPSMissionController : MonoBehaviour
     private void Start()
     {
         checkpointsManager = FindAnyObjectByType<CheckpointsManager>();
-    }
-
-    public void SetGameManager(GameManager gameManager)
-    {
-        this.gameManager = gameManager;
+        MissionManager.Instance.RegisterController(this);
+        gameManager = GameManager.Instance;
     }
 
     public void StartMission(GPSMission mission)
@@ -64,7 +64,7 @@ public class GPSMissionController : MonoBehaviour
         state = GPSMissionState.ReachTraveler;
         checkpointsManager.SetCurrentObjective(currentHuman.transform);
         float duration = travelTimeCalculator.CalculateTime(currentHuman.transform, activeMission.timeBuffer);
-        missionTimer.StartTimer(duration);
+        MissionTimer.Instance.StartTimer(duration);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
         TutorialManager.Instance.TryShow("tutorial_mission_gps", "Guide the player", "Find the human then guide it to the destination. Don't lose its trust!");
@@ -115,7 +115,7 @@ public class GPSMissionController : MonoBehaviour
         collectibleManager.StartContinuousCoinSpawning(player);
         float buffer = activeMission.timeBuffer + bufferTimePerEnemy * dogManager.EnemyCount;
         float duration = travelTimeCalculator.CalculateTime(currentDestination.transform, buffer, 30f);
-        missionTimer.StartTimer(duration);
+        MissionTimer.Instance.StartTimer(duration);
         featherSpawner.StartSpawn();
         hintUI.Show("Escort the Human", 4f);
         TutorialManager.Instance.TryShow("tutorial_leave_npc", "New Mechanic", "The human follows you now. Use [F] to leave the human behind and scout ahead. Use [F] to resume following.");
@@ -187,7 +187,6 @@ public class GPSMissionController : MonoBehaviour
     public void FailMission(DeathReason reason = DeathReason.TimeUp)
     {
         ClearMission();
-        Debug.Log("GPS Mission Failed");
         gameManager.GameOver(reason);
     }
 
@@ -201,7 +200,7 @@ public class GPSMissionController : MonoBehaviour
     private void ClearMission()
     {
         minimapController.HideClient(currentHuman.transform);
-        missionTimer.StopTimer();
+        MissionTimer.Instance.StopTimer();
         //paradeManager.ClearAllParades();
         cityParadeManager.Clear();
         missionRunning = false;
@@ -224,5 +223,32 @@ public class GPSMissionController : MonoBehaviour
         {
             currentHuman.OnTrustDepleted -= HandleHumanTrustDepleted;
         }
+    }
+
+    public bool CanHandle(MissionData mission)
+    {
+        return mission is GPSMission;
+    }
+
+    public void StartMission(MissionData mission)
+    {
+        if (mission is not GPSMission gpsMission)
+            return;
+        StartMission(gpsMission);
+    }
+
+    private void OnDestroy()
+    {
+        MissionManager.Instance.UnregisterController(this);
+    }
+
+    public void CompleteMission()
+    {
+        StopMission();
+    }
+
+    public void FailMission()
+    {
+        FailMission();
     }
 }

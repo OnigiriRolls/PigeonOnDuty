@@ -8,7 +8,6 @@ public class MobileControlsManager : MonoBehaviour
     [SerializeField] private GameObject flightControls;
     [SerializeField] private GameObject gpsControls;
     [SerializeField] private GameObject newspaperControls;
-    [SerializeField] private MissionManager missionManager;
 
     private void Awake()
     {
@@ -17,7 +16,7 @@ public class MobileControlsManager : MonoBehaviour
 
     private void Start()
     {
-        missionManager.OnMissionSelected += HandleMissionSelected;
+        MissionManager.Instance.OnMissionSelected += HandleMissionSelected;
     }
 
     private void HandleMissionSelected(MissionData mission)
@@ -66,6 +65,6 @@ public class MobileControlsManager : MonoBehaviour
 
     private void OnDisable()
     {
-        missionManager.OnMissionSelected -= HandleMissionSelected;
+        MissionManager.Instance.OnMissionSelected -= HandleMissionSelected;
     }
 }

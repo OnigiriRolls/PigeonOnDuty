@@ -24,11 +24,12 @@ MonoBehaviour:
   - Strong pigeons build strong reputations.
   - A true test of wing strength.
   - Gravity is winning today.
+  city: 0
   reputationReward: 15
   coinReward: 15
   unlockId: standard_delivery
   modifier: 3
   coinMultiplier: 1
-  timerMultiplier: 1.25
+  timerMultiplier: 1.35
   throttleMultiplier: 0.75
   oneHitFail: 0

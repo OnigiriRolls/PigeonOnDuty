@@ -5,12 +5,10 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private GameObject destroyEffectPrefab;
     [SerializeField] private AudioClip checkpointSound;
 
-    private MissionManager missionManager;
     private CheckpointsManager checkpointsManager;
 
     private void Start()
     {
-        missionManager = FindAnyObjectByType<MissionManager>();
         checkpointsManager = FindAnyObjectByType<CheckpointsManager>();
     }
 
@@ -25,7 +23,7 @@ public class Checkpoint : MonoBehaviour
             Instantiate(destroyEffectPrefab, transform.position, Quaternion.identity);
         }
         checkpointsManager.NotifyCheckpointReached(transform);
-        missionManager.CompleteActiveMission();
+        MissionManager.Instance.CompleteActiveMission();
         Destroy(gameObject);
     }
 }

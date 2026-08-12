@@ -85,7 +85,8 @@ public class StealerCrowController : BaseCrowController, IThrowTarget, IProjecti
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     public override void ShowConfused(bool show)

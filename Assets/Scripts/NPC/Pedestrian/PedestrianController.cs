@@ -140,7 +140,8 @@ public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarg
 
     public void ShowTargetRing(bool show)
     {
-        targetRing.SetActive(show);
+        if (targetRing != null)
+            targetRing.SetActive(show);
     }
 
     private void OnDestroy()

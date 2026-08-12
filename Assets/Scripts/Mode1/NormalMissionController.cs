@@ -1,18 +1,26 @@
+using System;
 using UnityEngine;
 
-public class NormalMissionController : MonoBehaviour
+public class NormalMissionController : MonoBehaviour, IMissionController
 {
+    public event Action OnMissionCompleted;
+
     [SerializeField] private CheckpointsManager checkpointsManager;
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private WindAttackManager windAttackManager;
     [SerializeField] private NormalEnemiesSpawner normalEnemiesSpawner;
     [SerializeField] private HelicopterPatrolManager helicopterManager;
 
-    public void StartMission(MissionTimer missionTimer, float timeBuffer, float timerMultiplier)
+    private void Start()
+    {
+        MissionManager.Instance.RegisterController(this);
+    }
+
+    public void StartMission(float timeBuffer, float timerMultiplier)
     {
         checkpointsManager.SpawnNextCheckpoint();
         collectibleManager.StartNormalMissionCollectibles();
-        checkpointsManager.StartCheckpointTimer(missionTimer, timeBuffer, timerMultiplier);
+        checkpointsManager.StartCheckpointTimer(timeBuffer, timerMultiplier);
         windAttackManager.StartAttack();
         normalEnemiesSpawner.StartSpawn();
         helicopterManager.SpawnHelicopters();
@@ -24,5 +32,32 @@ public class NormalMissionController : MonoBehaviour
         normalEnemiesSpawner.StopSpawn();
         collectibleManager.StopNormalMissionCollectibles();
         helicopterManager.Clear();
+    }
+
+    public bool CanHandle(MissionData mission)
+    {
+        return mission is DeliveryMission;
+    }
+
+    public void StartMission(MissionData mission)
+    {
+        if (mission is not DeliveryMission deliveryMission)
+            return;
+        StartMission(deliveryMission.timeBuffer, deliveryMission.throttleMultiplier);
+    }
+
+    private void OnDestroy()
+    {
+        MissionManager.Instance.UnregisterController(this);
+    }
+
+    public void CompleteMission()
+    {
+        ClearMission();
+    }
+
+    public void FailMission()
+    {
+        ClearMission();
     }
 }

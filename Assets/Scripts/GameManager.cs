@@ -1,47 +1,73 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     public event Action OnGameOver;
     public event Action OnPaused;
     public event Action OnResumed;
-    public bool IsGameOver { get; private set; }
     public bool IsPaused { get; private set; }
     public DeathReason LastDeathReason { get; private set; }
 
-    [SerializeField] private GameObject gameOverPanel;
-
+    private GameOverUI gameOverPanel;
     private RewardManager rewardManager;
+    private bool isGameOver;
 
     private void Awake()
     {
-        IsGameOver = false;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        isGameOver = false;
         Time.timeScale = 1f;
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
     private void Start()
     {
+        RefreshSceneReference();
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RefreshSceneReference();
+    }
+
+    private void RefreshSceneReference()
+    {
         rewardManager = FindAnyObjectByType<RewardManager>();
+        gameOverPanel = FindAnyObjectByType<GameOverUI>();
+        RefreshGameOver();
     }
 
     public void GameOver(DeathReason reason)
     {
-        if (IsGameOver)
+        if (isGameOver)
             return;
         LastDeathReason = reason;
         rewardManager.enabled = false;
         rewardManager.PreviousCoins = SaveManager.Instance.TotalCoins;
-        IsGameOver = true;
+        isGameOver = true;
         OnGameOver?.Invoke();
         AudioManager.Instance.StopAllAudio();
         PauseManager.Instance.Pause(PauseReason.GameOver);
-        gameOverPanel.SetActive(true);
+        gameOverPanel.ShowUI(reason, rewardManager.Reputation, rewardManager.TotalCoins, rewardManager.PreviousCoins);
+    }
+
+    private void RefreshGameOver()
+    {
+        isGameOver = false;
     }
 
     public void PauseGame()
     {
-        if (IsGameOver || IsPaused)
+        if (isGameOver || IsPaused)
             return;
         IsPaused = true;
         OnPaused?.Invoke();

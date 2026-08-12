@@ -22,12 +22,12 @@ namespace DavidJalbert.LowPolyPeople
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) setAnimation("idle");
-            if (Input.GetKeyDown(KeyCode.Alpha2)) setAnimation("walk");
-            if (Input.GetKeyDown(KeyCode.Alpha3)) setAnimation("run");
-            if (Input.GetKeyDown(KeyCode.Alpha4)) setAnimation("wave");
-            if (Input.GetKeyDown(KeyCode.R)) randomizePalette();
-            if (Input.GetKeyDown(KeyCode.C)) changeCamera();
+            //if (Input.GetKeyDown(KeyCode.Alpha1)) setAnimation("idle");
+            //if (Input.GetKeyDown(KeyCode.Alpha2)) setAnimation("walk");
+            //if (Input.GetKeyDown(KeyCode.Alpha3)) setAnimation("run");
+            //if (Input.GetKeyDown(KeyCode.Alpha4)) setAnimation("wave");
+            //if (Input.GetKeyDown(KeyCode.R)) randomizePalette();
+            //if (Input.GetKeyDown(KeyCode.C)) changeCamera();
         }
 
         public void setAnimation(string tag)

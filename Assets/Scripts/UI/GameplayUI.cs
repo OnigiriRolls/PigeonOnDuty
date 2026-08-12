@@ -1,21 +1,16 @@
 using System;
 using TMPro;
+using Unity.Multiplayer.PlayMode;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameplayUI : StopAudio
 {
-    public AltitudeLayer CurrentLayer => currentLayer;
-
     [SerializeField] private PlayerController player;
-    [SerializeField] private MissionManager deliveryMissionManager;
     [SerializeField] private TextMeshProUGUI throttleText;
     [SerializeField] private Image throttleBar;
-    [SerializeField] private GameObject throttleLimit;
     [SerializeField] private TextMeshProUGUI speedText;
-    [SerializeField] private TextMeshProUGUI altitudeText;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private Animator altitudeAnimator;
     [SerializeField] private Animator clockAnimator;
     [SerializeField] private AudioClip clockWarningClip;
     [SerializeField] private AudioClip clockCriticalClip;
@@ -26,7 +21,6 @@ public class GameplayUI : StopAudio
     [SerializeField] private float midAltitude = 51f;
     [SerializeField] private float highAltitude = 151f;
     [SerializeField] private float maxThrottle = 130f;
-    [SerializeField] private MissionTimer missionTimer;
 
     private AltitudeLayer currentLayer;
     private Color timerInitialColor;
@@ -41,7 +35,6 @@ public class GameplayUI : StopAudio
     {
         UpdateThrottle();
         UpdateSpeed();
-        UpdateAltitude();
         UpdateTimer();
         CheckAltitudeLayer();
     }
@@ -57,24 +50,18 @@ public class GameplayUI : StopAudio
         speedText.text = $"Speed: {speedKmh:F0} km/h";
     }
 
-    private void UpdateAltitude()
-    {
-       // altitudeText.text = $"Altitude: {player.transform.position.y:F0} m";
-    }
-
     private void CheckAltitudeLayer()
     {
-        //AltitudeLayer newLayer = GetAltitudeLayer();
-        //if (newLayer == currentLayer)
-        //    return;
+        AltitudeLayer newLayer = GetAltitudeLayer();
+        if (newLayer == currentLayer)
+            return;
 
-        //currentLayer = newLayer;
-        //ShowAltitudeTransition();
+        currentLayer = newLayer;
+        ShowAltitudeTransition();
     }
 
     private void ShowAltitudeTransition()
     {
-        altitudeAnimator.SetTrigger("Pulse");
         AudioManager.Instance.PlaySFX(altitudeTransitionClip);
         switch (currentLayer)
         {
@@ -100,13 +87,13 @@ public class GameplayUI : StopAudio
         if (altitude < highAltitude)
         {
             return AltitudeLayer.Mid;
-        }
+    }
         return AltitudeLayer.High;
     }
 
     private void UpdateTimer()
     {
-        if (!missionTimer.IsRunning)
+        if (!MissionTimer.Instance.IsRunning)
         {
             AudioManager.Instance.StopUILoop();
             timerText.text = "";
@@ -115,7 +102,7 @@ public class GameplayUI : StopAudio
             timerText.color = timerInitialColor;
             return;
         }
-        float timer = missionTimer.RemainingTime;
+        float timer = MissionTimer.Instance.RemainingTime;
         timer = Mathf.Max(timer, 0f);
         timerText.text = Mathf.CeilToInt(timer).ToString();
         UpdateTimerAudio(timer);

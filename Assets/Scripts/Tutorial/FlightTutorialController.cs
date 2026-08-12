@@ -12,7 +12,6 @@ public class FlightTutorialController : MonoBehaviour
     }
 
     [SerializeField] private CheckpointsManager checkpointsManager;
-    [SerializeField] private MissionManager missionManager;
     [SerializeField] private string tutorialTitle = "FLYING";
     [SerializeField] private string tutorialContent = "Reach the checkpoint and learn how to fly.";
     [SerializeField] private string tutorialTitle2 = "Good job!";
@@ -34,6 +33,13 @@ public class FlightTutorialController : MonoBehaviour
             checkpointsManager.OnCheckpointReached += HandleCheckpointReached;
         if (TutorialUI.Instance != null)
             TutorialUI.Instance.OnTutorialClosed += HandleTutorialClosed;
+        if (SaveManager.Instance.Data.flightTutorialCompleted)
+        {
+            if (!MissionManager.Instance.StartMissionAfterLoad)
+                MissionManager.Instance.RequestMissionSelection();
+        }
+        else
+            StartTutorial();
     }
 
     private void OnDisable()
@@ -109,6 +115,6 @@ public class FlightTutorialController : MonoBehaviour
         SaveManager.Instance.Save();
         flightControlsUI.HideFlightPanel();
         checkpointsManager.CleanCurrentObjective();
-        missionManager.RequestMissionSelection();
+        MissionManager.Instance.RequestMissionSelection();
     }
 }

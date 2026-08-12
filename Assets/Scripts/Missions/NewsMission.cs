@@ -6,20 +6,4 @@ public class NewsMission : MissionData
 {
     public int minClients = 3;
     public int maxClients = 4;
-
-    public override void StartMission(MissionManager missionManager)
-    {
-        missionManager.NewsMissionController.StartMission(this);
-    }
-
-    public override void CompleteMission(MissionManager missionManager)
-    {
-        missionManager.NewsMissionController.ClearMission();
-    }
-
-    public override void FailMission(MissionManager missionManager)
-    {
-        Debug.Log("News mission failed.");
-        missionManager.NewsMissionController.ClearMission();
-    }
 }

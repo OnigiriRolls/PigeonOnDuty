@@ -3,9 +3,21 @@ using UnityEngine;
 
 public class PlayerAppearanceController : MonoBehaviour
 {
+    public Material PigeonMaterial { get; private set; }
+    
     [SerializeField] private List<PigeonSkinData> skins;
     [SerializeField] private PigeonSkinData defaultSkin;
     [SerializeField] private Renderer pigeonRenderer;
+
+    private Color originalEmissionColor = Color.black;
+
+    private void Awake()
+    {
+        PigeonMaterial = new Material(pigeonRenderer.material);
+        pigeonRenderer.material = PigeonMaterial;
+        originalEmissionColor = PigeonMaterial.GetColor("_EmissionColor");
+    }
+
 
     private void Start()
     {
@@ -40,8 +52,22 @@ public class PlayerAppearanceController : MonoBehaviour
     {
         if (skin == null)
             return;
-        if (pigeonRenderer == null)
+        if (PigeonMaterial == null)
             return;
-        pigeonRenderer.material.color = skin.color;
+        PigeonMaterial.color = skin.color;
+    }
+
+    public void SetEmission(Color color)
+    {
+        if (PigeonMaterial == null)
+            return;
+        PigeonMaterial.SetColor("_EmissionColor", color);
+    }
+
+    public void RestoreOriginalEmission()
+    {
+        if (PigeonMaterial == null)
+            return;
+        PigeonMaterial.SetColor("_EmissionColor", originalEmissionColor);
     }
 }
