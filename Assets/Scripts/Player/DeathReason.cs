@@ -4,5 +4,6 @@ public enum DeathReason
     Crow,
     Bullet,
     Balloon,
-    NPCTrustLost
+    NPCTrustLost,
+    Dehydration
 }

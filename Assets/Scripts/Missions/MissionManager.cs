@@ -48,7 +48,7 @@ public class MissionManager : MonoBehaviour
     {
         RefreshSceneReferences();
         MissionTimer.Instance.OnTimerExpired += HandleMissionTimerExpired;
-        currentCity = MissionCity.DefaultCity;
+        currentCity = MissionCity.ArabCity;
     }
 
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)

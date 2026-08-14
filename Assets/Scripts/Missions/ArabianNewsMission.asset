@@ -28,7 +28,7 @@ MonoBehaviour:
   reputationReward: 60
   coinReward: 40
   unlockId: arabian_human_delivery
-  minClients: 2
-  maxClients: 2
+  minClients: 4
+  maxClients: 4
   timerMultiplier: 0.5
   throttleMultiplier: 0.75

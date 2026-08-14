@@ -102,7 +102,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   config: {fileID: 11400000, guid: e870177bd8479524ba53ee2a8b01c4c3, type: 2}
-  missionManager: {fileID: 0}
   windInfluence: 10
   hoverDrag: 8
 --- !u!114 &7088150879942560670
@@ -150,13 +149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 3
   shieldInvulnerabilityDuration: 4
-  hitParticlesPrefab: {fileID: 5149711938787232430, guid: 24486c5f1e34c8a43944bae4a4012f6d, type: 3}
   shield: {fileID: 7444230667344343742}
   shieldBreakEffect: {fileID: 7220251727273629314, guid: 74860fbbc6a34824a96e6b71cb0672c6, type: 3}
   shieldBreakClip: {fileID: 8300000, guid: defc12db9d114c44cae25c9c52757410, type: 3}
   shieldDuration: 10
   pulseStartTime: 3
-  birdRenderer: {fileID: 1898313465799474587}
   playerAnimator: {fileID: 3291842626558970019}
   deathReasonText: {fileID: 0}
   GameOverUI: {fileID: 0}
@@ -1236,8 +1233,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 22
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 5
+  MinDistance: 6.292221
+  MaxDistance: 7.407509
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1396,8 +1393,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 20
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 5
+  MinDistance: 5.851959
+  MaxDistance: 7.010353
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

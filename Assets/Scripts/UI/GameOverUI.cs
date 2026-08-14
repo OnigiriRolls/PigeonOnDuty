@@ -53,6 +53,8 @@ public class GameOverUI : MonoBehaviour
                 return "The balloon blew you up :(";
             case DeathReason.NPCTrustLost:
                 return "The Human was fed up :(";
+            case DeathReason.Dehydration:
+                return "The pigeon got dehydrated :(";
             default:
                 return "You ran out of time :(";
         }

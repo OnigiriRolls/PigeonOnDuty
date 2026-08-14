@@ -111,36 +111,11 @@ public class AudioManager : MonoBehaviour
         environmentalSource.Stop();
     }
 
-    public void CrossfadeMusic(AudioClip newClip, float fadeDuration = 2f)
-    {
-        if (CurrentMusicClip == newClip)
-            return;
-        StartCoroutine(CrossfadeCoroutine(newClip, fadeDuration));
-    }
-
-    private IEnumerator CrossfadeCoroutine(AudioClip newClip, float duration)
-    {
-        inactiveAmbianceSource.clip = newClip;
-        CurrentMusicClip = newClip;
-        inactiveAmbianceSource.volume = 0f;
-        inactiveAmbianceSource.Play();
-        float timer = 0f;
-        while (timer < duration)
-        {
-            timer += Time.deltaTime;
-            float t = timer / duration;
-            activeAmbianceSource.volume = Mathf.Lerp(musicVolume * masterVolume, 0f, t);
-            inactiveAmbianceSource.volume = Mathf.Lerp(0f, musicVolume * masterVolume, t);
-            yield return null;
-        }
-
-        activeAmbianceSource.Stop();
-        (inactiveAmbianceSource, activeAmbianceSource) = (activeAmbianceSource, inactiveAmbianceSource);
-    }
-
     public void PlayMusic(AudioClip clip, bool loop = true)
     {
         if (clip == null)
+            return;
+        if (clip == CurrentMusicClip && activeAmbianceSource.isPlaying)
             return;
         activeAmbianceSource.Stop();
         inactiveAmbianceSource.Stop();

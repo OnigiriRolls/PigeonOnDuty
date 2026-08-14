@@ -19,7 +19,8 @@ public class MinimapIconManager : MonoBehaviour
     {
         if (!icons.TryGetValue(target, out MinimapIcon icon))
             return;
-        Destroy(icon.gameObject);
+        if (icon != null)
+            Destroy(icon.gameObject);
         icons.Remove(target);
     }
 }

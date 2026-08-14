@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         health = GetComponent<PlayerHealth>();
         input = GetComponent<PlayerInputController>();
+        MissionManager.Instance.OnMissionSelected += HandleMissionSelected;
     }
 
     private void Start()
     {
         animator = visualModel.GetComponent<Animator>();
         animator.SetBool("IsFlying", true);
-        MissionManager.Instance.OnMissionSelected += HandleMissionSelected;
         health.OnDeath += HandleDeath;
     }
 

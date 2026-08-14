@@ -13,6 +13,7 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
     [SerializeField] private CrowPatrolManager crowSpawner;
     [SerializeField] private DogPatrolManager dogSpawner;
     [SerializeField] private FeatherPickupSpawner featherSpawner;
+    [SerializeField] private WindAttackManager windAttackManager;
     [SerializeField] private ThrowableInventory playerInventory;
     [SerializeField] private ThrowableData newspaperData;
     [SerializeField] private ThrowableData featherData;
@@ -23,12 +24,15 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
 
     private List<ClientController> activeClients = new();
     private ArabianNewsMission currentMission;
+    private PlayerHydration playerHydration;
 
     private void Start()
     {
-
+        playerHydration = player.GetComponent<PlayerHydration>();
         if (MissionManager.Instance.StartMissionAfterLoad)
+        {
             MissionManager.Instance.RegisterController(this);
+        }
         else
         {
             MissionManager.Instance.RegisterController(this);
@@ -56,8 +60,11 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
         playerInventory.SetAmount(featherData, activeClients.Count);
         playerInventory.SetEnabled(newspaperData, true);
         playerInventory.SetEnabled(featherData, true);
+        playerHydration.Activate();
+        TutorialManager.Instance.TryShow("tutorial_fountain_hydration", "Stay Hydrated", "The sun is scorching... Use the wells to stay hydrated!");
         MissionTimer.Instance.StartTimer(activeClients.Count * currentMission.timeBuffer);
         collectibleManager.StartContinuousCoinSpawning(player);
+        windAttackManager.StartAttack();
     }
 
     private void HandleClientDelivered(ClientController client)
@@ -83,9 +90,11 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
         dogSpawner.ClearDogs();
         dogSpawner.ClearPatrolZones();
         featherSpawner.StopSpawn();
+        windAttackManager.StopAttack();
         collectibleManager.StopContinuousCoinSpawning();
         playerInventory.SetEnabled(newspaperData, false);
         playerInventory.SetEnabled(featherData, false);
+        playerHydration.Deactivate();
     }
 
     public bool CanHandle(MissionData mission)

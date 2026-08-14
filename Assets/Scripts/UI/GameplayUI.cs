@@ -22,7 +22,7 @@ public class GameplayUI : StopAudio
     [SerializeField] private float highAltitude = 151f;
     [SerializeField] private float maxThrottle = 130f;
 
-    private AltitudeLayer currentLayer;
+    private AltitudeLayer currentLayer = AltitudeLayer.High;
     private Color timerInitialColor;
 
     protected override void Start()
@@ -62,17 +62,16 @@ public class GameplayUI : StopAudio
 
     private void ShowAltitudeTransition()
     {
-        AudioManager.Instance.PlaySFX(altitudeTransitionClip);
         switch (currentLayer)
         {
             case AltitudeLayer.Low:
-                AudioManager.Instance.CrossfadeMusic(lowMusic);
+                AudioManager.Instance.PlayMusic(lowMusic);
                 break;
             case AltitudeLayer.Mid:
-                AudioManager.Instance.CrossfadeMusic(midMusic);
+                AudioManager.Instance.PlayMusic(midMusic);
                 break;
             case AltitudeLayer.High:
-                AudioManager.Instance.CrossfadeMusic(highMusic);
+                AudioManager.Instance.PlayMusic(highMusic);
                 break;
         }
     }

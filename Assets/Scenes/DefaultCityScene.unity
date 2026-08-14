@@ -7037,7 +7037,7 @@ MonoBehaviour:
   missionDatabase: {fileID: 11400000, guid: 1501790340ba9a3458b2cd104b8babfc, type: 2}
   isNewsMissionActive: 1
   isGPSMissionActive: 0
-  isArabMissionActive: 0
+  isArabMissionActive: 1
   areAllMissionsActive: 0
 --- !u!1 &653074206 stripped
 GameObject:

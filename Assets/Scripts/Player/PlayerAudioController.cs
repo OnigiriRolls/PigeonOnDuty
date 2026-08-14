@@ -37,11 +37,11 @@ public class PlayerAudioController : MonoBehaviour
     {
         if (!previousFlyingState && player.IsFlying)
         {
-            PlayRandomClip(takeoffLandingClips, movementAudioSource);
+            AudioManager.Instance.PlayRandomSFX(takeoffLandingClips, movementAudioSource);
         }
         if (previousFlyingState && !player.IsFlying)
         {
-            PlayRandomClip(takeoffLandingClips, movementAudioSource);
+            AudioManager.Instance.PlayRandomSFX(takeoffLandingClips, movementAudioSource);
         }
 
         previousFlyingState = player.IsFlying;
@@ -51,12 +51,10 @@ public class PlayerAudioController : MonoBehaviour
     {
         if (!player.IsFlying)
             return;
-
         flyingSoundTimer -= Time.deltaTime;
-
         if (flyingSoundTimer <= 0f)
         {
-            PlayRandomClip(flyingClips, movementAudioSource);
+            AudioManager.Instance.PlayRandomSFX(flyingClips, movementAudioSource);
             ResetFlyingSoundTimer();
         }
     }
@@ -66,17 +64,8 @@ public class PlayerAudioController : MonoBehaviour
         flyingSoundTimer = Random.Range(minFlyingSoundDelay, maxFlyingSoundDelay);
     }
 
-    private void PlayRandomClip(AudioClip[] clips, AudioSource audioSource)
-    {
-        if (clips.Length == 0)
-            return;
-        AudioClip randomClip = clips[Random.Range(0, clips.Length)];
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
-        audioSource.PlayOneShot(randomClip);
-    }
-
     public void PlayHitClip()
     {
-        PlayRandomClip(hitClips, hitAudioSource);
+        AudioManager.Instance.PlayRandomSFX(hitClips, hitAudioSource);
     }
 }
