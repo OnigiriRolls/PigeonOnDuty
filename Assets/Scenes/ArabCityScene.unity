@@ -113024,6 +113024,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1517355608}
     - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
+      propertyPath: lowMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 157acaf786d120e4b9ecb5f9005aa387, type: 3}
+    - target: {fileID: 7034733957122885923, guid: 8d84da530e258d746a4e2d8c0166c85c, type: 3}
       propertyPath: speedText
       value: 
       objectReference: {fileID: 430755704}

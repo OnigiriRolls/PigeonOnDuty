@@ -14,7 +14,6 @@ public class GameplayUI : StopAudio
     [SerializeField] private Animator clockAnimator;
     [SerializeField] private AudioClip clockWarningClip;
     [SerializeField] private AudioClip clockCriticalClip;
-    [SerializeField] private AudioClip altitudeTransitionClip;
     [SerializeField] private AudioClip lowMusic;
     [SerializeField] private AudioClip midMusic;
     [SerializeField] private AudioClip highMusic;

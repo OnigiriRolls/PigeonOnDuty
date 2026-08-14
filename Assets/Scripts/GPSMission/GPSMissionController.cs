@@ -176,7 +176,7 @@ public class GPSMissionController : MonoBehaviour, IMissionController
         {
             lostTimer += Time.deltaTime;
             if (lostTimer >= activeMission.lostTime)
-                FailMission();
+                FailMission(DeathReason.TimeUp);
         }
         else
         {
@@ -188,13 +188,6 @@ public class GPSMissionController : MonoBehaviour, IMissionController
     {
         ClearMission();
         gameManager.GameOver(reason);
-    }
-
-    public float GetRemainingLostTime()
-    {
-        if (activeMission == null)
-            return 0f;
-        return Mathf.Max(0f, activeMission.lostTime - lostTimer);
     }
 
     private void ClearMission()
@@ -249,6 +242,6 @@ public class GPSMissionController : MonoBehaviour, IMissionController
 
     public void FailMission()
     {
-        FailMission();
+        StopMission();
     }
 }
