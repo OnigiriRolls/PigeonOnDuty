@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558d251055fbb3540bf90e0bf9b5fa16, type: 3}
+  m_Name: ArcticCity
+  m_EditorClassIdentifier: Assembly-CSharp::CityData
+  cityId: city_arctic
+  displayName: Arctic City
+  icon: {fileID: 21300000, guid: ffde92eedd72a954a8ab3eb0190e85b0, type: 3}
+  unlockReputationRequired: 999999
+  missions: []
