@@ -7,14 +7,11 @@ public enum PauseReason
     MissionSelection,
     GameOver,
     TutorialMessage,
-    TutorialWindAttack,
-    TutorialWindGust
 }
 
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance { get; private set; }
-    public bool IsPaused => pauseReasons.Count > 0;
 
     private readonly HashSet<PauseReason> pauseReasons = new();
 
@@ -27,11 +24,6 @@ public class PauseManager : MonoBehaviour
         }
 
         Instance = this;
-    }
-
-    public bool HasReason(PauseReason reason)
-    {
-        return pauseReasons.Contains(reason);
     }
 
     public void Pause(PauseReason reason)

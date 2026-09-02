@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     {
         if (mission is DeliveryMission deliveryMission)
             throttleMultiplier = deliveryMission.throttleMultiplier;
-        else if(mission is ArabianNewsMission arabianNewsMission)
+        else if (mission is ArabianNewsMission arabianNewsMission)
             throttleMultiplier = arabianNewsMission.throttleMultiplier;
         else throttleMultiplier = 1f;
     }

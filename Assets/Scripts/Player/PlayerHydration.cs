@@ -101,14 +101,4 @@ public class PlayerHydration : MonoBehaviour
         }
         OnHydrationChanged?.Invoke(CurrentHydration, maxHydration);
     }
-
-    public void RestoreFullHydration()
-    {
-        if (!IsActive || dehydrated)
-            return;
-        CurrentHydration = maxHydration;
-        audioSource.Stop();
-        lowHydrationWarningTriggered = false;
-        OnHydrationChanged?.Invoke(CurrentHydration, maxHydration);
-    }
 }

@@ -7067,10 +7067,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MissionManager
   selectionInvulnerabilityDuration: 2
   missionDatabase: {fileID: 11400000, guid: 1501790340ba9a3458b2cd104b8babfc, type: 2}
-  isNewsMissionActive: 1
+  isNewsMissionActive: 0
   isGPSMissionActive: 0
-  isArabMissionActive: 1
-  areAllMissionsActive: 0
+  isArabMissionActive: 0
+  areAllMissionsActive: 1
 --- !u!1 &653074206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4425040517500037911, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}

@@ -25,10 +25,4 @@ public class ThrowCalculator : MonoBehaviour
     {
         return GetInheritedVelocity() + GetLaunchDirection() * throwForce;
     }
-
-    public Vector3 GetAutoAimVelocity(Transform target, float throwForce)
-    {
-        Vector3 direction = (target.position - ThrowPosition).normalized;
-        return GetInheritedVelocity() + direction * throwForce;
-    }
 }

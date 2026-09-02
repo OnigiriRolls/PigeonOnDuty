@@ -30,7 +30,6 @@ public abstract class ThrowableProjectile : MonoBehaviour
         if (target == null)
             return;
 
-        //Vector3 aimPoint = target.AimPoint.position +  target.AimPoint.forward * 0.5f;
         Vector3 aimPoint = target.AimPoint.position + target.AimPoint.forward;
         Vector3 desired = (aimPoint - transform.position).normalized;
         Vector3 current = rb.linearVelocity.normalized;

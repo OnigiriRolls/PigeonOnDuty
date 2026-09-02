@@ -113,14 +113,6 @@ public class ParadeController : MonoBehaviour, INPCMovement
             if (hit.TryGetComponent(out HumanFollower human))
             {
                 human.NotifyParadeNearby(this);
-                //Vector3 direction = human.transform.position - transform.position;
-                //if (Physics.Raycast(transform.position + Vector3.up, direction.normalized, out RaycastHit hit1, distractionRadius))
-                //{
-                //    if (hit1.collider.GetComponent<HumanFollower>() == human)
-                //    {
-                //        human.NotifyParadeNearby();
-                //    }
-                //}
             }
         }
     }

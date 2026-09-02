@@ -2,7 +2,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(NPCDialogueUI))]
@@ -285,7 +284,7 @@ public class HumanFollower : MonoBehaviour, INPCMovement
 
     internal void OnDogScared()
     {
-        if (currentState is DogCaughtState && currentState is not FollowingParadeState)
+        if (currentState is DogCaughtState || currentState is FollowingParadeState)
             return;
         ResetAbandon();
         ChangeState(new DogCaughtState(this));

@@ -51,12 +51,6 @@ public class DogController : MonoBehaviour, IThrowTarget, IProjectileTarget
         ResetBarkTimer();
     }
 
-    public void SetupTutorialNewspaper()
-    {
-        hasNewspaper = true;
-        carryVisual.Show(config.newspaper);
-    }
-
     private void ResetBarkTimer()
     {
         nextBarkTime = Random.Range(10f, 15f);

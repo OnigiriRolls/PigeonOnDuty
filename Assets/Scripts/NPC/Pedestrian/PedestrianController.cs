@@ -110,7 +110,6 @@ public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarg
 
     private void HandleStuck()
     {
-        //Debug.Log("stuck " + currentStateName);
         if (currentState == walkingState || currentState == carryItemState)
         {
             movement.MoveToNextWaypoint();

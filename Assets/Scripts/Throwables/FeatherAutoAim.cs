@@ -52,18 +52,15 @@ public class FeatherAutoAim : MonoBehaviour
 
     private void SetCurrentTarget(IThrowTarget newTarget)
     {
-        //Debug.Log(newTarget);
         if (currentTarget == newTarget)
             return;
         if (currentTarget != null)
         {
-            //Debug.Log("ShowTargetRing(false)");
             currentTarget.ShowTargetRing(false);
         }
         currentTarget = newTarget;
         if (currentTarget != null)
         {
-            //Debug.Log("ShowTargetRing(true)");
             currentTarget.ShowTargetRing(true);
         }
     }
