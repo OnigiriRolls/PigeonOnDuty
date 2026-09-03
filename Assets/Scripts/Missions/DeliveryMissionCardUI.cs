@@ -7,6 +7,8 @@ public class DeliveryMissionCardUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private TextMeshProUGUI starsText;
+    [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private Button selectButton;
 
     private MissionData mission;
@@ -20,6 +22,8 @@ public class DeliveryMissionCardUI : MonoBehaviour
         descriptionText.text = $"{mission.description}{Environment.NewLine}{Environment.NewLine}" +
             $"Dispatcher:{Environment.NewLine}{Environment.NewLine}" +
             $"{mission.GetRandomFlavorText()}";
+        starsText.text = $"{mission.reputationReward}";
+        coinsText.text = $"{mission.coinReward}";
         selectButton.onClick.RemoveAllListeners();
         selectButton.onClick.AddListener(SelectMission);
     }

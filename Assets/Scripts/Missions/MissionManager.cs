@@ -124,6 +124,7 @@ public class MissionManager : MonoBehaviour
     public void SelectMission(MissionData mission)
     {
         ActiveMission = mission;
+        rewardManager.ResetCurentRewards();
         if (mission.city != currentCity)
         {
             currentCity = mission.city;
@@ -186,8 +187,8 @@ public class MissionManager : MonoBehaviour
         controller.CompleteMission();
         rewardManager.AddReputation(ActiveMission.reputationReward);
         rewardManager.AddCoins(ActiveMission.coinReward);
-        SaveManager.Instance.SaveRunResults(rewardManager.Reputation, rewardManager.TotalCoins);
-        missionRewardUI.ShowReward(ActiveMission.reputationReward, ActiveMission.coinReward);
+        SaveManager.Instance.SaveRunResults(rewardManager.CurentReputation, rewardManager.CurentCoins);
+        missionRewardUI.ShowReward(rewardManager.CurentReputation, rewardManager.CurentCoins);
         ActiveMission = null;
         RequestMissionSelection();
     }
