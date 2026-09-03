@@ -284,10 +284,11 @@ public class HumanFollower : MonoBehaviour, INPCMovement
 
     internal void OnDogScared()
     {
-        if (currentState is DogCaughtState || currentState is FollowingParadeState)
-            return;
-        ResetAbandon();
-        ChangeState(new DogCaughtState(this));
+        if (currentState is FollowingState || currentState is FollowerWaitingState)
+        {
+            ResetAbandon();
+            ChangeState(new DogCaughtState(this));
+        }
     }
 
     internal void OnDogGone()

@@ -28,4 +28,9 @@ public class HelicopterAudioController : MonoBehaviour
     {
         AudioManager.Instance.PlayRandomSFX(clip, audioSource);
     }
+
+    public void StopAudio()
+    {
+        audioSource.Stop();
+    }
 }

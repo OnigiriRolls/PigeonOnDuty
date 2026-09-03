@@ -85,4 +85,11 @@ public class PatrolCrowController : BaseCrowController, IProjectileTarget, IThro
     {
         return PatrolZone.GetRandomPoint();
     }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        if (EnemyAggroManager.Instance != null)
+            EnemyAggroManager.Instance.Release(this);
+    }
 }

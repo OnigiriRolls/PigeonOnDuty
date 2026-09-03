@@ -43,7 +43,7 @@ public class NormalMissionController : MonoBehaviour, IMissionController
     {
         if (mission is not DeliveryMission deliveryMission)
             return;
-        StartMission(deliveryMission.timeBuffer, deliveryMission.throttleMultiplier);
+        StartMission(deliveryMission.timeBuffer, deliveryMission.timerMultiplier);
     }
 
     private void OnDestroy()

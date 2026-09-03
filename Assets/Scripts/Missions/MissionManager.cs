@@ -157,6 +157,8 @@ public class MissionManager : MonoBehaviour
         IMissionController controller = GetControllerForMission(ActiveMission);
         if (controller == null)
             return;
+        if (EnemyAggroManager.Instance != null)
+            EnemyAggroManager.Instance.ResetAggro();
         controller.StartMission(ActiveMission);
         OnMissionSelected?.Invoke(ActiveMission);
         playerHealth.StartInvulnerability(selectionInvulnerabilityDuration);
@@ -187,8 +189,8 @@ public class MissionManager : MonoBehaviour
         controller.CompleteMission();
         rewardManager.AddReputation(ActiveMission.reputationReward);
         rewardManager.AddCoins(ActiveMission.coinReward);
-        SaveManager.Instance.SaveRunResults(rewardManager.CurentReputation, rewardManager.CurentCoins);
-        missionRewardUI.ShowReward(rewardManager.CurentReputation, rewardManager.CurentCoins);
+        SaveManager.Instance.SaveRunResults(rewardManager.CurrentReputation, rewardManager.CurrentCoins);
+        missionRewardUI.ShowReward(rewardManager.CurrentReputation, rewardManager.CurrentCoins);
         ActiveMission = null;
         RequestMissionSelection();
     }
@@ -200,6 +202,11 @@ public class MissionManager : MonoBehaviour
         IMissionController controller = GetControllerForMission(ActiveMission);
         controller.FailMission();
         GameManager.Instance.GameOver(DeathReason.TimeUp);
+    }
+
+    public void SetCurrentCity(MissionCity currentCity)
+    {
+        this.currentCity = currentCity;
     }
 
     private void OnDestroy()

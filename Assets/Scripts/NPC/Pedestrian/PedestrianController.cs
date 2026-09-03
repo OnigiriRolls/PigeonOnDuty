@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PedestrianMovement))]
 [RequireComponent(typeof(ClientController))]
 public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarget, IBasePedestrianController
 {
-    public Transform AimPoint => transform;
+    public Transform AimPoint => transform == null ? null : transform;
     public PedestrianMovement Movement => movement;
     public WaypointNetwork WaypointNetwork { get; private set; }
     public ThrowableData CarriedItem { get; private set; }
@@ -79,6 +80,8 @@ public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarg
             return;
         if (pickupCooldown > 0f)
             return;
+        if (pickup.Item.itemName != "Newspaper")
+            return;
         if (CarriedItem != null)
             return;
         if (pickup == null)
@@ -126,14 +129,6 @@ public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarg
             ChangeState(carryItemState);
             return true;
         }
-
-        if (item.itemName == "Feather")
-        {
-            DropCarriedItem();
-            ChangeState(walkingState);
-            return true;
-        }
-
         return false;
     }
 
@@ -150,6 +145,6 @@ public class PedestrianController : MonoBehaviour, IThrowTarget, IProjectileTarg
 
     public bool CanBeHitBy(ThrowableData item)
     {
-        return item.itemName == "Feather" || item.itemName == "Newspaper";
+        return item.itemName == "Newspaper";
     }
 }

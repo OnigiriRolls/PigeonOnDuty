@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArabianNewsMission
   missionName: Arabian Delivery
   description: Deliver newspapers to moving citizens.
-  timeBuffer: 20
+  timeBuffer: 30
   flavorTexts:
   - Extra! Extra! Someone actually reads the newspaper!
   - Please don't eat the newspapers.
@@ -27,5 +27,5 @@ MonoBehaviour:
   unlockId: arabian_human_delivery
   minClients: 4
   maxClients: 4
-  timerMultiplier: 0.5
+  timerMultiplier: 1
   throttleMultiplier: 0.75

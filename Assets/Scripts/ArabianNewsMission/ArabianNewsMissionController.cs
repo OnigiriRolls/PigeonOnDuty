@@ -95,6 +95,8 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
         playerInventory.SetEnabled(newspaperData, false);
         playerInventory.SetEnabled(featherData, false);
         playerHydration.Deactivate();
+        if (PickupManager.Instance != null)
+            PickupManager.Instance.ClearAllPickups();
     }
 
     public bool CanHandle(MissionData mission)

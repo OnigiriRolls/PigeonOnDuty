@@ -12,7 +12,7 @@ public class GameplayRewardUI : MonoBehaviour
         if (rewardManager != null)
         {
             rewardManager.OnReputationChanged += UpdateUI;
-            UpdateUI(rewardManager.Reputation);
+            UpdateUI(GameManager.Instance.TotalReputation);
         }
     }
 

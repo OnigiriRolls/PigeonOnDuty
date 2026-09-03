@@ -27,7 +27,7 @@ MonoBehaviour:
   city: 0
   reputationReward: 15
   coinReward: 15
-  unlockId: standard_delivery
+  unlockId: heavy_delivery
   modifier: 3
   coinMultiplier: 1
   timerMultiplier: 1.35

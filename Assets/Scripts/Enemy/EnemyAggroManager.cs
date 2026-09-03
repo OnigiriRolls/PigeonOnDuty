@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyAggroManager : MonoBehaviour
 {
     public static EnemyAggroManager Instance { get; private set; }
-    public bool HasActivePursuer => activePursuer != null;
 
     private IEnemyPursuer activePursuer;
 
@@ -19,8 +18,13 @@ public class EnemyAggroManager : MonoBehaviour
 
     public bool TryAcquire(IEnemyPursuer pursuer)
     {
+        Debug.Log("active pursuer = " + pursuer);
         if (activePursuer != null)
+        {
+            Debug.Log("return false");
             return false;
+        }
+        Debug.Log("return true");
         activePursuer = pursuer;
         return true;
     }
@@ -31,7 +35,7 @@ public class EnemyAggroManager : MonoBehaviour
             ResetAggro();
     }
 
-    private void ResetAggro()
+    public void ResetAggro()
     {
         activePursuer = null;
     }

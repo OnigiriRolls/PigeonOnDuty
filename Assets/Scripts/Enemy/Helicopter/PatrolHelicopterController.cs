@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HelicopterAudioController))]
-public class PatrolHelicopterController : StopAudio
+public class PatrolHelicopterController : StopAudio, IEnemyPursuer
 {
     [SerializeField] private HelicopterConfig config;
     [SerializeField] private HelicopterGun[] guns;
@@ -97,8 +97,11 @@ public class PatrolHelicopterController : StopAudio
             float distance = Vector3.Distance(transform.position, player.position);
             if (distance <= attackRadius)
             {
-                ChangeState(HelicopterState.Chase);
-                return;
+                if (EnemyAggroManager.Instance.TryAcquire(this))
+                {
+                    ChangeState(HelicopterState.Chase);
+                    return;
+                }
             }
         }
 
@@ -122,6 +125,7 @@ public class PatrolHelicopterController : StopAudio
         audioController.PlayFlying();
         if (player == null)
         {
+            EnemyAggroManager.Instance.Release(this);
             ChangeState(HelicopterState.Return);
             return;
         }
@@ -145,6 +149,7 @@ public class PatrolHelicopterController : StopAudio
         bulletsShot++;
         if (bulletsShot >= config.bulletsToShoot)
         {
+            EnemyAggroManager.Instance.Release(this);
             ChangeState(HelicopterState.Return);
         }
     }
@@ -188,7 +193,10 @@ public class PatrolHelicopterController : StopAudio
 
     protected override void HandleGameOver()
     {
-        gameObject.SetActive(false);
+        if (EnemyAggroManager.Instance != null)
+            EnemyAggroManager.Instance.Release(this);
+        if (audioController != null)
+            audioController.StopAudio();
     }
 
 #if UNITY_EDITOR
@@ -198,4 +206,10 @@ public class PatrolHelicopterController : StopAudio
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 #endif
+
+    protected override void OnDestroy()
+    {
+        if (EnemyAggroManager.Instance != null)
+            EnemyAggroManager.Instance.Release(this);
+    }
 }

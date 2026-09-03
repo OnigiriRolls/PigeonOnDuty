@@ -64,7 +64,7 @@ public class GPSMissionController : MonoBehaviour, IMissionController
         state = GPSMissionState.ReachTraveler;
         checkpointsManager.SetCurrentObjective(currentHuman.transform);
         float duration = travelTimeCalculator.CalculateTime(currentHuman.transform, activeMission.timeBuffer);
-        MissionTimer.Instance.StartTimer(duration);
+        MissionTimer.Instance.StartTimer(duration + 15f);
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
         TutorialManager.Instance.TryShow("tutorial_mission_gps", "Guide the player", "Find the human then guide it to the destination. Don't lose its trust!");
@@ -109,7 +109,6 @@ public class GPSMissionController : MonoBehaviour, IMissionController
         playerInventory.SetEnabled(newspaperData, false);
         playerInventory.SetEnabled(featherData, true);
         playerInventory.Select(featherData);
-        //paradeManager.SpawnParades(currentHuman.transform.position, currentDestination.transform.position);
         checkpointsManager.CleanCurrentObjective();
         checkpointsManager.SpawnNextObjective(currentDestination.transform);
         collectibleManager.StartContinuousCoinSpawning(player);

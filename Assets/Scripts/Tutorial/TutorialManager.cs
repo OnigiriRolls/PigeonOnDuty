@@ -30,11 +30,8 @@ public class TutorialManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("Tutorial UI = " + TutorialUI.Instance);
         if (TutorialUI.Instance != null)
-        {
             TutorialUI.Instance.OnTutorialClosed += CompleteCurrentTutorial;
-        }
     }
 
     private void OnDisable()

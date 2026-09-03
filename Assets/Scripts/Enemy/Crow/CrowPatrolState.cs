@@ -20,8 +20,11 @@ public class CrowPatrolState : CrowState
             currentTarget = crow.PickNextPoint();
         if (crow.CanStartChase())
         {
-            if (EnemyAggroManager.Instance.TryAcquire(crow))
+            var aquired = EnemyAggroManager.Instance.TryAcquire(crow);
+            if (aquired)
+            {
                 crow.ChangeState(crow.ChaseState);
+            }
         }
     }
 

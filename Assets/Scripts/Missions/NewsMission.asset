@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewsMission
   missionName: Human Delivery
   description: Deliver newspapers to moving citizens
-  timeBuffer: 90
+  timeBuffer: 50
   flavorTexts:
   - Extra! Extra! Someone actually reads the newspaper!
   - Customer is walking. Good luck catching them.

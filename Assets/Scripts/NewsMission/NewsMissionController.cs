@@ -93,6 +93,8 @@ public class NewsMissionController : MonoBehaviour, IMissionController
         collectibleManager.StopContinuousCoinSpawning();
         playerInventory.SetEnabled(newspaperData, false);
         playerInventory.SetEnabled(featherData, false);
+        if (PickupManager.Instance != null)
+            PickupManager.Instance.ClearAllPickups();
     }
 
     public bool CanHandle(MissionData mission)

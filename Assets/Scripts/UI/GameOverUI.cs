@@ -6,8 +6,6 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI reputationText;
     [SerializeField] private TextMeshProUGUI coinsEarnedText;
-    [SerializeField] private TextMeshProUGUI previousCoinsText;
-    [SerializeField] private TextMeshProUGUI totalCoinsText;
     [SerializeField] private TextMeshProUGUI deathReasonText;
     [SerializeField] private Button retryButton;
     [SerializeField] private Button homeButton;
@@ -27,16 +25,15 @@ public class GameOverUI : MonoBehaviour
 
     private void OnRetryClicked()
     {
+        GameManager.Instance.ResetRun();
         SceneLoader.Instance.RetryGameplay();
     }
 
-    public void ShowUI(DeathReason deathReason, int reputation, int totalCoins, int previousCoins)
+    public void ShowUI(DeathReason deathReason, int reputation, int totalCoins)
     {
         deathReasonText.text = GetDeathReasonText(deathReason);
-        reputationText.text = $"Reputation: {reputation}";
-        coinsEarnedText.text = $"Coins: {totalCoins}";
-        previousCoinsText.text = $"Previous Coins: {previousCoins}";
-        totalCoinsText.text = $"Total Coins: {SaveManager.Instance.TotalCoins}";
+        reputationText.text = $"{reputation}";
+        coinsEarnedText.text = $"{totalCoins}";
         panel.SetActive(true);
         AudioManager.Instance.PlayMusic(gameOverMusic);
     }

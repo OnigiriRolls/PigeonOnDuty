@@ -33,11 +33,12 @@ public class PauseMenuUI : MonoBehaviour
 
     public void RetryGame()
     {
+        GameManager.Instance.ResetRun();
         SceneLoader.Instance.RetryGameplay();
     }
 
     public void LoadHome()
     {
-        SceneLoader.Instance.LoadScene("StartScene");
+        SceneLoader.Instance.LoadHomeScene();
     }
 }

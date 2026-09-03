@@ -11,7 +11,7 @@ public class GameplayCoinsUI : MonoBehaviour
     {
         rewardManager = FindAnyObjectByType<RewardManager>();
         rewardManager.OnRunCoinsChanged += UpdateUI;
-        UpdateUI(rewardManager.TotalCoins);
+        UpdateUI(GameManager.Instance.TotalCoins);
     }
 
     private void UpdateUI(int coins)

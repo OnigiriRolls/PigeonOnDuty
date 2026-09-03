@@ -12,6 +12,14 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetRun();
+        }
+        if (MissionManager.Instance != null)
+        {
+            MissionManager.Instance.SetCurrentCity(MissionCity.DefaultCity);
+        }
         SceneLoader.Instance.LoadScene("DefaultCityScene");
     }
 

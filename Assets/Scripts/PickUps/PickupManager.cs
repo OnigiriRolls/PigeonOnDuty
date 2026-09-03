@@ -48,4 +48,15 @@ public class PickupManager : MonoBehaviour
         }
         return closest;
     }
+
+    public void ClearAllPickups()
+    {
+        List<ThrowablePickup> pickupsToClear = new(pickups);
+        pickups.Clear();
+        foreach (ThrowablePickup pickup in pickupsToClear)
+        {
+            if (pickup != null)
+                Destroy(pickup.gameObject);
+        }
+    }
 }

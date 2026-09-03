@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public event Action OnResumed;
     public bool IsPaused { get; private set; }
     public DeathReason LastDeathReason { get; private set; }
+    public int TotalReputation { get; set; }
+    public int TotalCoins { get; set; }
 
     private GameOverUI gameOverPanel;
     private RewardManager rewardManager;
@@ -52,12 +54,11 @@ public class GameManager : MonoBehaviour
             return;
         LastDeathReason = reason;
         rewardManager.enabled = false;
-        rewardManager.PreviousCoins = SaveManager.Instance.TotalCoins;
         isGameOver = true;
         OnGameOver?.Invoke();
         AudioManager.Instance.StopAllAudio();
         PauseManager.Instance.Pause(PauseReason.GameOver);
-        gameOverPanel.ShowUI(reason, rewardManager.Reputation, rewardManager.TotalCoins, rewardManager.PreviousCoins);
+        gameOverPanel.ShowUI(reason, TotalReputation, TotalCoins);
     }
 
     private void RefreshGameOver()
@@ -82,5 +83,13 @@ public class GameManager : MonoBehaviour
         IsPaused = false;
         OnResumed?.Invoke();
         PauseManager.Instance.Resume(PauseReason.PauseMenu);
+    }
+
+    public void ResetRun()
+    {
+        if (EnemyAggroManager.Instance != null)
+            EnemyAggroManager.Instance.ResetAggro();
+        TotalCoins = 0;
+        TotalReputation = 0;
     }
 }

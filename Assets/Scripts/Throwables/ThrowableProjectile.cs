@@ -7,7 +7,6 @@ public abstract class ThrowableProjectile : MonoBehaviour
 {
     public bool IsPickup => isPickup;
 
-    [SerializeField] protected float lifetime = 10f;
     [SerializeField] protected GameObject pickupSensor;
     [SerializeField] private float homingStrength = 20f;
     [SerializeField] private GameObject projectileHitbox;
@@ -27,9 +26,9 @@ public abstract class ThrowableProjectile : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (target == null)
+        if (target == null || target.AimPoint == null)
             return;
-
+        
         Vector3 aimPoint = target.AimPoint.position + target.AimPoint.forward;
         Vector3 desired = (aimPoint - transform.position).normalized;
         Vector3 current = rb.linearVelocity.normalized;

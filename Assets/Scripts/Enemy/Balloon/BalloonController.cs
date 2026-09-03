@@ -128,4 +128,11 @@ public class BalloonController : StopAudio, IEnemyPursuer
     {
         gameObject.SetActive(false);
     }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        if (EnemyAggroManager.Instance != null)
+            EnemyAggroManager.Instance.Release(this);
+    }
 }
