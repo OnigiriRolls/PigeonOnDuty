@@ -6,6 +6,7 @@ public class FeatherPickupSpawner : MonoBehaviour
     [SerializeField] private ThrowablePickup pickupPrefab;
     [SerializeField] private GameObject sign;
     [SerializeField] private float respawnTime = 10f;
+    [SerializeField] private MinimapMissionController minimapController;
 
     private ThrowablePickup currentPickup;
     private Coroutine respawnRoutine;
@@ -13,6 +14,7 @@ public class FeatherPickupSpawner : MonoBehaviour
     public void StartSpawn()
     {
         sign.SetActive(true);
+        minimapController.ShowFeathers(sign.transform);
         if (respawnRoutine != null)
         {
             StopCoroutine(respawnRoutine);
@@ -50,6 +52,7 @@ public class FeatherPickupSpawner : MonoBehaviour
     public void StopSpawn()
     {
         sign.SetActive(false);
+        minimapController.HideFeathers(sign.transform);
         if (respawnRoutine != null)
         {
             StopCoroutine(respawnRoutine);

@@ -6,6 +6,7 @@ public class MinimapMissionController : MonoBehaviour
     [SerializeField] private MinimapIcon clientIconPrefab;
     [SerializeField] private MinimapIcon checkpointIconPrefab;
     [SerializeField] private MinimapIcon wellIconPrefab;
+    [SerializeField] private MinimapIcon feathersIconPrefab;
 
     public void ShowClient(Transform client)
     {
@@ -35,5 +36,15 @@ public class MinimapMissionController : MonoBehaviour
     public void HideWell(Transform well)
     {
         iconManager.RemoveIcon(well.transform);
+    }
+
+    public void ShowFeathers(Transform spawnPoint)
+    {
+        iconManager.CreateIcon(feathersIconPrefab, spawnPoint);
+    }
+
+    public void HideFeathers(Transform spawnPoint)
+    {
+        iconManager.RemoveIcon(spawnPoint);
     }
 }

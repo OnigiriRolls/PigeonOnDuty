@@ -21591,6 +21591,7 @@ MonoBehaviour:
   clientIconPrefab: {fileID: 3796832034003442013, guid: 2386c549b56f2434582d97f4af328f61, type: 3}
   checkpointIconPrefab: {fileID: 3796832034003442013, guid: 54dbc9258e582774587a6df609ab9c0c, type: 3}
   wellIconPrefab: {fileID: 3796832034003442013, guid: 1820df39c02fa6e40875555ff053839d, type: 3}
+  feathersIconPrefab: {fileID: 3796832034003442013, guid: 7b10d0962b733e04cb759a34f800da07, type: 3}
 --- !u!1 &385272002
 GameObject:
   m_ObjectHideFlags: 0
@@ -30056,6 +30057,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2205361492554027000, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
+      propertyPath: minimapController
+      value: 
+      objectReference: {fileID: 379032750}
     - target: {fileID: 2963227968700003070, guid: b2cf1fc1db0ad17458376b9e3878f624, type: 3}
       propertyPath: m_Name
       value: FeatherPickupSpawner
