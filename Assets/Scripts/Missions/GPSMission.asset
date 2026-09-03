@@ -18,14 +18,14 @@ MonoBehaviour:
   flavorTexts:
   - The human is lost. Again.
   - 'Lead the way, feathered navigator. '
-  - Try not to lose your follower.
-  - You fly. They walk. Somehow this works.
+  - Try not to lose your human.
   - A living GPS with feathers.
   - The traveler trusts you completely.
   - No pressure. You're the map.
   - Please wait while your human catches up.
   - Recalculating route...
   - The destination is somewhere that way.
+  city: 0
   reputationReward: 30
   coinReward: 20
   unlockId: guide_traveler

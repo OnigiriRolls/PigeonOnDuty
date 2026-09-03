@@ -17,13 +17,13 @@ MonoBehaviour:
   timeBuffer: 20
   flavorTexts:
   - This one can't wait!
-  - Move those wings, messenger!
+  - Move those wings, pigeon!
   - Every second counts.
   - The customer keeps checking their watch.
   - Speed first, questions later.
   - A very impatient human awaits.
   - Fast delivery earns fast reputation.
-  - Deadline approaching rapidly.
+  city: 0
   reputationReward: 15
   coinReward: 10
   unlockId: express_delivery

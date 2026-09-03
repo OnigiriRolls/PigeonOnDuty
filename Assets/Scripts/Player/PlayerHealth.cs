@@ -91,7 +91,6 @@ public class PlayerHealth : MonoBehaviour
         if (dead)
             return;
         dead = true;
-        //Debug.Log("GAME OVER");
         OnDeath?.Invoke();
         deathReasonText.GetComponent<TextMeshProUGUI>().text = gameOverUI.GetDeathReasonText(lastDamageReason);
         deathReasonText.SetActive(true);

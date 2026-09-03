@@ -6,17 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Throttle => throttle;
-    public float Roll => roll;
-    public float Pitch => pitch;
-    public bool IsFlying => isFlying;
-    public bool IsGliding => isGliding;
-    public bool IsGrounded => isGrounded;
     public Vector3 Velocity => rb.linearVelocity;
 
     [SerializeField] private Transform visualModel;
-    [SerializeField] private LayerMask landingAreaLayer;
-    [SerializeField] private float groundCheckDistance = 2f;
-    [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private PlayerConfig config;
     [SerializeField] private float windInfluence = 1f;
     [SerializeField] private float hoverDrag = 8f;
@@ -24,9 +16,6 @@ public class PlayerController : MonoBehaviour
     private float throttle;
     private float roll;
     private float pitch;
-    private bool isGrounded;
-    private bool isFlying;
-    private bool isGliding;
     private float throttleMultiplier = 1f;
     private float currentFlySpeed = 1f;
     private Vector3 windDirection;
@@ -85,7 +74,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleInputs();
-        CheckGrounded();
         UpdateFlyAnimationSpeed();
     }
 
@@ -217,12 +205,6 @@ public class PlayerController : MonoBehaviour
 
         currentFlySpeed = targetFlySpeed;
         animator.SetFloat("FlySpeed", currentFlySpeed);
-    }
-
-    private void CheckGrounded()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, landingAreaLayer);
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
     }
 
     private void HandleDeath()

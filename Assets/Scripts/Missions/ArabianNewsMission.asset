@@ -17,13 +17,10 @@ MonoBehaviour:
   timeBuffer: 20
   flavorTexts:
   - Extra! Extra! Someone actually reads the newspaper!
-  - Customer is walking. Good luck catching them.
   - Please don't eat the newspapers.
   - Crows are not authorized employees.
   - Customer claims they're 'just around the corner'.
-  - Please don't eat the newspapers.
   - Try not to hit anyone who didn't subscribe.
-  - Human delivery... pigeon speed.
   city: 1
   reputationReward: 60
   coinReward: 40
