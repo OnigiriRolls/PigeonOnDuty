@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        RefreshGameOver();
         RefreshSceneReference();
     }
 
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour
     {
         rewardManager = FindAnyObjectByType<RewardManager>();
         gameOverPanel = FindAnyObjectByType<GameOverUI>();
-        RefreshGameOver();
     }
 
     public void GameOver(DeathReason reason)
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void RefreshGameOver()
     {
+        IsPaused = false;
         isGameOver = false;
     }
 

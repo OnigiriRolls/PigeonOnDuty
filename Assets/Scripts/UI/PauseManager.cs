@@ -42,4 +42,10 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = pauseReasons.Count > 0 ? 0f : 1f;
     }
+
+    public void ClearPauses()
+    {
+        pauseReasons.Clear();
+        RefreshTimeScale();
+    }
 }

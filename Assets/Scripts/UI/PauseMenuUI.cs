@@ -25,4 +25,19 @@ public class PauseMenuUI : MonoBehaviour
         GameManager.Instance.OnPaused -= Show;
         GameManager.Instance.OnResumed -= Hide;
     }
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.ResumeGame();
+    }
+
+    public void RetryGame()
+    {
+        SceneLoader.Instance.RetryGameplay();
+    }
+
+    public void LoadHome()
+    {
+        SceneLoader.Instance.LoadScene("StartScene");
+    }
 }

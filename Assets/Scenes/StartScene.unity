@@ -2008,7 +2008,7 @@ GameObject:
   - component: {fileID: 1099083678}
   - component: {fileID: 1099083679}
   m_Layer: 0
-  m_Name: MainMenuMusic
+  m_Name: MainMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3411,9 +3411,21 @@ PrefabInstance:
       value: 9.0446
       objectReference: {fileID: 0}
     - target: {fileID: 6083054457961226854, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083054457961226854, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2144481482}
+      objectReference: {fileID: 1099083679}
+    - target: {fileID: 6083054457961226854, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083054457961226854, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6083054457961226854, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: DefaultCityScene
@@ -3433,7 +3445,15 @@ PrefabInstance:
     - target: {fileID: 8241919166109974903, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2144481482}
+      objectReference: {fileID: 1099083679}
+    - target: {fileID: 8241919166109974903, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241919166109974903, guid: b0f5b72e0f247264ba4fd056c4dc197e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenuUI, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4873,17 +4893,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103485300}
   m_CullTransparentMesh: 1
---- !u!114 &2144481482 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8862212028746124192, guid: 4d4875310b43eb04c9b9c3f01d5f90fb, type: 3}
-  m_PrefabInstance: {fileID: 3085790539470315216}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f8f5750eeed5b43a174ab1b14f8c56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
 --- !u!1001 &3085790539470315216
 PrefabInstance:
   m_ObjectHideFlags: 0

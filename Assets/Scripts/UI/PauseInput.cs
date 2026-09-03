@@ -5,13 +5,6 @@ public class PauseInput : MonoBehaviour
 {
     [SerializeField] private PlayerInputController input;
 
-    private GameManager gameManager;
-
-    private void Start()
-    {
-        gameManager = FindAnyObjectByType<GameManager>();
-    }
-
     private void OnEnable()
     {
         input.OnPause += HandlePause;
@@ -24,9 +17,9 @@ public class PauseInput : MonoBehaviour
 
     private void HandlePause()
     {
-        if (gameManager.IsPaused)
-            gameManager.ResumeGame();
+        if (GameManager.Instance.IsPaused)
+            GameManager.Instance.ResumeGame();
         else
-            gameManager.PauseGame();
+            GameManager.Instance.PauseGame();
     }
 }

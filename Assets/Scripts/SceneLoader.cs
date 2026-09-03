@@ -47,6 +47,7 @@ public class SceneLoader : MonoBehaviour
 
     public void RetryGameplay()
     {
+        PauseManager.Instance.ClearPauses();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

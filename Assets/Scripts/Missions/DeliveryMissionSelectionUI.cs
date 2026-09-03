@@ -4,7 +4,10 @@ using UnityEngine;
 public class DeliveryMissionSelectionUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
-    [SerializeField] private DeliveryMissionCardUI[] missionCards;
+    [SerializeField] private DeliveryMissionCardUI missionCardPrefab;
+    [SerializeField] private Transform content;
+
+    private readonly List<DeliveryMissionCardUI> spawnedCards = new();
 
     private void Start()
     {
@@ -18,17 +21,25 @@ public class DeliveryMissionSelectionUI : MonoBehaviour
             Debug.Log("panel null");
             return;
         }
-        panel.SetActive(true);
-        for (int i = 0; i < missionCards.Length; i++)
+        ClearCards();
+
+        foreach (MissionData mission in missions)
         {
-            if (i >= missions.Count)
-            {
-                missionCards[i].gameObject.SetActive(false);
-                continue;
-            }
-            missionCards[i].gameObject.SetActive(true);
-            missionCards[i].Setup(missions[i], OnMissionSelected);
+            DeliveryMissionCardUI card = Instantiate(missionCardPrefab, content);
+            card.Setup(mission, OnMissionSelected);
+            spawnedCards.Add(card);
         }
+        panel.SetActive(true);
+    }
+
+    private void ClearCards()
+    {
+        foreach (DeliveryMissionCardUI card in spawnedCards)
+        {
+            if (card != null)
+                Destroy(card.gameObject);
+        }
+        spawnedCards.Clear();
     }
 
     private void OnMissionSelected(MissionData mission)
@@ -39,6 +50,7 @@ public class DeliveryMissionSelectionUI : MonoBehaviour
 
     private void OnDestroy()
     {
+        ClearCards();
         if (MissionManager.Instance != null)
             MissionManager.Instance.UnregisterSelectionUI(this);
     }

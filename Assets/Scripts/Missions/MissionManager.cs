@@ -171,25 +171,11 @@ public class MissionManager : MonoBehaviour
     {
         List<MissionData> result = new();
         List<MissionData> available = new(missionDatabase.Missions);
-        available = available.Where(m => unlockManager.IsUnlocked(m.unlockId)).ToList();
-
-#if UNITY_EDITOR
         available = available
-            .Where(m =>
-                (m is NewsMission && isNewsMissionActive) ||
-                (m is GPSMission && isGPSMissionActive) ||
-                (m is DeliveryMission && areAllMissionsActive) ||
-                (m is ArabianNewsMission && isArabMissionActive))
+            .Where(m => unlockManager.IsUnlocked(m.unlockId))
+            .Reverse()
             .ToList();
-#endif
-        int count = Mathf.Min(3, available.Count);
-        for (int i = 0; i < count; i++)
-        {
-            int index = Random.Range(0, available.Count);
-            result.Add(available[index]);
-            available.RemoveAt(index);
-        }
-        return result;
+        return available;
     }
 
     public void CompleteActiveMission()
