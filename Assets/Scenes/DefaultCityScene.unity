@@ -18628,6 +18628,10 @@ PrefabInstance:
       propertyPath: minimapCamera
       value: 
       objectReference: {fileID: 385272005}
+    - target: {fileID: 3612372054406502356, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3632530012620688423, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

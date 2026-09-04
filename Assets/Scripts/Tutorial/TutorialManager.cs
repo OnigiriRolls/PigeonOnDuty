@@ -28,10 +28,9 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        if (TutorialUI.Instance != null)
-            TutorialUI.Instance.OnTutorialClosed += CompleteCurrentTutorial;
+        TutorialUI.Instance.OnTutorialClosed += CompleteCurrentTutorial;
     }
 
     private void OnDisable()

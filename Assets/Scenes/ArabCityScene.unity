@@ -33657,10 +33657,10 @@ MonoBehaviour:
     m_Bits: 2048
   minCoinCount: 3
   maxCoinCount: 8
-  coinsSpacing: 10
-  minCoinSpawnInterval: 15
-  maxCoinSpawnInterval: 30
-  coinSpawnDistance: 75
+  coinsSpacing: 3
+  minCoinSpawnInterval: 14
+  maxCoinSpawnInterval: 25
+  coinSpawnDistance: 30
 --- !u!4 &622098705
 Transform:
   m_ObjectHideFlags: 0

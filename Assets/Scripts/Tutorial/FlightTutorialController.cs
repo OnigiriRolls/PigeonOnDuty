@@ -27,12 +27,10 @@ public class FlightTutorialController : MonoBehaviour
         currentStep = FlightTutorialStep.Inactive;
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        if (checkpointsManager != null)
-            checkpointsManager.OnCheckpointReached += HandleCheckpointReached;
-        if (TutorialUI.Instance != null)
-            TutorialUI.Instance.OnTutorialClosed += HandleTutorialClosed;
+        checkpointsManager.OnCheckpointReached += HandleCheckpointReached;
+        TutorialUI.Instance.OnTutorialClosed += HandleTutorialClosed;
         if (SaveManager.Instance.Data.flightTutorialCompleted)
         {
             if (!MissionManager.Instance.StartMissionAfterLoad)
