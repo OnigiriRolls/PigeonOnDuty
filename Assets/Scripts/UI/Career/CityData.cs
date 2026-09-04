@@ -8,5 +8,6 @@ public class CityData : ScriptableObject
     public string displayName;
     public Sprite icon;
     public int unlockReputationRequired;
+    public bool released;
     public List<MissionData> missions;
 }

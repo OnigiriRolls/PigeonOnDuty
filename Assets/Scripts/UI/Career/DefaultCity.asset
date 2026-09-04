@@ -16,6 +16,7 @@ MonoBehaviour:
   displayName: Default City
   icon: {fileID: 21300000, guid: bbc36e88037bc9a438a0780419d1b11c, type: 3}
   unlockReputationRequired: 0
+  released: 1
   missions:
   - {fileID: 11400000, guid: 6fd0b3a3781bb62459d4a0144483c431, type: 2}
   - {fileID: 11400000, guid: eda75a1adbb35e24b80c5484be63bf5c, type: 2}

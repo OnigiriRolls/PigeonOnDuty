@@ -15,5 +15,5 @@ MonoBehaviour:
   displayName: Arabian News Delivery
   id: arabian_human_delivery
   type: 0
-  requiredReputation: 600
+  requiredReputation: 60
   showUnlockNotification: 1

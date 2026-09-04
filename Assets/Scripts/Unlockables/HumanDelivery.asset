@@ -15,5 +15,5 @@ MonoBehaviour:
   displayName: Human Delivery
   id: human_delivery
   type: 0
-  requiredReputation: 300
+  requiredReputation: 40
   showUnlockNotification: 1

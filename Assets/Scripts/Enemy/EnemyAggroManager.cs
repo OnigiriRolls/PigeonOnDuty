@@ -18,13 +18,10 @@ public class EnemyAggroManager : MonoBehaviour
 
     public bool TryAcquire(IEnemyPursuer pursuer)
     {
-        Debug.Log("active pursuer = " + pursuer);
         if (activePursuer != null)
         {
-            Debug.Log("return false");
             return false;
         }
-        Debug.Log("return true");
         activePursuer = pursuer;
         return true;
     }

@@ -23,9 +23,9 @@ public class CityUI : MonoBehaviour
         lockedOverlay.SetActive(!unlocked);
         parentContainer.gameObject.SetActive(unlocked);
         requirementText.text = $"{city.unlockReputationRequired}";
-        starIcon.SetActive(unlocked);
-        requirementText.gameObject.SetActive(unlocked);
-        comingSoonText.gameObject.SetActive(!unlocked);
+        starIcon.SetActive(city.released);
+        requirementText.gameObject.SetActive(city.released);
+        comingSoonText.gameObject.SetActive(!city.released);
         if (!unlocked)
             return;
         foreach (MissionData mission in city.missions)

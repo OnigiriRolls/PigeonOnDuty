@@ -15,5 +15,5 @@ MonoBehaviour:
   displayName: Guide the Traveler
   id: guide_traveler
   type: 0
-  requiredReputation: 200
+  requiredReputation: 10
   showUnlockNotification: 1

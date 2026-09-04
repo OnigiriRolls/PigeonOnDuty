@@ -26,7 +26,7 @@ public class UnlockMessageUI : MonoBehaviour
 
     public void Hide()
     {
-        if (panel == null)
+        if (panel != null)
             panel.SetActive(false);
     }
 

@@ -15,4 +15,4 @@ MonoBehaviour:
   id: pigeon_skin_fire
   skinName: Fire Pigeon
   color: {r: 0.36862746, g: 0.06666667, b: 0.06666667, a: 1}
-  price: 1000
+  price: 10

@@ -15,6 +15,7 @@ MonoBehaviour:
   cityId: city_arab
   displayName: Arab City
   icon: {fileID: 21300000, guid: bc903fdee7e6cab4eacf8a6a1c542192, type: 3}
-  unlockReputationRequired: 600
+  unlockReputationRequired: 60
+  released: 1
   missions:
   - {fileID: 11400000, guid: 660178b0cae0a3b4dbdd40bd3f995123, type: 2}
