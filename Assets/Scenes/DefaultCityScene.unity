@@ -16085,7 +16085,6 @@ MonoBehaviour:
   gpsSpawnPointsParent: {fileID: 412899728}
   gpsDestinationParent: {fileID: 1582372614}
   hintUI: {fileID: 1889079388895480468}
-  paradeManager: {fileID: 1245119266}
   cityParadeManager: {fileID: 157733835}
   minimumDistance: 300
   bufferTimePerEnemy: 2

@@ -157,26 +157,14 @@ public class PlayerHealth : MonoBehaviour
         playerAnimator.SetBool("Pulse", true);
         pulseCoroutine = StartCoroutine(PulseRoutine());
         yield return new WaitForSeconds(duration);
-        if (pulseCoroutine != null)
-        {
-            StopCoroutine(pulseCoroutine);
-            pulseCoroutine = null;
-        }
-        playerAnimator.SetBool("Pulse", false);
-        appearanceController.RestoreOriginalEmission();
-        isInvulnerable = false;
-        invulnerabilityCoroutine = null;
+        StopInvulnerability();
     }
 
     public void StartInvulnerability(float duration)
     {
         if (HasShield)
             return;
-        if (invulnerabilityCoroutine != null)
-        {
-            StopCoroutine(invulnerabilityCoroutine);
-            invulnerabilityCoroutine = null;
-        }
+        StopInvulnerability();
         invulnerabilityCoroutine = StartCoroutine(InvulnerabilityRoutine(duration));
     }
 
@@ -189,5 +177,24 @@ public class PlayerHealth : MonoBehaviour
             appearanceController.SetEmission(emissionColor);
             yield return WAIT_FOR_SECONDS_0_1;
         }
+    }
+
+    private void StopInvulnerability()
+    {
+        if (invulnerabilityCoroutine != null)
+        {
+            StopCoroutine(invulnerabilityCoroutine);
+            invulnerabilityCoroutine = null;
+        }
+
+        if (pulseCoroutine != null)
+        {
+            StopCoroutine(pulseCoroutine);
+            pulseCoroutine = null;
+        }
+
+        isInvulnerable = false;
+        playerAnimator.SetBool("Pulse", false);
+        appearanceController.RestoreOriginalEmission();
     }
 }

@@ -82,6 +82,7 @@ public class NewsMissionController : MonoBehaviour, IMissionController
         {
             client.OnDeliveryCompleted -= HandleClientDelivered;
         }
+        MissionTimer.Instance.StopTimer();
         clientAssigner.ClearClients(activeClients);
         activeClients.Clear();
         balloonSpawner.StopAndClear();

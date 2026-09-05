@@ -28,6 +28,7 @@ public class NormalMissionController : MonoBehaviour, IMissionController
 
     public void ClearMission()
     {
+        MissionTimer.Instance.StopTimer();
         windAttackManager.StopAttack();
         normalEnemiesSpawner.StopSpawn();
         collectibleManager.StopNormalMissionCollectibles();

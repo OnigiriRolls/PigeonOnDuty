@@ -41,11 +41,6 @@ public class MissionTimer : MonoBehaviour
         isRunning = true;
     }
 
-    public void AddTime(float seconds)
-    {
-        remainingTime += seconds;
-    }
-
     public void StopTimer()
     {
         isRunning = false;

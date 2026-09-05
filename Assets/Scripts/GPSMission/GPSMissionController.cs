@@ -14,7 +14,6 @@ public class GPSMissionController : MonoBehaviour, IMissionController
     [SerializeField] private Transform gpsSpawnPointsParent;
     [SerializeField] private Transform gpsDestinationParent;
     [SerializeField] private HintUI hintUI;
-    [SerializeField] private ParadeManager paradeManager;
     [SerializeField] private CityParadeManager cityParadeManager;
     [SerializeField] private float minimumDistance = 300f;
     [SerializeField] private float bufferTimePerEnemy = 10f;
@@ -193,7 +192,6 @@ public class GPSMissionController : MonoBehaviour, IMissionController
     {
         minimapController.HideClient(currentHuman.transform);
         MissionTimer.Instance.StopTimer();
-        //paradeManager.ClearAllParades();
         cityParadeManager.Clear();
         missionRunning = false;
         checkpointsManager.ClearCheckpoint();
