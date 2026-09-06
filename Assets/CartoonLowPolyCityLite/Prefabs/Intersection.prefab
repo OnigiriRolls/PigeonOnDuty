@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8813649434264795014}
   - component: {fileID: 8862550627833555384}
   - component: {fileID: 8051433225336333674}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Road_02_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377920214107357603}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1587525322617981229}
   - component: {fileID: 2307884961210465608}
   - component: {fileID: 2997903726204684785}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Road_02_Right (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723305174391976841}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 4050264850309362815}
   - component: {fileID: 3174362952063396514}
   - component: {fileID: 4770271863332237193}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Road_02_Right (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798010565586327589}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 424352787938213470}
   - component: {fileID: 3302050056497434065}
   - component: {fileID: 1240954134317612866}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Road_02_Right (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4494091000829125308}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -461,7 +461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2392043197282358418}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Intersection
   m_TagString: Untagged
   m_Icon: {fileID: 0}

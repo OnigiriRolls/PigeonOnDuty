@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4540600733250926241}
   - component: {fileID: 8563779579836756615}
   - component: {fileID: 751056711845682251}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Road_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571819249483596279}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7f4a2ecb8fc92e64e8bd5252db2d0355, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
