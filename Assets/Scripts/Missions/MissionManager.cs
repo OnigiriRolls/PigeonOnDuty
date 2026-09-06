@@ -148,6 +148,7 @@ public class MissionManager : MonoBehaviour
         {
             MissionCity.DefaultCity => "DefaultCityScene",
             MissionCity.ArabCity => "ArabCityScene",
+            MissionCity.Random => "RandomCityScene",
             _ => throw new ArgumentOutOfRangeException(nameof(city), city, null)
         };
     }

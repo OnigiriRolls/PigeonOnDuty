@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ed4df39c931bb45a22cbe2f8333fbd, type: 3}
+  m_Name: RandomDeliveryMission
+  m_EditorClassIdentifier: Assembly-CSharp::DeliveryMission
+  missionName: Random Delivery
+  description: A routine delivery across the city
+  timeBuffer: 20
+  flavorTexts:
+  - Just another day in the pigeon business.
+  - A message waits. Try not to get distracted.
+  - Fly. Deliver. Repeat.
+  - Nothing suspicious. Probably.
+  - A routine job for a trusted messenger.
+  - Someone's waiting for good news.
+  - The city runs on wings like yours.
+  - Simple delivery. What could go wrong?
+  city: 2
+  reputationReward: 10
+  coinReward: 10
+  unlockId: random_standard_delivery
+  modifier: 0
+  coinMultiplier: 1
+  timerMultiplier: 1
+  throttleMultiplier: 0.75
+  oneHitFail: 0

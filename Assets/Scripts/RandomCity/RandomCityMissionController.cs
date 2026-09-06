@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class NormalMissionController : MonoBehaviour, IMissionController
+public class RandomCityMissionController : MonoBehaviour, IMissionController
 {
     public event Action OnMissionCompleted;
 
@@ -13,7 +13,15 @@ public class NormalMissionController : MonoBehaviour, IMissionController
 
     private void Start()
     {
-        MissionManager.Instance.RegisterController(this);
+        if (MissionManager.Instance.StartMissionAfterLoad)
+        {
+            MissionManager.Instance.RegisterController(this);
+        }
+        else
+        {
+            MissionManager.Instance.RegisterController(this);
+            MissionManager.Instance.RequestMissionSelection();
+        }
     }
 
     public void StartMission(float timeBuffer, float timerMultiplier)

@@ -15,6 +15,7 @@ MonoBehaviour:
   cities:
   - {fileID: 11400000, guid: c957e7483ea05504e88d59ef31b7f9ad, type: 2}
   - {fileID: 11400000, guid: 1b1eaf2276f18e241b0e3b58aab09cd5, type: 2}
+  - {fileID: 11400000, guid: fde4a8274faf0b5488ea5f646e01e770, type: 2}
   - {fileID: 11400000, guid: 8bd1d952854ddec43b23d12246458737, type: 2}
   - {fileID: 11400000, guid: e504831f213434e459946416d9fa3866, type: 2}
   - {fileID: 11400000, guid: 134e094d189b9bf4cbea0ea06dc13473, type: 2}

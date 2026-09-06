@@ -3,5 +3,6 @@ using UnityEngine;
 public enum MissionCity
 {
     DefaultCity,
-    ArabCity
+    ArabCity,
+    Random
 }
