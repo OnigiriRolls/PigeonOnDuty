@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
 
 public class MissionManager : MonoBehaviour
 {
@@ -19,6 +17,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private bool isGPSMissionActive;
     [SerializeField] private bool isArabMissionActive;
     [SerializeField] private bool areAllMissionsActive;
+    [SerializeField] private bool missionRunning;
 
     private readonly List<IMissionController> missionControllers = new();
     private RewardManager rewardManager;
@@ -69,13 +68,20 @@ public class MissionManager : MonoBehaviour
     public void RegisterController(IMissionController controller)
     {
         if (controller == null)
+        {
             return;
+        }
         if (missionControllers.Contains(controller))
+        {
             return;
+        }
+
         missionControllers.Add(controller);
         controller.OnMissionCompleted += CompleteActiveMission;
         if (startMissionAfterLoad)
+        {
             StartSelectedMission();
+        }
     }
 
     public void UnregisterController(IMissionController controller)
@@ -89,7 +95,7 @@ public class MissionManager : MonoBehaviour
     public void RegisterSelectionUI(DeliveryMissionSelectionUI ui)
     {
         selectionUI = ui;
-        ShowSelection();
+        RequestMissionSelection();
     }
 
     public void UnregisterSelectionUI(DeliveryMissionSelectionUI ui)
@@ -105,9 +111,11 @@ public class MissionManager : MonoBehaviour
 
     public void RequestMissionSelection()
     {
-        selectionRequested = true;
+        if (missionRunning)
+            return;
         if (selectionUI == null)
             return;
+        selectionRequested = true;
         ShowSelection();
     }
 
@@ -158,6 +166,7 @@ public class MissionManager : MonoBehaviour
         IMissionController controller = GetControllerForMission(ActiveMission);
         if (controller == null)
             return;
+        missionRunning = true;
         if (EnemyAggroManager.Instance != null)
             EnemyAggroManager.Instance.ResetAggro();
         controller.StartMission(ActiveMission);
@@ -186,6 +195,7 @@ public class MissionManager : MonoBehaviour
     {
         if (ActiveMission == null)
             return;
+        missionRunning = false;
         IMissionController controller = GetControllerForMission(ActiveMission);
         controller.CompleteMission();
         rewardManager.AddReputation(ActiveMission.reputationReward);
@@ -200,9 +210,15 @@ public class MissionManager : MonoBehaviour
     {
         if (ActiveMission == null)
             return;
+        missionRunning = false;
         IMissionController controller = GetControllerForMission(ActiveMission);
         controller.FailMission();
         GameManager.Instance.GameOver(DeathReason.TimeUp);
+    }
+
+    public void SetMissionRunning(bool running)
+    {
+        missionRunning = running;
     }
 
     public void SetCurrentCity(MissionCity currentCity)

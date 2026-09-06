@@ -34,11 +34,13 @@ public class PauseMenuUI : MonoBehaviour
     public void RetryGame()
     {
         GameManager.Instance.ResetRun();
+        MissionManager.Instance.SetMissionRunning(false);
         SceneLoader.Instance.RetryGameplay();
     }
 
     public void LoadHome()
     {
+        MissionManager.Instance.SetMissionRunning(false);
         SceneLoader.Instance.LoadHomeScene();
     }
 }

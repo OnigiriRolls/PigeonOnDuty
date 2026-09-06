@@ -12,7 +12,8 @@ public class MinimapIconManager : MonoBehaviour
     {
         MinimapIcon icon = Instantiate(prefab, iconsParent);
         icon.Initialize(target, minimapScroller);
-        icons.Add(target, icon);
+        if (!icons.ContainsKey(target))
+            icons.Add(target, icon);
     }
 
     public void RemoveIcon(Transform target)

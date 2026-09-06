@@ -34,7 +34,9 @@ public class FlightTutorialController : MonoBehaviour
         if (SaveManager.Instance.Data.flightTutorialCompleted)
         {
             if (!MissionManager.Instance.StartMissionAfterLoad)
+            {
                 MissionManager.Instance.RequestMissionSelection();
+            }
         }
         else
             StartTutorial();

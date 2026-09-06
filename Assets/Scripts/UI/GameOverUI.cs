@@ -20,11 +20,13 @@ public class GameOverUI : MonoBehaviour
 
     private void OnHomeClicked()
     {
+        MissionManager.Instance.SetMissionRunning(false);
         SceneLoader.Instance.LoadHomeScene();
     }
 
     private void OnRetryClicked()
     {
+        MissionManager.Instance.SetMissionRunning(false);
         GameManager.Instance.ResetRun();
         SceneLoader.Instance.RetryGameplay();
     }
