@@ -7140,6 +7140,7 @@ MonoBehaviour:
   isGPSMissionActive: 0
   isArabMissionActive: 0
   areAllMissionsActive: 1
+  missionRunning: 0
 --- !u!1 &653074206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4425040517500037911, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}
@@ -17393,7 +17394,7 @@ Transform:
   m_GameObject: {fileID: 2003744702}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 338.4, y: 1.4, z: 294.3}
+  m_LocalPosition: {x: 338.4, y: 1.4, z: 287.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

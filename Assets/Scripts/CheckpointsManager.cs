@@ -61,7 +61,7 @@ public class CheckpointsManager : MonoBehaviour
             Destroy(currentObjective.gameObject);
         }
 
-        Vector3 spawnPosition = objectiveTransform.position + objectiveTransform.forward * 30f;
+        Vector3 spawnPosition = objectiveTransform.position;
         GameObject currentCheckpoint = Instantiate(gpsCheckpoint, spawnPosition, objectiveTransform.rotation, gpsCheckpointParent);
         currentObjective = currentCheckpoint.transform;
         minimapController.ShowCheckpoint(currentCheckpoint.transform);
