@@ -39,7 +39,9 @@ public class FlightTutorialController : MonoBehaviour
             }
         }
         else
+        {
             StartTutorial();
+        }
     }
 
     private void OnDisable()

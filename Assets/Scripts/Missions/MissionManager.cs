@@ -95,7 +95,8 @@ public class MissionManager : MonoBehaviour
     public void RegisterSelectionUI(DeliveryMissionSelectionUI ui)
     {
         selectionUI = ui;
-        RequestMissionSelection();
+        if (SaveManager.Instance.Data.flightTutorialCompleted)
+            RequestMissionSelection();
     }
 
     public void UnregisterSelectionUI(DeliveryMissionSelectionUI ui)
@@ -111,6 +112,7 @@ public class MissionManager : MonoBehaviour
 
     public void RequestMissionSelection()
     {
+        Debug.Log("missionRunning = " + missionRunning);
         if (missionRunning)
             return;
         if (selectionUI == null)
