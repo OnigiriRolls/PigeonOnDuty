@@ -18584,6 +18584,10 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1517355612}
+    - target: {fileID: 706653972208235470, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 825284751622649384, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -18600,12 +18604,24 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1028067948158361296, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_text
+      value: The Human got lost and joined a parade...
+      objectReference: {fileID: 0}
     - target: {fileID: 1602001112065408262, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -86.03076
       objectReference: {fileID: 0}
     - target: {fileID: 1950806922256005344, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188958079102676239, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 911.3234
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188958079102676239, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2243578305501436574, guid: 17fc699b33291994f8102147efa62455, type: 3}
@@ -18792,6 +18808,14 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 12916799}
+    - target: {fileID: 8386977482066996254, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 876.0154
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386977482066996254, guid: 17fc699b33291994f8102147efa62455, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8467061841833109891, guid: 17fc699b33291994f8102147efa62455, type: 3}
       propertyPath: m_IsActive
       value: 0

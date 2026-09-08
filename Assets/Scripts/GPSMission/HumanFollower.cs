@@ -144,7 +144,7 @@ public class HumanFollower : MonoBehaviour, INPCMovement
         isInParade = true;
         ShowMessage("I guess I'll follow them...");
         if (hintUI != null)
-            hintUI.Show("The Human got lost and joined a parade...");
+            hintUI.Show("The Human got lost and joined a parade...", 6f);
         ChangeState(new FollowingParadeState(this));
     }
 
@@ -249,7 +249,6 @@ public class HumanFollower : MonoBehaviour, INPCMovement
     {
         if (currentParade == null)
         {
-            Debug.Log("current parade = null");
             StopAgent();
             return;
         }

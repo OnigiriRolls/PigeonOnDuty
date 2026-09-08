@@ -125,7 +125,7 @@ public class GPSDogController : MonoBehaviour, IThrowTarget, IProjectileTarget
 
     public bool HasReachedHuman(HumanFollower human)
     {
-        return Vector3.Distance(transform.position, human.transform.position) < 5f;
+        return Vector3.Distance(transform.position, human.transform.position) < 10f;
     }
 
     public void Deactivate()

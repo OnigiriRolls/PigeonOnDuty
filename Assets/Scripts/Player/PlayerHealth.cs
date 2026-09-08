@@ -90,6 +90,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (dead)
             return;
+        if (MissionTimer.Instance != null)
+            MissionTimer.Instance.StopTimer();
         dead = true;
         OnDeath?.Invoke();
         deathReasonText.GetComponent<TextMeshProUGUI>().text = gameOverUI.GetDeathReasonText(lastDamageReason);
