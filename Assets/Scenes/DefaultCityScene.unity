@@ -8910,6 +8910,7 @@ MonoBehaviour:
   collectibleManager: {fileID: 622098704}
   newspaperTutorialController: {fileID: 151423249}
   screenTransition: {fileID: 1582717040}
+  mobileControls: {fileID: 1567985900}
 --- !u!114 &937640230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16097,6 +16098,7 @@ MonoBehaviour:
   featherData: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
   newspaperData: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
   featherSpawner: {fileID: 1363443664}
+  mobileControls: {fileID: 1567985900}
 --- !u!1 &1811385935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7754769440120018675, guid: b7e5c1bede1bf86488da96618756e75e, type: 3}

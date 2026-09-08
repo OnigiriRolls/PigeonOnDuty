@@ -25,6 +25,7 @@ public class GPSMissionController : MonoBehaviour, IMissionController
     [SerializeField] private ThrowableData featherData;
     [SerializeField] private ThrowableData newspaperData;
     [SerializeField] private FeatherPickupSpawner featherSpawner;
+    [SerializeField] private MobileControlsManager mobileControls;
 
     private GPSMissionState state;
     private GPSMission activeMission;
@@ -67,6 +68,8 @@ public class GPSMissionController : MonoBehaviour, IMissionController
         hintUI.Show("Find the Human");
         currentHuman.ShowInteractionCircle(Color.yellow);
         TutorialManager.Instance.TryShow("tutorial_mission_gps", "Guide the player", "Find the human then guide it to the destination. Don't lose its trust!");
+        if (mobileControls != null)
+            mobileControls.ShowGPSControls();
     }
 
     private void HandleHumanTrustDepleted()
@@ -205,6 +208,8 @@ public class GPSMissionController : MonoBehaviour, IMissionController
             currentHuman.OnTrustDepleted -= HandleHumanTrustDepleted;
         }
         WarningManager.Instance.Hide();
+        if (mobileControls != null)
+            mobileControls.ShowNormalControls();
     }
 
     private void OnDisable()

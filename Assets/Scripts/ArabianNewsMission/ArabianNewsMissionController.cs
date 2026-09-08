@@ -21,6 +21,7 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
     [SerializeField] private TravelTimeCalculator travelTimeCalculator;
     [SerializeField] private Transform player;
     [SerializeField] private CollectibleManager collectibleManager;
+    [SerializeField] private MobileControlsManager mobileControls;
 
     private List<ClientController> activeClients = new();
     private ArabianNewsMission currentMission;
@@ -65,6 +66,8 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
         MissionTimer.Instance.StartTimer(activeClients.Count * currentMission.timeBuffer);
         collectibleManager.StartContinuousCoinSpawning(player);
         windAttackManager.StartAttack();
+        if (mobileControls != null)
+            mobileControls.ShowNewspaperControls();
     }
 
     private void HandleClientDelivered(ClientController client)
@@ -98,6 +101,8 @@ public class ArabianNewsMissionController : MonoBehaviour, IMissionController
         playerHydration.Deactivate();
         if (PickupManager.Instance != null)
             PickupManager.Instance.ClearAllPickups();
+        if (mobileControls != null)
+            mobileControls.ShowNormalControls();
     }
 
     public bool CanHandle(MissionData mission)

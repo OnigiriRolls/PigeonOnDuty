@@ -35749,6 +35749,7 @@ MonoBehaviour:
   isGPSMissionActive: 0
   isArabMissionActive: 1
   areAllMissionsActive: 0
+  missionRunning: 0
 --- !u!1001 &653921895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50388,6 +50389,7 @@ MonoBehaviour:
   travelTimeCalculator: {fileID: 503221262}
   player: {fileID: 1517355606}
   collectibleManager: {fileID: 622098704}
+  mobileControls: {fileID: 1567985900}
 --- !u!1001 &941513978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95539,7 +95541,6 @@ MonoBehaviour:
   gpsSpawnPointsParent: {fileID: 412899728}
   gpsDestinationParent: {fileID: 0}
   hintUI: {fileID: 1889079388895480468}
-  paradeManager: {fileID: 1245119266}
   cityParadeManager: {fileID: 157733835}
   minimumDistance: 300
   bufferTimePerEnemy: 2
@@ -95551,6 +95552,7 @@ MonoBehaviour:
   featherData: {fileID: 11400000, guid: 5ead84631720e03449e2df87a7eb8045, type: 2}
   newspaperData: {fileID: 11400000, guid: 1251afabfca33fe47ba49046d9dbae02, type: 2}
   featherSpawner: {fileID: 1363443664}
+  mobileControls: {fileID: 1567985900}
 --- !u!1001 &1793142439
 PrefabInstance:
   m_ObjectHideFlags: 0

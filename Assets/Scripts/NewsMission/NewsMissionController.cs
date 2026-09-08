@@ -22,6 +22,7 @@ public class NewsMissionController : MonoBehaviour, IMissionController
     [SerializeField] private CollectibleManager collectibleManager;
     [SerializeField] private NewspaperTutorialController newspaperTutorialController;
     [SerializeField] private ScreenTransition screenTransition;
+    [SerializeField] private MobileControlsManager mobileControls;
 
     private List<ClientController> activeClients = new();
     private NewsMission currentMission;
@@ -35,6 +36,8 @@ public class NewsMissionController : MonoBehaviour, IMissionController
     {
         if (!SaveManager.Instance.Data.newspaperTutorialCompleted)
         {
+            if (mobileControls != null)
+                mobileControls.ShowNewspaperControls();
             newspaperTutorialController.StartTutorial(newsMission);
             return;
         }
@@ -65,6 +68,8 @@ public class NewsMissionController : MonoBehaviour, IMissionController
         collectibleManager.StartContinuousCoinSpawning(player);
         if (screenTransition.IsBlack)
             screenTransition.FadeFromBlack();
+        if (mobileControls != null)
+            mobileControls.ShowNewspaperControls();
     }
 
     private void HandleClientDelivered(ClientController client)
@@ -96,6 +101,8 @@ public class NewsMissionController : MonoBehaviour, IMissionController
         playerInventory.SetEnabled(featherData, false);
         if (PickupManager.Instance != null)
             PickupManager.Instance.ClearAllPickups();
+        if (mobileControls != null)
+            mobileControls.ShowNormalControls();
     }
 
     public bool CanHandle(MissionData mission)

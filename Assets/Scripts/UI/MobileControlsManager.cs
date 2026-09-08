@@ -25,7 +25,7 @@ public class MobileControlsManager : MonoBehaviour
         {
             ShowGPSControls();
         }
-        else if (mission is NewsMission)
+        else if (mission is NewsMission || mission is ArabianNewsMission)
         {
             ShowNewspaperControls();
         }
